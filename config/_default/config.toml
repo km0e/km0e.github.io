@@ -1,0 +1,34 @@
+# Change baseurl before deploy
+baseurl = "https://km0e.github.io"
+
+# Theme i18n support
+# Available values: en, fr, id, ja, ko, pt-br, zh-cn, zh-tw, es, de, nl, it, th, el, uk, ar
+defaultContentLanguage = "zh-cn"
+
+defaultContentLanguageInSubdir = false
+
+# Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
+# This will make .Summary and .WordCount behave correctly for CJK languages.
+hasCJKLanguage = false
+
+# Change it to your Disqus shortname before using
+# disqusShortname = "hugo-theme-stack"
+
+[pagination]
+pagerSize = 5
+
+[languages]
+  [languages.zh-cn]
+    disabled = false
+    languageCode = 'zh-CN'
+    languageDirection = 'ltr'
+    languageName = '简体中文'
+    title = 'kmdr blog'
+    weight = 2
+  [languages.en]
+    disabled = false
+    languageCode = 'en-US'
+    languageDirection = 'ltr'
+    languageName = 'English'
+    title = 'kmdr blog'
+    weight = 1
