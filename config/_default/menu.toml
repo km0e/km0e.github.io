@@ -15,6 +15,14 @@ url = "https://github.com/km0e"
 [social.params]
 icon = "brand-github"
 
+[[social]]
+identifier = "email"
+name = "Email"
+url = "mailto:kmdr.error@gmail.com"
+
+[social.params]
+icon = "brand-gmail"
+
 # [[social]]
 # identifier = "twitter"
 # name = "Twitter"
