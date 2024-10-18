@@ -32,3 +32,6 @@ pagerSize = 5
     languageName = 'English'
     title = 'kmdr blog'
     weight = 1
+
+[frontmatter]
+  lastmod = ['lastmod', ':fileModTime', ':default']
