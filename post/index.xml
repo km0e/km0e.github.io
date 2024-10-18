@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on kmdr blog</title><link>https://km0e.github.io/post/</link><description>Recent content in Posts on kmdr blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 18 Oct 2024 10:17:27 +0000</lastBuildDate><atom:link href="https://km0e.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Utils</title><link>https://km0e.github.io/p/utils/</link><pubDate>Fri, 18 Oct 2024 14:06:33 +0800</pubDate><guid>https://km0e.github.io/p/utils/</guid><description>&lt;h1 id="工具集">工具集
+&lt;/h1>&lt;h2 id="1-测试脚本">1. 测试脚本
+&lt;/h2>&lt;h3 id="11-linux-服务器测试脚本">1.1 linux 服务器测试脚本
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">wget -qO- bench.sh &lt;span class="p">|&lt;/span> bash
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>效果如下：
+&lt;img src="https://km0e.github.io/p/utils/image.png"
+width="638"
+height="755"
+srcset="https://km0e.github.io/p/utils/image_hu7848750556893907846.png 480w, https://km0e.github.io/p/utils/image_hu17121329339769200104.png 1024w"
+loading="lazy"
+alt="alt text"
+class="gallery-image"
+data-flex-grow="84"
+data-flex-basis="202px"
+>&lt;/p></description></item><item><title>Soft Router</title><link>https://km0e.github.io/p/soft-router/</link><pubDate>Fri, 18 Oct 2024 13:50:03 +0800</pubDate><guid>https://km0e.github.io/p/soft-router/</guid><description>&lt;h1 id="记配置软路由的过程">记配置软路由的过程
+&lt;/h1>&lt;h2 id="1-环境">1. 环境
+&lt;/h2>&lt;p>使用修改后的&lt;a class="link" href="https://km0e.github.io/p/utils/#1.1 linux 服务器测试脚本" >&lt;code>bench.sh&lt;/code>&lt;/a>脚本，探测到的环境如下：
+&lt;img src="https://km0e.github.io/p/soft-router/image.png"
+width="642"
+height="360"
+srcset="https://km0e.github.io/p/soft-router/image_hu2619960476499810870.png 480w, https://km0e.github.io/p/soft-router/image_hu9043121918391408860.png 1024w"
+loading="lazy"
+alt="alt text"
+class="gallery-image"
+data-flex-grow="178"
+data-flex-basis="428px"
+>&lt;/p>
+&lt;h2 id="2-linux配置">2. Linux配置
+&lt;/h2>&lt;p>换源，来自&lt;a class="link" href="https://help.mirrorz.org/debian/" target="_blank" rel="noopener"
+>MirrorZ&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">su -c &lt;span class="s2">&amp;#34;cat &amp;lt;&amp;lt;&amp;#39;EOF&amp;#39; &amp;gt; /etc/apt/sources.list
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"># deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"># deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"># deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"># 以下安全更新软件源包含了官方源与镜像站配置，如有需要可自行修改注释切换
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">deb https://mirrors.tuna.tsinghua.edu.cn/debian-security bookworm-security main contrib non-free non-free-firmware
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"># deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security bookworm-security main contrib non-free non-free-firmware
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"># deb https://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"># # deb-src https://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">EOF&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>更新源&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">su -c &lt;span class="s2">&amp;#34;apt update &amp;amp;&amp;amp; apt upgrade -y&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>安装配置无密码&lt;code>sudo&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">su -c &lt;span class="s2">&amp;#34;apt install sudo -y&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">su -c &lt;span class="s2">&amp;#34;echo &amp;#39;&lt;/span>&lt;span class="nv">$USER&lt;/span>&lt;span class="s2"> ALL=(ALL) NOPASSWD: ALL&amp;#39; &amp;gt; /etc/sudoers.d/&lt;/span>&lt;span class="nv">$USER&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>首先需要开启Linux内核的一些功能，以支持软路由的配置。&lt;/p>
+&lt;ul>
+&lt;li>开启&lt;code>ipv4&lt;/code>转发&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo sed -i &lt;span class="s1">&amp;#39;s/^#net.ipv4.ip_forward.*$/net.ipv4.ip_forward=1/g&amp;#39;&lt;/span> /etc/sysctl.conf
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使配置生效&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo sysctl -p
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="3-配置网口">3. 配置网口
+&lt;/h2>&lt;p>查看本机网口&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ip link
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://km0e.github.io/p/soft-router/image-1.png"
+width="976"
+height="183"
+srcset="https://km0e.github.io/p/soft-router/image-1_hu17863863990162191921.png 480w, https://km0e.github.io/p/soft-router/image-1_hu15116239221505636994.png 1024w"
+loading="lazy"
+alt="alt text"
+class="gallery-image"
+data-flex-grow="533"
+data-flex-basis="1280px"
+>
+安装必要的工具&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt install bridge-utils isc-dhcp-server iptables -y
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>配置网口&lt;code>enp2s0&lt;/code>为&lt;code>WAN&lt;/code>口，&lt;code>enp3s0&lt;/code>，&lt;code>enp4s0&lt;/code>，&lt;code>enp5s0&lt;/code>为&lt;code>LAN&lt;/code>口。并且将&lt;code>enp3s0&lt;/code>，&lt;code>enp4s0&lt;/code>，&lt;code>enp5s0&lt;/code>绑定为&lt;code>br0&lt;/code>网桥。编辑&lt;code>/etc/network/interfaces&lt;/code>文件&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># This file describes the network interfaces available on your system
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># and how to activate them. For more information, see interfaces(5).
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">source /etc/network/interfaces.d/*
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># The loopback network interface
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">auto lo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iface lo inet loopback
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># The primary network interface
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">auto enp2s0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iface enp2s0 inet dhcp
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">auto br0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iface br0 inet static
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> address 10.1.0.1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> netmask 255.255.0.0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> bridge_ports enp3s0 enp4s0 enp5s0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>配置&lt;code>DHCP&lt;/code>服务，编辑&lt;code>/etc/dhcp/dhcpd.conf&lt;/code>文件&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt"> 10
+&lt;/span>&lt;span class="lnt"> 11
+&lt;/span>&lt;span class="lnt"> 12
+&lt;/span>&lt;span class="lnt"> 13
+&lt;/span>&lt;span class="lnt"> 14
+&lt;/span>&lt;span class="lnt"> 15
+&lt;/span>&lt;span class="lnt"> 16
+&lt;/span>&lt;span class="lnt"> 17
+&lt;/span>&lt;span class="lnt"> 18
+&lt;/span>&lt;span class="lnt"> 19
+&lt;/span>&lt;span class="lnt"> 20
+&lt;/span>&lt;span class="lnt"> 21
+&lt;/span>&lt;span class="lnt"> 22
+&lt;/span>&lt;span class="lnt"> 23
+&lt;/span>&lt;span class="lnt"> 24
+&lt;/span>&lt;span class="lnt"> 25
+&lt;/span>&lt;span class="lnt"> 26
+&lt;/span>&lt;span class="lnt"> 27
+&lt;/span>&lt;span class="lnt"> 28
+&lt;/span>&lt;span class="lnt"> 29
+&lt;/span>&lt;span class="lnt"> 30
+&lt;/span>&lt;span class="lnt"> 31
+&lt;/span>&lt;span class="lnt"> 32
+&lt;/span>&lt;span class="lnt"> 33
+&lt;/span>&lt;span class="lnt"> 34
+&lt;/span>&lt;span class="lnt"> 35
+&lt;/span>&lt;span class="lnt"> 36
+&lt;/span>&lt;span class="lnt"> 37
+&lt;/span>&lt;span class="lnt"> 38
+&lt;/span>&lt;span class="lnt"> 39
+&lt;/span>&lt;span class="lnt"> 40
+&lt;/span>&lt;span class="lnt"> 41
+&lt;/span>&lt;span class="lnt"> 42
+&lt;/span>&lt;span class="lnt"> 43
+&lt;/span>&lt;span class="lnt"> 44
+&lt;/span>&lt;span class="lnt"> 45
+&lt;/span>&lt;span class="lnt"> 46
+&lt;/span>&lt;span class="lnt"> 47
+&lt;/span>&lt;span class="lnt"> 48
+&lt;/span>&lt;span class="lnt"> 49
+&lt;/span>&lt;span class="lnt"> 50
+&lt;/span>&lt;span class="lnt"> 51
+&lt;/span>&lt;span class="lnt"> 52
+&lt;/span>&lt;span class="lnt"> 53
+&lt;/span>&lt;span class="lnt"> 54
+&lt;/span>&lt;span class="lnt"> 55
+&lt;/span>&lt;span class="lnt"> 56
+&lt;/span>&lt;span class="lnt"> 57
+&lt;/span>&lt;span class="lnt"> 58
+&lt;/span>&lt;span class="lnt"> 59
+&lt;/span>&lt;span class="lnt"> 60
+&lt;/span>&lt;span class="lnt"> 61
+&lt;/span>&lt;span class="lnt"> 62
+&lt;/span>&lt;span class="lnt"> 63
+&lt;/span>&lt;span class="lnt"> 64
+&lt;/span>&lt;span class="lnt"> 65
+&lt;/span>&lt;span class="lnt"> 66
+&lt;/span>&lt;span class="lnt"> 67
+&lt;/span>&lt;span class="lnt"> 68
+&lt;/span>&lt;span class="lnt"> 69
+&lt;/span>&lt;span class="lnt"> 70
+&lt;/span>&lt;span class="lnt"> 71
+&lt;/span>&lt;span class="lnt"> 72
+&lt;/span>&lt;span class="lnt"> 73
+&lt;/span>&lt;span class="lnt"> 74
+&lt;/span>&lt;span class="lnt"> 75
+&lt;/span>&lt;span class="lnt"> 76
+&lt;/span>&lt;span class="lnt"> 77
+&lt;/span>&lt;span class="lnt"> 78
+&lt;/span>&lt;span class="lnt"> 79
+&lt;/span>&lt;span class="lnt"> 80
+&lt;/span>&lt;span class="lnt"> 81
+&lt;/span>&lt;span class="lnt"> 82
+&lt;/span>&lt;span class="lnt"> 83
+&lt;/span>&lt;span class="lnt"> 84
+&lt;/span>&lt;span class="lnt"> 85
+&lt;/span>&lt;span class="lnt"> 86
+&lt;/span>&lt;span class="lnt"> 87
+&lt;/span>&lt;span class="lnt"> 88
+&lt;/span>&lt;span class="lnt"> 89
+&lt;/span>&lt;span class="lnt"> 90
+&lt;/span>&lt;span class="lnt"> 91
+&lt;/span>&lt;span class="lnt"> 92
+&lt;/span>&lt;span class="lnt"> 93
+&lt;/span>&lt;span class="lnt"> 94
+&lt;/span>&lt;span class="lnt"> 95
+&lt;/span>&lt;span class="lnt"> 96
+&lt;/span>&lt;span class="lnt"> 97
+&lt;/span>&lt;span class="lnt"> 98
+&lt;/span>&lt;span class="lnt"> 99
+&lt;/span>&lt;span class="lnt">100
+&lt;/span>&lt;span class="lnt">101
+&lt;/span>&lt;span class="lnt">102
+&lt;/span>&lt;span class="lnt">103
+&lt;/span>&lt;span class="lnt">104
+&lt;/span>&lt;span class="lnt">105
+&lt;/span>&lt;span class="lnt">106
+&lt;/span>&lt;span class="lnt">107
+&lt;/span>&lt;span class="lnt">108
+&lt;/span>&lt;span class="lnt">109
+&lt;/span>&lt;span class="lnt">110
+&lt;/span>&lt;span class="lnt">111
+&lt;/span>&lt;span class="lnt">112
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># dhcpd.conf
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># Sample configuration file for ISC dhcpd
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># option definitions common to all supported networks...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">option domain-name &amp;#34;example.org&amp;#34;;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">option domain-name-servers ns1.example.org, ns2.example.org;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">default-lease-time 600;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">max-lease-time 7200;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># The ddns-updates-style parameter controls whether or not the server will
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># attempt to do a DNS update when a lease is confirmed. We default to the
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># behavior of the version 2 packages (&amp;#39;none&amp;#39;, since DHCP v2 didn&amp;#39;t
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># have support for DDNS.)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ddns-update-style none;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># If this DHCP server is the official DHCP server for the local
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># network, the authoritative directive should be uncommented.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#authoritative;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># Use this to send dhcp log messages to a different log file (you also
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># have to hack syslog.conf to complete the redirection).
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#log-facility local7;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># No service will be given on this subnet, but declaring it helps the
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># DHCP server to understand the network topology.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#subnet 10.152.187.0 netmask 255.255.255.0 {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># This is a very basic subnet declaration.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#subnet 10.254.239.0 netmask 255.255.255.224 {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># range 10.254.239.10 10.254.239.20;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># option routers rtr-239-0-1.example.org, rtr-239-0-2.example.org;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># This declaration allows BOOTP clients to get dynamic addresses,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># which we don&amp;#39;t really recommend.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#subnet 10.254.239.32 netmask 255.255.255.224 {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># range dynamic-bootp 10.254.239.40 10.254.239.60;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># option broadcast-address 10.254.239.31;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># option routers rtr-239-32-1.example.org;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># A slightly different configuration for an internal subnet.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#subnet 10.5.5.0 netmask 255.255.255.224 {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># range 10.5.5.26 10.5.5.30;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># option domain-name-servers ns1.internal.example.org;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># option domain-name &amp;#34;internal.example.org&amp;#34;;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># option routers 10.5.5.1;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># option broadcast-address 10.5.5.31;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># default-lease-time 600;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># max-lease-time 7200;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># Hosts which require special configuration options can be listed in
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># host statements. If no address is specified, the address will be
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># allocated dynamically (if possible), but the host-specific information
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># will still come from the host declaration.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#host passacaglia {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># hardware ethernet 0:0:c0:5d:bd:95;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># filename &amp;#34;vmunix.passacaglia&amp;#34;;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># server-name &amp;#34;toccata.example.com&amp;#34;;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># Fixed IP addresses can also be specified for hosts. These addresses
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># should not also be listed as being available for dynamic assignment.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># Hosts for which fixed IP addresses have been specified can boot using
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># BOOTP or DHCP. Hosts for which no fixed address is specified can only
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># be booted with DHCP, unless there is an address range on the subnet
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># to which a BOOTP client is connected which has the dynamic-bootp flag
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># set.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#host fantasia {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># hardware ethernet 08:00:07:26:c0:a5;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># fixed-address fantasia.example.com;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># You can declare a class of clients and then do address allocation
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># based on that. The example below shows a case where all clients
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># in a certain class get addresses on the 10.17.224/24 subnet, and all
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># other clients get addresses on the 10.0.29/24 subnet.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#class &amp;#34;foo&amp;#34; {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># match if substring (option vendor-class-identifier, 0, 4) = &amp;#34;SUNW&amp;#34;;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#shared-network 224-29 {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># subnet 10.17.224.0 netmask 255.255.255.0 {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># option routers rtr-224.example.org;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># }
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># subnet 10.0.29.0 netmask 255.255.255.0 {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># option routers rtr-29.example.org;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># }
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># pool {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># allow members of &amp;#34;foo&amp;#34;;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># range 10.17.224.10 10.17.224.250;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># }
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># pool {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># deny members of &amp;#34;foo&amp;#34;;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># range 10.0.29.10 10.0.29.230;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># }
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">subnet 10.1.0.0 netmask 255.255.0.0 {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> range 10.1.0.2 10.1.255.255;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> option routers 10.1.0.1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>修改&lt;code>/etc/default/isc-dhcp-server&lt;/code>文件使&lt;code>isc-dhcp-server&lt;/code>服务监听&lt;code>br0&lt;/code>网桥&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">INTERFACESv4=&amp;#34;br0&amp;#34;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>配置&lt;code>NAT&lt;/code>转发&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 清空iptables规则&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo iptables -F
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo iptables -t nat -A POSTROUTING -o enp2s0 -j MASQUERADE
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo iptables -A FORWARD -i br0 -o enp2s0 -j ACCEPT
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo iptables -A FORWARD -i enp2s0 -o br0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>保存&lt;code>iptables&lt;/code>规则&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo iptables-save &amp;gt; /etc/iptables/rules.v4
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>恢复时命令&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo iptables-restore &amp;lt; /etc/iptables/rules.v4
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>启动服务&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo systemctl restart networking isc-dhcp-server
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Google Chrome</title><link>https://km0e.github.io/p/google-chrome/</link><pubDate>Sat, 12 Oct 2024 14:55:10 +0800</pubDate><guid>https://km0e.github.io/p/google-chrome/</guid><description>&lt;h3 id="快捷键">快捷键
+&lt;/h3>&lt;ul>
+&lt;li>打开下一个标签页：&lt;code>Ctrl&lt;/code> + &lt;code>Tab&lt;/code> / &lt;code>Ctrl&lt;/code> + &lt;code>Page Down&lt;/code>&lt;/li>
+&lt;li>打开上一个标签页：&lt;code>Ctrl&lt;/code> + &lt;code>Shift&lt;/code> + &lt;code>Tab&lt;/code> / &lt;code>Ctrl&lt;/code> + &lt;code>Page Up&lt;/code>&lt;/li>
+&lt;li>打开新标签页：&lt;code>Ctrl&lt;/code> + &lt;code>T&lt;/code>&lt;/li>
+&lt;li>关闭当前标签页：&lt;code>Ctrl&lt;/code> + &lt;code>W&lt;/code>&lt;/li>
+&lt;li>聚焦到地址栏：&lt;code>Ctrl&lt;/code> + &lt;code>L&lt;/code>&lt;/li>
+&lt;/ul></description></item><item><title>Systemd User Service</title><link>https://km0e.github.io/p/systemd-user-service/</link><pubDate>Thu, 03 Oct 2024 22:53:13 +0800</pubDate><guid>https://km0e.github.io/p/systemd-user-service/</guid><description>&lt;h1 id="自动停止">自动停止
+&lt;/h1>&lt;p>&lt;code>user&lt;/code>类型的&lt;code>systemd&lt;/code>服务在&lt;code>ssh``session&lt;/code>断开后自动停止，解决命令如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo loginctl enable-linger &lt;span class="nv">$USER&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="服务不存在">服务不存在
+&lt;/h1>&lt;p>&lt;code>user&lt;/code>类型的&lt;code>systemd&lt;/code>服务不存在，错误如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">Failed to connect to bus: &lt;span class="nv">$DBUS_SESSION_BUS_ADDRESS&lt;/span> and &lt;span class="nv">$XDG_RUNTIME_DIR&lt;/span> not defined &lt;span class="o">(&lt;/span>consider using --machine&lt;span class="o">=&lt;/span>&amp;lt;user&amp;gt;@.host --user to connect to bus of other user&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>解决方法为修改&lt;code>systemd&lt;/code>配置文件&lt;code>/etc/ssh/sshd_config&lt;/code>部分如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">UsePAM yes
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">...
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>别忘了重启&lt;code>sshd&lt;/code>服务：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo systemctl restart sshd
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

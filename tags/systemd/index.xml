@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Systemd on kmdr blog</title><link>https://km0e.github.io/tags/systemd/</link><description>Recent content in Systemd on kmdr blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 18 Oct 2024 10:17:27 +0000</lastBuildDate><atom:link href="https://km0e.github.io/tags/systemd/index.xml" rel="self" type="application/rss+xml"/><item><title>Systemd User Service</title><link>https://km0e.github.io/p/systemd-user-service/</link><pubDate>Thu, 03 Oct 2024 22:53:13 +0800</pubDate><guid>https://km0e.github.io/p/systemd-user-service/</guid><description>&lt;h1 id="自动停止">自动停止
+&lt;/h1>&lt;p>&lt;code>user&lt;/code>类型的&lt;code>systemd&lt;/code>服务在&lt;code>ssh``session&lt;/code>断开后自动停止，解决命令如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo loginctl enable-linger &lt;span class="nv">$USER&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="服务不存在">服务不存在
+&lt;/h1>&lt;p>&lt;code>user&lt;/code>类型的&lt;code>systemd&lt;/code>服务不存在，错误如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">Failed to connect to bus: &lt;span class="nv">$DBUS_SESSION_BUS_ADDRESS&lt;/span> and &lt;span class="nv">$XDG_RUNTIME_DIR&lt;/span> not defined &lt;span class="o">(&lt;/span>consider using --machine&lt;span class="o">=&lt;/span>&amp;lt;user&amp;gt;@.host --user to connect to bus of other user&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>解决方法为修改&lt;code>systemd&lt;/code>配置文件&lt;code>/etc/ssh/sshd_config&lt;/code>部分如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">UsePAM yes
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">...
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>别忘了重启&lt;code>sshd&lt;/code>服务：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo systemctl restart sshd
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>
