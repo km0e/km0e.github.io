@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on kmdr blog</title><link>https://km0e.github.io/post/</link><description>Recent content in Posts on kmdr blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 12 Nov 2024 06:26:53 +0000</lastBuildDate><atom:link href="https://km0e.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Utils</title><link>https://km0e.github.io/p/utils/</link><pubDate>Fri, 18 Oct 2024 14:06:33 +0800</pubDate><guid>https://km0e.github.io/p/utils/</guid><description>&lt;h1 id="utils">Utils
+&lt;/h1>&lt;h2 id="1-test-tools">1. Test Tools
+&lt;/h2>&lt;h3 id="11-linux-server-test-script">1.1 linux server test script
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">wget -qO- bench.sh &lt;span class="p">|&lt;/span> bash
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>display as below:
+&lt;img src="https://km0e.github.io/p/utils/image.png"
+width="638"
+height="755"
+srcset="https://km0e.github.io/p/utils/image_hu7848750556893907846.png 480w, https://km0e.github.io/p/utils/image_hu17121329339769200104.png 1024w"
+loading="lazy"
+alt="alt text"
+class="gallery-image"
+data-flex-grow="84"
+data-flex-basis="202px"
+>&lt;/p>
+&lt;h3 id="12-linux-disk-test-tool">1.2 linux disk test tool
+&lt;/h3>&lt;ul>
+&lt;li>&lt;a class="link" href="https://github.com/JonMagon/KDiskMark" target="_blank" rel="noopener"
+>kdiskmark&lt;/a>
+display as below:
+&lt;img src="https://raw.githubusercontent.com/JonMagon/KDiskMark/master/assets/images/kdiskmark.png"
+loading="lazy"
+alt="kdiskmark"
+>&lt;/li>
+&lt;/ul></description></item><item><title>Google Chrome</title><link>https://km0e.github.io/p/google-chrome/</link><pubDate>Sat, 12 Oct 2024 14:57:37 +0800</pubDate><guid>https://km0e.github.io/p/google-chrome/</guid><description>&lt;h3 id="shortcuts">Shortcuts
+&lt;/h3>&lt;ul>
+&lt;li>Open the next tab: &lt;code>Ctrl&lt;/code> + &lt;code>Tab&lt;/code> / &lt;code>Ctrl&lt;/code> + &lt;code>Page Down&lt;/code>&lt;/li>
+&lt;li>Open the previous tab: &lt;code>Ctrl&lt;/code> + &lt;code>Shift&lt;/code> + &lt;code>Tab&lt;/code> / &lt;code>Ctrl&lt;/code> + &lt;code>Page Up&lt;/code>&lt;/li>
+&lt;li>Open a new tab: &lt;code>Ctrl&lt;/code> + &lt;code>T&lt;/code>&lt;/li>
+&lt;li>Close the current tab: &lt;code>Ctrl&lt;/code> + &lt;code>W&lt;/code>&lt;/li>
+&lt;li>Focus on the address bar: &lt;code>Ctrl&lt;/code> + &lt;code>L&lt;/code>&lt;/li>
+&lt;/ul></description></item><item><title>Systemd User Service</title><link>https://km0e.github.io/p/systemd-user-service/</link><pubDate>Thu, 03 Oct 2024 22:53:13 +0800</pubDate><guid>https://km0e.github.io/p/systemd-user-service/</guid><description>&lt;h1 id="auto-stop">auto stop
+&lt;/h1>&lt;p>&lt;code>systemd&lt;/code>&amp;rsquo;s &lt;code>user&lt;/code> type service will stop automatically after &lt;code>ssh&lt;/code> session is disconnected. The solution is as follows:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo loginctl enable-linger &lt;span class="nv">$USER&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="service-not-found">service not found
+&lt;/h1>&lt;p>&lt;code>user&lt;/code> type &lt;code>systemd&lt;/code> service does not exist, the error is as follows:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">Failed to connect to bus: &lt;span class="nv">$DBUS_SESSION_BUS_ADDRESS&lt;/span> and &lt;span class="nv">$XDG_RUNTIME_DIR&lt;/span> not defined &lt;span class="o">(&lt;/span>consider using --machine&lt;span class="o">=&lt;/span>&amp;lt;user&amp;gt;@.host --user to connect to bus of other user&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>The solution is to modify the &lt;code>systemd&lt;/code> configuration file &lt;code>/etc/ssh/sshd_config&lt;/code> as follows:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">UsePAM yes
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">...
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Don&amp;rsquo;t forget to restart the &lt;code>sshd&lt;/code> service:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo systemctl restart sshd
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>
