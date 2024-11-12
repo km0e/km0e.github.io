@@ -1,10 +1,16 @@
-+++
-title = 'Systemd User Service'
-date = 2024-10-03T22:53:13+08:00
-draft = false
-categories = ["Linux"]
-tags = ["systemd"]
-+++
+---
+title: "Systemd User Service"
+description: 
+date: 2024-10-03T22:53:13+08:00
+categories: ["Linux"]
+tags: ["systemd"]
+image: 
+math: 
+license: 
+hidden: false
+comments: true
+draft: false
+---
 # 自动停止
 
 `user`类型的`systemd`服务在`ssh``session`断开后自动停止，解决命令如下：

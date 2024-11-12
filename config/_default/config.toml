@@ -3,7 +3,7 @@ baseurl = "https://km0e.github.io"
 
 # Theme i18n support
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, zh-tw, es, de, nl, it, th, el, uk, ar
-defaultContentLanguage = "zh-cn"
+defaultContentLanguage = "en"
 
 defaultContentLanguageInSubdir = false
 

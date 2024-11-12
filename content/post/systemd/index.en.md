@@ -1,10 +1,16 @@
-+++
-title = 'Systemd User Service'
-date = 2024-10-03T22:53:13+08:00
-draft = false
-categories = ["Linux"]
-tags = ["systemd"]
-+++
+---
+title: "Systemd User Service"
+description: 
+date: 2024-10-03T22:53:13+08:00
+categories: ["Linux"]
+tags: ["systemd"]
+image: 
+math: 
+license: 
+hidden: false
+comments: true
+draft: false
+---
 # auto stop
 
 `systemd`'s `user` type service will stop automatically after `ssh` session is disconnected. The solution is as follows:

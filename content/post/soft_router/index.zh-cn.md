@@ -197,7 +197,9 @@ ddns-update-style none;
 
 subnet 10.1.0.0 netmask 255.255.0.0 {
   range 10.1.0.2 10.1.255.255;
-  option routers 10.1.0.1
+  option subnet-mask 255.255.255.0;#这个理论上是不需要的，但是配另一个主机的时候需要，加上也没关系
+  option routers 10.1.0.1;
+  option domain-name-servers 8.8.8.8;
 }
 ```
 
@@ -210,6 +212,7 @@ INTERFACESv4="br0"
 ```bash
 # 清空iptables规则
 sudo iptables -F 
+sudo iptables -F -t nat
 sudo iptables -t nat -A POSTROUTING -o enp2s0 -j MASQUERADE
 
 sudo iptables -A FORWARD -i br0 -o enp2s0 -j ACCEPT
