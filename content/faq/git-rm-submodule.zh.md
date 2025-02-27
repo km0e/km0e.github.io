@@ -5,7 +5,7 @@ draft = false
 title = "移除`Git`子模块"
 
 [taxonomies]
-tags = ["Git"]
+tags = ["Git","FAQ"]
 +++
 原文: [Stackoverflow](https://stackoverflow.com/a/16162000)
 

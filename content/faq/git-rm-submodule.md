@@ -5,7 +5,7 @@ draft = false
 title = "git rm submodule"
 
 [taxonomies]
-tags = ["Git"]
+tags = ["Git","FAQ"]
 +++
 Original source: [Stackoverflow](https://stackoverflow.com/a/16162000)
 

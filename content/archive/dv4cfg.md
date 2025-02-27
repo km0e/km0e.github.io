@@ -8,7 +8,7 @@ title = "Dv4cfg"
 toc = true
 
 [taxonomies]
-tags = []
+tags = ["PRO"]
 +++
 
 ## Usage

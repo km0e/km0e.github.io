@@ -4,7 +4,7 @@ base_url = "https://km0e.github.io"
 # Also set index format = "elasticlunr_javascript", and in [extra] uglyurls = true, integrity = false
 # If you use the npm/node script then all you have to do is set search_library = "offline", and everything else is automatic.
 
-title = "Blog"
+title = "F"
 description = "Just a simple blog"
 #for SEO aim for 140-180 Characters
 theme = "abridge"
@@ -47,7 +47,7 @@ smart_punctuation = false          # `...` to `…`, `"quote"` to `“curly”` 
 
 # Any Extra language you do not use, delete or comment out the extra language sections:
 [languages.zh]
-title = "Blog"
+title = "F"
 description = "Just a simple blog"
 generate_feeds = true
 build_search_index = false
@@ -69,12 +69,11 @@ taxonomies = [
 ###############################################################################
 
 menu = [
-  { url = "faq", name = "FAQs", slash = true, blank = false, size = "s110" },
-  { url = "blog", name = "Blog", slash = true, blank = false, size = "s110" },
+  # { url = "blog", name = "Blog", slash = true, blank = false, size = "s110" },
   #    {url = "about", name = "About", slash = true, blank = false, size="s110"},
-  # { url = "archive", name = "Posts", slash = true, blank = false, size = "s110" },
+  { url = "archive", name = "Posts", slash = true, blank = false, size = "s110" },
   #    {url = "categories", name = "Categories", slash = true, blank = false, size="s110"},
-  # {url = "tags", name = "Tags", slash = true, blank = false, size="s110"},
+  { url = "tags", name = "Tags", slash = true, blank = false, size = "s110" },
 ]
 menu_footer = [
   { url = "about", name = "About", slash = true, blank = false, size = "s90" },

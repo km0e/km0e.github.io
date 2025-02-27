@@ -8,7 +8,7 @@ title = "软路由配置"
 toc = true
 
 [taxonomies]
-tags = []
+tags = ["ROUTE","CFG"]
 +++
 # 记配置软路由的过程
 
@@ -16,9 +16,7 @@ tags = []
 
 使用修改后的[`bench.sh`]({{< ref "utils/index.zh-cn.md#1.1 linux 服务器测试脚本" >}})脚本，探测到的环境如下：
 
-```html
 {{ img(src="/images/image.png") }}
-```
 
 ## 2. Linux配置
 
@@ -76,9 +74,7 @@ sudo sysctl -p
 ip link
 ```
 
-```html
 {{ img(src="/images/image-1.png") }}
-```
 
 安装必要的工具
 
@@ -264,4 +260,3 @@ sudo iptables-restore < /etc/iptables/rules.v4
 ```bash
 sudo systemctl restart networking isc-dhcp-server
 ```
-
