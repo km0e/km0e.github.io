@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+    <title>F - FAQ</title>
+    <subtitle>Just a simple blog</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://km0e.github.io/zh/tags/faq/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://km0e.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-02-25T09:14:59+00:00</updated>
+    <id>https://km0e.github.io/zh/tags/faq/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>移除`Git`子模块</title>
+        <published>2025-02-25T09:14:59+00:00</published>
+        <updated>2025-02-25T09:14:59+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://km0e.github.io/zh/faq/git-rm-submodule/"/>
+        <id>https://km0e.github.io/zh/faq/git-rm-submodule/</id>
+        
+        <content type="html" xml:base="https://km0e.github.io/zh/faq/git-rm-submodule/">&lt;p&gt;原文: &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;16162000&quot;&gt;Stackoverflow&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;mv&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; a&#x2F;submodule a&#x2F;submodule_tmp&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;git&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; submodule deinit&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;f&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-end-of-options z-shell&quot;&gt; --&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; a&#x2F;submodule&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;rm&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;rf&lt;&#x2F;span&gt; .git&#x2F;modules&#x2F;a&#x2F;submodule&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;git&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; rm&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;f&lt;&#x2F;span&gt; a&#x2F;submodule&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; Note: a&#x2F;submodule (no trailing slash)&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; or, if you want to leave it in your working tree and have done step 0&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;git&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; rm&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;cached&lt;&#x2F;span&gt; a&#x2F;submodule&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;mv&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; a&#x2F;submodule_tmp a&#x2F;submodule&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh">
+        <title>Redirects after Cloudflare Proxy</title>
+        <published>2025-02-25T09:08:53+00:00</published>
+        <updated>2025-02-25T09:08:53+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://km0e.github.io/zh/faq/cf/"/>
+        <id>https://km0e.github.io/zh/faq/cf/</id>
+        
+        <content type="html" xml:base="https://km0e.github.io/zh/faq/cf/">&lt;p&gt;&lt;code&gt;Github Pages&lt;&#x2F;code&gt; 启用了&lt;code&gt;Enforce HTTPS&lt;&#x2F;code&gt;后，&lt;code&gt;Cloudflare&lt;&#x2F;code&gt;代理后尝试使用&lt;code&gt;HTTP&lt;&#x2F;code&gt;访问&lt;code&gt;Github Pages&lt;&#x2F;code&gt;时，会触发重定向，然后又去访问&lt;code&gt;Cloudflare&lt;&#x2F;code&gt;，导致一直重定向。
+解决办法：将&lt;code&gt;Cloudflare&lt;&#x2F;code&gt;的&lt;code&gt;SSL&#x2F;TLS&lt;&#x2F;code&gt;设置模式改为&lt;code&gt;Full&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+ &lt;img src=&quot;https:&#x2F;&#x2F;km0e.github.io&#x2F;images&#x2F;image-3.png&quot; alt=&quot;image-3&quot; width=&quot;813&quot; height=&quot;885&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh">
+        <title>GitHub Pages FAQ</title>
+        <published>2025-02-25T09:08:53+00:00</published>
+        <updated>2025-02-25T09:08:53+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://km0e.github.io/zh/faq/gh/"/>
+        <id>https://km0e.github.io/zh/faq/gh/</id>
+        
+        <content type="html" xml:base="https://km0e.github.io/zh/faq/gh/">&lt;h2 id=&quot;pemission-denied&quot;&gt;Pemission denied&lt;&#x2F;h2&gt;
+ &lt;img src=&quot;https:&#x2F;&#x2F;km0e.github.io&#x2F;images&#x2F;image-2.png&quot; alt=&quot;image-2&quot; width=&quot;899&quot; height=&quot;123&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ad-m&#x2F;github-push-action&#x2F;issues&#x2F;96#issuecomment-889984928&quot;&gt;解决办法&lt;&#x2F;a&gt;
+&lt;code&gt;Settings&lt;&#x2F;code&gt; -&amp;gt; &lt;code&gt;Actions&lt;&#x2F;code&gt; -&amp;gt; &lt;code&gt;General&lt;&#x2F;code&gt; -&amp;gt; &lt;code&gt;Workflows permissions&lt;&#x2F;code&gt; -&amp;gt; &lt;code&gt;Read and write permissions&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

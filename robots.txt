@@ -1,0 +1,5 @@
+
+Sitemap: https://km0e.github.io/sitemap.xml
+User-Agent: *
+Allow: /
+Host: https://km0e.github.io
