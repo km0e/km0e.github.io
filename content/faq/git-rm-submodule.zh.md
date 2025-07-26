@@ -2,11 +2,12 @@
 date = 2025-02-25T09:14:59Z
 description = "如何移除`Git`仓库中的子模块"
 draft = false
-title = "移除`Git`子模块"
+title = "移除Git子模块"
 
 [taxonomies]
 tags = ["Git","FAQ"]
 +++
+
 原文: [Stackoverflow](https://stackoverflow.com/a/16162000)
 
 ```bash

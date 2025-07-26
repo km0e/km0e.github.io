@@ -10,15 +10,15 @@ toc = true
 [taxonomies]
 tags = ["ROUTE","CFG"]
 +++
-# 记配置软路由的过程
+## 记配置软路由的过程
 
-## 1. 环境
+### 1. 环境
 
 使用修改后的[`bench.sh`]({{< ref "utils/index.zh-cn.md#1.1 linux 服务器测试脚本" >}})脚本，探测到的环境如下：
 
 {{ img(src="/images/image.png") }}
 
-## 2. Linux配置
+### 2. Linux配置
 
 换源，来自[MirrorZ](https://help.mirrorz.org/debian/)
 

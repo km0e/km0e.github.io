@@ -12,5 +12,5 @@ tags = ["GH","FAQ"]
 
 {{ img(src="/images/image-2.png") }}
 
-[解决办法](https://github.com/ad-m/github-push-action/issues/96#issuecomment-889984928)
+[解决办法]('https://github.com/ad-m/github-push-action/issues/96#issuecomment-889984928')
 `Settings` -> `Actions` -> `General` -> `Workflows permissions` -> `Read and write permissions`
