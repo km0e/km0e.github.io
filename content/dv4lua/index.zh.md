@@ -1,6 +1,6 @@
 +++
 date = 2025-07-26T02:25:41Z
-update-date = 2025-07-26T21:35:03Z
+update-date = 2025-08-06T15:58:22Z
 description = "A simple CLI to use dv-api with lua"
 draft = false
 title = "Dv4lua"
@@ -16,6 +16,10 @@ tags = ["PRO"]
 
 这个工具主要功能是用来方便的执行一系列操作，如：自动化任务、文件备份、应用管理、执行命令，配置文件管理等。
 由于自定义执行逻辑以配置文件的形式呈现过于复杂，本工具选择与[`Lua`](https://github.com/mlua-rs/mlua.git)结合，以全局变量`dv`的形式提供API接口。
+
+Note:
+
+- 🚧：表示该功能尚未实现或存在问题
 
 ## API
 
@@ -197,6 +201,46 @@ Example:
 dv.dot:add_schema("default", "path/to/schema.toml")
 dv.dot:add_source("default", "path/to/source")
 dv.dot:sync({"fish", "alacritty", "fcitx5"}, "remote_user")
+```
+
+### `Pm`
+
+`Pm`类提供了一些包管理器的功能，主要用于安装、更新软件包。
+
+以下是`Pm`类的定义和成员函数：
+
+```lua
+---@class Pm
+---@field install fun(this: Pm, hid: string, pkg: string, yes: boolean?)
+---@field update fun(this: Pm, hid: string, yes: boolean?)
+---@field upgrade fun(this: Pm, hid: string, yes: boolean?)
+```
+
+`install`方法用于安装软件包，`pkg`参数为软件包名称（可以是多个软件包，用空格分隔），`yes`参数为是否自动确认安装。
+
+对包管理器的支持如下：
+
+- `apt`（Debian/Ubuntu）
+- `apk`（Alpine）
+- `yay`（Arch Based Linux）
+- `dnf`（Fedora）🚧
+- `pacman`（Arch Based Linux）
+- `paru`（Arch Based Linux）
+- `winget`（Windows）🚧
+
+Note：注意需要的是设备`hid`，而不是用户的`uid`。
+
+Example:
+
+```lua
+dv.um:add_ssh("remote_user", {
+    hid = "remote_machine",
+    mount = "~/.local/share/dv",
+    os = "linux"
+})
+dv.pm:install("remote_machine", "git neovim", true) -- 安装 git 和 vim
+dv.pm:update("remote_machine", true) -- 更新软件包
+dv.pm:upgrade("remote_machine", true) -- 升级软件包
 ```
 
 ## `CLI`

@@ -74,3 +74,11 @@ GRUB_DEFAULT="1>0"
 ```bash
 sudo update-grub
 ```
+
+### 安装额外模块（可选,建议）
+
+如果需要安装额外的内核模块，可以使用以下命令：
+
+```bash
+sudo apt install linux-modules-extra-$(uname -r)
+```
