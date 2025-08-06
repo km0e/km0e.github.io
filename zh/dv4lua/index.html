@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <script src="https://km0e.github.io/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://km0e.github.io/abridge.css?h=3ef6b36a1c3b5611bbd6" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://km0e.github.io" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://km0e.github.io/manifest.min.json" />
+  <link rel="mask-icon" href="https://km0e.github.io/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://km0e.github.io/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://km0e.github.io/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://km0e.github.io/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://km0e.github.io/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="F Atom Feed" href="https://km0e.github.io/zh/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Dv4lua | F</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="F" />
+  <meta name="description" content="A simple CLI to use dv-api with lua" />
+  <link rel="canonical" href="https://km0e.github.io/zh/dv4lua/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://km0e.github.io/zh/dv4lua/" />
+  <meta name="twitter:url" content="https://km0e.github.io/zh/dv4lua/" />
+  <meta property="og:description" content="A simple CLI to use dv-api with lua" />
+  <meta name="twitter:description" content="A simple CLI to use dv-api with lua" />
+  <meta property="og:title" content="Dv4lua | F" />
+  <meta name="twitter:title" content="Dv4lua | F" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="F" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-07-26" />
+  <script defer src="https://km0e.github.io/js/abridge_nosearch.min.js?h=6dab37f7e7cd788c6976" integrity="sha384-77nO/4xlWq4jm3nrI6r48S4y4s/3D3d9FScy7N095fGTXGVuA0oCyyxgsbl8KhIm"></script>
+  <noscript><link rel="stylesheet" href="https://km0e.github.io/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://km0e.github.io/zh/" title="F">F</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://km0e.github.io/zh/archive/"> 文章 </a></li><li><a class="s110" href="https://km0e.github.io/zh/tags/"> 标签 </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>中文</span><a href="https://km0e.github.io/dv4lua/">English</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://km0e.github.io/zh/dv4lua/">Dv4lua</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> 七月 26, 2025 <span class="rpad"></span> #<a href="https://km0e.github.io/zh/tags/pro/">PRO</a> </span>
+
+    
+
+
+<h2 id="jie-shao"><a class="zola-anchor" href="#jie-shao" aria-label="Anchor link for: jie-shao">介绍</a></h2>
+<p>这个工具主要功能是用来方便的执行一系列操作，如：自动化任务、文件备份、应用管理、执行命令，配置文件管理等。
+由于自定义执行逻辑以配置文件的形式呈现过于复杂，本工具选择与<a rel="noopener" target="_blank" href="https://github.com/mlua-rs/mlua.git"><code>Lua</code></a>结合，以全局变量<code>dv</code>的形式提供API接口。</p>
+<p>Note:</p>
+<ul>
+<li>🚧：表示该功能尚未实现或存在问题</li>
+</ul>
+<h2 id="api"><a class="zola-anchor" href="#api" aria-label="Anchor link for: api">API</a></h2>
+<h3 id="um"><a class="zola-anchor" href="#um" aria-label="Anchor link for: um">UM</a></h3>
+<p><code>UM</code>类提供了用户管理的功能，主要用于添加用户。</p>
+<p>以下是<code>UM</code>类的定义和成员函数：</p>
+<pre data-lang="lua" class="language-lua z-code"><code class="language-lua" data-lang="lua"><span class="z-source z-lua"><span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span>-@class UM
+</span></span><span class="z-source z-lua"><span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span>-@field add_cur fun(this: UM, cfg: table)  # 声明方法
+</span></span><span class="z-source z-lua"><span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span>-@field add_ssh fun(this: UM, uid: string, cfg: table)  # 声明方法
+</span></span></code></pre>
+<p><code>cfg</code>参数为用户配置表，可以任意添加字段。可以影响<code>dv</code>的行为字段如下：</p>
+<table><thead><tr><th>name</th><th>value</th><th>description</th></tr></thead><tbody>
+<tr><td><code>hid</code></td><td>any string</td><td>用户所在的主机标识符，<code>cur</code>用户会自动设置为<code>local</code></td></tr>
+<tr><td><code>mount</code></td><td>any string</td><td>用户的挂载目录，影响文件操作的路径解析</td></tr>
+<tr><td><code>os</code></td><td><code>linux</code>/<code>windows</code>/<code>macos</code>/<code>unix</code>/<code>ubuntu</code>/<code>...</code></td><td>用户的操作系统，影响包管理器，变量加载，等等</td></tr>
+</tbody></table>
+<p>Example:</p>
+<pre data-lang="lua" class="language-lua z-code"><code class="language-lua" data-lang="lua"><span class="z-source z-lua"><span class="z-variable z-other z-lua">dv</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">um</span><span class="z-punctuation z-accessor z-lua">:</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">add_cur</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span>
+</span></span></span></span><span class="z-source z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">mount</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>~/.local/share/dv<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span></span></span><span class="z-source z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">os</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>linux<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span>
+</span></span></span></span><span class="z-source z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-value z-lua"></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-end z-lua">}</span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span>
+</span><span class="z-source z-lua"><span class="z-variable z-other z-lua">dv</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">um</span><span class="z-punctuation z-accessor z-lua">:</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">add_ssh</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>remote_user<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span>
+</span></span></span></span><span class="z-source z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">hid</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>remote_machine<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span></span></span><span class="z-source z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">mount</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>~/.local/share/dv<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span></span></span><span class="z-source z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">os</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>linux<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span>
+</span></span></span></span><span class="z-source z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-value z-lua"></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-end z-lua">}</span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span>
+</span></code></pre>
+<p>Note:</p>
+<ul>
+<li>即便设置了<code>os</code>，<code>dv</code>仍然会尝试探测用户的操作系统，并在必要时覆盖该值。目前<code>ssh</code>用户的操作系统探测只支持<code>linux</code>（且需要先设置<code>os</code>为<code>linux</code>），其他操作系统的探测为<code>TODO</code>状态。</li>
+</ul>
+<h3 id="op"><a class="zola-anchor" href="#op" aria-label="Anchor link for: op">Op</a></h3>
+<p><code>Op</code>类提供了一系列操作方法，主要用于执行命令、文件操作等。</p>
+<p>以下是<code>Op</code>类的定义和成员函数：</p>
+<pre data-lang="lua" class="language-lua z-code"><code class="language-lua" data-lang="lua"><span class="z-source z-lua"><span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span>-@class Op  # 定义 `Op` 类
+</span></span><span class="z-source z-lua"><span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span>-@field copy fun(this: Op, src: string, src_paths: string|table, dst: string, dst_paths: string|table, confirm: string?)
+</span></span><span class="z-source z-lua"><span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span>-@field exec fun(this: Op, uid: string, cmd: string, shell: string?)
+</span></span><span class="z-source z-lua"><span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span>-@field os fun(this: Op, uid: string)
+</span></span></code></pre>
+<p>Example:</p>
+<pre data-lang="lua" class="language-lua z-code"><code class="language-lua" data-lang="lua"><span class="z-source z-lua"><span class="z-variable z-other z-lua">dv</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">op</span><span class="z-punctuation z-accessor z-lua">:</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">copy</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>this<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>a/b/c<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>remote_user<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>a/b/c<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>y<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span> <span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span> 拷贝文件
+</span></span><span class="z-source z-lua"><span class="z-variable z-other z-lua">dv</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">op</span><span class="z-punctuation z-accessor z-lua">:</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">copy</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>this<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>a/b/c<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-field z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>a/b/d<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-section z-block z-end z-lua">}</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>remote_user<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>a/b/c<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-field z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>a/b/d<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-section z-block z-end z-lua">}</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>u<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span> <span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span> 拷贝多个文件
+</span></span><span class="z-source z-lua"><span class="z-variable z-other z-lua">dv</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">op</span><span class="z-punctuation z-accessor z-lua">:</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">exec</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>this<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>echo hello<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span> <span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span> 执行命令
+</span></span><span class="z-source z-lua"><span class="z-variable z-other z-lua">dv</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">op</span><span class="z-punctuation z-accessor z-lua">:</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">exec</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>this<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>echo hello<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>bash<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span> <span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span> 使用 bash 执行命令
+</span></span><span class="z-source z-lua"><span class="z-storage z-modifier z-lua">local</span> <span class="z-support z-constant z-builtin z-lua">os</span> <span class="z-keyword z-operator z-assignment z-lua">=</span> <span class="z-variable z-other z-lua">dv</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">op</span><span class="z-punctuation z-accessor z-lua">:</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">os</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>this<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span> <span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span> 获取用户的操作系统
+</span></span></code></pre>
+<p>路径首先会尝试使用<code>variable</code>与环境变量展开，格式为<code>${var}</code>，如果是相对路径，则会尝试使用<code>mount</code>展开。</p>
+<p>复制文件路径决定行为规则如下：</p>
+<table><thead><tr><th>src</th><th>dst</th><th>action</th><th>description</th></tr></thead><tbody>
+<tr><td>a/</td><td>b/</td><td>a/* -&gt; b/*</td><td>拷贝目录下所有文件到目标目录</td></tr>
+<tr><td>a/</td><td>b</td><td>a/* -&gt; b/*</td><td>拷贝目录下所有文件到目标目录</td></tr>
+<tr><td>a</td><td>b/</td><td>a -&gt; b/a</td><td>拷贝目录/文件到目标目录</td></tr>
+<tr><td>a</td><td>b</td><td>a -&gt; b</td><td>拷贝目录（文件）到目标路径</td></tr>
+</tbody></table>
+<p><code>confirm</code>为<code>y</code>（覆盖），<code>u</code>（更新），<code>n</code>（不变）组成的字符串。</p>
+<h4 id="check"><a class="zola-anchor" href="#check" aria-label="Anchor link for: check"><code>Check</code></a></h4>
+<p>根据源文件与目标文件状态，检查可执行操作的类型。</p>
+<table><thead><tr><th>src</th><th>dst</th><th>action</th><th>description</th></tr></thead><tbody>
+<tr><td>*</td><td>none</td><td>y</td><td>直接覆盖文件，没有后续确定</td></tr>
+<tr><td>new</td><td>old</td><td>y</td><td>可以覆盖文件或者不变</td></tr>
+<tr><td>old</td><td>new</td><td>u</td><td>可以更新文件或者不变</td></tr>
+<tr><td>old</td><td>old</td><td>n</td><td>不变</td></tr>
+<tr><td>new</td><td>new</td><td>yu</td><td>可以覆盖文件，更新或者不变</td></tr>
+</tbody></table>
+<h4 id="match"><a class="zola-anchor" href="#match" aria-label="Anchor link for: match"><code>Match</code></a></h4>
+<p>根据<code>confirm</code>参数，按顺序匹配可执行操作的类型。</p>
+<p>Example:</p>
+<table><thead><tr><th>action</th><th>confirm</th><th>result</th></tr></thead><tbody>
+<tr><td>y</td><td>y</td><td>y</td></tr>
+<tr><td>y</td><td>uy</td><td>y</td></tr>
+<tr><td>y</td><td>n</td><td>n</td></tr>
+<tr><td>y</td><td>ny</td><td>n</td></tr>
+<tr><td>u</td><td>y</td><td></td></tr>
+<tr><td>yu</td><td>y</td><td></td></tr>
+</tbody></table>
+<p>如果可以确定<code>result</code>则执行<code>result</code>操作，否则进入交互模式。</p>
+<h3 id="dot"><a class="zola-anchor" href="#dot" aria-label="Anchor link for: dot"><code>Dot</code></a></h3>
+<p><code>Dot</code>类提供了配置文件的管理功能，主要用于加载配置文件、备份配置文件等。
+以下是<code>Dot</code>类的定义和成员函数：</p>
+<pre data-lang="lua" class="language-lua z-code"><code class="language-lua" data-lang="lua"><span class="z-source z-lua"><span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span>-@class Dot
+</span></span><span class="z-source z-lua"><span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span>-@field confirm fun(this: Dot, default: string)
+</span></span><span class="z-source z-lua"><span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span>-@field add_schema fun(this: Dot, name: string, path: string)
+</span></span><span class="z-source z-lua"><span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span>-@field add_source fun(this: Dot, name: string, path: string)
+</span></span><span class="z-source z-lua"><span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span>-@field sync fun(this: Dot, apps: table, uid: string)
+</span></span></code></pre>
+<p><code>confirm</code>方法用于配置复制文件时的默认方式，参见<a href="https://km0e.github.io/zh/dv4lua/#op"><code>Op</code></a></p>
+<p><code>Schema</code>格式举例如下：</p>
+<pre data-lang="toml" class="language-toml z-code"><code class="language-toml" data-lang="toml"><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">name</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>default<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span>
+</span><span class="z-source z-toml">
+</span><span class="z-source z-toml"><span class="z-punctuation z-definition z-table z-begin z-toml">[</span><span class="z-meta z-tag z-table z-toml"><span class="z-entity z-name z-table z-toml">schemas</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">fish</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">repo</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">linux</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">paths</span></span><span class="z-punctuation z-definition z-table z-end z-toml">]</span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">default</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-punctuation z-definition z-array z-begin z-toml">[</span><span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>~/.config/fish<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span><span class="z-punctuation z-definition z-array z-end z-toml">]</span>
+</span><span class="z-source z-toml">
+</span><span class="z-source z-toml"><span class="z-punctuation z-definition z-table z-begin z-toml">[</span><span class="z-meta z-tag z-table z-toml"><span class="z-entity z-name z-table z-toml">schemas</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">alacritty</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">repo</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">windows</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">paths</span></span><span class="z-punctuation z-definition z-table z-end z-toml">]</span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">default</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-punctuation z-definition z-array z-begin z-toml">[</span><span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>${APPDATA}/alacritty/alacritty.toml<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span><span class="z-punctuation z-definition z-array z-end z-toml">]</span>
+</span><span class="z-source z-toml">
+</span><span class="z-source z-toml"><span class="z-punctuation z-definition z-table z-begin z-toml">[</span><span class="z-meta z-tag z-table z-toml"><span class="z-entity z-name z-table z-toml">schemas</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">alacritty</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">repo</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">unix</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">paths</span></span><span class="z-punctuation z-definition z-table z-end z-toml">]</span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">default</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-punctuation z-definition z-array z-begin z-toml">[</span>
+</span><span class="z-source z-toml">  <span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>${XDG_CONFIG_HOME}/alacritty/alacritty.toml<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span><span class="z-punctuation z-separator z-array z-toml">,</span>
+</span><span class="z-source z-toml">  <span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>${XDG_CONFIG_HOME}/alacritty.toml<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span><span class="z-punctuation z-separator z-array z-toml">,</span>
+</span><span class="z-source z-toml">  <span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>~/.config/alacritty/alacritty.toml<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span><span class="z-punctuation z-separator z-array z-toml">,</span>
+</span><span class="z-source z-toml">  <span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>~/.alacritty.toml<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span><span class="z-punctuation z-separator z-array z-toml">,</span>
+</span><span class="z-source z-toml"><span class="z-punctuation z-definition z-array z-end z-toml">]</span>
+</span><span class="z-source z-toml">
+</span><span class="z-source z-toml"><span class="z-punctuation z-definition z-table z-begin z-toml">[</span><span class="z-meta z-tag z-table z-toml"><span class="z-entity z-name z-table z-toml">schemas</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">fcitx5</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">repo</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">linux</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">paths</span></span><span class="z-punctuation z-definition z-table z-end z-toml">]</span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">data</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-punctuation z-definition z-array z-begin z-toml">[</span><span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>~/.local/share/fcitx5<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span><span class="z-punctuation z-definition z-array z-end z-toml">]</span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">default</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-punctuation z-definition z-array z-begin z-toml">[</span><span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>~/.config/fcitx5<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span><span class="z-punctuation z-definition z-array z-end z-toml">]</span>
+</span></code></pre>
+<p><code>name</code>为配置文件的名称，<code>paths</code>中每一项为一个配置文件的所有可能路径。
+对于以上配置文件，解析如下：</p>
+<ul>
+<li><code>fish</code>配置文件在<code>linux</code>下的配置文件<code>default</code>路径为<code>~/.config/fish</code></li>
+<li><code>alacritty</code>配置文件在<code>windows</code>下的配置文件<code>default</code>路径为<code>${APPDATA}/alacritty/alacritty.toml</code>，注意<code>${APPDATA}</code>将会被展开</li>
+<li><code>alacritty</code>配置文件在<code>unix</code>下的配置文件<code>default</code>路径有四个可能的路径</li>
+<li><code>fcitx5</code>配置文件在<code>linux</code>下的配置文件<code>data</code>路径为<code>~/.local/share/fcitx5</code>，<code>default</code>路径为<code>~/.config/fcitx5</code></li>
+</ul>
+<p><code>add_schema</code>方法用于添加配置文件的schema，目前只支持以<code>uid</code>和<code>path</code>为参数加载配置文件</p>
+<p><code>Source</code>格式与<code>Schema</code>相同，举例如下：</p>
+<pre data-lang="toml" class="language-toml z-code"><code class="language-toml" data-lang="toml"><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">name</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>default<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span>
+</span><span class="z-source z-toml">
+</span><span class="z-source z-toml"><span class="z-punctuation z-definition z-table z-begin z-toml">[</span><span class="z-meta z-tag z-table z-toml"><span class="z-entity z-name z-table z-toml">schemas</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">fish</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">repo</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">linux</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">paths</span></span><span class="z-punctuation z-definition z-table z-end z-toml">]</span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">default</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-punctuation z-definition z-array z-begin z-toml">[</span><span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>fish<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span><span class="z-punctuation z-definition z-array z-end z-toml">]</span>
+</span><span class="z-source z-toml">
+</span><span class="z-source z-toml"><span class="z-punctuation z-definition z-table z-begin z-toml">[</span><span class="z-meta z-tag z-table z-toml"><span class="z-entity z-name z-table z-toml">schemas</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">alacritty</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">repo</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">unknown</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">paths</span></span><span class="z-punctuation z-definition z-table z-end z-toml">]</span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">default</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-punctuation z-definition z-array z-begin z-toml">[</span><span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>alacritty/alacritty.toml<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span><span class="z-punctuation z-definition z-array z-end z-toml">]</span>
+</span><span class="z-source z-toml">
+</span><span class="z-source z-toml"><span class="z-punctuation z-definition z-table z-begin z-toml">[</span><span class="z-meta z-tag z-table z-toml"><span class="z-entity z-name z-table z-toml">schemas</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">fcitx5</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">repo</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">linux</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">paths</span></span><span class="z-punctuation z-definition z-table z-end z-toml">]</span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">default</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-punctuation z-definition z-array z-begin z-toml">[</span><span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>fcitx5/config<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span><span class="z-punctuation z-definition z-array z-end z-toml">]</span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">data</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-punctuation z-definition z-array z-begin z-toml">[</span><span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>fcitx5/data<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span><span class="z-punctuation z-definition z-array z-end z-toml">]</span>
+</span></code></pre>
+<p><code>add_source</code>方法用于添加配置文件的源，目前只支持以<code>uid</code>和<code>path</code>为参数加载配置文件。
+默认会加载<code>path</code>目录下<code>config.toml</code>文件作为配置文件，所有<code>paths</code>会被以<code>path</code>为前缀进行拼接。</p>
+<p><code>sync</code>方法用于同步配置文件到指定用户，<code>apps</code>参数为一个列表，每个元素为一个配置文件的名称，<code>uid</code>参数为用户的<code>id</code>。</p>
+<p>Example:</p>
+<pre data-lang="lua" class="language-lua z-code"><code class="language-lua" data-lang="lua"><span class="z-source z-lua"><span class="z-variable z-other z-lua">dv</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">dot</span><span class="z-punctuation z-accessor z-lua">:</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">add_schema</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>default<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>path/to/schema.toml<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span>
+</span><span class="z-source z-lua"><span class="z-variable z-other z-lua">dv</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">dot</span><span class="z-punctuation z-accessor z-lua">:</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">add_source</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>default<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>path/to/source<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span>
+</span><span class="z-source z-lua"><span class="z-variable z-other z-lua">dv</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">dot</span><span class="z-punctuation z-accessor z-lua">:</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">sync</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>fish<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-field z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>alacritty<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-field z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>fcitx5<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-section z-block z-end z-lua">}</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>remote_user<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span>
+</span></code></pre>
+<h3 id="pm"><a class="zola-anchor" href="#pm" aria-label="Anchor link for: pm"><code>Pm</code></a></h3>
+<p><code>Pm</code>类提供了一些包管理器的功能，主要用于安装、更新软件包。</p>
+<p>以下是<code>Pm</code>类的定义和成员函数：</p>
+<pre data-lang="lua" class="language-lua z-code"><code class="language-lua" data-lang="lua"><span class="z-source z-lua"><span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span>-@class Pm
+</span></span><span class="z-source z-lua"><span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span>-@field install fun(this: Pm, hid: string, pkg: string, yes: boolean?)
+</span></span><span class="z-source z-lua"><span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span>-@field update fun(this: Pm, hid: string, yes: boolean?)
+</span></span><span class="z-source z-lua"><span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span>-@field upgrade fun(this: Pm, hid: string, yes: boolean?)
+</span></span></code></pre>
+<p><code>install</code>方法用于安装软件包，<code>pkg</code>参数为软件包名称（可以是多个软件包，用空格分隔），<code>yes</code>参数为是否自动确认安装。</p>
+<p>对包管理器的支持如下：</p>
+<ul>
+<li><code>apt</code>（Debian/Ubuntu）</li>
+<li><code>apk</code>（Alpine）</li>
+<li><code>yay</code>（Arch Based Linux）</li>
+<li><code>dnf</code>（Fedora）🚧</li>
+<li><code>pacman</code>（Arch Based Linux）</li>
+<li><code>paru</code>（Arch Based Linux）</li>
+<li><code>winget</code>（Windows）🚧</li>
+</ul>
+<p>Note：注意需要的是设备<code>hid</code>，而不是用户的<code>uid</code>。</p>
+<p>Example:</p>
+<pre data-lang="lua" class="language-lua z-code"><code class="language-lua" data-lang="lua"><span class="z-source z-lua"><span class="z-variable z-other z-lua">dv</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">um</span><span class="z-punctuation z-accessor z-lua">:</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">add_ssh</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>remote_user<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span>
+</span></span></span></span><span class="z-source z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">hid</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>remote_machine<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span></span></span><span class="z-source z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">mount</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>~/.local/share/dv<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span></span></span><span class="z-source z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">os</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>linux<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span>
+</span></span></span></span><span class="z-source z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-value z-lua"></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-end z-lua">}</span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span>
+</span><span class="z-source z-lua"><span class="z-variable z-other z-lua">dv</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">pm</span><span class="z-punctuation z-accessor z-lua">:</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">install</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>remote_machine<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>git neovim<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-constant z-language z-boolean z-true z-lua">true</span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span> <span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span> 安装 git 和 vim
+</span></span><span class="z-source z-lua"><span class="z-variable z-other z-lua">dv</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">pm</span><span class="z-punctuation z-accessor z-lua">:</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">update</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>remote_machine<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-constant z-language z-boolean z-true z-lua">true</span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span> <span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span> 更新软件包
+</span></span><span class="z-source z-lua"><span class="z-variable z-other z-lua">dv</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">pm</span><span class="z-punctuation z-accessor z-lua">:</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">upgrade</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>remote_machine<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-constant z-language z-boolean z-true z-lua">true</span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span> <span class="z-comment z-line z-lua"><span class="z-punctuation z-definition z-comment z-lua">--</span> 升级软件包
+</span></span></code></pre>
+<h2 id="cli"><a class="zola-anchor" href="#cli" aria-label="Anchor link for: cli"><code>CLI</code></a></h2>
+<p><code>dv4lua</code>命令行工具的使用方法如下：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Simple</span></span><span class="z-meta z-function-call z-arguments z-shell"> CLI to use dv-api with lua</span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Usage:</span></span><span class="z-meta z-function-call z-arguments z-shell"> dv4lua <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>OPTIONS<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span> <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>ENTRY<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span> <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>RARGS<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span>...</span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Arguments:</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">[ENTRY]</span></span><span class="z-meta z-function-call z-arguments z-shell">     The entry point of the script <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>default: Main<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">[RARGS]...</span></span><span class="z-meta z-function-call z-arguments z-shell">  Arguments to pass to the entry point</span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Options:</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-b,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>dbpath</span> <span class="z-keyword z-operator z-assignment z-redirection z-shell">&lt;</span>DBPATH<span class="z-keyword z-operator z-assignment z-redirection z-shell">&gt;</span>        cache database path <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>default: <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">directory</span></span>/.cache<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-c,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>config</span> <span class="z-keyword z-operator z-assignment z-redirection z-shell">&lt;</span>CONFIG<span class="z-keyword z-operator z-assignment z-redirection z-shell">&gt;</span>        The config file to use <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>default: <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">directory</span></span>/config.lua<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-d,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>directory</span> <span class="z-keyword z-operator z-assignment z-redirection z-shell">&lt;</span>DIRECTORY<span class="z-keyword z-operator z-assignment z-redirection z-shell">&gt;</span>  The directory to use for the config and cache <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>default: /home/km/.config/dv/<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-n,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>dry-run</span>                Do not actually modify anything</span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-h,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>help</span>                   Print help</span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-V,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>version</span>                Print version</span>
+</span></code></pre>
+
+      <nav>
+        <div>
+        </div>
+        <div>
+          <a href="https://km0e.github.io/zh/book/"> Rust &#8250;</a>
+        </div>
+      </nav>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">索引</a>
+        <div>
+          <a href="#jie-shao">介绍</a>
+        </div>
+        <div>
+          <a href="#api">API</a>
+        </div>
+        <div class="hpad">
+          <a href="#um"><small>- UM</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#op"><small>- Op</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#dot"><small>- Dot</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#pm"><small>- Pm</small></a>
+        </div>
+        <div>
+          <a href="#cli">CLI</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://km0e.github.io/zh/atom.xml" target="_blank" title="F Atom Feed"><i type="Button" class="svg rss" title="F Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://km0e.github.io/zh/about/"> 关于 </a>
+        <a class="rpad s90" href="https://km0e.github.io/zh/contact/"> 联系方式 </a>
+        <a class="rpad s90" href="https://km0e.github.io/zh/privacy/"> 隐私 </a>
+        <a class="rpad s90" href="https://km0e.github.io/sitemap.xml" target="_blank"> 导航 </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2025</span> F</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer><span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

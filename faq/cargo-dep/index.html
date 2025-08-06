@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://km0e.github.io/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://km0e.github.io/abridge.css?h=3ef6b36a1c3b5611bbd6" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://km0e.github.io" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://km0e.github.io/manifest.min.json" />
+  <link rel="mask-icon" href="https://km0e.github.io/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://km0e.github.io/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://km0e.github.io/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://km0e.github.io/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://km0e.github.io/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="F Atom Feed" href="https://km0e.github.io/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Cargo Dependency Version | F</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="F" />
+  <meta name="description" content="Force Cargo to use a specific version of a dependency" />
+  <link rel="canonical" href="https://km0e.github.io/faq/cargo-dep/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://km0e.github.io/faq/cargo-dep/" />
+  <meta name="twitter:url" content="https://km0e.github.io/faq/cargo-dep/" />
+  <meta property="og:description" content="Force Cargo to use a specific version of a dependency" />
+  <meta name="twitter:description" content="Force Cargo to use a specific version of a dependency" />
+  <meta property="og:title" content="Cargo Dependency Version | F" />
+  <meta name="twitter:title" content="Cargo Dependency Version | F" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="F" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-03-06" />
+  <script defer src="https://km0e.github.io/js/abridge.min.js?h=e0f9a881a665c86cce9c" integrity="sha384-QF67y7RnPkuDrJNQqn3/7nYxqxWkW/qHI7zN0WTES1aXbf+TotoByRBb835fUE6U"></script>
+  <noscript><link rel="stylesheet" href="https://km0e.github.io/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://km0e.github.io" title="F">F</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://km0e.github.io/archive/"> Posts </a></li><li><a class="s110" href="https://km0e.github.io/tags/"> Tags </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>English</span><a href="https://km0e.github.io/zh/faq/cargo-dep/">中文</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+          <div>
+            <form autocomplete=off class="js" name="goSearch" id="searchbox">
+              <div class="searchd">
+                <input id="searchinput" type="text" placeholder="Search" title="Search" />
+                <button type="submit" title="Search" class="svgs svgm search"></button>
+              </div>
+              <div class="results"><div id="suggestions"></div></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://km0e.github.io/faq/cargo-dep/">Cargo Dependency Version</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> March 06, 2025 <span class="rpad"></span> #<a href="https://km0e.github.io/tags/rust/">RUST</a>  #<a href="https://km0e.github.io/tags/faq/">FAQ</a> </span>
+
+    
+
+
+<h2 id="first"><a class="zola-anchor" href="#first" aria-label="Anchor link for: first">First</a></h2>
+<p>Check the version of the dependency you want to use. Get the repository URL of the dependency from <code>crates.io</code> and <code>tag</code>(or <code>commit</code> hash) of the version you want to use.</p>
+<h2 id="second"><a class="zola-anchor" href="#second" aria-label="Anchor link for: second">Second</a></h2>
+<p>Write the dependency in the <code>Cargo.toml</code> file as follows:</p>
+<pre data-lang="toml" class="language-toml z-code"><code class="language-toml" data-lang="toml"><span class="z-source z-toml"><span class="z-punctuation z-definition z-table z-begin z-toml">[</span><span class="z-meta z-tag z-table z-toml"><span class="z-entity z-name z-table z-toml">patch</span><span class="z-punctuation z-separator z-table z-toml">.</span><span class="z-entity z-name z-table z-toml">crates-io</span></span><span class="z-punctuation z-definition z-table z-end z-toml">]</span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">crate_name</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-punctuation z-definition z-inline-table z-begin z-toml">{</span> <span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">git</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>url<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span><span class="z-punctuation z-separator z-inline-table z-toml">,</span><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">tag</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>version<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span> <span class="z-punctuation z-definition z-inline-table z-end z-toml">}</span>
+</span></code></pre>
+<p>Or</p>
+<pre data-lang="toml" class="language-toml z-code"><code class="language-toml" data-lang="toml"><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">crate_name</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-punctuation z-definition z-inline-table z-begin z-toml">{</span> <span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">git</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>url<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span><span class="z-punctuation z-separator z-inline-table z-toml">,</span><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">rev</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>commit<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span> <span class="z-punctuation z-definition z-inline-table z-end z-toml">}</span>
+</span></code></pre>
+<h2 id="third"><a class="zola-anchor" href="#third" aria-label="Anchor link for: third">Third</a></h2>
+<p>Run the following command to update the dependency:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cargo</span></span><span class="z-meta z-function-call z-arguments z-shell"> update<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>p</span> crate_name</span>
+</span></code></pre>
+
+      <nav>
+        <div>
+        </div>
+        <div>
+          <a href="https://km0e.github.io/faq/git-rm-submodule/"> git rm submodule &#8250;</a>
+        </div>
+      </nav>
+    </article>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://km0e.github.io/atom.xml" target="_blank" title="F Atom Feed"><i type="Button" class="svg rss" title="F Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://km0e.github.io/about/"> About </a>
+        <a class="rpad s90" href="https://km0e.github.io/contact/"> Contact </a>
+        <a class="rpad s90" href="https://km0e.github.io/privacy/"> Privacy </a>
+        <a class="rpad s90" href="https://km0e.github.io/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2025</span> F</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer>
+</body>
+</html>

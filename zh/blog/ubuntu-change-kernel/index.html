@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <script src="https://km0e.github.io/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://km0e.github.io/abridge.css?h=3ef6b36a1c3b5611bbd6" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://km0e.github.io" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://km0e.github.io/manifest.min.json" />
+  <link rel="mask-icon" href="https://km0e.github.io/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://km0e.github.io/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://km0e.github.io/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://km0e.github.io/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://km0e.github.io/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="F Atom Feed" href="https://km0e.github.io/zh/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>更换Ubuntu内核 | F</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="F" />
+  <meta name="description" content="更换Ubuntu内核，修改`grub`配置" />
+  <link rel="canonical" href="https://km0e.github.io/zh/blog/ubuntu-change-kernel/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://km0e.github.io/zh/blog/ubuntu-change-kernel/" />
+  <meta name="twitter:url" content="https://km0e.github.io/zh/blog/ubuntu-change-kernel/" />
+  <meta property="og:description" content="更换Ubuntu内核，修改`grub`配置" />
+  <meta name="twitter:description" content="更换Ubuntu内核，修改`grub`配置" />
+  <meta property="og:title" content="更换Ubuntu内核 | F" />
+  <meta name="twitter:title" content="更换Ubuntu内核 | F" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="F" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-03-23" />
+  <script defer src="https://km0e.github.io/js/abridge_nosearch.min.js?h=6dab37f7e7cd788c6976" integrity="sha384-77nO/4xlWq4jm3nrI6r48S4y4s/3D3d9FScy7N095fGTXGVuA0oCyyxgsbl8KhIm"></script>
+  <noscript><link rel="stylesheet" href="https://km0e.github.io/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://km0e.github.io/zh/" title="F">F</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://km0e.github.io/zh/archive/"> 文章 </a></li><li><a class="s110" href="https://km0e.github.io/zh/tags/"> 标签 </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>中文</span><a href="https://km0e.github.io/blog/ubuntu-change-kernel/">English</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://km0e.github.io/zh/blog/ubuntu-change-kernel/">更换Ubuntu内核</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> 三月 23, 2025 <span class="rpad"></span> #<a href="https://km0e.github.io/zh/tags/cfg/">CFG</a> </span>
+
+    
+
+
+<h2 id="xia-zai-nei-he-debbao"><a class="zola-anchor" href="#xia-zai-nei-he-debbao" aria-label="Anchor link for: xia-zai-nei-he-debbao">下载内核<code>deb</code>包</a></h2>
+<p><a rel="noopener" target="_blank" href="https://kernel.ubuntu.com/mainline/">这里</a>可以找到指定的内核版本，下载对应的<code>deb</code>包。
+一般需要下载<code>header</code>和<code>image</code>两个包。</p>
+<p>我需要安装<code>5.4.284-generic</code>内核，需要下载四个包：</p>
+<ul>
+<li>linux-headers-5.4.284-0504284-generic_5.4.284-0504284.202409121056_amd64.deb</li>
+<li>linux-headers-5.4.284-0504284_5.4.284-0504284.202409121056_all.deb</li>
+<li>linux-modules-5.4.284-0504284-generic_5.4.284-0504284.202409121056_amd64.deb</li>
+<li>linux-image-unsigned-5.4.284-0504284-generic_5.4.284-0504284.202409121056_amd64.deb</li>
+</ul>
+<h2 id="an-zhuang-debbao"><a class="zola-anchor" href="#an-zhuang-debbao" aria-label="Anchor link for: an-zhuang-debbao">安装<code>deb</code>包</a></h2>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> dpkg<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>i</span> <span class="z-keyword z-operator z-regexp z-quantifier z-shell">*</span>.deb</span>
+</span></code></pre>
+<h2 id="xiu-gai-grubpei-zhi"><a class="zola-anchor" href="#xiu-gai-grubpei-zhi" aria-label="Anchor link for: xiu-gai-grubpei-zhi">修改<code>grub</code>配置</a></h2>
+<p>一般安装之后会默认作为启动内核，可以在开机时选择内核版本。
+如果希望开机时自动选用某个内核，可以修改<code>/etc/default/grub</code>文件。</p>
+<h3 id="cha-kan-menuentrylie-biao"><a class="zola-anchor" href="#cha-kan-menuentrylie-biao" aria-label="Anchor link for: cha-kan-menuentrylie-biao">查看<code>menuentry</code>列表</a></h3>
+<p>首先运行一下命令</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cat</span></span><span class="z-meta z-function-call z-arguments z-shell"> /boot/grub/grub.cfg</span> <span class="z-keyword z-operator z-logical z-pipe z-shell">|</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">grep</span></span><span class="z-meta z-function-call z-arguments z-shell"> menuentry</span>
+</span></code></pre>
+<p>可以得到类似以下输出</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">...</span></span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">menuentry</span></span><span class="z-meta z-function-call z-arguments z-shell"> <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>Ubuntu<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>class</span> ubuntu<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>class</span> gnu-linux<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>class</span> gnu<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>class</span> os <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">menuentry_id_option</span></span> <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>gnulinux-simple-26f8e534-308d-4ec1-81f1-1019aa47a25d<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span> <span class="z-meta z-group z-expansion z-brace z-shell"><span class="z-punctuation z-section z-expansion z-brace z-begin z-shell">{</span>
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-meta z-group z-expansion z-brace z-shell">submenu <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>Advanced options for Ubuntu<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span> <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">menuentry_id_option</span></span> <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>gnulinux-advanced-26f8e534-308d-4ec1-81f1-1019aa47a25d<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span> <span class="z-meta z-group z-expansion z-brace z-shell"><span class="z-punctuation z-section z-expansion z-brace z-begin z-shell">{</span>
+</span></span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-meta z-group z-expansion z-brace z-shell"><span class="z-meta z-group z-expansion z-brace z-shell"> menuentry <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>Ubuntu, with Linux 5.4.284-0504284-generic<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span> --class ubuntu --class gnu-linux --class gnu --class os <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">menuentry_id_option</span></span> <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>gnulinux-5.4.284-0504284-generic-advanced-26f8e534-308d-4ec1-81f1-1019aa47a25d<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span> <span class="z-meta z-group z-expansion z-brace z-shell"><span class="z-punctuation z-section z-expansion z-brace z-begin z-shell">{</span>
+</span></span></span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-meta z-group z-expansion z-brace z-shell"><span class="z-meta z-group z-expansion z-brace z-shell"><span class="z-meta z-group z-expansion z-brace z-shell"> menuentry <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>Ubuntu, with Linux 5.4.284-0504284-generic (recovery mode)<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span> --class ubuntu --class gnu-linux --class gnu --class os <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">menuentry_id_option</span></span> <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>gnulinux-5.4.284-0504284-generic-recovery-26f8e534-308d-4ec1-81f1-1019aa47a25d<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span> <span class="z-meta z-group z-expansion z-brace z-shell"><span class="z-punctuation z-section z-expansion z-brace z-begin z-shell">{</span>
+</span></span></span></span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-meta z-group z-expansion z-brace z-shell"><span class="z-meta z-group z-expansion z-brace z-shell"><span class="z-meta z-group z-expansion z-brace z-shell"><span class="z-meta z-group z-expansion z-brace z-shell"> menuentry <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>Ubuntu, with Linux 4.15.0-156-generic<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span> --class ubuntu --class gnu-linux --class gnu --class os <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">menuentry_id_option</span></span> <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>gnulinux-4.15.0-156-generic-advanced-26f8e534-308d-4ec1-81f1-1019aa47a25d<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span> <span class="z-meta z-group z-expansion z-brace z-shell"><span class="z-punctuation z-section z-expansion z-brace z-begin z-shell">{</span>
+</span></span></span></span></span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-meta z-group z-expansion z-brace z-shell"><span class="z-meta z-group z-expansion z-brace z-shell"><span class="z-meta z-group z-expansion z-brace z-shell"><span class="z-meta z-group z-expansion z-brace z-shell"><span class="z-meta z-group z-expansion z-brace z-shell"> menuentry <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>Ubuntu, with Linux 4.15.0-156-generic (recovery mode)<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span> --class ubuntu --class gnu-linux --class gnu --class os <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">menuentry_id_option</span></span> <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>gnulinux-4.15.0-156-generic-recovery-26f8e534-308d-4ec1-81f1-1019aa47a25d<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span> <span class="z-meta z-group z-expansion z-brace z-shell"><span class="z-punctuation z-section z-expansion z-brace z-begin z-shell">{</span>
+</span></span></span></span></span></span></span></span></code></pre>
+<p>第一个<code>menuentry</code>就是默认启动的内核，编号为<code>0</code>。第二个为<code>Advanced options</code>，编号为<code>1</code>。可以看到有四个内核可供选择。编号为<code>1&gt;0</code>，<code>1&gt;1</code>，<code>1&gt;2</code>，<code>1&gt;3</code>。</p>
+<h3 id="xiu-gai-grubpei-zhi-1"><a class="zola-anchor" href="#xiu-gai-grubpei-zhi-1" aria-label="Anchor link for: xiu-gai-grubpei-zhi-1">修改<code>grub</code>配置</a></h3>
+<p>打开<code>/etc/default/grub</code>文件，找到<code>GRUB_DEFAULT</code>字段，修改为对应内核编号。如：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-variable z-other z-readwrite z-assignment z-shell">GRUB_DEFAULT</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell"><span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>1&gt;0<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span></span>
+</span></code></pre>
+<p>以上表示默认启动第一个内核。</p>
+<h3 id="geng-xin-grub"><a class="zola-anchor" href="#geng-xin-grub" aria-label="Anchor link for: geng-xin-grub">更新<code>grub</code></a></h3>
+<p>执行以下命令</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> update-grub</span>
+</span></code></pre>
+<h3 id="an-zhuang-e-wai-mo-kuai-ke-xuan-jian-yi"><a class="zola-anchor" href="#an-zhuang-e-wai-mo-kuai-ke-xuan-jian-yi" aria-label="Anchor link for: an-zhuang-e-wai-mo-kuai-ke-xuan-jian-yi">安装额外模块（可选,建议）</a></h3>
+<p>如果需要安装额外的内核模块，可以使用以下命令：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> apt install linux-modules-extra-<span class="z-meta z-group z-expansion z-command z-parens z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-punctuation z-section z-parens z-begin z-shell">(</span><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">uname</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>r</span></span><span class="z-punctuation z-section z-parens z-end z-shell">)</span></span></span>
+</span></code></pre>
+
+      <nav>
+        <div>
+          <a href="https://km0e.github.io/zh/blog/install-ofed/">&#8249; Ubuntu 安装OFED</a>
+        </div>
+        <div>
+          <a href="https://km0e.github.io/zh/dv4rune/"> Dv4rune &#8250;</a>
+        </div>
+      </nav>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">索引</a>
+        <div>
+          <a href="#xia-zai-nei-he-debbao">下载内核deb包</a>
+        </div>
+        <div>
+          <a href="#an-zhuang-debbao">安装deb包</a>
+        </div>
+        <div>
+          <a href="#xiu-gai-grubpei-zhi">修改grub配置</a>
+        </div>
+        <div class="hpad">
+          <a href="#cha-kan-menuentrylie-biao"><small>- 查看menuentry列表</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#xiu-gai-grubpei-zhi-1"><small>- 修改grub配置</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#geng-xin-grub"><small>- 更新grub</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#an-zhuang-e-wai-mo-kuai-ke-xuan-jian-yi"><small>- 安装额外模块（可选,建议）</small></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://km0e.github.io/zh/atom.xml" target="_blank" title="F Atom Feed"><i type="Button" class="svg rss" title="F Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://km0e.github.io/zh/about/"> 关于 </a>
+        <a class="rpad s90" href="https://km0e.github.io/zh/contact/"> 联系方式 </a>
+        <a class="rpad s90" href="https://km0e.github.io/zh/privacy/"> 隐私 </a>
+        <a class="rpad s90" href="https://km0e.github.io/sitemap.xml" target="_blank"> 导航 </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2025</span> F</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer>
+</body>
+</html>

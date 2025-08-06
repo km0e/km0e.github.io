@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <script src="https://km0e.github.io/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://km0e.github.io/abridge.css?h=3ef6b36a1c3b5611bbd6" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://km0e.github.io" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://km0e.github.io/manifest.min.json" />
+  <link rel="mask-icon" href="https://km0e.github.io/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://km0e.github.io/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://km0e.github.io/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://km0e.github.io/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://km0e.github.io/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="F Atom Feed" href="https://km0e.github.io/zh/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Rust | F</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="F" />
+  <meta name="description" content="Just a simple blog" />
+  <link rel="canonical" href="https://km0e.github.io/zh/book/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://km0e.github.io/zh/book/" />
+  <meta name="twitter:url" content="https://km0e.github.io/zh/book/" />
+  <meta property="og:description" content="Just a simple blog" />
+  <meta name="twitter:description" content="Just a simple blog" />
+  <meta property="og:title" content="Rust | F" />
+  <meta name="twitter:title" content="Rust | F" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="F" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-06-13" />
+  <script defer src="https://km0e.github.io/js/abridge_nosearch.min.js?h=6dab37f7e7cd788c6976" integrity="sha384-77nO/4xlWq4jm3nrI6r48S4y4s/3D3d9FScy7N095fGTXGVuA0oCyyxgsbl8KhIm"></script>
+  <noscript><link rel="stylesheet" href="https://km0e.github.io/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://km0e.github.io/zh/" title="F">F</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://km0e.github.io/zh/archive/"> 文章 </a></li><li><a class="s110" href="https://km0e.github.io/zh/tags/"> 标签 </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>中文</span><a href="https://km0e.github.io/book/">English</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://km0e.github.io/zh/book/">Rust</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> 六月 13, 2025 <span class="rpad"></span> #<a href="https://km0e.github.io/zh/tags/book/">BOOK</a> </span>
+
+    
+
+
+<h2 id="jian-jie"><a class="zola-anchor" href="#jian-jie" aria-label="Anchor link for: jian-jie">简介</a></h2>
+<p>简单学习<code>Rust</code></p>
+<h2 id="rust-xiang-mu-jie-gou-yu-bao-guan-li-cargo"><a class="zola-anchor" href="#rust-xiang-mu-jie-gou-yu-bao-guan-li-cargo" aria-label="Anchor link for: rust-xiang-mu-jie-gou-yu-bao-guan-li-cargo">Rust 项目结构与包管理（Cargo）</a></h2>
+<p>Rust 自带的构建工具和包管理器叫做 <strong>Cargo</strong>。你几乎在所有 Rust 项目中都会使用它，它可以帮你：</p>
+<ul>
+<li>创建项目</li>
+<li>编译代码</li>
+<li>引入依赖</li>
+<li>运行测试</li>
+<li>构建发布版本</li>
+</ul>
+<hr />
+<h3 id="chuang-jian-xiang-mu"><a class="zola-anchor" href="#chuang-jian-xiang-mu" aria-label="Anchor link for: chuang-jian-xiang-mu">创建项目</a></h3>
+<p>要创建一个新项目，只需一条命令：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cargo</span></span><span class="z-meta z-function-call z-arguments z-shell"> new my_project</span>
+</span></code></pre>
+<p>或者，如果你只想创建一个库（没有主程序）：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cargo</span></span><span class="z-meta z-function-call z-arguments z-shell"> new<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>lib</span> my_library</span>
+</span></code></pre>
+<p>Cargo 会帮你自动生成以下结构：</p>
+<pre class="z-code"><code><span class="z-text z-plain">my_project/
+</span><span class="z-text z-plain">├── Cargo.toml      // 配置文件（包名、依赖等）
+</span><span class="z-text z-plain">└── src/
+</span><span class="z-text z-plain">    └── main.rs     // 主程序入口（lib.rs 是库项目的入口）
+</span></code></pre>
+<p>你可以进入项目目录，并使用以下命令运行程序：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-support z-function z-cd z-shell">cd</span></span><span class="z-meta z-function-call z-arguments z-shell"> my_project</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cargo</span></span><span class="z-meta z-function-call z-arguments z-shell"> run</span>
+</span></code></pre>
+<hr />
+<h3 id="yin-ru-yi-lai-shi-yong-di-san-fang-ku"><a class="zola-anchor" href="#yin-ru-yi-lai-shi-yong-di-san-fang-ku" aria-label="Anchor link for: yin-ru-yi-lai-shi-yong-di-san-fang-ku">引入依赖（使用第三方库）</a></h3>
+<p><code>reqwest</code>是一个常用的 HTTP 客户端库，以添加<code>reqwest</code> 为例
+我们可以在 <code>Cargo.toml</code> 文件中添加依赖：</p>
+<pre data-lang="toml" class="language-toml z-code"><code class="language-toml" data-lang="toml"><span class="z-source z-toml"><span class="z-punctuation z-definition z-table z-begin z-toml">[</span><span class="z-meta z-tag z-table z-toml"><span class="z-entity z-name z-table z-toml">dependencies</span></span><span class="z-punctuation z-definition z-table z-end z-toml">]</span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">reqwest</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>0.12<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span>
+</span></code></pre>
+<p>也可以直接使用命令行添加依赖：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cargo</span></span><span class="z-meta z-function-call z-arguments z-shell"> add reqwest</span>
+</span></code></pre>
+<p>这里为了使用<code>blocking</code>版本的<code>reqwest</code>，我们可以在 <code>Cargo.toml</code> 中指定：</p>
+<pre data-lang="toml" class="language-toml z-code"><code class="language-toml" data-lang="toml"><span class="z-source z-toml"><span class="z-punctuation z-definition z-table z-begin z-toml">[</span><span class="z-meta z-tag z-table z-toml"><span class="z-entity z-name z-table z-toml">dependencies</span></span><span class="z-punctuation z-definition z-table z-end z-toml">]</span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">reqwest</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-punctuation z-definition z-inline-table z-begin z-toml">{</span> <span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">version</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>0.12<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span><span class="z-punctuation z-separator z-inline-table z-toml">,</span> <span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">features</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-punctuation z-definition z-array z-begin z-toml">[</span><span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>blocking<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span><span class="z-punctuation z-definition z-array z-end z-toml">]</span> <span class="z-punctuation z-definition z-inline-table z-end z-toml">}</span>
+</span></code></pre>
+<p>然后在代码中使用它：</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-keyword z-other z-rust">use</span> <span class="z-meta z-path z-rust">reqwest<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-path z-rust">blocking<span class="z-punctuation z-accessor z-rust">::</span></span>get<span class="z-punctuation z-terminator z-rust">;</span>
+</span><span class="z-source z-rust">
+</span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">main</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-storage z-type z-rust">let</span> res <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-support z-function z-rust">get</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>https://www.baidu.com<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">unwrap</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-support z-macro z-rust">println!</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>状态码: <span class="z-constant z-other z-placeholder z-rust">{}</span><span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-separator z-rust">,</span> res<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">status</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<p>保存后运行：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cargo</span></span><span class="z-meta z-function-call z-arguments z-shell"> run</span>
+</span></code></pre>
+<p>Cargo 会自动下载并编译依赖。</p>
+<hr />
+<h3 id="mo-kuai-hua-dai-ma-duo-wen-jian-jie-gou"><a class="zola-anchor" href="#mo-kuai-hua-dai-ma-duo-wen-jian-jie-gou" aria-label="Anchor link for: mo-kuai-hua-dai-ma-duo-wen-jian-jie-gou">模块化代码（多文件结构）</a></h3>
+<p>Rust 鼓励你把程序拆分为模块。子模块一般在同名文件夹中，或者在同一个文件中（<code>main.rs</code> 与 <code>lib.rs</code>子模块在<code>src/</code>目录下）。`</p>
+<p><code>src/main.rs</code>:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-storage z-type z-module z-rust">mod</span> <span class="z-entity z-name z-module z-rust">utils</span><span class="z-punctuation z-terminator z-rust">;</span></span>
+</span><span class="z-source z-rust">
+</span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">main</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-meta z-path z-rust">utils<span class="z-punctuation z-accessor z-rust">::</span></span>hello<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<p><code>src/utils.rs</code>（旧的方式：<code>src/utils/mod.rs</code>）:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-storage z-type z-module z-rust">mod</span> <span class="z-entity z-name z-module z-rust">helper</span><span class="z-punctuation z-terminator z-rust">;</span></span>
+</span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-modifier z-rust">pub</span> <span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">hello</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-support z-macro z-rust">println!</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span><span class="z-constant z-other z-placeholder z-rust">{}</span><span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-separator z-rust">,</span> <span class="z-meta z-path z-rust">helper<span class="z-punctuation z-accessor z-rust">::</span></span>hello_string<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<p><code>src/utils/helper.rs</code>:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-modifier z-rust">pub</span> <span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">hello_string</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> <span class="z-meta z-function z-return-type z-rust"><span class="z-punctuation z-separator z-rust">-&gt;</span> String</span> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>Hello from helper!<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">to_string</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<hr />
+<h3 id="bian-yi-yu-gou-jian"><a class="zola-anchor" href="#bian-yi-yu-gou-jian" aria-label="Anchor link for: bian-yi-yu-gou-jian">编译与构建</a></h3>
+<p>你可以构建调试版本：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cargo</span></span><span class="z-meta z-function-call z-arguments z-shell"> build</span>
+</span></code></pre>
+<p>或者构建发布版本（带优化）：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cargo</span></span><span class="z-meta z-function-call z-arguments z-shell"> build<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>release</span></span>
+</span></code></pre>
+<p>构建后的可执行文件在：</p>
+<ul>
+<li>调试模式：<code>target/debug/my_project</code></li>
+<li>发布模式：<code>target/release/my_project</code></li>
+</ul>
+<hr />
+<h3 id="pao-ce-shi"><a class="zola-anchor" href="#pao-ce-shi" aria-label="Anchor link for: pao-ce-shi">跑测试</a></h3>
+<p>Rust 有内建的测试框架。你可以在任何模块里写测试：</p>
+<p>在 <code>src/utils/helper.rs</code> 中添加测试：</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-comment z-line z-documentation z-rust"><span class="z-punctuation z-definition z-comment z-rust">///</span>...
+</span></span><span class="z-source z-rust"><span class="z-meta z-annotation z-rust"><span class="z-punctuation z-definition z-annotation z-rust">#</span><span class="z-punctuation z-section z-group z-begin z-rust">[</span><span class="z-variable z-annotation z-rust">cfg</span><span class="z-meta z-annotation z-parameters z-rust"><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span></span><span class="z-meta z-annotation z-parameters z-rust"><span class="z-meta z-group z-rust">test</span></span><span class="z-meta z-annotation z-parameters z-rust"><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-punctuation z-section z-group z-end z-rust">]</span></span>
+</span><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-storage z-type z-module z-rust">mod</span> <span class="z-entity z-name z-module z-rust">tests</span> <span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-meta z-block z-rust">    <span class="z-meta z-annotation z-rust"><span class="z-punctuation z-definition z-annotation z-rust">#</span><span class="z-punctuation z-section z-group z-begin z-rust">[</span><span class="z-variable z-annotation z-rust">test</span><span class="z-punctuation z-section z-group z-end z-rust">]</span></span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-meta z-block z-rust">    <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">test_hello_string</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">        <span class="z-storage z-type z-rust">let</span> result <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-meta z-path z-rust"><span class="z-keyword z-other z-rust">super</span><span class="z-punctuation z-accessor z-rust">::</span></span>hello_string<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">        <span class="z-support z-macro z-rust">assert_eq!</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>result<span class="z-punctuation z-separator z-rust">,</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>Hello from helper!<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    </span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span><span class="z-source z-rust">
+</span></code></pre>
+<p>运行测试：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cargo</span></span><span class="z-meta z-function-call z-arguments z-shell"> test</span>
+</span></code></pre>
+<hr />
+<h3 id="fa-bu-zi-ji-de-ku-ke-xuan"><a class="zola-anchor" href="#fa-bu-zi-ji-de-ku-ke-xuan" aria-label="Anchor link for: fa-bu-zi-ji-de-ku-ke-xuan">发布自己的库（可选）</a></h3>
+<p>如果你写的是工具包或库，并希望发布到 <a rel="noopener" target="_blank" href="https://crates.io">crates.io</a>，可以：</p>
+<ol>
+<li>注册账户并获取 token（只需一次）：</li>
+</ol>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash">   <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cargo</span></span><span class="z-meta z-function-call z-arguments z-shell"> login <span class="z-keyword z-operator z-assignment z-redirection z-shell">&lt;</span>your-token<span class="z-keyword z-operator z-assignment z-redirection z-shell">&gt;</span>
+</span></span></code></pre>
+<ol start="2">
+<li>
+<p>在 <code>Cargo.toml</code> 中填写好包名、版本、作者、描述等。</p>
+</li>
+<li>
+<p>发布：</p>
+</li>
+</ol>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cargo</span></span><span class="z-meta z-function-call z-arguments z-shell"> publish</span>
+</span></code></pre>
+<hr />
+<h3 id="zong-jie"><a class="zola-anchor" href="#zong-jie" aria-label="Anchor link for: zong-jie">总结</a></h3>
+<p>你现在应该可以：</p>
+<p>✅ 创建项目
+✅ 添加依赖
+✅ 拆分模块
+✅ 跑测试和构建
+✅ 准备发布库</p>
+<p>借助 Cargo，Rust 的项目管理变得非常简单。你可以快速搭建一个 API 工具包、命令行工具，或任何库项目。</p>
+<p>如果你需要我补充构建 API 项目、引入本地模块、或者如何写文档注释等内容，也可以继续告诉我。</p>
+<h2 id="bian-liang-yu-ke-bian-xing"><a class="zola-anchor" href="#bian-liang-yu-ke-bian-xing" aria-label="Anchor link for: bian-liang-yu-ke-bian-xing">变量与可变性</a></h2>
+<p>在 Rust 中，<strong>变量默认是不可变的</strong>。这是一种设计选择，可以帮助你写出更安全、并发更容易的代码。但如果需要，你也可以让变量变成<strong>可变的（mutable）</strong>。</p>
+<p>来看一个例子：</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">main</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-storage z-type z-rust">let</span> x <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-constant z-numeric z-integer z-decimal z-rust">5</span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 不可变变量
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    x <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-constant z-numeric z-integer z-decimal z-rust">6</span><span class="z-punctuation z-terminator z-rust">;</span> <span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 编译错误
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-storage z-type z-rust">let</span> <span class="z-storage z-modifier z-rust">mut</span> y <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-constant z-numeric z-integer z-decimal z-rust">5</span><span class="z-punctuation z-terminator z-rust">;</span> <span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 可变变量
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    y <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-constant z-numeric z-integer z-decimal z-rust">6</span><span class="z-punctuation z-terminator z-rust">;</span> <span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> OK
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<h2 id="chang-liang"><a class="zola-anchor" href="#chang-liang" aria-label="Anchor link for: chang-liang">常量</a></h2>
+<p>常量和不可变变量类似，但也有一些不同点：</p>
+<ul>
+<li>使用 <code>const</code> 关键字声明，而不是 <code>let</code></li>
+<li><strong>永远是不可变的</strong>，不能加 <code>mut</code></li>
+<li>必须指定类型</li>
+<li>只能用<strong>编译时能确定的值</strong>来初始化</li>
+</ul>
+<p>例如：</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-storage z-type z-rust">const</span> <span class="z-constant z-other z-rust">THREE_HOURS_IN_SECONDS</span><span class="z-punctuation z-separator z-rust">:</span> <span class="z-storage z-type z-rust">u32</span> <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-constant z-numeric z-integer z-decimal z-rust">60</span> <span class="z-keyword z-operator z-arithmetic z-rust">*</span> <span class="z-constant z-numeric z-integer z-decimal z-rust">60</span> <span class="z-keyword z-operator z-arithmetic z-rust">*</span> <span class="z-constant z-numeric z-integer z-decimal z-rust">3</span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></code></pre>
+<p>常量常用于定义全局通用的值，比如：</p>
+<ul>
+<li>一天有多少秒</li>
+<li>游戏中的最高得分</li>
+<li>圆周率等</li>
+</ul>
+<p>命名习惯是使用全大写字母和下划线分隔，比如 <code>MAX_POINTS</code>。</p>
+<hr />
+<h2 id="bian-liang-zhe-bi"><a class="zola-anchor" href="#bian-liang-zhe-bi" aria-label="Anchor link for: bian-liang-zhe-bi">变量遮蔽</a></h2>
+<p>Rust 中还支持“<strong>遮蔽（shadowing）</strong>”：你可以用同一个变量名多次声明新变量，旧的变量会被“遮蔽”掉：</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">main</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-storage z-type z-rust">let</span> x <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-constant z-numeric z-integer z-decimal z-rust">5</span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-storage z-type z-rust">let</span> x <span class="z-keyword z-operator z-assignment z-rust">=</span> x <span class="z-keyword z-operator z-arithmetic z-rust">+</span> <span class="z-constant z-numeric z-integer z-decimal z-rust">1</span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust">        <span class="z-storage z-type z-rust">let</span> x <span class="z-keyword z-operator z-assignment z-rust">=</span> x <span class="z-keyword z-operator z-arithmetic z-rust">*</span> <span class="z-constant z-numeric z-integer z-decimal z-rust">2</span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust">        <span class="z-support z-macro z-rust">println!</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>内部作用域的 x 是: <span class="z-constant z-other z-placeholder z-rust">{x}</span><span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span> <span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 12
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust">    </span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-support z-macro z-rust">println!</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>外部作用域的 x 是: <span class="z-constant z-other z-placeholder z-rust">{x}</span><span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span> <span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 6
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<p><strong>遮蔽和 <code>mut</code> 的区别：</strong></p>
+<ul>
+<li>使用 <code>let</code> 相当于创建了一个新变量（可以改变类型）</li>
+<li>使用 <code>mut</code> 是修改原来的变量（<strong>不能改变类型</strong>）</li>
+</ul>
+<p>例如：</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-storage z-type z-rust">let</span> spaces <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>   <span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span><span class="z-source z-rust"><span class="z-storage z-type z-rust">let</span> spaces <span class="z-keyword z-operator z-assignment z-rust">=</span> spaces<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">len</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span> <span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> OK，类型从 &amp;str 变成 usize
+</span></span></code></pre>
+<p>而如果使用 <code>mut</code>：</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-storage z-type z-rust">let</span> <span class="z-storage z-modifier z-rust">mut</span> spaces <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>   <span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span><span class="z-source z-rust">spaces <span class="z-keyword z-operator z-assignment z-rust">=</span> spaces<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">len</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span> <span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 错误！不能把字符串变成数字
+</span></span></code></pre>
+
+      <nav>
+        <div>
+          <a href="https://km0e.github.io/zh/dv4lua/">&#8249; Dv4lua</a>
+        </div>
+        <div>
+          <a href="https://km0e.github.io/zh/faq/lib-dep/"> Linux依赖FAQ &#8250;</a>
+        </div>
+      </nav>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">索引</a>
+        <div>
+          <a href="#jian-jie">简介</a>
+        </div>
+        <div>
+          <a href="#rust-xiang-mu-jie-gou-yu-bao-guan-li-cargo">Rust 项目结构与包管理（Cargo）</a>
+        </div>
+        <div class="hpad">
+          <a href="#chuang-jian-xiang-mu"><small>- 创建项目</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#yin-ru-yi-lai-shi-yong-di-san-fang-ku"><small>- 引入依赖（使用第三方库）</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#mo-kuai-hua-dai-ma-duo-wen-jian-jie-gou"><small>- 模块化代码（多文件结构）</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#bian-yi-yu-gou-jian"><small>- 编译与构建</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#pao-ce-shi"><small>- 跑测试</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#fa-bu-zi-ji-de-ku-ke-xuan"><small>- 发布自己的库（可选）</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#zong-jie"><small>- 总结</small></a>
+        </div>
+        <div>
+          <a href="#bian-liang-yu-ke-bian-xing">变量与可变性</a>
+        </div>
+        <div>
+          <a href="#chang-liang">常量</a>
+        </div>
+        <div>
+          <a href="#bian-liang-zhe-bi">变量遮蔽</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://km0e.github.io/zh/atom.xml" target="_blank" title="F Atom Feed"><i type="Button" class="svg rss" title="F Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://km0e.github.io/zh/about/"> 关于 </a>
+        <a class="rpad s90" href="https://km0e.github.io/zh/contact/"> 联系方式 </a>
+        <a class="rpad s90" href="https://km0e.github.io/zh/privacy/"> 隐私 </a>
+        <a class="rpad s90" href="https://km0e.github.io/sitemap.xml" target="_blank"> 导航 </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2025</span> F</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer><span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>
