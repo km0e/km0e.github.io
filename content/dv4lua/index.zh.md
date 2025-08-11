@@ -83,7 +83,7 @@ dv.op:exec("this", "echo hello", "bash") -- 使用 bash 执行命令
 local os = dv.op:os("this") -- 获取用户的操作系统
 ```
 
-路径首先会尝试使用`variable`与环境变量展开，格式为`${var}`，如果是相对路径，则会尝试使用`mount`展开。
+路径首先会尝试使用`variable`与环境变量展开，格式为`${var}`，如果是相对路径，则还会尝试使用`mount`展开。
 
 复制文件路径决定行为规则如下：
 
@@ -172,7 +172,12 @@ default = ["~/.config/fcitx5"]
 - `alacritty`配置文件在`unix`下的配置文件`default`路径有四个可能的路径
 - `fcitx5`配置文件在`linux`下的配置文件`data`路径为`~/.local/share/fcitx5`，`default`路径为`~/.config/fcitx5`
 
-`add_schema`方法用于添加配置文件的schema，目前只支持以`uid`和`path`为参数加载配置文件
+`add_schema`方法用于添加配置文件的schema
+支持加载方式
+
+- `uid` + `path`：加载指定用户的配置文件，`path`为配置文件的路径。
+- `__network__` + `url`：加载网络配置文件，`url`为配置文件的URL。
+  - 参考 https://raw.githubusercontent.com/km0e/schema/main/dot.toml
 
 `Source`格式与`Schema`相同，举例如下：
 
@@ -199,6 +204,7 @@ Example:
 
 ```lua
 dv.dot:add_schema("default", "path/to/schema.toml")
+dv.dot:add_schema("__network__", "https://raw.githubusercontent.com/km0e/schema/main/dot.toml")
 dv.dot:add_source("default", "path/to/source")
 dv.dot:sync({"fish", "alacritty", "fcitx5"}, "remote_user")
 ```
