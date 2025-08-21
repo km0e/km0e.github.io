@@ -68,7 +68,7 @@ Note:
 
 ```lua
 ---@class Op  # 定义 `Op` 类
----@field copy fun(this: Op, src: string, src_paths: string|table, dst: string, dst_paths: string|table, confirm: string?)
+---@field sync fun(this: Op, src: string, src_paths: string|table, dst: string, dst_paths: string|table, confirm: string?)
 ---@field exec fun(this: Op, uid: string, cmd: string, shell: string?)
 ---@field os fun(this: Op, uid: string)
 ```
@@ -76,37 +76,30 @@ Note:
 Example:
 
 ```lua
-dv.op:copy("this", "a/b/c", "remote_user", "a/b/c", "y") -- 拷贝文件
-dv.op:copy("this", {"a/b/c", "a/b/d"}, "remote_user", {"a/b/c", "a/b/d"}, "u") -- 拷贝多个文件
+dv.op:sync("this", "a/b/c", "remote_user", "a/b/c", "y") -- 拷贝文件
+dv.op:sync("this", {"a/b/c", "a/b/d"}, "remote_user", {"a/b/c", "a/b/d"}, "u") -- 拷贝多个文件
 dv.op:exec("this", "echo hello") -- 执行命令
 dv.op:exec("this", "echo hello", "bash") -- 使用 bash 执行命令
 local os = dv.op:os("this") -- 获取用户的操作系统
 ```
 
 路径首先会尝试使用`variable`与环境变量展开，格式为`${var}`，如果是相对路径，则还会尝试使用`mount`展开。
+`confirm`为`y`（覆盖,删除），`u`（更新,新增），`n`（不变）组成的字符串。
 
-复制文件路径决定行为规则如下：
-
-| src | dst | action       | description                  |
-| --- | --- | ------------ | ---------------------------- |
-| a/  | b/  | a/\* -> b/\* | 拷贝目录下所有文件到目标目录 |
-| a/  | b   | a/\* -> b/\* | 拷贝目录下所有文件到目标目录 |
-| a   | b/  | a -> b/a     | 拷贝目录/文件到目标目录      |
-| a   | b   | a -> b       | 拷贝目录（文件）到目标路径   |
-
-`confirm`为`y`（覆盖），`u`（更新），`n`（不变）组成的字符串。
+对于目录会扫描目录下的所有文件,复制文件行为规则如下：
 
 #### `Check`
 
 根据源文件与目标文件状态，检查可执行操作的类型。
 
-| src | dst  | action | description                |
-| --- | ---- | ------ | -------------------------- |
-| \*  | none | y      | 直接覆盖文件，没有后续确定 |
-| new | old  | y      | 可以覆盖文件或者不变       |
-| old | new  | u      | 可以更新文件或者不变       |
-| old | old  | n      | 不变                       |
-| new | new  | yu     | 可以覆盖文件，更新或者不变 |
+| src  | dst  | action | description                |
+| ---- | ---- | ------ | -------------------------- |
+| \*   | none | y      | 直接覆盖文件               |
+| none | \*   | y      | 直接删除文件               |
+| new  | old  | y      | 可以覆盖文件或者不变       |
+| old  | new  | u      | 可以更新文件或者不变       |
+| old  | old  | n      | 不变                       |
+| new  | new  | yu     | 可以覆盖文件，更新或者不变 |
 
 #### `Match`
 
@@ -136,6 +129,7 @@ Example:
 ---@field add_schema fun(this: Dot, name: string, path: string)
 ---@field add_source fun(this: Dot, name: string, path: string)
 ---@field sync fun(this: Dot, apps: table, uid: string)
+---@field upload fun(this: Dot, apps: table, uid: string)
 ```
 
 `confirm`方法用于配置复制文件时的默认方式，参见[`Op`](#op)
@@ -199,6 +193,7 @@ data = ["fcitx5/data"]
 默认会加载`path`目录下`config.toml`文件作为配置文件，所有`paths`会被以`path`为前缀进行拼接。
 
 `sync`方法用于同步配置文件到指定用户，`apps`参数为一个列表，每个元素为一个配置文件的名称，`uid`参数为用户的`id`。
+`upload`方法用于上传指定用户配置文件到`source`，`apps`参数为一个列表，每个元素为一个配置文件的名称，`uid`参数为用户的`id`。
 
 Example:
 
@@ -207,6 +202,7 @@ dv.dot:add_schema("default", "path/to/schema.toml")
 dv.dot:add_schema("__network__", "https://raw.githubusercontent.com/km0e/schema/main/dot.toml")
 dv.dot:add_source("default", "path/to/source")
 dv.dot:sync({"fish", "alacritty", "fcitx5"}, "remote_user")
+dv.dot:upload({"fish", "alacritty", "fcitx5"}, "remote_user")
 ```
 
 ### `Pm`
