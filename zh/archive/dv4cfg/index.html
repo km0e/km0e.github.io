@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <script src="https://km0e.github.io/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://km0e.github.io/abridge.css?h=3ef6b36a1c3b5611bbd6" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://km0e.github.io" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://km0e.github.io/manifest.min.json" />
+  <link rel="mask-icon" href="https://km0e.github.io/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://km0e.github.io/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://km0e.github.io/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://km0e.github.io/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://km0e.github.io/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="F Atom Feed" href="https://km0e.github.io/zh/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Dv4cfg | F</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="F" />
+  <meta name="description" content="A simple CLI to use dv-api with toml&#x2F;yaml&#x2F;json" />
+  <link rel="canonical" href="https://km0e.github.io/zh/archive/dv4cfg/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://km0e.github.io/zh/archive/dv4cfg/" />
+  <meta name="twitter:url" content="https://km0e.github.io/zh/archive/dv4cfg/" />
+  <meta property="og:description" content="A simple CLI to use dv-api with toml&#x2F;yaml&#x2F;json" />
+  <meta name="twitter:description" content="A simple CLI to use dv-api with toml&#x2F;yaml&#x2F;json" />
+  <meta property="og:title" content="Dv4cfg | F" />
+  <meta name="twitter:title" content="Dv4cfg | F" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="F" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-02-25" />
+  <script defer src="https://km0e.github.io/js/abridge_nosearch.min.js?h=6dab37f7e7cd788c6976" integrity="sha384-77nO/4xlWq4jm3nrI6r48S4y4s/3D3d9FScy7N095fGTXGVuA0oCyyxgsbl8KhIm"></script>
+  <noscript><link rel="stylesheet" href="https://km0e.github.io/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://km0e.github.io/zh/" title="F">F</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://km0e.github.io/zh/archive/"> 文章 </a></li><li><a class="s110" href="https://km0e.github.io/zh/tags/"> 标签 </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>中文</span><a href="https://km0e.github.io/archive/dv4cfg/">English</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://km0e.github.io/zh/archive/dv4cfg/">Dv4cfg</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> 二月 25, 2025 <span class="rpad"></span> #<a href="https://km0e.github.io/zh/tags/pro/">PRO</a> </span>
+
+    
+
+
+<h2 id="shou-ce"><a class="zola-anchor" href="#shou-ce" aria-label="Anchor link for: shou-ce">手册</a></h2>
+<h3 id="pei-zhi"><a class="zola-anchor" href="#pei-zhi" aria-label="Anchor link for: pei-zhi">配置</a></h3>
+<h4 id="ji-ben-shu-xing"><a class="zola-anchor" href="#ji-ben-shu-xing" aria-label="Anchor link for: ji-ben-shu-xing">基本属性</a></h4>
+<table><thead><tr><th>名称</th><th>必要性</th><th>类型</th><th>默认值</th><th>描述</th><th>待定</th></tr></thead><tbody>
+<tr><td><code>id</code></td><td>可选</td><td><code>string</code></td><td></td><td>用于区分不同的存档</td><td>用于区分多个配置文件</td></tr>
+<tr><td><code>local</code></td><td>可选</td><td><code>local_device</code></td><td></td><td>本地设备配置</td><td></td></tr>
+<tr><td><code>ssh</code></td><td>可选</td><td><code>[ssh_device]</code></td><td></td><td><code>ssh</code>设备配置</td><td></td></tr>
+<tr><td><code>group</code></td><td>可选</td><td><code>[task_group]</code></td><td></td><td>以组为单位执行任务</td><td></td></tr>
+<tr><td><code>auto</code></td><td>可选</td><td><code>[auto_task]</code></td><td></td><td>用于自启动服务管理</td><td></td></tr>
+<tr><td><code>copy</code></td><td>可选</td><td><code>[copy_task]</code></td><td></td><td>用于拷贝文件</td><td></td></tr>
+<tr><td><code>app</code></td><td>可选</td><td><code>[app_task]</code></td><td></td><td>用于本机应用管理（包管理）</td><td></td></tr>
+<tr><td><code>exec</code></td><td>可选</td><td><code>[exec_task]</code></td><td></td><td>执行命令（脚本）</td><td></td></tr>
+</tbody></table>
+<h4 id="she-bei-pei-zhi"><a class="zola-anchor" href="#she-bei-pei-zhi" aria-label="Anchor link for: she-bei-pei-zhi">设备配置</a></h4>
+<p>每个设备由普通用户与超级用户组成，目前用户只有当前用户，与<code>ssh</code>用户两种。</p>
+<p>当前用户（local）配置如下</p>
+<table><thead><tr><th>名称</th><th>必要性</th><th>类型</th><th>默认值</th><th>描述</th><th>待定</th></tr></thead><tbody>
+<tr><td><code>uid</code></td><td>可选</td><td><code>string</code></td><td><code>this</code></td><td>用于区分用户，指代当前用户</td><td></td></tr>
+<tr><td><code>mount</code></td><td>可选</td><td><code>path</code></td><td><code>~/.config/dv</code></td><td><code>copy_task</code>中相对路径展开</td><td></td></tr>
+</tbody></table>
+<p><code>ssh</code>用户（ssh_user）配置如下</p>
+<table><thead><tr><th>名称</th><th>必要性</th><th>类型</th><th>默认值</th><th>描述</th><th>待定</th></tr></thead><tbody>
+<tr><td><code>uid</code></td><td>必须</td><td><code>string</code></td><td></td><td>用于区分用户，指代<code>ssh</code>用户</td><td></td></tr>
+<tr><td><code>host</code></td><td>必须</td><td><code>string</code></td><td></td><td><code>ssh_config</code>文件中的<code>Host</code>，用于查找<code>ssh</code>配置</td><td></td></tr>
+<tr><td><code>passwd</code></td><td>可选</td><td><code>string</code></td><td></td><td><code>ssh</code>用户密码</td><td></td></tr>
+</tbody></table>
+<p>本地设备配置（local_device）如下</p>
+<table><thead><tr><th>名称</th><th>必要性</th><th>类型</th><th>默认值</th><th>描述</th><th>待定</th></tr></thead><tbody>
+<tr><td><code>hid</code></td><td>必须</td><td><code>string</code></td><td><code>local</code></td><td>用于区分设备，指代本机</td><td></td></tr>
+<tr><td><code>user</code></td><td>必须</td><td><code>local</code></td><td></td><td>本机用户配置</td><td></td></tr>
+<tr><td><code>system</code></td><td>可选</td><td><code>ssh_user</code></td><td></td><td>本机超级用户（管理员）</td><td>暂时复用<code>ssh</code>,未来可能写一个通用<code>agent</code></td></tr>
+</tbody></table>
+<p><code>ssh</code>设备配置（ssh_device）如下</p>
+<table><thead><tr><th>名称</th><th>必要性</th><th>类型</th><th>默认值</th><th>描述</th><th>待定</th></tr></thead><tbody>
+<tr><td><code>hid</code></td><td>必须</td><td><code>string</code></td><td></td><td>用于区分设备，指代远程设备</td><td></td></tr>
+<tr><td><code>os</code></td><td>可选</td><td><code>manjaro|alpine|...</code></td><td></td><td>远程设备操作系统</td><td></td></tr>
+<tr><td><code>users</code></td><td>可选</td><td><code>[ssh_user]</code></td><td></td><td>远程用户配置</td><td></td></tr>
+<tr><td><code>system</code></td><td>可选</td><td><code>ssh_user</code></td><td></td><td>远程设备超级用户（管理员）</td><td></td></tr>
+</tbody></table>
+<h4 id="ji-ben-ren-wu-pei-zhi"><a class="zola-anchor" href="#ji-ben-ren-wu-pei-zhi" aria-label="Anchor link for: ji-ben-ren-wu-pei-zhi">基本任务配置</a></h4>
+<p>每个任务的基本属性（task_attr）如下</p>
+<table><thead><tr><th>名称</th><th>必要性</th><th>类型</th><th>默认值</th><th>描述</th><th>待定</th></tr></thead><tbody>
+<tr><td><code>id</code></td><td>必须</td><td><code>string</code></td><td></td><td>用于区分任务</td><td></td></tr>
+<tr><td><code>next</code></td><td>可选</td><td><code>[string]</code></td><td></td><td>表明任务之间的拓扑关系</td><td></td></tr>
+</tbody></table>
+<p>目前任务之间只支持<code>next</code>关系，未来可能支持更多关系。</p>
+<p>任务目标（target）类型如下</p>
+<table><thead><tr><th>名称</th><th>必要性</th><th>类型</th><th>默认值</th><th>描述</th><th>待定</th></tr></thead><tbody>
+<tr><td><code>src_uid</code></td><td>可选</td><td><code>string</code></td><td></td><td>操作来源</td><td></td></tr>
+<tr><td><code>dst_uid</code></td><td>可选</td><td><code>string</code></td><td></td><td>操作目标</td><td></td></tr>
+</tbody></table>
+<p>自启动服务（auto_task）</p>
+<table><thead><tr><th>名称</th><th>必要性</th><th>类型</th><th>默认值</th><th>描述</th><th>待定</th></tr></thead><tbody>
+<tr><td><code>attr</code></td><td>必须</td><td><code>task_attr</code></td><td></td><td>任务基本属性</td><td></td></tr>
+<tr><td><code>uid</code></td><td>可选</td><td><code>string</code></td><td></td><td>目标用户</td><td></td></tr>
+<tr><td><code>name</code></td><td>必须</td><td><code>string</code></td><td></td><td>任务名称</td><td></td></tr>
+<tr><td><code>action</code></td><td>必须</td><td><code>setup|reload</code></td><td></td><td>执行的动作</td><td></td></tr>
+</tbody></table>
+<p>文件拷贝（copy_task）</p>
+<table><thead><tr><th>名称</th><th>必要性</th><th>类型</th><th>默认值</th><th>描述</th><th>待定</th></tr></thead><tbody>
+<tr><td><code>attr</code></td><td>必须</td><td><code>task_attr</code></td><td></td><td>任务基本属性</td><td></td></tr>
+<tr><td><code>target</code></td><td>可选</td><td><code>target</code></td><td></td><td>操作用户</td><td></td></tr>
+<tr><td><code>pair</code></td><td>必须</td><td><code>[(string,string)]</code></td><td></td><td>拷贝的文件</td><td></td></tr>
+</tbody></table>
+<p>软件管理（app_task）</p>
+<table><thead><tr><th>名称</th><th>必要性</th><th>类型</th><th>默认值</th><th>描述</th><th>待定</th></tr></thead><tbody>
+<tr><td><code>attr</code></td><td>必须</td><td><code>task_attr</code></td><td></td><td>任务基本属性</td><td></td></tr>
+<tr><td><code>uid</code></td><td>可选</td><td><code>string</code></td><td></td><td>目标用户</td><td></td></tr>
+<tr><td><code>pkgs</code></td><td>必须</td><td><code>[string]</code></td><td></td><td>安装的软件</td><td></td></tr>
+</tbody></table>
+<p>执行命令（exec_task）</p>
+<table><thead><tr><th>名称</th><th>必要性</th><th>类型</th><th>默认值</th><th>描述</th><th>待定</th></tr></thead><tbody>
+<tr><td><code>attr</code></td><td>必须</td><td><code>task_attr</code></td><td></td><td>任务基本属性</td><td></td></tr>
+<tr><td><code>uid</code></td><td>可选</td><td><code>string</code></td><td></td><td>目标用户</td><td></td></tr>
+<tr><td><code>shell</code></td><td>可选</td><td><code>string</code></td><td></td><td>执行命令使用的<code>shell</code></td><td></td></tr>
+<tr><td><code>command</code></td><td>必须</td><td><code>string</code></td><td></td><td>执行的命令</td><td></td></tr>
+</tbody></table>
+<h4 id="ren-wu-hua-fen"><a class="zola-anchor" href="#ren-wu-hua-fen" aria-label="Anchor link for: ren-wu-hua-fen">任务划分</a></h4>
+<p>引用（cite）</p>
+<table><thead><tr><th>名称</th><th>必要性</th><th>类型</th><th>默认值</th><th>描述</th><th>待定</th></tr></thead><tbody>
+<tr><td><code>attr</code></td><td>必须</td><td><code>task_attr</code></td><td></td><td>引用基本属性</td><td></td></tr>
+<tr><td><code>target</code></td><td>可选</td><td><code>target</code></td><td></td><td>操作用户</td><td></td></tr>
+</tbody></table>
+<p>引用基本属性的<code>id</code>与被引用任务的<code>id</code>相同。可以引用任务组，也可以引用单个任务。<code>target</code>将会填充引用任务的<code>target</code>，<code>dst_uid</code>填充引用任务的<code>uid</code>。</p>
+<p>举例：
+{{&lt; code-toggle &gt;}}
+app:
+attr:
+id: 'task1'
+pkgs:
+- "fakeroot"
+group:
+id: 'group1'
+cites:
+- attr:
+id: 'task1'
+target:
+dst_uid: 'this'
+{{&lt; /code-toggle &gt;}}
+将会替换为
+{{&lt; code-toggle &gt;}}
+group:
+id: 'group1'
+app:
+attr:
+id: 'task1'
+uid: 'this'
+pkgs:
+- "fakeroot"
+{{&lt; /code-toggle &gt;}}</p>
+<p>任务分组（task_group）</p>
+<table><thead><tr><th>名称</th><th>必要性</th><th>类型</th><th>默认值</th><th>描述</th><th>待定</th></tr></thead><tbody>
+<tr><td><code>id</code></td><td>必须</td><td><code>string</code></td><td></td><td>区分不同任务（组）</td><td></td></tr>
+<tr><td><code>target</code></td><td>可选</td><td><code>target</code></td><td></td><td>目标用户</td><td></td></tr>
+<tr><td><code>cites</code></td><td>可选</td><td><code>[cite]</code></td><td></td><td>引用的其他任务（组）</td><td></td></tr>
+<tr><td><code>auto</code></td><td>可选</td><td><code>[auto_task]</code></td><td></td><td>用于自启动服务管理</td><td></td></tr>
+<tr><td><code>copy</code></td><td>可选</td><td><code>[copy_task]</code></td><td></td><td>用于拷贝文件</td><td></td></tr>
+<tr><td><code>app</code></td><td>可选</td><td><code>[app_task]</code></td><td></td><td>用于本机应用管理（包管理）</td><td></td></tr>
+<tr><td><code>exec</code></td><td>可选</td><td><code>[exec_task]</code></td><td></td><td>执行命令（脚本）</td><td></td></tr>
+</tbody></table>
+<p>分组的<code>taget</code>同上，逐级向下传递。</p>
+<h3 id="ming-ling-xing-can-shu"><a class="zola-anchor" href="#ming-ling-xing-can-shu" aria-label="Anchor link for: ming-ling-xing-can-shu">命令行参数</a></h3>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Simple</span></span><span class="z-meta z-function-call z-arguments z-shell"> CLI to use dv-api with toml/yaml/json</span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Usage:</span></span><span class="z-meta z-function-call z-arguments z-shell"> dv4cfg <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>OPTIONS<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span> <span class="z-keyword z-operator z-assignment z-redirection z-shell">&lt;</span>COMMAND<span class="z-keyword z-operator z-assignment z-redirection z-shell">&gt;</span>
+</span></span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Commands:</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">full-config</span></span><span class="z-meta z-function-call z-arguments z-shell">  Print example config <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>aliases: fc<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-support z-function z-exec z-shell">exec</span></span><span class="z-meta z-function-call z-arguments z-shell">         Execute plan <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>aliases: e<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-support z-function z-help z-shell">help</span></span><span class="z-meta z-function-call z-arguments z-shell">         Print this message or the help of the given subcommand(s</span><span class="z-meta z-function-call z-shell"></span>)
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Options:</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-d,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>directory</span> <span class="z-keyword z-operator z-assignment z-redirection z-shell">&lt;</span>DIRECTORY<span class="z-keyword z-operator z-assignment z-redirection z-shell">&gt;</span>  <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>default: /home/<span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">USER</span></span>/.config/dv/<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-c,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>config</span> <span class="z-keyword z-operator z-assignment z-redirection z-shell">&lt;</span>CONFIG<span class="z-keyword z-operator z-assignment z-redirection z-shell">&gt;</span>        
+</span></span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-h,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>help</span>                   Print help</span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-V,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>version</span>                Print version</span>
+</span></code></pre>
+<ul>
+<li><code>-d</code>：用于读取配置文件（<code>config.toml/yaml/json</code>）与<code>cache.db</code></li>
+<li><code>-c</code>：用于指定配置文件路径，优先于指定目录下配置文件</li>
+</ul>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Print</span></span><span class="z-meta z-function-call z-arguments z-shell"> example config</span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Usage:</span></span><span class="z-meta z-function-call z-arguments z-shell"> dv4cfg full-config <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>EXTENSION<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span></span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Arguments:</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">[EXTENSION]</span></span><span class="z-meta z-function-call z-arguments z-shell">  </span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Options:</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-h,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>help</span>  Print help</span>
+</span></code></pre>
+<p><code>EXTENSION</code>：可选，用于指定配置文件格式（<code>toml/yaml/json</code>）</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Execute</span></span><span class="z-meta z-function-call z-arguments z-shell"> plan</span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Usage:</span></span><span class="z-meta z-function-call z-arguments z-shell"> dv4cfg exec <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>OPTIONS<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span> <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>PLAN_ID<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span></span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Arguments:</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">[PLAN_ID]</span></span><span class="z-meta z-function-call z-arguments z-shell">  </span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Options:</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-n,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>dry-run</span>  </span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-h,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>help</span>     Print help</span>
+</span></code></pre>
+<ul>
+<li><code>PLAN_ID</code>：可选，用于指定执行的计划，目前支持任务组<code>id</code></li>
+<li><code>-n</code>：可选，用于测试执行计划，不会真正执行</li>
+</ul>
+
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">索引</a>
+        <div>
+          <a href="#shou-ce">手册</a>
+        </div>
+        <div class="hpad">
+          <a href="#pei-zhi"><small>- 配置</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#ming-ling-xing-can-shu"><small>- 命令行参数</small></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://km0e.github.io/zh/atom.xml" target="_blank" title="F Atom Feed"><i type="Button" class="svg rss" title="F Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://km0e.github.io/zh/about/"> 关于 </a>
+        <a class="rpad s90" href="https://km0e.github.io/zh/contact/"> 联系方式 </a>
+        <a class="rpad s90" href="https://km0e.github.io/zh/privacy/"> 隐私 </a>
+        <a class="rpad s90" href="https://km0e.github.io/sitemap.xml" target="_blank"> 导航 </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2025</span> F</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer><span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

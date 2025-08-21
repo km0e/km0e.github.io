@@ -1,0 +1,427 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <script src="https://km0e.github.io/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://km0e.github.io/abridge.css?h=3ef6b36a1c3b5611bbd6" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://km0e.github.io" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://km0e.github.io/manifest.min.json" />
+  <link rel="mask-icon" href="https://km0e.github.io/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://km0e.github.io/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://km0e.github.io/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://km0e.github.io/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://km0e.github.io/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="F Atom Feed" href="https://km0e.github.io/zh/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Dv4rune | F</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="F" />
+  <meta name="description" content="A simple CLI to use dv-api with rune" />
+  <link rel="canonical" href="https://km0e.github.io/zh/dv4rune/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://km0e.github.io/zh/dv4rune/" />
+  <meta name="twitter:url" content="https://km0e.github.io/zh/dv4rune/" />
+  <meta property="og:description" content="A simple CLI to use dv-api with rune" />
+  <meta name="twitter:description" content="A simple CLI to use dv-api with rune" />
+  <meta property="og:title" content="Dv4rune | F" />
+  <meta name="twitter:title" content="Dv4rune | F" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="F" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-02-27" />
+  <script defer src="https://km0e.github.io/js/abridge_nosearch.min.js?h=6dab37f7e7cd788c6976" integrity="sha384-77nO/4xlWq4jm3nrI6r48S4y4s/3D3d9FScy7N095fGTXGVuA0oCyyxgsbl8KhIm"></script>
+  <noscript><link rel="stylesheet" href="https://km0e.github.io/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://km0e.github.io/zh/" title="F">F</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://km0e.github.io/zh/archive/"> 文章 </a></li><li><a class="s110" href="https://km0e.github.io/zh/tags/"> 标签 </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>中文</span><a href="https://km0e.github.io/dv4rune/">English</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://km0e.github.io/zh/dv4rune/">Dv4rune</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> 二月 27, 2025 <span class="rpad"></span> #<a href="https://km0e.github.io/zh/tags/pro/">PRO</a> </span>
+
+    
+
+
+<h2 id="jie-shao"><a class="zola-anchor" href="#jie-shao" aria-label="Anchor link for: jie-shao">介绍</a></h2>
+<p>这个工具主要功能是用来方便的执行一系列操作，如：自动化任务、文件拷贝、应用管理、执行命令等。
+由于自定义执行逻辑以配置文件的形式呈现过于复杂，本工具选择与<a rel="noopener" target="_blank" href="https://rune-rs.github.io/"><code>Rune</code></a>结合，以<code>Module</code>形式嵌入，可以在<code>Rune</code>代码中直接调用<code>dv-api</code>的功能。</p>
+<h2 id="api"><a class="zola-anchor" href="#api" aria-label="Anchor link for: api">API</a></h2>
+<h3 id="wai-bu-lei-xing"><a class="zola-anchor" href="#wai-bu-lei-xing" aria-label="Anchor link for: wai-bu-lei-xing">外部类型</a></h3>
+<table><thead><tr><th>type</th><th>description</th></tr></thead><tbody>
+<tr><td><a href="https://km0e.github.io/zh/dv4rune/#config"><code>Config</code></a></td><td>用户配置</td></tr>
+<tr><td><a href="https://km0e.github.io/zh/dv4rune/#Os"><code>Os</code></a></td><td>操作系统</td></tr>
+<tr><td><a href="https://km0e.github.io/zh/dv4rune/#packages"><code>Packages</code></a></td><td>包</td></tr>
+<tr><td><a href="https://km0e.github.io/zh/dv4rune/#dv"><code>Dv</code></a></td><td>API</td></tr>
+</tbody></table>
+<h4 id="config"><a class="zola-anchor" href="#config" aria-label="Anchor link for: config"><code>Config</code></a></h4>
+<p>成员函数</p>
+<table><thead><tr><th>sig</th><th>description</th></tr></thead><tbody>
+<tr><td><code>fn cur() -&gt; Config</code></td><td>创建当前用户的<code>Config</code>，默认设置<code>HID</code>为<code>local</code>，<code>MOUNT</code>为<code>~/.local/share/dv</code>，<code>OS</code>为<code>linux</code></td></tr>
+<tr><td><code>fn ssh(host: &amp;str) -&gt; Config</code></td><td>创建<code>ssh</code>用户的<code>Config</code>，默认设置<code>HOST</code>为<code>host</code>参数，<code>MOUNT</code>为<code>~/.local/share/dv</code>，<code>OS</code>为<code>linux</code></td></tr>
+<tr><td><code>fn index_set(&amp;mut self, key: &amp;str, value: &amp;str)</code></td><td>设置<code>Config</code>的成员变量</td></tr>
+</tbody></table>
+<p>成员变量</p>
+<table><thead><tr><th>name</th><th>type</th><th>description</th></tr></thead><tbody>
+<tr><td><code>is_system</code></td><td><code>Option&lt;bool&gt;</code></td><td>设置用户是否为系统用户，如果不设置则当前用户自行探测，<code>ssh</code>目前为为<code>TODO</code>状态</td></tr>
+</tbody></table>
+<p>Example:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-storage z-type z-rust">let</span> cur <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-meta z-path z-rust">Config<span class="z-punctuation z-accessor z-rust">::</span></span>cur<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 创建当前用户的配置
+</span></span><span class="z-source z-rust">cur<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">[</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>HID<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-rust">]</span></span> <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>local_machine<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 修改当前用户的`HID`为`local_machine`
+</span></span><span class="z-source z-rust"><span class="z-storage z-type z-rust">let</span> ssh <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-meta z-path z-rust">Config<span class="z-punctuation z-accessor z-rust">::</span></span>ssh<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>host<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 创建ssh用户的配置
+</span></span><span class="z-source z-rust">ssh<span class="z-punctuation z-accessor z-dot z-rust">.</span>is_system <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-support z-type z-rust">Some</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-constant z-language z-rust">true</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 设置`ssh`用户为`root`用户
+</span></span></code></pre>
+<h4 id="os"><a class="zola-anchor" href="#os" aria-label="Anchor link for: os"><code>Os</code></a></h4>
+<p>成员函数</p>
+<table><thead><tr><th>sig</th><th>description</th></tr></thead><tbody>
+<tr><td><code>fn compat(&amp;self, oth: &amp;str) -&gt; bool</code></td><td>判断<code>Os</code>是否兼容于<code>oth</code>,如<code>linux</code>兼容于<code>unix</code></td></tr>
+<tr><td><code>fn as_str(&amp;self) -&gt; String</code></td><td>将<code>Os</code>转换为字符串</td></tr>
+</tbody></table>
+<p>Example:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-storage z-type z-rust">let</span> os <span class="z-keyword z-operator z-assignment z-rust">=</span> dv<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">os</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>this<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-keyword z-operator z-rust">?</span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 获取`this`用户的`Os`
+</span></span><span class="z-source z-rust">os<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">compat</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>linux<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span> <span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 判断`os`是否兼容于`linux`
+</span></span><span class="z-source z-rust"><span class="z-support z-macro z-rust">dbg!</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>os<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">as_str</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span> <span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 打印`os`的字符串表示
+</span></span></code></pre>
+<h4 id="packages"><a class="zola-anchor" href="#packages" aria-label="Anchor link for: packages"><code>Packages</code></a></h4>
+<p>成员函数</p>
+<table><thead><tr><th>sig</th><th>description</th></tr></thead><tbody>
+<tr><td><code>fn new() -&gt; Packages</code></td><td>创建一个新的<code>Packages</code></td></tr>
+<tr><td><code>fn add_assign(&amp;mut self, pkg: &amp;Packages)</code></td><td>合并另一个<code>Packages</code></td></tr>
+<tr><td><code>fn index_set(&amp;mut self, key: &amp;str, value: &amp;str)</code></td><td>设置包管理器对应的包</td></tr>
+</tbody></table>
+<p>Example:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-storage z-type z-rust">let</span> pkg <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-meta z-path z-rust">Packages<span class="z-punctuation z-accessor z-rust">::</span></span>new<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 创建一个新的`Packages`
+</span></span><span class="z-source z-rust">pkg<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">[</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>apt<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-rust">]</span></span> <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>zellij<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 设置`apt`包管理器对应的包为`zellij`
+</span></span><span class="z-source z-rust">pkg<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">[</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>pacman<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-rust">]</span></span> <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>zellij<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 设置`pacman`包管理器对应的包为`zellij`
+</span></span><span class="z-source z-rust"><span class="z-storage z-type z-rust">let</span> pkg2 <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-meta z-path z-rust">Packages<span class="z-punctuation z-accessor z-rust">::</span></span>new<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 创建另一个新的`Packages`
+</span></span><span class="z-source z-rust">pkg2<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">[</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>apt<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-rust">]</span></span> <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>alacritty<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 设置`apt`包管理器对应的包为`alacritty`
+</span></span><span class="z-source z-rust">pkg <span class="z-keyword z-operator z-assignment z-rust">+=</span> pkg2<span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 合并两个`Packages`
+</span></span></code></pre>
+<h4 id="dv"><a class="zola-anchor" href="#dv" aria-label="Anchor link for: dv"><code>Dv</code></a></h4>
+<p>成员函数</p>
+<table><thead><tr><th>sig</th><th>description</th><th>link</th></tr></thead><tbody>
+<tr><td><code>async fn add_user(id: &amp;str, user: Config) -&gt; Result&lt;(), Error&gt;</code></td><td>添加用户</td><td><a href="https://km0e.github.io/zh/dv4rune/#add-user">link</a></td></tr>
+<tr><td><code>async fn auto(id: &amp;str, service: &amp;str, action: &amp;str, args: Option&lt;&amp;str&gt;) -&gt; Result&lt;bool, Error&gt;</code></td><td>自动化任务</td><td><a href="https://km0e.github.io/zh/dv4rune/#auto">link</a></td></tr>
+<tr><td><code>async fn copy(id: &amp;str, src:(&amp;str, &amp;str), dst:(&amp;str, &amp;str), confirm: Option&lt;&amp;str&gt;) -&gt; Result&lt;bool, Error&gt;</code></td><td>拷贝文件</td><td><a href="https://km0e.github.io/zh/dv4rune/#copy">link</a></td></tr>
+<tr><td><code>async fn exec(id: &amp;str, shell: Option&lt;&amp;str&gt;, cmd: &amp;str) -&gt; Result&lt;bool, Error&gt;</code></td><td>执行命令</td><td><a href="https://km0e.github.io/zh/dv4rune/#exec">link</a></td></tr>
+<tr><td><code>load_src(id: &amp;str, path: &amp;str) -&gt; Result&lt;Vec, Error&gt;</code></td><td>加载源文件</td><td><a href="https://km0e.github.io/zh/dv4rune/#load-src">link</a></td></tr>
+<tr><td><code>async fn once(id: &amp;str, tid: &amp;str, f: fn() -&gt; Future&lt;Result&lt;(),Error&gt;&gt;) -&gt; Result&lt;bool, Error&gt;</code></td><td>执行一次</td><td><a href="https://km0e.github.io/zh/dv4rune/#once">link</a></td></tr>
+<tr><td><code>fn os(id: &amp;str) -&gt; Result&lt;Os, Error&gt;</code></td><td>获取用户的操作系统</td><td><a href="https://km0e.github.io/zh/dv4rune/#os">link</a></td></tr>
+<tr><td><code>async fn pm(id: &amp;str, pkg: Package) -&gt; Result&lt;bool, Error&gt;</code></td><td>包安装器</td><td><a href="https://km0e.github.io/zh/dv4rune/#pm">link</a></td></tr>
+<tr><td><code>async fn refresh(id: &amp;str, key: &amp;str) -&gt; Result&lt;(), Error&gt;</code></td><td>刷新某些内置的机制</td><td><a href="https://km0e.github.io/zh/dv4rune/#refresh">link</a></td></tr>
+</tbody></table>
+<h5 id="add-user"><a class="zola-anchor" href="#add-user" aria-label="Anchor link for: add-user"><code>add_user</code></a></h5>
+<p>添加一个用户，用户的配置可以是当前用户或<code>ssh</code>用户。</p>
+<p>Example:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust">dv<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">add_user</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>this<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-separator z-rust">,</span> <span class="z-meta z-path z-rust">Config<span class="z-punctuation z-accessor z-rust">::</span></span>cur<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-keyword z-operator z-rust">?</span><span class="z-punctuation z-terminator z-rust">;</span>
+</span><span class="z-source z-rust">dv<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">add_user</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>system<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-separator z-rust">,</span> <span class="z-meta z-path z-rust">Config<span class="z-punctuation z-accessor z-rust">::</span></span>ssh<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>system<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-keyword z-operator z-rust">?</span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></code></pre>
+<h5 id="auto"><a class="zola-anchor" href="#auto" aria-label="Anchor link for: auto"><code>auto</code></a></h5>
+<p>对指定的服务执行指定的动作，动作可以是<code>setup</code>，<code>reload</code>，<code>destroy</code>。</p>
+<p>平台支持：</p>
+<ul>
+<li>
+<p><code>current</code></p>
+<ul>
+<li>
+<p><code>linux</code>: 使用<a rel="noopener" target="_blank" href="https://wiki.archlinux.org/title/Systemd"><code>systemd</code></a>作为后端实现</p>
+<table><thead><tr><th>action</th><th>description</th></tr></thead><tbody>
+<tr><td>setup</td><td>理解为<code>enable</code></td></tr>
+<tr><td>reload</td><td>理解为<code>reload_or_restart</code></td></tr>
+<tr><td>destroy</td><td>理解为<code>disable</code></td></tr>
+</tbody></table>
+</li>
+<li>
+<p><code>windows</code>: 使用<a rel="noopener" target="_blank" href="https://learn.microsoft.com/en-us/windows/win32/services/using-services"><code>system service</code></a>作为后端实现（实验）</p>
+<table><thead><tr><th>action</th><th>description</th></tr></thead><tbody>
+<tr><td>setup</td><td>理解为<code>install enable start</code></td></tr>
+<tr><td>reload</td><td>理解为<code>stop start</code></td></tr>
+<tr><td>destroy</td><td>理解为<code>stop uninstall</code></td></tr>
+</tbody></table>
+</li>
+<li>
+<p><code>macos</code>: TODO</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>ssh</code></p>
+<ul>
+<li>
+<p><code>linux</code>: 使用<code>systemd</code>作为后端实现（systemctl）</p>
+<table><thead><tr><th>action</th><th>description</th></tr></thead><tbody>
+<tr><td>setup</td><td>理解为<code>enable</code></td></tr>
+<tr><td>reload</td><td>理解为<code>reload_or_restart</code></td></tr>
+<tr><td>destroy</td><td>理解为<code>disable</code></td></tr>
+</tbody></table>
+</li>
+<li>
+<p><code>windows</code>: TODO</p>
+</li>
+<li>
+<p><code>macos</code>: TODO</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust">dv<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">auto</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>this<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-separator z-rust">,</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>sshd<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-separator z-rust">,</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>reload<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-separator z-rust">,</span> <span class="z-support z-type z-rust">None</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-keyword z-operator z-rust">?</span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></code></pre>
+<h5 id="copy"><a class="zola-anchor" href="#copy" aria-label="Anchor link for: copy"><code>copy</code></a></h5>
+<p><code>copy</code>文件到指定的用户，<code>confirm</code>参数可以是<code>y</code>，<code>u</code>，<code>n</code>，分别表示覆盖，更新，不变。如果不指定<code>confirm</code>参数，则运行时会询问用户。</p>
+<p>路径规则</p>
+<ul>
+<li><code>~</code>会展开为用户的<code>home</code>目录</li>
+<li>尝试使用<code>variable</code>与环境变量展开，格式为<code>${var}</code></li>
+<li>相对路径会尝试使用<code>MOUNT</code>展开</li>
+<li>格式如下：</li>
+</ul>
+<table><thead><tr><th>src</th><th>dst</th><th>action</th><th>description</th></tr></thead><tbody>
+<tr><td>a/</td><td>b/</td><td>a/* -&gt; b/*</td><td>拷贝目录下所有文件到目标目录</td></tr>
+<tr><td>a/</td><td>b</td><td>a/* -&gt; b/*</td><td>拷贝目录下所有文件到目标目录</td></tr>
+<tr><td>a</td><td>b/</td><td>a -&gt; b/a</td><td>拷贝目录/文件到目标目录</td></tr>
+<tr><td>a</td><td>b</td><td>a -&gt; b</td><td>拷贝目录（文件）到目标路径</td></tr>
+</tbody></table>
+<p><strong><em>注意</em></strong>：实际上是通过两个文件的<code>mtime</code>来判断文件是否需要更新</p>
+<ul>
+<li>源文件<code>mtime</code>变化则尝试覆盖</li>
+<li>目标文件<code>mtime</code>变化则尝试更新</li>
+</ul>
+<h5 id="exec"><a class="zola-anchor" href="#exec" aria-label="Anchor link for: exec"><code>exec</code></a></h5>
+<p>执行命令或脚本，<code>shell</code>参数可以是<code>None</code>或<code>shell</code>的路径，如果<code>shell</code>为<code>None</code>，则直接执行命令，如果<code>shell</code>不为<code>None</code>，则将命令作为脚本传入<code>shell</code>执行。</p>
+<p>Example:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust">dv<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">exec</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>this<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-separator z-rust">,</span> <span class="z-support z-type z-rust">None</span><span class="z-punctuation z-separator z-rust">,</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>echo hello<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-keyword z-operator z-rust">?</span><span class="z-punctuation z-terminator z-rust">;</span>
+</span><span class="z-source z-rust">dv<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">exec</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>this<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-separator z-rust">,</span> <span class="z-support z-type z-rust">Some</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>bash<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>if test -f ~/.bashrc; then echo &#39;exist&#39;; else echo &#39;not exist&#39;; fi<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-keyword z-operator z-rust">?</span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></code></pre>
+<h5 id="load-src"><a class="zola-anchor" href="#load-src" aria-label="Anchor link for: load-src"><code>load_src</code></a></h5>
+<p>加载源文件，返回一个<code>Vec</code>，每个元素为一个<code>String</code>，表示源文件的内容。</p>
+<h5 id="once"><a class="zola-anchor" href="#once" aria-label="Anchor link for: once"><code>once</code></a></h5>
+<p>确保某个函数只执行一次，<code>tid</code>参数为任务的<code>id</code>，<code>f</code>参数为函数指针，函数指针的返回值为<code>Future&lt;Result&lt;(),Error&gt;&gt;</code>类型。</p>
+<p>Example:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-storage z-type z-rust">let</span> pkg <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-meta z-path z-rust">Packages<span class="z-punctuation z-accessor z-rust">::</span></span>new<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 创建一个新的`Packages`
+</span></span><span class="z-source z-rust">pkg<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">[</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>apt<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-rust">]</span></span> <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>zellij<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 设置`apt`包管理器对应的包为`zellij`
+</span></span><span class="z-source z-rust">dv<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">once</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>app_install<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-separator z-rust">,</span> <span class="z-meta z-function z-closure z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">|</span></span></span><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">|</span></span></span><span class="z-meta z-function z-closure z-rust">dv<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">pm</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>this<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-separator z-rust">,</span> pkg</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-keyword z-operator z-rust">?</span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 这里会执行一次`pm`函数
+</span></span></code></pre>
+<h5 id="os-1"><a class="zola-anchor" href="#os-1" aria-label="Anchor link for: os-1"><code>os</code></a></h5>
+<p>获得用户的操作系统，返回一个<code>Os</code>类型的对象，包含了操作系统的名称。</p>
+<p>Example:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-storage z-type z-rust">let</span> os <span class="z-keyword z-operator z-assignment z-rust">=</span> dv<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">os</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>this<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-keyword z-operator z-rust">?</span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 获取`this`用户的`Os`
+</span></span></code></pre>
+<h5 id="pm"><a class="zola-anchor" href="#pm" aria-label="Anchor link for: pm"><code>pm</code></a></h5>
+<p>安装某个包，<code>pkg</code>参数为一个<code>Packages</code>类型的对象，表示要安装的包。</p>
+<p>Example:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-storage z-type z-rust">let</span> pkg <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-meta z-path z-rust">Packages<span class="z-punctuation z-accessor z-rust">::</span></span>new<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 创建一个新的`Packages`
+</span></span><span class="z-source z-rust">pkg<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">[</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>apt<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-rust">]</span></span> <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>zellij<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 设置`apt`包管理器对应的包为`zellij`
+</span></span><span class="z-source z-rust">pkg<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">[</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>pacman<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-rust">]</span></span> <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>zellij<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 设置`pacman`包管理器对应的包为`zellij`
+</span></span><span class="z-source z-rust">dv<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">pm</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>this<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-separator z-rust">,</span> pkg</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-keyword z-operator z-rust">?</span><span class="z-punctuation z-terminator z-rust">;</span><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 安装`zellij`
+</span></span></code></pre>
+<h5 id="refresh"><a class="zola-anchor" href="#refresh" aria-label="Anchor link for: refresh"><code>refresh</code></a></h5>
+<p>刷新某些内置的机制，<code>key</code>参数为要刷新的键值。如果<code>key</code>为空，则会刷新所有的键值。</p>
+<table><thead><tr><th>key</th><th>description</th></tr></thead><tbody>
+<tr><td><code>path</code></td><td>则会删除对应的<code>path</code>的<code>mtime</code>记录</td></tr>
+<tr><td><code>once_id</code></td><td>则会删除对应的<code>once_id</code>的记录</td></tr>
+</tbody></table>
+<h2 id="shi-yong"><a class="zola-anchor" href="#shi-yong" aria-label="Anchor link for: shi-yong">使用</a></h2>
+<p><code>cli</code>命令行工具的使用方法如下：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Simple</span></span><span class="z-meta z-function-call z-arguments z-shell"> CLI to use dv-api with rune</span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Usage:</span></span><span class="z-meta z-function-call z-arguments z-shell"> dv4rune <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>OPTIONS<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span> <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>ENTRY<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span> <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>RARGS<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span>...</span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Arguments:</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">[ENTRY]</span></span><span class="z-meta z-function-call z-arguments z-shell">     The entry point of the script <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>default: main<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">[RARGS]...</span></span><span class="z-meta z-function-call z-arguments z-shell">  Arguments to pass to the entry point</span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Options:</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-d,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>directory</span> <span class="z-keyword z-operator z-assignment z-redirection z-shell">&lt;</span>DIRECTORY<span class="z-keyword z-operator z-assignment z-redirection z-shell">&gt;</span>  <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>default: /home/km/.config/dv/<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-c,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>config</span> <span class="z-keyword z-operator z-assignment z-redirection z-shell">&lt;</span>CONFIG<span class="z-keyword z-operator z-assignment z-redirection z-shell">&gt;</span>        The config file to use</span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-b,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>dbpath</span> <span class="z-keyword z-operator z-assignment z-redirection z-shell">&lt;</span>DBPATH<span class="z-keyword z-operator z-assignment z-redirection z-shell">&gt;</span>        Default is <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">directory</span></span>/.cache</span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-n,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>dry-run</span>                Do not actually modify anything</span>
+</span><span class="z-source z-shell z-bash">      <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">--direct-run</span></span><span class="z-meta z-function-call z-arguments z-shell">             Run the script directly without running the __build.rn script</span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-h,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>help</span>                   Print help</span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-V,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>version</span>                Print version</span>
+</span></code></pre>
+<p>相关文件</p>
+<table><thead><tr><th>file</th><th>description</th></tr></thead><tbody>
+<tr><td><code>.cache</code></td><td>缓存文件，默认路径为<code>$directory/.cache</code>，可通过<code>-b</code>指定</td></tr>
+<tr><td><code>config.rn</code></td><td>配置文件，默认路径为<code>$directory/config.rn</code>，可通过<code>-c</code>指定</td></tr>
+<tr><td><code>__build.rn</code></td><td>单独运行的<code>rune</code>文件，路径为<code>$directory/__build.rn</code></td></tr>
+</tbody></table>
+<p>Example:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> __build.rn
+</span></span><span class="z-source z-rust"><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 这是一个简单的示例
+</span></span><span class="z-source z-rust"><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 加载配置文件
+</span></span><span class="z-source z-rust"><span class="z-storage z-modifier z-rust">pub</span> async <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">main</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span>dv</span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    dv<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">add_user</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>r<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-separator z-rust">,</span> <span class="z-meta z-path z-rust">Config<span class="z-punctuation z-accessor z-rust">::</span></span>ssh<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>r<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-keyword z-operator z-rust">?</span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    dv<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">load_src</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>r<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-separator z-rust">,</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>rune/lib.rn<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> r:~/.local/share/dv/rune/lib.rn
+</span></span><span class="z-source z-rust"><span class="z-storage z-modifier z-rust">pub</span> async <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">setup_a</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span>dv</span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">  <span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 配置`a`应用
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span><span class="z-source z-rust"><span class="z-storage z-modifier z-rust">pub</span> async <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">setup_b</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span>dv</span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">  <span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> 配置`b`应用
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> config.rn
+</span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-modifier z-rust">pub</span> <span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">main</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span>dv</span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">  <span class="z-support z-function z-rust">setup_a</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>dv</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-keyword z-operator z-rust">?</span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">  <span class="z-support z-function z-rust">setup_b</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>dv</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-keyword z-operator z-rust">?</span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<h2 id="lu-xian-tu"><a class="zola-anchor" href="#lu-xian-tu" aria-label="Anchor link for: lu-xian-tu">路线图</a></h2>
+<h3 id="zhi-xing-jiao-ben"><a class="zola-anchor" href="#zhi-xing-jiao-ben" aria-label="Anchor link for: zhi-xing-jiao-ben">执行脚本</a></h3>
+<ul>
+<li>
+<p><input disabled="" type="checkbox" checked=""/>
+执行命令</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox" checked=""/>
+执行内嵌脚本</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"/>
+指定脚本文件</p>
+</li>
+</ul>
+<h3 id="wen-jian-cao-zuo"><a class="zola-anchor" href="#wen-jian-cao-zuo" aria-label="Anchor link for: wen-jian-cao-zuo">文件操作</a></h3>
+<ul>
+<li>
+<p><input disabled="" type="checkbox" checked=""/>
+拷贝文件</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox" checked=""/>
+拷贝目录</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"/>
+修改文件</p>
+</li>
+</ul>
+<h3 id="fu-wu-guan-li"><a class="zola-anchor" href="#fu-wu-guan-li" aria-label="Anchor link for: fu-wu-guan-li">服务管理</a></h3>
+<ul>
+<li>
+<p><input disabled="" type="checkbox" checked=""/>
+<code>linux</code>服务管理</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"/>
+<code>windows</code>服务管理</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"/>
+更多后端支持</p>
+</li>
+</ul>
+<h3 id="ying-yong-bao-guan-li"><a class="zola-anchor" href="#ying-yong-bao-guan-li" aria-label="Anchor link for: ying-yong-bao-guan-li">应用（包）管理</a></h3>
+<p><code>platform</code>支持：</p>
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+<code>apt</code></li>
+<li><input disabled="" type="checkbox" checked=""/>
+<code>pacman</code></li>
+<li><input disabled="" type="checkbox" checked=""/>
+<code>yay</code></li>
+<li><input disabled="" type="checkbox" checked=""/>
+<code>paru</code></li>
+</ul>
+<p>基础操作</p>
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+安装</li>
+<li><input disabled="" type="checkbox"/>
+卸载等其他操作</li>
+</ul>
+
+      <nav>
+        <div>
+          <a href="https://km0e.github.io/zh/blog/ubuntu-change-kernel/">&#8249; 更换Ubuntu内核</a>
+        </div>
+        <div>
+          <a href="https://km0e.github.io/zh/blog/soft-router/"> 软路由配置 &#8250;</a>
+        </div>
+      </nav>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">索引</a>
+        <div>
+          <a href="#jie-shao">介绍</a>
+        </div>
+        <div>
+          <a href="#api">API</a>
+        </div>
+        <div class="hpad">
+          <a href="#wai-bu-lei-xing"><small>- 外部类型</small></a>
+        </div>
+        <div>
+          <a href="#shi-yong">使用</a>
+        </div>
+        <div>
+          <a href="#lu-xian-tu">路线图</a>
+        </div>
+        <div class="hpad">
+          <a href="#zhi-xing-jiao-ben"><small>- 执行脚本</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#wen-jian-cao-zuo"><small>- 文件操作</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#fu-wu-guan-li"><small>- 服务管理</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#ying-yong-bao-guan-li"><small>- 应用（包）管理</small></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://km0e.github.io/zh/atom.xml" target="_blank" title="F Atom Feed"><i type="Button" class="svg rss" title="F Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://km0e.github.io/zh/about/"> 关于 </a>
+        <a class="rpad s90" href="https://km0e.github.io/zh/contact/"> 联系方式 </a>
+        <a class="rpad s90" href="https://km0e.github.io/zh/privacy/"> 隐私 </a>
+        <a class="rpad s90" href="https://km0e.github.io/sitemap.xml" target="_blank"> 导航 </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2025</span> F</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer><span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

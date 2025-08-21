@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>F - RUST</title>
+    <subtitle>Just a simple blog</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://km0e.github.io/tags/rust/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://km0e.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-03-06T17:03:15+00:00</updated>
+    <id>https://km0e.github.io/tags/rust/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Cargo Dependency Version</title>
+        <published>2025-03-06T17:03:15+00:00</published>
+        <updated>2025-03-06T17:03:15+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://km0e.github.io/faq/cargo-dep/"/>
+        <id>https://km0e.github.io/faq/cargo-dep/</id>
+        
+        <content type="html" xml:base="https://km0e.github.io/faq/cargo-dep/">&lt;h2 id=&quot;first&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#first&quot; aria-label=&quot;Anchor link for: first&quot;&gt;First&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;Check the version of the dependency you want to use. Get the repository URL of the dependency from &lt;code&gt;crates.io&lt;&#x2F;code&gt; and &lt;code&gt;tag&lt;&#x2F;code&gt;(or &lt;code&gt;commit&lt;&#x2F;code&gt; hash) of the version you want to use.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;second&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#second&quot; aria-label=&quot;Anchor link for: second&quot;&gt;Second&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;Write the dependency in the &lt;code&gt;Cargo.toml&lt;&#x2F;code&gt; file as follows:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;toml&quot; class=&quot;language-toml z-code&quot;&gt;&lt;code class=&quot;language-toml&quot; data-lang=&quot;toml&quot;&gt;&lt;span class=&quot;z-source z-toml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-table z-begin z-toml&quot;&gt;[&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-tag z-table z-toml&quot;&gt;&lt;span class=&quot;z-entity z-name z-table z-toml&quot;&gt;patch&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-table z-toml&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-table z-toml&quot;&gt;crates-io&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-table z-end z-toml&quot;&gt;]&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-toml&quot;&gt;&lt;span class=&quot;z-meta z-tag z-key z-toml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-toml&quot;&gt;crate_name&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-definition z-key-value z-toml&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-definition z-inline-table z-begin z-toml&quot;&gt;{&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-tag z-key z-toml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-toml&quot;&gt;git&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-definition z-key-value z-toml&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-basic z-toml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-toml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;url&lt;span class=&quot;z-punctuation z-definition z-string z-end z-toml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-inline-table z-toml&quot;&gt;,&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-tag z-key z-toml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-toml&quot;&gt;tag&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-definition z-key-value z-toml&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-basic z-toml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-toml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;version&lt;span class=&quot;z-punctuation z-definition z-string z-end z-toml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-definition z-inline-table z-end z-toml&quot;&gt;}&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Or&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;toml&quot; class=&quot;language-toml z-code&quot;&gt;&lt;code class=&quot;language-toml&quot; data-lang=&quot;toml&quot;&gt;&lt;span class=&quot;z-source z-toml&quot;&gt;&lt;span class=&quot;z-meta z-tag z-key z-toml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-toml&quot;&gt;crate_name&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-definition z-key-value z-toml&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-definition z-inline-table z-begin z-toml&quot;&gt;{&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-tag z-key z-toml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-toml&quot;&gt;git&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-definition z-key-value z-toml&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-basic z-toml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-toml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;url&lt;span class=&quot;z-punctuation z-definition z-string z-end z-toml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-inline-table z-toml&quot;&gt;,&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-tag z-key z-toml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-toml&quot;&gt;rev&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-definition z-key-value z-toml&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-basic z-toml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-toml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;commit&lt;span class=&quot;z-punctuation z-definition z-string z-end z-toml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-definition z-inline-table z-end z-toml&quot;&gt;}&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;third&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#third&quot; aria-label=&quot;Anchor link for: third&quot;&gt;Third&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;Run the following command to update the dependency:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;cargo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; update&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;p&lt;&#x2F;span&gt; crate_name&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+</feed>
