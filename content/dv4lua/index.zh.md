@@ -67,9 +67,13 @@ Note:
 以下是`Op`类的定义和成员函数：
 
 ```lua
+---@class ExecOptions
+---@field reply boolean # 是否为交互式命令
+---@field etor string? # 脚本执行器
+
 ---@class Op  # 定义 `Op` 类
 ---@field sync fun(this: Op, src: string, src_paths: string|table, dst: string, dst_paths: string|table, confirm: string?)
----@field exec fun(this: Op, uid: string, cmd: string, shell: string?)
+---@field exec fun(this: Op, uid: string, cmd: string, opt:boolean|ExecOptions?)
 ---@field os fun(this: Op, uid: string)
 ```
 
@@ -79,7 +83,8 @@ Example:
 dv.op:sync("this", "a/b/c", "remote_user", "a/b/c", "y") -- 拷贝文件
 dv.op:sync("this", {"a/b/c", "a/b/d"}, "remote_user", {"a/b/c", "a/b/d"}, "u") -- 拷贝多个文件
 dv.op:exec("this", "echo hello") -- 执行命令
-dv.op:exec("this", "echo hello", "bash") -- 使用 bash 执行命令
+dv.op:exec("this", "bash", true) -- 交互式执行 bash
+dv.op:exec("this", "echo hello", {reply = false, etor = "bash"}) -- 使用 bash 执行命令
 local os = dv.op:os("this") -- 获取用户的操作系统
 ```
 
