@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <script src="https://blog.101248.xyz/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://blog.101248.xyz/abridge.css?h=3ef6b36a1c3b5611bbd6" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://blog.101248.xyz" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.101248.xyz/manifest.min.json" />
+  <link rel="mask-icon" href="https://blog.101248.xyz/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://blog.101248.xyz/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.101248.xyz/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.101248.xyz/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.101248.xyz/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="笔记 Atom Feed" href="https://blog.101248.xyz/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>KVM 安装Ubuntu | 笔记</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="笔记" />
+  <meta name="description" content="KVM 安装Ubuntu" />
+  <link rel="canonical" href="https://blog.101248.xyz/blog/kvm/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.101248.xyz/blog/kvm/" />
+  <meta name="twitter:url" content="https://blog.101248.xyz/blog/kvm/" />
+  <meta property="og:description" content="KVM 安装Ubuntu" />
+  <meta name="twitter:description" content="KVM 安装Ubuntu" />
+  <meta property="og:title" content="KVM 安装Ubuntu | 笔记" />
+  <meta name="twitter:title" content="KVM 安装Ubuntu | 笔记" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="笔记" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-08-21" />
+  <script defer src="https://blog.101248.xyz/js/abridge.min.js?h=e0f9a881a665c86cce9c" integrity="sha384-QF67y7RnPkuDrJNQqn3/7nYxqxWkW/qHI7zN0WTES1aXbf+TotoByRBb835fUE6U"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.stemmer.support.min.js" integrity="sha384-f0MKdC/9ZSGTpDiuWusC0SbLXNCBp6NgzDZpjR/4UdHXAQBqvTEKyinnsa1wQ7oA"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.zh.min.js" integrity="sha384-rQz9F0qWFRA0H4snbYEJ0VLIgOuLas/bm/j2HVui1L3lPvV16lr5u0L1XqhUJV6a"></script>
+  <noscript><link rel="stylesheet" href="https://blog.101248.xyz/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://blog.101248.xyz" title="笔记">笔记</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://blog.101248.xyz/archive/"> Posts </a></li><li><a class="s110" href="https://blog.101248.xyz/tags/"> Tags </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>中文</span><a href="https://blog.101248.xyz/en/blog/kvm/">English</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+          <div>
+            <form autocomplete=off class="js" name="goSearch" id="searchbox">
+              <div class="searchd">
+                <input id="searchinput" type="text" placeholder="搜索" title="Search" />
+                <button type="submit" title="Search" class="svgs svgm search"></button>
+              </div>
+              <div class="results"><div id="suggestions"></div></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://blog.101248.xyz/blog/kvm/">KVM 安装Ubuntu</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> 八月 21, 2025 <span class="rpad"></span> #<a href="https://blog.101248.xyz/tags/note/">NOTE</a> </span>
+
+    
+
+
+<h2 id="xiang-guan"><a class="zola-anchor" href="#xiang-guan" aria-label="Anchor link for: xiang-guan">相关</a></h2>
+<h3 id="virbr0-qiao-jie-wang-luo-pei-zhi"><a class="zola-anchor" href="#virbr0-qiao-jie-wang-luo-pei-zhi" aria-label="Anchor link for: virbr0-qiao-jie-wang-luo-pei-zhi"><code>virbr0</code> 桥接网络配置</a></h3>
+<p><code>virbr0</code> 是 libvirt 默认创建的桥接网络接口，允许虚拟机通过宿主机的网络连接到外部网络。它通常配置为 NAT 模式，这意味着虚拟机可以访问外部网络，但外部网络无法直接访问虚拟机。
+配置文件位于 <code>/etc/libvirt/qemu/networks/default.xml</code>。</p>
+<h2 id="huan-jing"><a class="zola-anchor" href="#huan-jing" aria-label="Anchor link for: huan-jing">环境</a></h2>
+<h3 id="jian-cha-cpuxu-ni-hua-zhi-chi"><a class="zola-anchor" href="#jian-cha-cpuxu-ni-hua-zhi-chi" aria-label="Anchor link for: jian-cha-cpuxu-ni-hua-zhi-chi">检查CPU虚拟化支持</a></h3>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">grep</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>cE</span> <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>(vmx|svm)<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span> /proc/cpuinfo</span>
+</span></code></pre>
+<p>输出大于0表示支持。</p>
+<h3 id="an-zhuang-xiang-guan-ruan-jian-bao"><a class="zola-anchor" href="#an-zhuang-xiang-guan-ruan-jian-bao" aria-label="Anchor link for: an-zhuang-xiang-guan-ruan-jian-bao">安装相关软件包</a></h3>
+<h4 id="debian-ubuntu"><a class="zola-anchor" href="#debian-ubuntu" aria-label="Anchor link for: debian-ubuntu">Debian/Ubuntu</a></h4>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> apt<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>y</span> install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager cloud-image-utils</span>
+</span></code></pre>
+<h4 id="manjaro"><a class="zola-anchor" href="#manjaro" aria-label="Anchor link for: manjaro">Manjaro</a></h4>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> pacman<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>S</span> qemu libvirt virt-manager virt-viewer</span>
+</span></code></pre>
+<h3 id="tian-jia-dang-qian-yong-hu-dao-libvirt-he-kvm-zu"><a class="zola-anchor" href="#tian-jia-dang-qian-yong-hu-dao-libvirt-he-kvm-zu" aria-label="Anchor link for: tian-jia-dang-qian-yong-hu-dao-libvirt-he-kvm-zu">添加当前用户到 <code>libvirt</code> 和 <code>kvm</code> 组</a></h3>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> usermod<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>aG</span> libvirt <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">USER</span></span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> usermod<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>aG</span> kvm <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">USER</span></span></span>
+</span></code></pre>
+<h3 id="jian-cha-bing-qi-dong-libvirtd-fu-wu"><a class="zola-anchor" href="#jian-cha-bing-qi-dong-libvirtd-fu-wu" aria-label="Anchor link for: jian-cha-bing-qi-dong-libvirtd-fu-wu">检查并启动 <code>libvirtd</code> 服务</a></h3>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> systemctl status libvirtd</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> systemctl start libvirtd</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">kvm-ok  <span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell"> 仅Debian/Ubuntu</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span></span></span></code></pre>
+<h2 id="an-zhuang-ubuntuxu-ni-ji"><a class="zola-anchor" href="#an-zhuang-ubuntuxu-ni-ji" aria-label="Anchor link for: an-zhuang-ubuntuxu-ni-ji">安装Ubuntu虚拟机</a></h2>
+<h3 id="xia-zai-ubuntu-iso"><a class="zola-anchor" href="#xia-zai-ubuntu-iso" aria-label="Anchor link for: xia-zai-ubuntu-iso">下载Ubuntu ISO</a></h3>
+<ul>
+<li><a rel="noopener" target="_blank" href="https://launchpad.net/ubuntu/+mirror/mirror.nyist.edu.cn-release">国内镜像</a></li>
+</ul>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">wget</span></span><span class="z-meta z-function-call z-arguments z-shell"> https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img</span>
+</span></code></pre>
+<h3 id="zhun-bei-ying-pan"><a class="zola-anchor" href="#zhun-bei-ying-pan" aria-label="Anchor link for: zhun-bei-ying-pan">准备硬盘</a></h3>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">qemu-img</span></span><span class="z-meta z-function-call z-arguments z-shell"> create<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>F</span> qcow2<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>b</span> ./bionic-server-cloudimg-amd64.img<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>f</span> qcow2 ./np-ubuntu18.qcow2 40G</span>
+</span></code></pre>
+<h3 id="pei-zhi"><a class="zola-anchor" href="#pei-zhi" aria-label="Anchor link for: pei-zhi">配置</a></h3>
+<p>创建 <code>user-data</code> 文件：</p>
+<pre data-lang="yaml" class="language-yaml z-code"><code class="language-yaml" data-lang="yaml"><span class="z-source z-yaml"><span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span>cloud-config
+</span></span><span class="z-source z-yaml"><span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">hostname</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">np-ubuntu18</span>
+</span><span class="z-source z-yaml"><span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">manage_etc_hosts</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-constant z-language z-boolean z-yaml">true</span>
+</span><span class="z-source z-yaml"><span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">users</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
+</span><span class="z-source z-yaml">  <span class="z-punctuation z-definition z-block z-sequence z-item z-yaml">-</span> <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">name</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">phx2</span>
+</span><span class="z-source z-yaml">    <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">sudo</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">ALL=(ALL) NOPASSWD:ALL</span>
+</span><span class="z-source z-yaml">    <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">groups</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">users, admin</span>
+</span><span class="z-source z-yaml">    <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">home</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">/home/phx2</span>
+</span><span class="z-source z-yaml">    <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">shell</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">/bin/bash</span>
+</span><span class="z-source z-yaml">    <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">lock_passwd</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-constant z-language z-boolean z-yaml">false</span>
+</span><span class="z-source z-yaml"><span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">ssh_pwauth</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-constant z-language z-boolean z-yaml">true</span>
+</span><span class="z-source z-yaml"><span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">disable_root</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-constant z-language z-boolean z-yaml">false</span>
+</span><span class="z-source z-yaml"><span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">chpasswd</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
+</span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">list</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-keyword z-control z-flow z-block-scalar z-literal z-yaml">|</span>
+</span><span class="z-source z-yaml"><span class="z-string z-unquoted z-block z-yaml">    vmadm:password
+</span></span><span class="z-source z-yaml"><span class="z-string z-unquoted z-block z-yaml"></span>  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">expire</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-constant z-language z-boolean z-yaml">false</span>
+</span></code></pre>
+<p>按实际情况修改 <code>hostname</code>、<code>users</code> 和 <code>chpasswd</code>。</p>
+<p>创建 <code>meta-data</code> 空文件</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">touch</span></span><span class="z-meta z-function-call z-arguments z-shell"> meta-data</span>
+</span></code></pre>
+<h3 id="sheng-cheng-seed-wen-jian"><a class="zola-anchor" href="#sheng-cheng-seed-wen-jian" aria-label="Anchor link for: sheng-cheng-seed-wen-jian">生成 seed 文件</a></h3>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cloud-localds</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>v</span> ./np-ubuntu18-seed.qcow2 user-data meta-data</span>
+</span></code></pre>
+<h3 id="chuang-jian-xu-ni-ji"><a class="zola-anchor" href="#chuang-jian-xu-ni-ji" aria-label="Anchor link for: chuang-jian-xu-ni-ji">创建虚拟机</a></h3>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> virt-install<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>name</span> np-ubuntu18 <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>os-variant</span> ubuntu18.04 <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>vcpus</span> 2 <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>ram</span> 2048 <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>network</span> bridge=virbr0,model=virtio <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>disk</span> path=np-ubuntu18-seed.qcow2,device=disk <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>disk</span> path=/var/lib/libvirt/images/ubuntu18.qcow2,size=40,format=qcow2,backing_store=np-ubuntu18.qcow2 <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>import</span> <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>nographics</span> none</span>
+</span></code></pre>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell"> sudo virt-install --name np-ubuntu18 --os-variant ubuntu18.04 --vcpus 2 --ram 2048 --location $iso_path --network bridge=virbr0,model=virtio --graphics none --extra-args=&#39;console=ttyS0,115200n8 serial&#39; --disk path=/var/lib/libvirt/images/ubuntu18.qcow2,size=40,format=qcow2,bus=virtio</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span></code></pre>
+<ul>
+<li><code>--name</code>：虚拟机名称</li>
+<li><code>--os-variant</code>：操作系统版本</li>
+<li><code>--vcpus</code>：虚拟CPU数量</li>
+<li><code>--ram</code>：内存大小（MB）</li>
+<li><code>--location</code>：安装介质路径（ISO文件路径）</li>
+<li><code>--network</code>：网络配置，这里使用桥接模式</li>
+<li><code>--graphics none</code>：无图形界面，使用命令行安装</li>
+<li><code>--extra-args</code>：传递给安装程序的额外参数，这里配置为使用串口控制台</li>
+<li><code>--disk</code>：磁盘配置，这里创建一个40GB的QCOW2格式磁盘</li>
+</ul>
+<h3 id="wan-zheng-jiao-ben"><a class="zola-anchor" href="#wan-zheng-jiao-ben" aria-label="Anchor link for: wan-zheng-jiao-ben">完整脚本</a></h3>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-support z-function z-set z-shell">set</span></span><span class="z-meta z-function-call z-arguments z-shell"> <span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">-</span>e</span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-storage z-modifier z-shell">export</span> <span class="z-variable z-other z-readwrite z-assignment z-shell">VM_NAME</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">np-ubuntu18</span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-storage z-modifier z-shell">export</span> <span class="z-variable z-other z-readwrite z-assignment z-shell">UBUNTU_RELEASE</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">bionic</span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-storage z-modifier z-shell">export</span> <span class="z-variable z-other z-readwrite z-assignment z-shell">VM_IMAGE</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell"><span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">UBUNTU_RELEASE</span></span>-server-cloudimg-amd64.img</span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">wget</span></span><span class="z-meta z-function-call z-arguments z-shell"> https://mirror.nyist.edu.cn/ubuntu-cloud-images/<span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">UBUNTU_RELEASE</span></span>/current/<span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">UBUNTU_RELEASE</span></span>-server-cloudimg-amd64.img</span>
+</span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell"> qemu-img create -F qcow2 -b ./$VM_IMAGE -f qcow2 ./$VM_NAME.qcow2 10G</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell"> cat &gt;network-config &lt;&lt;EOF</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell"> ethernets:</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell">     $INTERFACE:</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell">         addresses:</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell">         - $IP_ADDR/24</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell">         dhcp4: false</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell">         gateway4: 192.168.122.1</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell">         match:</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell">             macaddress: $MAC_ADDR</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell">         nameservers:</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell">             addresses:</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell">             - 1.1.1.1</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell">             - 8.8.8.8</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell">         set-name: $INTERFACE</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell"> version: 2</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell"> EOF</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cat</span></span><span class="z-meta z-function-call z-arguments z-shell"> <span class="z-keyword z-operator z-assignment z-redirection z-shell">&gt;</span>user-data <span class="z-string z-unquoted z-heredoc z-shell"><span class="z-keyword z-operator z-assignment z-redirection z-shell">&lt;&lt;</span><span class="z-keyword z-control z-heredoc-token z-shell">EOF</span></span><span class="z-string z-unquoted z-heredoc z-shell">
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-string z-unquoted z-heredoc z-shell">#cloud-config
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-string z-unquoted z-heredoc z-shell">manage_etc_hosts: true
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-string z-unquoted z-heredoc z-shell">users:
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-string z-unquoted z-heredoc z-shell">  - name: vmadm
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-string z-unquoted z-heredoc z-shell">    sudo: ALL=(ALL) NOPASSWD:ALL
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-string z-unquoted z-heredoc z-shell">    groups: users, admin
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-string z-unquoted z-heredoc z-shell">    home: /home/vmadm
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-string z-unquoted z-heredoc z-shell">    shell: /bin/bash
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-string z-unquoted z-heredoc z-shell">    lock_passwd: false
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-string z-unquoted z-heredoc z-shell">ssh_pwauth: true
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-string z-unquoted z-heredoc z-shell">disable_root: false
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-string z-unquoted z-heredoc z-shell">chpasswd:
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-string z-unquoted z-heredoc z-shell">  list: |
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-string z-unquoted z-heredoc z-shell">    vmadm:vmadm
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-string z-unquoted z-heredoc z-shell">  expire: false
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-string z-unquoted z-heredoc z-shell"><span class="z-keyword z-control z-heredoc-token z-shell">EOF</span></span></span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">touch</span></span><span class="z-meta z-function-call z-arguments z-shell"> meta-data</span>
+</span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell"> cloud-localds -v --network-config=network-config ./$VM_NAME-seed.qcow2 user-data meta-data</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cloud-localds</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>v</span> ./<span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">VM_NAME</span></span>-seed.qcow2 user-data meta-data</span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">virt-install</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>connect</span> qemu:///system <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>virt-type</span> kvm <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>name</span> <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">VM_NAME</span></span> <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>ram</span> 1024 <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>vcpus</span><span class="z-keyword z-operator z-assignment z-option z-shell">=</span>2 <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>os-type</span> linux <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>os-variant</span> ubuntu18.04 <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>disk</span> path=/var/lib/libvirt/images/<span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">VM_NAME</span></span>.qcow2,size=40,format=qcow2,backing_store=<span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">VM_IMAGE</span></span> <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>disk</span> path=<span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">VM_NAME</span></span>-seed.qcow2,device=disk <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>import</span> <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>network</span> network=default,model=virtio <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell">  --</span>noautoconsole</span></span>
+</span></code></pre>
+<h2 id="an-zhuang-windows-10"><a class="zola-anchor" href="#an-zhuang-windows-10" aria-label="Anchor link for: an-zhuang-windows-10">安装 Windows 10</a></h2>
+<h3 id="zhun-bei"><a class="zola-anchor" href="#zhun-bei" aria-label="Anchor link for: zhun-bei">准备</a></h3>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-storage z-modifier z-shell">export</span> <span class="z-variable z-other z-readwrite z-assignment z-shell">ISO_PATH</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">/opt/kvm/iso</span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-storage z-modifier z-shell">export</span> <span class="z-variable z-other z-readwrite z-assignment z-shell">IMG_PATH</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">/opt/kvm/img</span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-storage z-modifier z-shell">export</span> <span class="z-variable z-other z-readwrite z-assignment z-shell">VM_NAME</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">win</span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> mkdir<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>p</span> <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">ISO_PATH</span></span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> mkdir<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>p</span> <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">IMG_PATH</span></span></span>
+</span></code></pre>
+<h3 id="xia-zai-windows-10-iso-he-virtio-qu-dong"><a class="zola-anchor" href="#xia-zai-windows-10-iso-he-virtio-qu-dong" aria-label="Anchor link for: xia-zai-windows-10-iso-he-virtio-qu-dong">下载 Windows 10 ISO 和 VirtIO 驱动</a></h3>
+<ul>
+<li>
+<p><a rel="noopener" target="_blank" href="https://www.microsoft.com/en-us/evalcenter/download-windows-10-enterprise">Windows 10 LTSC</a></p>
+</li>
+<li>
+<p><a rel="noopener" target="_blank" href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/">VirtIO 驱动</a></p>
+</li>
+</ul>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">wget</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>O</span> <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">ISO_PATH</span></span>/win10_ltsc.iso https://go.microsoft.com/fwlink/p/<span class="z-keyword z-operator z-regexp z-quantifier z-shell">?</span>LinkID=2195404</span><span class="z-keyword z-operator z-logical z-job z-shell">&amp;</span><span class="z-variable z-other z-readwrite z-assignment z-shell">clcid</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">0x409</span><span class="z-string z-unquoted z-shell">&amp;culture=en-us</span><span class="z-string z-unquoted z-shell">&amp;country=US</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">wget</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>O</span> <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">ISO_PATH</span></span>/virtio-win.iso https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.271-1/virtio-win.iso</span>
+</span></code></pre>
+<h3 id="an-zhuang"><a class="zola-anchor" href="#an-zhuang" aria-label="Anchor link for: an-zhuang">安装</a></h3>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> virt-install <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>name</span> <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">VM_NAME</span></span> <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>memory</span> 4096 <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>vcpus</span> 2 <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>os-variant</span> win10 <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>cdrom</span> <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">ISO_PATH</span></span>/win10_ltsc.iso <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>disk</span> path=<span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">ISO_PATH</span></span>/virtio-win.iso,device=cdrom <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>disk</span> path=<span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">IMG_PATH</span></span>/win.qcow2,size=60,format=qcow2,bus=virtio <span class="z-punctuation z-separator z-continuation z-line z-shell">\
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>network</span> network=default,model=virtio</span>
+</span></code></pre>
+<h3 id="zhu-yi"><a class="zola-anchor" href="#zhu-yi" aria-label="Anchor link for: zhu-yi">注意</a></h3>
+<h4 id="an-zhuang-shi-xu-yao-jia-zai-virtio-qu-dong"><a class="zola-anchor" href="#an-zhuang-shi-xu-yao-jia-zai-virtio-qu-dong" aria-label="Anchor link for: an-zhuang-shi-xu-yao-jia-zai-virtio-qu-dong">安装时需要加载 VirtIO 驱动</a></h4>
+<p>在安装过程中，当提示选择磁盘时，选择<code>加载驱动程序</code>，然后选择 VirtIO 驱动的<code>w10</code>目录</p>
+<h4 id="an-zhuang-wan-bi-zhi-hou-xu-yao-geng-xin-qu-dong"><a class="zola-anchor" href="#an-zhuang-wan-bi-zhi-hou-xu-yao-geng-xin-qu-dong" aria-label="Anchor link for: an-zhuang-wan-bi-zhi-hou-xu-yao-geng-xin-qu-dong">安装完毕之后需要更新驱动</a></h4>
+<ul>
+<li>打开<code>设备管理器</code></li>
+<li>右键点击需要更新的设备，选择<code>更新驱动程序</code></li>
+<li>选择<code>浏览计算机以查找驱动程序软件</code></li>
+<li>选择<code>D:\</code>（假设 VirtIO 驱动挂载在<code>D</code>盘）进行更新（根目录即可）</li>
+</ul>
+
+      <nav>
+        <div>
+          <a href="https://blog.101248.xyz/blog/kvm-pass-through/">&#8249; KVM 设备直通</a>
+        </div>
+        <div>
+          <a href="https://blog.101248.xyz/dv4lua/"> Dv4lua &#8250;</a>
+        </div>
+      </nav>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">索引</a>
+        <div>
+          <a href="#xiang-guan">相关</a>
+        </div>
+        <div class="hpad">
+          <a href="#virbr0-qiao-jie-wang-luo-pei-zhi"><small>- virbr0 桥接网络配置</small></a>
+        </div>
+        <div>
+          <a href="#huan-jing">环境</a>
+        </div>
+        <div class="hpad">
+          <a href="#jian-cha-cpuxu-ni-hua-zhi-chi"><small>- 检查CPU虚拟化支持</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#an-zhuang-xiang-guan-ruan-jian-bao"><small>- 安装相关软件包</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#tian-jia-dang-qian-yong-hu-dao-libvirt-he-kvm-zu"><small>- 添加当前用户到 libvirt 和 kvm 组</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#jian-cha-bing-qi-dong-libvirtd-fu-wu"><small>- 检查并启动 libvirtd 服务</small></a>
+        </div>
+        <div>
+          <a href="#an-zhuang-ubuntuxu-ni-ji">安装Ubuntu虚拟机</a>
+        </div>
+        <div class="hpad">
+          <a href="#xia-zai-ubuntu-iso"><small>- 下载Ubuntu ISO</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#zhun-bei-ying-pan"><small>- 准备硬盘</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#pei-zhi"><small>- 配置</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#sheng-cheng-seed-wen-jian"><small>- 生成 seed 文件</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#chuang-jian-xu-ni-ji"><small>- 创建虚拟机</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#wan-zheng-jiao-ben"><small>- 完整脚本</small></a>
+        </div>
+        <div>
+          <a href="#an-zhuang-windows-10">安装 Windows 10</a>
+        </div>
+        <div class="hpad">
+          <a href="#zhun-bei"><small>- 准备</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#xia-zai-windows-10-iso-he-virtio-qu-dong"><small>- 下载 Windows 10 ISO 和 VirtIO 驱动</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#an-zhuang"><small>- 安装</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#zhu-yi"><small>- 注意</small></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://blog.101248.xyz/atom.xml" target="_blank" title="笔记 Atom Feed"><i type="Button" class="svg rss" title="笔记 Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://blog.101248.xyz/about/"> About </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/contact/"> Contact </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/privacy/"> Privacy </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2025</span> 笔记</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer><span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>
