@@ -1,5 +1,5 @@
 +++
-date = 2025-02-25T10:58:17Z
+date = 2025-02-25T10:58:33Z
 description = "A simple CLI to use dv-api with toml/yaml/json"
 draft = false
 title = "Dv4cfg"
@@ -10,124 +10,123 @@ toc = true
 [taxonomies]
 tags = ["PRO"]
 +++
+## 手册
 
-## Usage
+### 配置
 
-### Config
+#### 基本属性
 
-#### Basic
-
-| name | necessity | type | default | description | todo |
+| 名称 |必要性 | 类型 | 默认值 | 描述 | 待定 |
 | --- |---| --- |--- | --- |---|
-| `id` | `opt` |`string`| | use to distinguish different vault | |
-| `local` | `opt` |`local_device`| | local device config | |
-| `ssh` | `opt` |`[ssh_device]`| | `ssh` device config | |
-| `group` | `opt` |`[task_group]`| | execution unit | |
-|<span id="auto_desc">`auto`</span> | `opt` |`[auto_task]`| | some daemon services or autostart applications  | |
-|<span id="copy_desc">`copy`</span> | `opt` |`[copy_task]`| | copy files/directories between devices | |
-|<span id="app_desc">`app`</span> | `opt` |`[app_task]`| | device package management  | |
-|<span id="exec_desc">`exec`</span> | `opt` |`[exec_task]`| | exec_desc">execute commands/script | |
+| `id` | 可选 |`string`| | 用于区分不同的存档 | 用于区分多个配置文件|
+| `local` | 可选 |`local_device`| | 本地设备配置 | |
+| `ssh` | 可选 |`[ssh_device]`| | `ssh`设备配置 | |
+| `group` | 可选 |`[task_group]`| | 以组为单位执行任务 | |
+| `auto` | 可选 |`[auto_task]`| | 用于自启动服务管理 | |
+| `copy` | 可选 |`[copy_task]`| | 用于拷贝文件 | |
+| `app` | 可选 |`[app_task]`| | 用于本机应用管理（包管理） | |
+| `exec` | 可选 |`[exec_task]`| | 执行命令（脚本） | |
 
-#### Device Config
+#### 设备配置
 
-Each device is composed of ordinary users and super users. Currently, users only have the current user and `ssh` users.
+每个设备由普通用户与超级用户组成，目前用户只有当前用户，与`ssh`用户两种。
 
-Current user (`local`) config as follows
+当前用户（local）配置如下
 
-| name | necessity | type | default | description | todo |
+| 名称 |必要性 | 类型 | 默认值 | 描述 | 待定|
 | --- |---| --- |--- | --- | --- |
-| `uid` | `opt`   | `string` |`this`|use to distinguish different user| |
-| `mount` | `opt`   | `path`   |`~/.config/dv`|relative path expansion in `copy_task`| |
+| `uid` | 可选   | `string` |`this`|用于区分用户，指代当前用户| |
+| `mount` | 可选   | `path`   |`~/.config/dv`|`copy_task`中相对路径展开| |
 
-`ssh` user (`ssh_user`) config as follows
+`ssh`用户（ssh_user）配置如下
 
-| name | necessity | type | default | description | todo |
+| 名称 |必要性 | 类型 | 默认值 | 描述 |待定|
 | --- |---| --- |--- | --- |---|
-| `uid` | `must`   | `string` | |use to distinguish different user| |
-| `host` | `must`   | `string`   | |The `Host` field in the `ssh_config` file is used to find the `ssh` configuration| |
-| `passwd` | `opt`   | `string`   | |`ssh` user passwd| |
+| `uid` | 必须   | `string` | |用于区分用户，指代`ssh`用户| |
+| `host` | 必须   | `string`   | |`ssh_config`文件中的`Host`，用于查找`ssh`配置| |
+| `passwd` | 可选   | `string`   | |`ssh`用户密码| |
 
-Local device config (`local_device`) as follows
+本地设备配置（local_device）如下
 
-| name | necessity | type | default | description | todo |
+| 名称 |必要性 | 类型 | 默认值 | 描述 | 待定|
 | --- |---| --- |--- | --- |---|
-| `hid` | `must`   | `string` |`local` |use to distinguish different user| |
-| `user` | `must`   | `local`   | |current user config| |
-| `system` | `opt`   | `ssh_user`   | |local device super user(administrator)| Temporarily reuse `ssh`, and may write a general `agent` in the future |
+| `hid` | 必须   | `string` |`local` |用于区分设备，指代本机| |
+| `user` | 必须   | `local`   | |本机用户配置| |
+| `system` | 可选   | `ssh_user`   | |本机超级用户（管理员）| 暂时复用`ssh`,未来可能写一个通用`agent` |
 
-`ssh` device config (`ssh_device`) as follows
+`ssh`设备配置（ssh_device）如下
 
-| name | necessity | type | default | description | todo |
+| 名称 |必要性 | 类型 | 默认值 | 描述 | 待定|
 | --- |---| --- |--- | --- |---|
-| `hid` | `must`   | `string` | |use to distinguish different user| |
-| `os` | `opt`   | `manjaro\|alpine\|...`   | |remote device os| |
-| `users` | `opt`   | `[ssh_user]`   | |`ssh` user config|  |
-| `system` | `opt`   | `ssh_user`   | |remote device super user(administrator)| |
+| `hid` | 必须   | `string` | |用于区分设备，指代远程设备| |
+| `os` | 可选   | `manjaro\|alpine\|...`   | |远程设备操作系统| |
+| `users` | 可选   | `[ssh_user]`   | |远程用户配置|  |
+| `system` | 可选   | `ssh_user`   | |远程设备超级用户（管理员）| |
 
-#### Basic Task
+#### 基本任务配置
 
-Each task has basic attributes (`task_attr`) as follows
+每个任务的基本属性（task_attr）如下
 
-| name | necessity | type | default | description | todo |
+| 名称 |必要性 | 类型 | 默认值 | 描述 | 待定|
 | --- |---| --- |--- | --- |---|
-| `id` | `must`   | `string` | |use to distinguish different user| |
-| `next` | `opt`   | `[string]`   | |indicates the topological relationship between tasks| |
+| `id` | 必须   | `string` | |用于区分任务| |
+| `next` | 可选   | `[string]`   | |表明任务之间的拓扑关系| |
 
-Currently, only the `next` relationship is supported between tasks, and more relationships may be supported in the future.
+目前任务之间只支持`next`关系，未来可能支持更多关系。
 
-The task target (`target`) type is as follows
+任务目标（target）类型如下
 
-| name | necessity | type | default | description | todo |
+| 名称 |必要性 | 类型 | 默认值 | 描述 | 待定|
 | --- |---| --- |--- | --- |---|
-| `src_uid` | `opt`   | `string` | |operation source| |
-| `dst_uid` | `opt`   | `string`   | |operation destination| |
+| `src_uid` | 可选   | `string` | |操作来源| |
+| `dst_uid` | 可选   | `string`   | |操作目标| |
 
-Auto start service (`auto_task`)
+自启动服务（auto_task）
 
-| name | necessity | type | default | description | todo |
+| 名称 |必要性 | 类型 | 默认值 | 描述 | 待定|
 | --- |---| --- |--- | --- |---|
-| `attr` | `must`   | `task_attr` | |basic attributes| |
-| `uid` | `opt`   | `string`   | |operation destination| |
-| `name` | `must`   | `string`   | |service name|  |
-| `action` | `must`   | `setup\|reload`   | |operation| |
+| `attr` | 必须   | `task_attr` | |任务基本属性| |
+| `uid` | 可选   | `string`   | |目标用户| |
+| `name` | 必须   | `string`   | |任务名称|  |
+| `action` | 必须   | `setup\|reload`   | |执行的动作| |
 
-File copy (`copy_task`)
+文件拷贝（copy_task）
 
-| name | necessity | type | default | description | todo |
+| 名称 |必要性 | 类型 | 默认值 | 描述 | 待定|
 | --- |---| --- |--- | --- |---|
-| `attr` | `must`   | `task_attr` | |basic attributes| |
-| `target` | `opt`   | `target`   | |operation destination| |
-| `pair` | `must`   | `[(string,string)]`   | |the path of the file to be copied|  |
+| `attr` | 必须   | `task_attr` | |任务基本属性| |
+| `target` | 可选   | `target`   | |操作用户| |
+| `pair` | 必须   | `[(string,string)]`   | |拷贝的文件|  |
 
-App management (`app_task`)
+软件管理（app_task）
 
-| name | necessity | type | default | description | todo |
+| 名称 |必要性 | 类型 | 默认值 | 描述 | 待定|
 | --- |---| --- |--- | --- |---|
-| `attr` | `must`   | `task_attr` | |basic attributes| |
-| `uid` | `opt`   | `string`   | |operation destination| |
-| `pkgs` | `must`   | `[string]`   | |apps need to be installed|  |
+| `attr` | 必须   | `task_attr` | |任务基本属性| |
+| `uid` | 可选   | `string`   | |目标用户| |
+| `pkgs` | 必须   | `[string]`   | |安装的软件|  |
 
-Execute command (`exec_task`)
+执行命令（exec_task）
 
-| name | necessity | type | default | description | todo |
+| 名称 |必要性 | 类型 | 默认值 | 描述 | 待定|
 | --- |---| --- |--- | --- |---|
-| `attr` | `must`   | `task_attr` | |basic attributes| |
-| `uid` | `opt`   | `string`   | |operation destination| |
-| `shell` | `opt`   | `string`   | |the `shell` used to execute command|  |
-| `command` | `must`   | `string`   | |commands|  |
+| `attr` | 必须   | `task_attr` | |任务基本属性| |
+| `uid` | 可选   | `string`   | |目标用户| |
+| `shell` | 可选   | `string`   | |执行命令使用的`shell`|  |
+| `command` | 必须   | `string`   | |执行的命令|  |
 
-#### Task Group
+#### 任务划分
 
-Cite (cite)
+引用（cite）
 
-| name | necessity | type | default | description | todo |
+| 名称 |必要性 | 类型 | 默认值 | 描述 | 待定|
 | --- |---| --- |--- | --- |---|
-| `attr` | `must`   | `task_attr` | |basic attributes| |
-| `target` | `opt`   | `target`   | |related users| |
+| `attr` | 必须   | `task_attr` | |引用基本属性| |
+| `target` | 可选   | `target`   | |操作用户| |
 
-The `id` of the basic attribute of the task to be referenced is the same as the `id` of the referenced task. You can reference task groups or individual tasks. `target` will fill the `target` of the referenced task, and `dst_uid` will fill the `uid` of the referenced task.
+引用基本属性的`id`与被引用任务的`id`相同。可以引用任务组，也可以引用单个任务。`target`将会填充引用任务的`target`，`dst_uid`填充引用任务的`uid`。
 
-<!-- e.g.
+举例：
 {{< code-toggle >}}
 app:
   attr:
@@ -142,7 +141,7 @@ group:
       target:
         dst_uid: 'this'
 {{< /code-toggle >}}
-will be replaced by
+将会替换为
 {{< code-toggle >}}
 group:
   id: 'group1'
@@ -152,23 +151,23 @@ group:
     uid: 'this'
     pkgs:
       - "fakeroot"
-{{< /code-toggle >}} -->
+{{< /code-toggle >}}
 
-Task group (`task_group`)
+任务分组（task_group）
 
-| name | necessity | type | default | description | todo |
+| 名称 |必要性 | 类型 | 默认值 | 描述 | 待定|
 | --- |---| --- |--- | --- |---|
-| `id` | `must`   | `string` | |use to distinguish different user(group)| |
-| `target` | `opt`   | `target`   | |related users| |
-| `cites` | `opt`   | `[cite]`   | | Other tasks referenced (groups)|  |
-| `auto`([see previous](#auto_desc)) |  | | | | |
-| `copy`([see previous](#copy_desc)) | | | | | |
-| `app`([see previous](#app_desc)) |  | | |  | |
-| `exec`([see previous](#exec_desc)) |  | | |  | |
+| `id` | 必须   | `string` | |区分不同任务（组）| |
+| `target` | 可选   | `target`   | |目标用户| |
+| `cites` | 可选   | `[cite]`   | |引用的其他任务（组）|  |
+| `auto` | 可选 |`[auto_task]`| | 用于自启动服务管理 | |
+| `copy` | 可选 |`[copy_task]`| | 用于拷贝文件 | |
+| `app` | 可选 |`[app_task]`| | 用于本机应用管理（包管理） | |
+| `exec` | 可选 |`[exec_task]`| | 执行命令（脚本） | |
 
-The grouped `taget` is the same as above, passed down level by level
+分组的`taget`同上，逐级向下传递。
 
-### Command
+### 命令行参数
 
 ```bash
 Simple CLI to use dv-api with toml/yaml/json
@@ -187,8 +186,8 @@ Options:
   -V, --version                Print version
 ```
 
-- `-d`：used to read the configuration file (`config.toml/yaml/json`) and `cache.db`
-- `-c`：used to specify the configuration file path, which takes precedence over the configuration file in the specified directory
+- `-d`：用于读取配置文件（`config.toml/yaml/json`）与`cache.db`
+- `-c`：用于指定配置文件路径，优先于指定目录下配置文件
 
 ```bash
 Print example config
@@ -202,7 +201,7 @@ Options:
   -h, --help  Print help
 ```
 
-`EXTENSION`：`opt`，used to specify the configuration file format (`toml/yaml/json`)
+`EXTENSION`：可选，用于指定配置文件格式（`toml/yaml/json`）
 
 ```bash
 Execute plan
@@ -217,5 +216,5 @@ Options:
   -h, --help     Print help
 ```
 
-- `PLAN_ID`：`opt`，used to specify the plan to be executed, currently supports task group `id`
-- `-n`：`opt`，used to test the execution plan, will not actually execute
+- `PLAN_ID`：可选，用于指定执行的计划，目前支持任务组`id`
+- `-n`：可选，用于测试执行计划，不会真正执行

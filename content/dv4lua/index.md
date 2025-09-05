@@ -23,69 +23,28 @@ Note:
 
 ## API
 
-### UM
+### Dv
 
-`UM`类提供了用户管理的功能，主要用于添加用户。
-
-以下是`UM`类的定义和成员函数：
+`Dv`类是整个API的核心，包含了用户管理（`um`）、配置文件管理（`dot`）和包管理（`pm`）等功能模块。
+以下是`Dv`类的定义和成员变量：
 
 ```lua
----@class UM
----@field add_cur fun(this: UM, cfg: table)  # 声明方法
----@field add_ssh fun(this: UM, uid: string, cfg: table)  # 声明方法
+---@class Dv        # `dv` 的类型
+---@field sync fun(this: Dv, src: string, src_paths: string|table, dest: string, dest_paths: string|table, confirm: string?)
+---@field dl fun(this: Dv, url: string, expire?: string): string
+---@field json fun(this: Dv, str: string|any): table|string
+---@field um fun(this: Dv):UM  # 关联 `um` 字段的类型
+---@field dot fun(this: Dv):Dot  # 关联 `dot` 字段的类型
+---@field pm fun(this: Dv):Pm  # 关联 `pm` 字段的类型
 ```
 
-`cfg`参数为用户配置表，可以任意添加字段。可以影响`dv`的行为字段如下：
-| name | value | description |
-| ------ | ------------ | ----------------------------------------- |
-| `hid` | any string | 用户所在的主机标识符，`cur`用户会自动设置为`local` |
-| `mount` | any string | 用户的挂载目录，影响文件操作的路径解析 |
-| `os` | `linux`/`windows`/`macos`/`unix`/`ubuntu`/`...` | 用户的操作系统，影响包管理器，变量加载，等等 |
+#### sync
 
 Example:
 
 ```lua
-dv.um:add_cur({
-    mount = "~/.local/share/dv",
-    os = "linux"
-})
-dv.um:add_ssh("remote_user", {
-    hid = "remote_machine",
-    mount = "~/.local/share/dv",
-    os = "linux"
-})
-```
-
-Note:
-
-- 即便设置了`os`，`dv`仍然会尝试探测用户的操作系统，并在必要时覆盖该值。目前`ssh`用户的操作系统探测只支持`linux`（且需要先设置`os`为`linux`），其他操作系统的探测为`TODO`状态。
-
-### Op
-
-`Op`类提供了一系列操作方法，主要用于执行命令、文件操作等。
-
-以下是`Op`类的定义和成员函数：
-
-```lua
----@class ExecOptions
----@field reply boolean # 是否为交互式命令
----@field etor string? # 脚本执行器
-
----@class Op  # 定义 `Op` 类
----@field sync fun(this: Op, src: string, src_paths: string|table, dst: string, dst_paths: string|table, confirm: string?)
----@field exec fun(this: Op, uid: string, cmd: string, opt:boolean|ExecOptions?)
----@field os fun(this: Op, uid: string)
-```
-
-Example:
-
-```lua
-dv.op:sync("this", "a/b/c", "remote_user", "a/b/c", "y") -- 拷贝文件
-dv.op:sync("this", {"a/b/c", "a/b/d"}, "remote_user", {"a/b/c", "a/b/d"}, "u") -- 拷贝多个文件
-dv.op:exec("this", "echo hello") -- 执行命令
-dv.op:exec("this", "bash", true) -- 交互式执行 bash
-dv.op:exec("this", "echo hello", {reply = false, etor = "bash"}) -- 使用 bash 执行命令
-local os = dv.op:os("this") -- 获取用户的操作系统
+dv:sync("this", "a/b/c", "remote_user", "a/b/c", "y") -- 拷贝文件
+dv:sync("this", {"a/b/c", "a/b/d"}, "remote_user", {"a/b/c", "a/b/d"}, "u") -- 拷贝多个文件
 ```
 
 路径首先会尝试使用`variable`与环境变量展开，格式为`${var}`，如果是相对路径，则还会尝试使用`mount`展开。
@@ -93,7 +52,7 @@ local os = dv.op:os("this") -- 获取用户的操作系统
 
 对于目录会扫描目录下的所有文件,复制文件行为规则如下：
 
-#### `Check`
+##### `Check`
 
 根据源文件与目标文件状态，检查可执行操作的类型。
 
@@ -106,7 +65,7 @@ local os = dv.op:os("this") -- 获取用户的操作系统
 | old  | old  | n      | 不变                       |
 | new  | new  | yu     | 可以覆盖文件，更新或者不变 |
 
-#### `Match`
+##### `Match`
 
 根据`confirm`参数，按顺序匹配可执行操作的类型。
 
@@ -123,9 +82,98 @@ Example:
 
 如果可以确定`result`则执行`result`操作，否则进入交互模式。
 
+##### `dl`
+
+Example:
+
+```lua
+dv:dl("https://example.com/file.txt", "1h") -- 下载文件，过期时间为1小时。格式参考这里[Duration](https://docs.rs/humantime/latest/humantime/)
+dv:dl("https://example.com/file.txt") -- 下载文件，默认更新
+```
+
+##### `json`
+
+Example:
+
+```lua
+local tbl = dv:json('{"key": "value"}') -- 解析 JSON 字符串为 Lua 表
+local str = dv:json({key = "value"}) -- 将 Lua 表转换为 JSON 字符串
+```
+
+##### um, dot, pm
+
+Example:
+
+```lua
+local um = dv:um()
+local dot = dv:dot()
+local pm = dv:pm()
+```
+
+### UM
+
+`UM`类提供了用户管理的功能，实际数据存储在`Dv`类中。
+
+以下是`UM`类的定义和成员函数：
+
+```lua
+---@class ExecOptions
+---@field reply boolean # 是否为交互式命令
+---@field etor string? # 脚本执行器
+
+---@class User
+---@field exec fun(this: User, cmd: string, opt:boolean|ExecOptions?)
+---@field read fun(this: User, path: string): string|nil
+---@field write fun(this: User, path: string, content: string)
+---@field user string
+---@field os string
+---@field [string] string # env variables or user config
+
+---@class UM
+---@field add_cur fun(this: UM, cfg: table)  # 声明方法
+---@field add_ssh fun(this: UM, uid: string, cfg: table)  # 声明方法
+---@field [string] User # 用户列表
+```
+
+`cfg`参数为用户配置表，可以任意添加字段。可以影响`dv`的行为字段如下：
+| name | value | description |
+| ------ | ------------ | ----------------------------------------- |
+| `hid` | any string | 用户所在的主机标识符，`cur`用户会自动设置为`local` |
+| `mount` | any string | 用户的挂载目录，影响文件操作的路径解析 |
+| `os` | `linux`/`windows`/`macos`/`unix`/`ubuntu`/`...` | 用户的操作系统，影响包管理器，变量加载，等等 |
+
+Example:
+
+```lua
+local um = dv:um()
+um:add_cur({
+    mount = "~/.local/share/dv",
+    os = "linux"
+})
+um:add_ssh("remote_user", {
+    hid = "remote_machine",
+    mount = "~/.local/share/dv",
+    os = "linux"
+})
+print(um["cur"].user) -- 输出当前用户
+print(um["remote_user"].user) -- 输出远程用户
+um["remote_user"]:exec("echo hello") -- 在远程用户下执行命令
+um["remote_user"]:exec("bash", true) -- 交互式执行 bash
+um["remote_user"]:exec("echo hello", {reply = false, etor = "bash"}) -- 使用 bash 执行命令
+um["remote_user"]:write("a.txt", "hello world") -- 写文件
+print(um["remote_user"]:read("a.txt")) -- 读文件
+```
+
+Note:
+
+- 即便设置了`os`，`dv`仍然会尝试探测用户的操作系统，并在必要时覆盖该值。目前`ssh`用户的操作系统探测只支持`linux`（且需要先设置`os`为`linux`），其他操作系统的探测为`TODO`状态。
+
 ### `Dot`
 
 `Dot`类提供了配置文件的管理功能，主要用于加载配置文件、备份配置文件等。
+
+注意所有配置文件相关数据均存储在此类中。
+
 以下是`Dot`类的定义和成员函数：
 
 ```lua
@@ -137,7 +185,7 @@ Example:
 ---@field upload fun(this: Dot, apps: table, uid: string)
 ```
 
-`confirm`方法用于配置复制文件时的默认方式，参见[`Op`](#op)
+`confirm`方法用于配置复制文件时的默认方式，参见[`Op`](#sync)
 
 `Schema`格式举例如下：
 
@@ -175,8 +223,6 @@ default = ["~/.config/fcitx5"]
 支持加载方式
 
 - `uid` + `path`：加载指定用户的配置文件，`path`为配置文件的路径。
-- `__network__` + `url`：加载网络配置文件，`url`为配置文件的URL。
-  - 参考 https://raw.githubusercontent.com/km0e/schema/main/dot.toml
 
 `Source`格式与`Schema`相同，举例如下：
 
@@ -203,16 +249,18 @@ data = ["fcitx5/data"]
 Example:
 
 ```lua
-dv.dot:add_schema("default", "path/to/schema.toml")
-dv.dot:add_schema("__network__", "https://raw.githubusercontent.com/km0e/schema/main/dot.toml")
-dv.dot:add_source("default", "path/to/source")
-dv.dot:sync({"fish", "alacritty", "fcitx5"}, "remote_user")
-dv.dot:upload({"fish", "alacritty", "fcitx5"}, "remote_user")
+local dot = dv:dot()
+dot:add_schema("default", "path/to/schema.toml")
+local schema = dv:dl("https://raw.githubusercontent.com/km0e/schema/main/dot.toml")
+dot:add_schema("cur", schema)
+dot:add_source("default", "path/to/source")
+dot:sync({"fish", "alacritty", "fcitx5"}, "remote_user")
+dot:upload({"fish", "alacritty", "fcitx5"}, "remote_user")
 ```
 
 ### `Pm`
 
-`Pm`类提供了一些包管理器的功能，主要用于安装、更新软件包。
+`Pm`类提供了一些包管理器的功能，主要用于安装、更新软件包，实际并没有存储任何数据。
 
 以下是`Pm`类的定义和成员函数：
 
@@ -240,14 +288,15 @@ Note：注意需要的是设备`hid`，而不是用户的`uid`。
 Example:
 
 ```lua
-dv.um:add_ssh("remote_user", {
+dv:um():add_ssh("remote_user", {
     hid = "remote_machine",
     mount = "~/.local/share/dv",
     os = "linux"
 })
-dv.pm:install("remote_machine", "git neovim", true) -- 安装 git 和 vim
-dv.pm:update("remote_machine", true) -- 更新软件包
-dv.pm:upgrade("remote_machine", true) -- 升级软件包
+local pm = dv:pm()
+pm:install("remote_machine", "git neovim", true) -- 安装 git 和 vim
+pm:update("remote_machine", true) -- 更新软件包
+pm:upgrade("remote_machine", true) -- 升级软件包
 ```
 
 ## `CLI`

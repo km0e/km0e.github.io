@@ -1,7 +1,7 @@
 +++
 date = 2025-08-21T16:42:40Z
 description = "KVM 安装Ubuntu"
-draft = true
+draft = false
 title = "KVM 安装Ubuntu"
 
 [extra]
@@ -20,27 +20,33 @@ tags = ["NOTE"]
 
 ## 环境
 
-Linux $host 5.15.0-138-generic #148~20.04.1-Ubuntu SMP Fri Mar 28 14:32:35 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
-
-## 准备KVM环境
-
 ### 检查CPU虚拟化支持
 
 ```bash
-egrep -c '(vmx|svm)' /proc/cpuinfo
+grep -cE '(vmx|svm)' /proc/cpuinfo
 ```
 
+输出大于0表示支持。
+
 ### 安装相关软件包
+
+#### Debian/Ubuntu
 
 ```bash
 sudo apt -y install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager cloud-image-utils
 ```
 
+#### Manjaro
+
+```bash
+sudo pacman -S qemu libvirt virt-manager virt-viewer
+```
+
 ### 添加当前用户到 `libvirt` 和 `kvm` 组
 
 ```bash
-sudo adduser $USER libvirt
-sudo adduser $USER kvm
+sudo usermod -aG libvirt $USER
+sudo usermod -aG kvm $USER
 ```
 
 ### 检查并启动 `libvirtd` 服务
@@ -48,7 +54,7 @@ sudo adduser $USER kvm
 ```bash
 sudo systemctl status libvirtd
 sudo systemctl start libvirtd
-kvm-ok
+kvm-ok  # 仅Debian/Ubuntu
 ```
 
 ## 安装Ubuntu虚拟机
@@ -132,7 +138,7 @@ sudo virt-install --name np-ubuntu18 \
 - `--extra-args`：传递给安装程序的额外参数，这里配置为使用串口控制台
 - `--disk`：磁盘配置，这里创建一个40GB的QCOW2格式磁盘
 
-## 完整脚本
+### 完整脚本
 
 ```bash
 set -e
@@ -193,3 +199,53 @@ virt-install --connect qemu:///system \
   --network network=default,model=virtio \
   --noautoconsole
 ```
+
+## 安装 Windows 10
+
+### 准备
+
+```bash
+export ISO_PATH=/opt/kvm/iso
+export IMG_PATH=/opt/kvm/img
+export VM_NAME=win
+sudo mkdir -p $ISO_PATH
+sudo mkdir -p $IMG_PATH
+```
+
+### 下载 Windows 10 ISO 和 VirtIO 驱动
+
+- [Windows 10 LTSC](https://www.microsoft.com/en-us/evalcenter/download-windows-10-enterprise)
+
+- [VirtIO 驱动](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/)
+
+```bash
+wget -O $ISO_PATH/win10_ltsc.iso https://go.microsoft.com/fwlink/p/?LinkID=2195404&clcid=0x409&culture=en-us&country=US
+wget -O $ISO_PATH/virtio-win.iso https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.271-1/virtio-win.iso
+```
+
+### 安装
+
+```bash
+sudo virt-install \
+ --name $VM_NAME \
+ --memory 4096 \
+ --vcpus 2 \
+ --os-variant win10 \
+ --cdrom $ISO_PATH/win10_ltsc.iso \
+ --disk path=$ISO_PATH/virtio-win.iso,device=cdrom \
+ --disk path=$IMG_PATH/win.qcow2,size=60,format=qcow2,bus=virtio \
+ --network network=default,model=virtio
+```
+
+### 注意
+
+#### 安装时需要加载 VirtIO 驱动
+
+在安装过程中，当提示选择磁盘时，选择`加载驱动程序`，然后选择 VirtIO 驱动的`w10`目录
+
+#### 安装完毕之后需要更新驱动
+
+- 打开`设备管理器`
+- 右键点击需要更新的设备，选择`更新驱动程序`
+- 选择`浏览计算机以查找驱动程序软件`
+- 选择`D:\`（假设 VirtIO 驱动挂载在`D`盘）进行更新（根目录即可）

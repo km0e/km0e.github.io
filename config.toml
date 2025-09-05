@@ -4,12 +4,12 @@ base_url = "https://blog.101248.xyz"
 # Also set index format = "elasticlunr_javascript", and in [extra] uglyurls = true, integrity = false
 # If you use the npm/node script then all you have to do is set search_library = "offline", and everything else is automatic.
 
-title = "F"
+title = "笔记"
 description = "Just a simple blog"
 #for SEO aim for 140-180 Characters
 theme = "abridge"
 
-default_language = "en"
+default_language = "zh"
 compile_sass = true
 minify_html = false
 build_search_index = true
@@ -29,10 +29,10 @@ taxonomies = [
 
 [search] # Options specific to elasticlunr search.
 # index format can be: elasticlunr_json or elasticlunr_javascript or fuse_json
-index_format = "elasticlunr_json"
-include_title = true              # include title of page/section in index
-include_description = true        # include description of page/section in index
-include_content = true            # include rendered content of page/section in index
+index_format = "fuse_json"
+include_title = true       # include title of page/section in index
+include_description = true # include description of page/section in index
+include_content = true     # include rendered content of page/section in index
 # truncate_content_length = 100 # Truncate at nth character. May be useful if index is getting too large.
 
 [markdown]
@@ -47,7 +47,7 @@ smart_punctuation = false          # `...` to `…`, `"quote"` to `“curly”` 
 insert_anchor_links = "heading"
 
 # Any Extra language you do not use, delete or comment out the extra language sections:
-[languages.zh]
+[languages.en]
 title = "F"
 description = "Just a simple blog"
 generate_feeds = true

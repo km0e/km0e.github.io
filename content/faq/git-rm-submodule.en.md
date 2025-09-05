@@ -1,14 +1,13 @@
 +++
-date = 2025-02-25T09:14:59Z
-description = "如何移除`Git`仓库中的子模块"
+date = 2025-02-25T09:08:53Z
+description = "How to remove a submodule from a git repository"
 draft = false
-title = "移除Git子模块"
+title = "git rm submodule"
 
 [taxonomies]
 tags = ["Git","FAQ"]
 +++
-
-原文: [Stackoverflow](https://stackoverflow.com/a/16162000)
+Original source: [Stackoverflow](https://stackoverflow.com/a/16162000)
 
 ```bash
 mv a/submodule a/submodule_tmp
