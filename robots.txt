@@ -1,0 +1,5 @@
+
+Sitemap: https://blog.101248.xyz/sitemap.xml
+User-Agent: *
+Allow: /
+Host: https://blog.101248.xyz

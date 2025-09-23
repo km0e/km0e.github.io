@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+    <title>笔记 - ROUTE</title>
+    <subtitle>Just a simple blog</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://blog.101248.xyz/tags/route/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://blog.101248.xyz"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-02-25T11:13:51+00:00</updated>
+    <id>https://blog.101248.xyz/tags/route/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>软路由配置</title>
+        <published>2025-02-25T11:13:51+00:00</published>
+        <updated>2025-02-25T11:13:51+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://blog.101248.xyz/blog/soft-router/"/>
+        <id>https://blog.101248.xyz/blog/soft-router/</id>
+        
+        <content type="html" xml:base="https://blog.101248.xyz/blog/soft-router/">&lt;h2 id=&quot;ji-pei-zhi-ruan-lu-you-de-guo-cheng&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#ji-pei-zhi-ruan-lu-you-de-guo-cheng&quot; aria-label=&quot;Anchor link for: ji-pei-zhi-ruan-lu-you-de-guo-cheng&quot;&gt;记配置软路由的过程&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;1-huan-jing&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#1-huan-jing&quot; aria-label=&quot;Anchor link for: 1-huan-jing&quot;&gt;1. 环境&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;使用修改后的[&lt;code&gt;bench.sh&lt;&#x2F;code&gt;]({{&amp;lt; ref &quot;utils&#x2F;index.zh-cn.md#1.1 linux 服务器测试脚本&quot; &amp;gt;}})脚本，探测到的环境如下：&lt;&#x2F;p&gt;
+ &lt;img src=&quot;https:&#x2F;&#x2F;blog.101248.xyz&#x2F;images&#x2F;image.png&quot; alt=&quot;image&quot; width=&quot;642&quot; height=&quot;360&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;h3 id=&quot;2-linuxpei-zhi&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#2-linuxpei-zhi&quot; aria-label=&quot;Anchor link for: 2-linuxpei-zhi&quot;&gt;2. Linux配置&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;换源，来自&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;help.mirrorz.org&#x2F;debian&#x2F;&quot;&gt;MirrorZ&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;su&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;c&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;cat &amp;lt;&amp;lt;&amp;#39;EOF&amp;#39; &amp;gt; &#x2F;etc&#x2F;apt&#x2F;sources.list
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;debian&#x2F; bookworm main contrib non-free non-free-firmware
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;# deb-src https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;debian&#x2F; bookworm main contrib non-free non-free-firmware
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;debian&#x2F; bookworm-updates main contrib non-free non-free-firmware
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;# deb-src https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;debian&#x2F; bookworm-updates main contrib non-free non-free-firmware
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;debian&#x2F; bookworm-backports main contrib non-free non-free-firmware
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;# deb-src https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;debian&#x2F; bookworm-backports main contrib non-free non-free-firmware
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;# 以下安全更新软件源包含了官方源与镜像站配置，如有需要可自行修改注释切换
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;debian-security bookworm-security main contrib non-free non-free-firmware
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;# deb-src https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;debian-security bookworm-security main contrib non-free non-free-firmware
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;# deb https:&#x2F;&#x2F;security.debian.org&#x2F;debian-security bookworm-security main contrib non-free non-free-firmware
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;# # deb-src https:&#x2F;&#x2F;security.debian.org&#x2F;debian-security bookworm-security main contrib non-free non-free-firmware
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;EOF&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;更新源&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;su&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;c&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;apt update &amp;amp;&amp;amp; apt upgrade -y&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;安装配置无密码&lt;code&gt;sudo&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;su&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;c&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;apt install sudo -y&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;su&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;c&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;echo &amp;#39;&lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-shell&quot;&gt;USER&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; ALL=(ALL) NOPASSWD: ALL&amp;#39; &amp;gt; &#x2F;etc&#x2F;sudoers.d&#x2F;&lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-shell&quot;&gt;USER&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;首先需要开启Linux内核的一些功能，以支持软路由的配置。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;开启&lt;code&gt;ipv4&lt;&#x2F;code&gt;转发&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; sed&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;i&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-single z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;s&#x2F;^#net.ipv4.ip_forward.*$&#x2F;net.ipv4.ip_forward=1&#x2F;g&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &#x2F;etc&#x2F;sysctl.conf&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 使配置生效&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; sysctl&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;p&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;3-pei-zhi-wang-kou&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#3-pei-zhi-wang-kou&quot; aria-label=&quot;Anchor link for: 3-pei-zhi-wang-kou&quot;&gt;3. 配置网口&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;查看本机网口&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;ip&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; link&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+ &lt;img src=&quot;https:&#x2F;&#x2F;blog.101248.xyz&#x2F;images&#x2F;image-1.png&quot; alt=&quot;image-1&quot; width=&quot;976&quot; height=&quot;183&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;p&gt;安装必要的工具&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt install bridge-utils isc-dhcp-server iptables&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;y&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;配置网口&lt;code&gt;enp2s0&lt;&#x2F;code&gt;为&lt;code&gt;WAN&lt;&#x2F;code&gt;口，&lt;code&gt;enp3s0&lt;&#x2F;code&gt;，&lt;code&gt;enp4s0&lt;&#x2F;code&gt;，&lt;code&gt;enp5s0&lt;&#x2F;code&gt;为&lt;code&gt;LAN&lt;&#x2F;code&gt;口。并且将&lt;code&gt;enp3s0&lt;&#x2F;code&gt;，&lt;code&gt;enp4s0&lt;&#x2F;code&gt;，&lt;code&gt;enp5s0&lt;&#x2F;code&gt;绑定为&lt;code&gt;br0&lt;&#x2F;code&gt;网桥。编辑&lt;code&gt;&#x2F;etc&#x2F;network&#x2F;interfaces&lt;&#x2F;code&gt;文件&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# This file describes the network interfaces available on your system
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# and how to activate them. For more information, see interfaces(5).
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;source &#x2F;etc&#x2F;network&#x2F;interfaces.d&#x2F;*
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# The loopback network interface
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;auto lo
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;iface lo inet loopback
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# The primary network interface
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;auto enp2s0
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;iface enp2s0 inet dhcp
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;auto br0
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;iface br0 inet static
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    address 10.1.0.1
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    netmask 255.255.0.0
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    bridge_ports enp3s0 enp4s0 enp5s0
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;配置&lt;code&gt;DHCP&lt;&#x2F;code&gt;服务，编辑&lt;code&gt;&#x2F;etc&#x2F;dhcp&#x2F;dhcpd.conf&lt;&#x2F;code&gt;文件&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# dhcpd.conf
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# Sample configuration file for ISC dhcpd
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# option definitions common to all supported networks...
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;option domain-name &amp;quot;example.org&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;option domain-name-servers ns1.example.org, ns2.example.org;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;default-lease-time 600;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;max-lease-time 7200;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# The ddns-updates-style parameter controls whether or not the server will
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# attempt to do a DNS update when a lease is confirmed. We default to the
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# behavior of the version 2 packages (&amp;#39;none&amp;#39;, since DHCP v2 didn&amp;#39;t
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# have support for DDNS.)
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;ddns-update-style none;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# If this DHCP server is the official DHCP server for the local
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# network, the authoritative directive should be uncommented.
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#authoritative;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# Use this to send dhcp log messages to a different log file (you also
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# have to hack syslog.conf to complete the redirection).
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#log-facility local7;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# No service will be given on this subnet, but declaring it helps the
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# DHCP server to understand the network topology.
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#subnet 10.152.187.0 netmask 255.255.255.0 {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#}
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# This is a very basic subnet declaration.
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#subnet 10.254.239.0 netmask 255.255.255.224 {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  range 10.254.239.10 10.254.239.20;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  option routers rtr-239-0-1.example.org, rtr-239-0-2.example.org;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#}
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# This declaration allows BOOTP clients to get dynamic addresses,
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# which we don&amp;#39;t really recommend.
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#subnet 10.254.239.32 netmask 255.255.255.224 {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  range dynamic-bootp 10.254.239.40 10.254.239.60;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  option broadcast-address 10.254.239.31;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  option routers rtr-239-32-1.example.org;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#}
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# A slightly different configuration for an internal subnet.
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#subnet 10.5.5.0 netmask 255.255.255.224 {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  range 10.5.5.26 10.5.5.30;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  option domain-name-servers ns1.internal.example.org;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  option domain-name &amp;quot;internal.example.org&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  option routers 10.5.5.1;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  option broadcast-address 10.5.5.31;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  default-lease-time 600;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  max-lease-time 7200;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#}
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# Hosts which require special configuration options can be listed in
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# host statements.   If no address is specified, the address will be
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# allocated dynamically (if possible), but the host-specific information
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# will still come from the host declaration.
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#host passacaglia {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  hardware ethernet 0:0:c0:5d:bd:95;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  filename &amp;quot;vmunix.passacaglia&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  server-name &amp;quot;toccata.example.com&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#}
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# Fixed IP addresses can also be specified for hosts.   These addresses
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# should not also be listed as being available for dynamic assignment.
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# Hosts for which fixed IP addresses have been specified can boot using
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# BOOTP or DHCP.   Hosts for which no fixed address is specified can only
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# be booted with DHCP, unless there is an address range on the subnet
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# to which a BOOTP client is connected which has the dynamic-bootp flag
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# set.
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#host fantasia {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  hardware ethernet 08:00:07:26:c0:a5;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  fixed-address fantasia.example.com;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#}
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# You can declare a class of clients and then do address allocation
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# based on that.   The example below shows a case where all clients
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# in a certain class get addresses on the 10.17.224&#x2F;24 subnet, and all
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# other clients get addresses on the 10.0.29&#x2F;24 subnet.
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#class &amp;quot;foo&amp;quot; {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  match if substring (option vendor-class-identifier, 0, 4) = &amp;quot;SUNW&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#}
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#shared-network 224-29 {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  subnet 10.17.224.0 netmask 255.255.255.0 {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#    option routers rtr-224.example.org;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  }
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  subnet 10.0.29.0 netmask 255.255.255.0 {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#    option routers rtr-29.example.org;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  }
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  pool {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#    allow members of &amp;quot;foo&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#    range 10.17.224.10 10.17.224.250;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  }
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  pool {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#    deny members of &amp;quot;foo&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#    range 10.0.29.10 10.0.29.230;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#  }
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#}
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;subnet 10.1.0.0 netmask 255.255.0.0 {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  range 10.1.0.2 10.1.255.255;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  option subnet-mask 255.255.255.0;#这个理论上是不需要的，但是配另一个主机的时候需要，加上也没关系
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  option routers 10.1.0.1;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  option domain-name-servers 8.8.8.8;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;修改&lt;code&gt;&#x2F;etc&#x2F;default&#x2F;isc-dhcp-server&lt;&#x2F;code&gt;文件使&lt;code&gt;isc-dhcp-server&lt;&#x2F;code&gt;服务监听&lt;code&gt;br0&lt;&#x2F;code&gt;网桥&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;INTERFACESv4=&amp;quot;br0&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;配置&lt;code&gt;NAT&lt;&#x2F;code&gt;转发&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; 清空iptables规则&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; iptables&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;F&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; iptables&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;F&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;t&lt;&#x2F;span&gt; nat&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; iptables&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;t&lt;&#x2F;span&gt; nat&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;A&lt;&#x2F;span&gt; POSTROUTING&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;o&lt;&#x2F;span&gt; enp2s0&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;j&lt;&#x2F;span&gt; MASQUERADE&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; iptables&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;A&lt;&#x2F;span&gt; FORWARD&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;i&lt;&#x2F;span&gt; br0&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;o&lt;&#x2F;span&gt; enp2s0&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;j&lt;&#x2F;span&gt; ACCEPT&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; iptables&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;A&lt;&#x2F;span&gt; FORWARD&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;i&lt;&#x2F;span&gt; enp2s0&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;o&lt;&#x2F;span&gt; br0&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;m&lt;&#x2F;span&gt; state&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;state&lt;&#x2F;span&gt; RELATED,ESTABLISHED&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;j&lt;&#x2F;span&gt; ACCEPT&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;保存&lt;code&gt;iptables&lt;&#x2F;code&gt;规则&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; iptables-save &lt;span class=&quot;z-keyword z-operator z-assignment z-redirection z-shell&quot;&gt;&amp;gt;&lt;&#x2F;span&gt; &#x2F;etc&#x2F;iptables&#x2F;rules.v4&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;恢复时命令&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; iptables-restore &lt;span class=&quot;z-keyword z-operator z-assignment z-redirection z-shell&quot;&gt;&amp;lt;&lt;&#x2F;span&gt; &#x2F;etc&#x2F;iptables&#x2F;rules.v4&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;启动服务&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; systemctl restart networking isc-dhcp-server&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+</feed>
