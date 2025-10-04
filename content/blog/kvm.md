@@ -1,8 +1,8 @@
 +++
 date = 2025-08-21T16:42:40Z
-description = "KVM 安装Ubuntu"
+description = "KVM 安装 虚拟机 及相关配置"
 draft = false
-title = "KVM 安装Ubuntu"
+title = "KVM"
 
 [extra]
 toc = true
@@ -39,7 +39,7 @@ sudo apt -y install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils 
 #### Manjaro
 
 ```bash
-sudo pacman -S qemu libvirt virt-manager virt-viewer
+sudo pacman -S qemu libvirt virt-install
 ```
 
 ### 添加当前用户到 `libvirt` 和 `kvm` 组
@@ -49,11 +49,12 @@ sudo usermod -aG libvirt $USER
 sudo usermod -aG kvm $USER
 ```
 
-### 检查并启动 `libvirtd` 服务
+### 检查并启动 `libvirtd` 服务与默认网络
 
 ```bash
 sudo systemctl status libvirtd
 sudo systemctl start libvirtd
+sudo virsh net-start default # 启动默认网络，启动失败可重启设备（可能是某个服务未启动）
 kvm-ok  # 仅Debian/Ubuntu
 ```
 
@@ -200,9 +201,11 @@ virt-install --connect qemu:///system \
   --noautoconsole
 ```
 
+virt-install
+
 ## 安装 Windows 10
 
-### 准备
+### 准备virt-install
 
 ```bash
 export ISO_PATH=/opt/kvm/iso
@@ -249,3 +252,113 @@ sudo virt-install \
 - 右键点击需要更新的设备，选择`更新驱动程序`
 - 选择`浏览计算机以查找驱动程序软件`
 - 选择`D:\`（假设 VirtIO 驱动挂载在`D`盘）进行更新（根目录即可）
+
+#### 取消`virtio-win.iso`的挂载
+
+执行以下命令取消挂载：
+注意如果虚拟机正在运行，需要添加`--live`参数
+
+```bash
+sudo virsh change-media $VM_NAME $ISO_PATH/virtio-win.iso --eject --config
+```
+
+## 网络配置
+
+前面提到 `virbr0` 是 libvirt 默认创建的桥接网络接口，允许虚拟机通过宿主机的网络连接到外部网络。它通常配置为 NAT 模式，这意味着虚拟机可以访问外部网络，但外部网络无法直接访问虚拟机。
+
+我们可以通过配置桥接网络来实现虚拟机与宿主机在同一局域网内通信。
+
+### 配置桥接网络
+
+#### 配置宿主机桥接接口
+
+`libvirt` 桥接网络需要宿主机上有一个桥接接口。这里以创建一个名为 `virbr1` 的桥接接口为例。
+
+编辑宿主机的网络配置文件，一般需要根据具体的网络管理工具进行配置，例如`Netplan`、`NetworkManager`或`systemd-networkd`。这里以`systemd-networkd`为例：
+
+创建一个新的网络设备`/etc/systemd/network/20-bridge-br1.netdev`：
+
+```ini
+[NetDev]
+Name=virbr1
+Kind=bridge
+```
+
+创建桥接接口配置文件`/etc/systemd/network/30-bridge-br1.network`：
+
+```ini
+[Match]
+Name=virbr1
+
+[Network]
+DHCP=yes
+# 或者使用静态IP
+```
+
+修改宿主机的物理网络接口配置文件，可能是`/etc/systemd/network/89-ethernet.network`，具体文件名根据实际情况而定：
+
+```ini
+[Match]
+Name=enp5s0  # 替换为实际的物理网络接口名称
+
+[Network]
+Bridge=virbr1
+```
+
+然后重启`systemd-networkd`服务：
+
+```bash
+sudo systemctl restart systemd-networkd
+```
+
+#### 编辑`libvirt`网络配置文件
+
+新建一个桥接网络配置文件`br1.xml`，内容如下：
+
+```xml
+<network>
+  <name>br1</name>
+  <uuid>f1e12345-abcd-4e67-9876-123456abcdef</uuid>
+  <forward mode='bridge'/>
+  <bridge name='virbr1'/>
+</network>
+```
+
+- `name`：网络名称，可以自定义
+- `uuid`：网络的唯一标识符，可以使用`uuidgen`命令生成
+- `forward mode='bridge'`：设置为桥接模式
+- `bridge name`：桥接接口名称，需要与宿主机上的桥接接口名称一致
+
+#### 定义并启动新网络
+
+```bash
+sudo virsh net-define br1.xml
+sudo virsh net-start br1
+sudo virsh net-autostart br1
+```
+
+#### 配置虚拟机使用新网络
+
+在创建虚拟机时，使用`--network bridge=virbr1,model=virtio`参数指定使用新的桥接网络。
+
+或者直接修改已有虚拟机的网络配置：
+
+```bash
+sudo virsh edit <vm-name>
+```
+
+将网络部分修改为：
+
+```xml
+<interface type='bridge'>
+  <mac address='52:54:00:xx:xx:xx'/> <!-- 替换为实际的MAC地址 -->
+  <source bridge='virbr1'/>
+  <model type='virtio'/>
+</interface>
+```
+
+保存并退出后，重启虚拟机使配置生效：
+
+```bash
+sudo virsh reboot <vm-name>
+```

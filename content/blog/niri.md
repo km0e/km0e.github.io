@@ -36,7 +36,7 @@ LOGO=archlinux-logo
 ```bash
 sudo pacman -S --needed rustup base-devel git
 rustup default stable
-git clone https://aur.archlinux.org/paru.git /tmp/paru
+git clone --depth 1 https://aur.archlinux.org/paru.git /tmp/paru
 cd /tmp/paru
 makepkg -si
 ```
@@ -124,7 +124,7 @@ fc-cache -fv
 克隆配置
 
 ```bash
-mkdir ~/.config/quickshell && git clone https://github.com/AvengeMedia/DankMaterialShell.git ~/.config/quickshell/dms
+mkdir ~/.config/quickshell && git clone --depth 1 https://github.com/AvengeMedia/DankMaterialShell.git ~/.config/quickshell/dms
 ```
 
 安装最新`dms`：
