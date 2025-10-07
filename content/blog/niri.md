@@ -1,5 +1,6 @@
 +++
 date = 2025-09-22T13:00:50Z
+update-date = 2025-10-07T16:20:23Z
 description = "安装和配置Niri"
 draft = false
 title = "Niri"
@@ -53,10 +54,10 @@ paru -S niri
 
 ### Font
 
-安装中文字体。
+安装中文与表情字体：
 
 ```bash
-paru -S noto-fonts-cjk
+paru -S noto-fonts-cjk noto-fonts-emoji
 ```
 
 然后运行以下命令更新字体缓存：
@@ -70,6 +71,8 @@ fc-cache -fv
 ### 输入法
 
 安装`fcitx5-im`和`fcitx5-chinese-addons`：
+
+注意：这里会让你选音频提供者，如果担心音频问题，可以选择`pipewire`。
 
 ```bash
 paru -S fcitx5-im fcitx5-chinese-addons
@@ -103,12 +106,15 @@ environment {
 
 ## 进阶
 
+
+### DankMaterialShell
+
 使用一些已经配置好的`Niri`环境，这里选择`DankMaterialShell`：
 
 安装软件包：
 
 ```bash
-paru -S dms-shell-git matugen-bin
+paru -S dms-shell-git matugen-bin cava wl-clipboard cliphist brightnessctl
 ```
 
 安装字体
@@ -209,3 +215,63 @@ binds {
 ```
 
 注意：`binds`部分需要和已有的配置合并。
+
+### Display Manager
+
+自动登录`Niri`，这里使用`lemurs`。
+<!-- #! /bin/sh -->
+<!-- exec niri-session -->
+```bash
+paru -S lemurs
+
+echo "#!/bin/sh
+exec niri-session" | sudo tee /etc/lemurs/wayland/niri
+
+# Not needed if you don't have a window manager yet
+# sudo systemctl disable display-manager.service
+
+sudo systemctl enable lemurs.service
+```
+
+#### 安装
+
+```bash
+paru -S lemurs
+```
+
+#### 配置
+
+创建`/etc/lemurs/wayland/niri`文件：
+
+```bash
+echo "#!/bin/sh
+exec niri-session" | sudo tee /etc/lemurs/wayland/niri
+```
+
+启用`lemurs`服务：
+
+```bash
+sudo systemctl enable lemurs.service
+```
+
+如果你已经有一个显示管理器在运行，可能需要先禁用它：
+
+```bash
+sudo systemctl disable display-manager.service
+```
+
+
+
+## FAQ
+
+### Nvidia驱动
+
+参考：[Arch Wiki - NVIDIA](https://wiki.archlinux.org/title/NVIDIA)
+
+### 笔记本自带音频设备不能识别
+
+安装`sof-firmware`与`pipewire-pulse`：
+
+```bash
+paru -S sof-firmware pipewire-pulse
+```

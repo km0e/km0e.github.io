@@ -1,5 +1,6 @@
 +++
 date = 2025-02-25T11:13:51Z
+update-date = 2025-10-07T16:20:09Z
 description = "如何配置软路由"
 draft = false
 title = "软路由配置"
@@ -10,7 +11,7 @@ toc = true
 [taxonomies]
 tags = ["ROUTE","CFG"]
 +++
-## 记配置软路由的过程
+## 记配置软路由的过程v1
 
 ### 1. 环境
 
@@ -66,7 +67,7 @@ sudo sed -i 's/^#net.ipv4.ip_forward.*$/net.ipv4.ip_forward=1/g' /etc/sysctl.con
 sudo sysctl -p
 ```
 
-## 3. 配置网口
+### 3. 配置网口
 
 查看本机网口
 
@@ -106,7 +107,8 @@ iface br0 inet static
 
 ```
 
-配置`DHCP`服务，编辑`/etc/dhcp/dhcpd.conf`文件
+### 4.配置`DHCP`服务
+编辑`/etc/dhcp/dhcpd.conf`文件
 
 ```
 # dhcpd.conf
@@ -214,7 +216,7 @@ ddns-update-style none;
 #  pool {
 #    deny members of "foo";
 #    range 10.0.29.10 10.0.29.230;
-#  }
+#  }68.5.3 -- 192.168.5.255
 #}
 
 subnet 10.1.0.0 netmask 255.255.0.0 {
@@ -231,7 +233,7 @@ subnet 10.1.0.0 netmask 255.255.0.0 {
 INTERFACESv4="br0"
 ```
 
-配置`NAT`转发
+### 5.配置`NAT`转发
 
 ```bash
 # 清空iptables规则
@@ -255,8 +257,164 @@ sudo iptables-save > /etc/iptables/rules.v4
 sudo iptables-restore < /etc/iptables/rules.v4
 ```
 
-启动服务
+### 6.启动服务
 
 ```bash
 sudo systemctl restart networking isc-dhcp-server
 ```
+
+## 记配置软路由的过程v2
+
+### 1. 环境
+
+```bash
+km@router:~
+> fastfetch
+                            ....              km@router
+              .',:clooo:  .:looooo:.           ---------
+           .;looooooooc  .oooooooooo'          OS: Ubuntu 24.04.3 LTS x86_64
+        .;looooool:,''.  :ooooooooooc          Kernel: Linux 6.8.0-85-generic
+       ;looool;.         'oooooooooo,          Uptime: 19 mins
+      ;clool'             .cooooooc.  ,,       Packages: 765 (dpkg)
+         ...                ......  .:oo,      Shell: fish 3.7.0
+  .;clol:,.                        .loooo'     Terminal: /dev/pts/0
+ :ooooooooo,                        'ooool     CPU: Intel(R) Pentium(R) Silver N6000 (4) @ 3.30 GHz
+'ooooooooooo.                        loooo.    GPU: Intel UHD Graphics @ 0.85 GHz [Integrated]
+'ooooooooool                         coooo.    Memory: 755.86 MiB / 7.54 GiB (10%)
+ ,loooooooc.                        .loooo.    Swap: 0 B / 8.00 GiB (0%)
+   .,;;;'.                          ;ooooc     Disk (/): 33.22 GiB / 114.05 GiB (29%) - ext4
+       ...                         ,ooool.     Local IP (enp1s0): 10.158.0.20/22
+    .cooooc.              ..',,'.  .cooo.      Locale: en_US.UTF-8
+      ;ooooo:.           ;oooooooc.  :l.
+       .coooooc,..      coooooooooo.
+         .:ooooooolc:. .ooooooooooo'
+           .':loooooo;  ,oooooooooc
+               ..';::c'  .;loooo:'
+km@router:~
+> ip link
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: enp1s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+    link/ether 60:be:b4:19:26:40 brd ff:ff:ff:ff:ff:ff
+3: enp2s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+    link/ether 60:be:b4:19:26:41 brd ff:ff:ff:ff:ff:ff
+```
+
+### 2. 安装
+
+```bash
+sudo apt install -y iptables-netflow-dkms nftables dnsmasq
+```
+
+### 3. 配置网口
+
+可以通过`netplan`来配置网口
+下面是配置`enp1s0`为`WAN`口，`enp2s0`为`LAN`口，以`systemd-networkd`作为渲染器，并且配置子网为`192.168.5.1/24`
+
+
+```yaml
+# /etc/netplan/01-netcfg.yaml
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp1s0:
+      dhcp4: true
+    enp2s0:
+      addresses:
+        - 192.168.5.1/24
+```
+
+应用配置
+
+```bash
+sudo netplan apply
+```
+
+也可以通过`systemd-networkd`来配置网口
+
+```ini
+# /etc/systemd/network/20-wan.network
+[Match]
+Name=enp1s0
+
+[Network]
+DHCP=ipv4
+LinkLocalAddressing=ipv6
+
+[DHCP]
+UseMTU=true
+```
+```
+
+```ini
+# /etc/systemd/network/30-lan.network
+[Match]
+Name=enp2s0
+
+[Network]
+LinkLocalAddressing=ipv6
+Address=192.168.5.1/24
+```
+
+应用同时配置自动启动
+
+```bash
+sudo systemctl enable --now systemd-networkd
+```
+
+### 4. 配置`NAT`转发
+
+首先开启`ipv4`转发
+
+```bash
+sudo sed -i 's/^#net.ipv4.ip_forward.*$/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
+# 使配置生效
+sudo sysctl -p
+```
+使用`nftables`来配置`NAT`转发
+
+```nft
+#!/usr/sbin/nft -f
+
+#/etc/nftables.conf
+table ip nat {
+    chain postrouting {
+        type nat hook postrouting priority 100;
+        iif "enp2s0" oif "enp1s0" masquerade
+    }
+}
+```
+
+应用同时配置自动启动
+
+```bash
+sudo systemctl enable --now nftables
+```
+
+### 5.配置`DHCP`服务
+
+```ini
+# /etc/dnsmasq.d/lan.conf
+port=0              # 禁用 DNS 监听
+listen-address=192.168.5.1
+
+# DHCP 地址池
+dhcp-range=192.168.5.3,192.168.5.255,24h
+
+# 网关
+dhcp-option=3,192.168.5.1
+
+# DNS 服务器
+dhcp-option=6,223.5.5.5
+```
+
+应用同时配置自动启动
+
+```bash
+sudo systemctl enable --now dnsmasq
+```
+
+注意这里没有配置自带的`DNS`服务。
+
+
