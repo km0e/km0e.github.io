@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <script src="https://blog.101248.xyz/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://blog.101248.xyz/abridge.css?h=3ef6b36a1c3b5611bbd6" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://blog.101248.xyz" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.101248.xyz/manifest.min.json" />
+  <link rel="mask-icon" href="https://blog.101248.xyz/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://blog.101248.xyz/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.101248.xyz/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.101248.xyz/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.101248.xyz/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="笔记 Atom Feed" href="https://blog.101248.xyz/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Niri | 笔记</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="笔记" />
+  <meta name="description" content="安装和配置Niri" />
+  <link rel="canonical" href="https://blog.101248.xyz/blog/niri/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.101248.xyz/blog/niri/" />
+  <meta name="twitter:url" content="https://blog.101248.xyz/blog/niri/" />
+  <meta property="og:description" content="安装和配置Niri" />
+  <meta name="twitter:description" content="安装和配置Niri" />
+  <meta property="og:title" content="Niri | 笔记" />
+  <meta name="twitter:title" content="Niri | 笔记" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="笔记" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-10-07" />
+  <script defer src="https://blog.101248.xyz/js/abridge.min.js?h=e0f9a881a665c86cce9c" integrity="sha384-QF67y7RnPkuDrJNQqn3/7nYxqxWkW/qHI7zN0WTES1aXbf+TotoByRBb835fUE6U"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.stemmer.support.min.js" integrity="sha384-f0MKdC/9ZSGTpDiuWusC0SbLXNCBp6NgzDZpjR/4UdHXAQBqvTEKyinnsa1wQ7oA"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.zh.min.js" integrity="sha384-rQz9F0qWFRA0H4snbYEJ0VLIgOuLas/bm/j2HVui1L3lPvV16lr5u0L1XqhUJV6a"></script>
+  <noscript><link rel="stylesheet" href="https://blog.101248.xyz/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://blog.101248.xyz" title="笔记">笔记</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://blog.101248.xyz/archive/"> Posts </a></li><li><a class="s110" href="https://blog.101248.xyz/tags/"> Tags </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>中文</span><a href="https://blog.101248.xyz/en/blog/niri/">English</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+          <div>
+            <form autocomplete=off class="js" name="goSearch" id="searchbox">
+              <div class="searchd">
+                <input id="searchinput" type="text" placeholder="搜索" title="Search" />
+                <button type="submit" title="Search" class="svgs svgm search"></button>
+              </div>
+              <div class="results"><div id="suggestions"></div></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://blog.101248.xyz/blog/niri/">Niri</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> 九月 22, 2025 <span class="rpad"></span>更新: 十月 07, 2025 <span class="rpad"></span> #<a href="https://blog.101248.xyz/tags/note/">Note</a> </span>
+
+    
+
+
+<h2 id="huan-jing"><a class="zola-anchor" href="#huan-jing" aria-label="Anchor link for: huan-jing">环境</a></h2>
+<p>在<code>Arch Linux</code>下使用<code>Niri</code>，并通过<code>paru</code>进行安装。</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-variable z-other z-readwrite z-assignment z-shell">NAME</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell"><span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>Arch Linux<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-variable z-other z-readwrite z-assignment z-shell">PRETTY_NAME</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell"><span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>Arch Linux<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-variable z-other z-readwrite z-assignment z-shell">ID</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">arch</span>
+</span><span class="z-source z-shell z-bash"><span class="z-variable z-other z-readwrite z-assignment z-shell">BUILD_ID</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">rolling</span>
+</span><span class="z-source z-shell z-bash"><span class="z-variable z-other z-readwrite z-assignment z-shell">ANSI_COLOR</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell"><span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>38;2;23;147;209<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-variable z-other z-readwrite z-assignment z-shell">HOME_URL</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell"><span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>https://archlinux.org/<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-variable z-other z-readwrite z-assignment z-shell">DOCUMENTATION_URL</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell"><span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>https://wiki.archlinux.org/<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-variable z-other z-readwrite z-assignment z-shell">SUPPORT_URL</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell"><span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>https://bbs.archlinux.org/<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-variable z-other z-readwrite z-assignment z-shell">BUG_REPORT_URL</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell"><span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>https://gitlab.archlinux.org/groups/archlinux/-/issues<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-variable z-other z-readwrite z-assignment z-shell">PRIVACY_POLICY_URL</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell"><span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>https://terms.archlinux.org/docs/privacy-policy/<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-variable z-other z-readwrite z-assignment z-shell">LOGO</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">archlinux-logo</span>
+</span></code></pre>
+<h2 id="an-zhuang"><a class="zola-anchor" href="#an-zhuang" aria-label="Anchor link for: an-zhuang">安装</a></h2>
+<p>首先安装<code>paru</code>，如果已经安装可以跳过这一步：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> pacman<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>S</span><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>needed</span> rustup base-devel git</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">rustup</span></span><span class="z-meta z-function-call z-arguments z-shell"> default stable</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> clone<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>depth</span> 1 https://aur.archlinux.org/paru.git /tmp/paru</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-support z-function z-cd z-shell">cd</span></span><span class="z-meta z-function-call z-arguments z-shell"> /tmp/paru</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">makepkg</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>si</span></span>
+</span></code></pre>
+<p>然后使用<code>paru</code>安装<code>Niri</code>：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">paru</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>S</span> niri</span>
+</span></code></pre>
+<h2 id="pei-zhi"><a class="zola-anchor" href="#pei-zhi" aria-label="Anchor link for: pei-zhi">配置</a></h2>
+<p><code>Niri</code>的配置文件位于<code>~/.config/niri/config.kdl</code>。</p>
+<h3 id="font"><a class="zola-anchor" href="#font" aria-label="Anchor link for: font">Font</a></h3>
+<p>安装中文与表情字体：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">paru</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>S</span> noto-fonts-cjk noto-fonts-emoji</span>
+</span></code></pre>
+<p>然后运行以下命令更新字体缓存：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">fc-cache</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>fv</span></span>
+</span></code></pre>
+<p>退出<code>Niri</code>重启后，字体即可生效。</p>
+<h3 id="shu-ru-fa"><a class="zola-anchor" href="#shu-ru-fa" aria-label="Anchor link for: shu-ru-fa">输入法</a></h3>
+<p>安装<code>fcitx5-im</code>和<code>fcitx5-chinese-addons</code>：</p>
+<p>注意：这里会让你选音频提供者，如果担心音频问题，可以选择<code>pipewire</code>。</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">paru</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>S</span> fcitx5-im fcitx5-chinese-addons</span>
+</span></code></pre>
+<p>修改<code>Niri</code>的配置文件，添加以下内容：</p>
+<pre data-lang="kdl" class="language-kdl z-code"><code class="language-kdl" data-lang="kdl"><span class="z-text z-plain">environment {
+</span><span class="z-text z-plain">    XMODIFIERS &quot;@im=fcitx&quot;
+</span><span class="z-text z-plain">}
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">spawn-at-startup &quot;fcitx5&quot;
+</span></code></pre>
+<h3 id="chrome"><a class="zola-anchor" href="#chrome" aria-label="Anchor link for: chrome">Chrome</a></h3>
+<p>安装<code>Chrome</code>浏览器：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">paru</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>S</span> google-chrome</span>
+</span></code></pre>
+<p>修改<code>Niri</code>的配置文件，添加以下内容以启用<code>Wayland</code>与<code>IME</code>支持：</p>
+<pre data-lang="kdl" class="language-kdl z-code"><code class="language-kdl" data-lang="kdl"><span class="z-text z-plain">environment {
+</span><span class="z-text z-plain">    CHROME_FLAGS &quot;--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3&quot;
+</span><span class="z-text z-plain">}
+</span></code></pre>
+<h2 id="jin-jie"><a class="zola-anchor" href="#jin-jie" aria-label="Anchor link for: jin-jie">进阶</a></h2>
+<h3 id="dankmaterialshell"><a class="zola-anchor" href="#dankmaterialshell" aria-label="Anchor link for: dankmaterialshell">DankMaterialShell</a></h3>
+<p>使用一些已经配置好的<code>Niri</code>环境，这里选择<code>DankMaterialShell</code>：</p>
+<p>安装软件包：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">paru</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>S</span> dms-shell-git matugen-bin cava wl-clipboard cliphist brightnessctl</span>
+</span></code></pre>
+<p>安装字体</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">mkdir</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>p</span> <span class="z-meta z-group z-expansion z-tilde"><span class="z-variable z-language z-tilde z-shell">~</span></span>/.local/share/fonts</span> <span class="z-keyword z-operator z-logical z-and z-shell">&amp;&amp;</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">curl</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>L</span> <span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>https://github.com/google/material-design-icons/raw/master/variablefont/MaterialSymbolsRounded%5BFILL%2CGRAD%2Copsz%2Cwght%5D.ttf<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>o</span> <span class="z-meta z-group z-expansion z-tilde"><span class="z-variable z-language z-tilde z-shell">~</span></span>/.local/share/fonts/MaterialSymbolsRounded.ttf</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">curl</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>L</span> <span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>https://github.com/rsms/inter/raw/refs/tags/v4.1/docs/font-files/InterVariable.ttf<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>o</span> <span class="z-meta z-group z-expansion z-tilde"><span class="z-variable z-language z-tilde z-shell">~</span></span>/.local/share/fonts/InterVariable.ttf</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">curl</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>L</span> <span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>https://github.com/tonsky/FiraCode/releases/latest/download/FiraCode-Regular.ttf<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>o</span> <span class="z-meta z-group z-expansion z-tilde"><span class="z-variable z-language z-tilde z-shell">~</span></span>/.local/share/fonts/FiraCode-Regular.ttf</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">fc-cache</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>fv</span></span>
+</span></code></pre>
+<p>克隆配置</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">mkdir</span></span><span class="z-meta z-function-call z-arguments z-shell"> <span class="z-meta z-group z-expansion z-tilde"><span class="z-variable z-language z-tilde z-shell">~</span></span>/.config/quickshell</span> <span class="z-keyword z-operator z-logical z-and z-shell">&amp;&amp;</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> clone<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>depth</span> 1 https://github.com/AvengeMedia/DankMaterialShell.git <span class="z-meta z-group z-expansion z-tilde"><span class="z-variable z-language z-tilde z-shell">~</span></span>/.config/quickshell/dms</span>
+</span></code></pre>
+<p>安装最新<code>dms</code>：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> sh<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>c</span> <span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>curl -L https://github.com/AvengeMedia/danklinux/releases/latest/download/dms-<span class="z-meta z-group z-expansion z-command z-parens z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-punctuation z-section z-parens z-begin z-shell">(</span><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">uname</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>m</span></span> <span class="z-keyword z-operator z-logical z-pipe z-shell">|</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sed</span></span><span class="z-meta z-function-call z-arguments z-shell"> <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>s/x86_64/amd64/;s/aarch64/arm64/<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span></span><span class="z-punctuation z-section z-parens z-end z-shell">)</span></span>.gz | gunzip | tee /usr/local/bin/dms &gt; /dev/null &amp;&amp; chmod +x /usr/local/bin/dms<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span></span>
+</span></code></pre>
+<p>修改<code>Niri</code>的配置文件，添加以下内容：</p>
+<pre data-lang="kdl" class="language-kdl z-code"><code class="language-kdl" data-lang="kdl"><span class="z-text z-plain">// Required for clipboard history integration
+</span><span class="z-text z-plain">spawn-at-startup &quot;bash&quot; &quot;-c&quot; &quot;wl-paste --watch cliphist store &amp;&quot;
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">// Recommended (must install polkit-mate before hand) for elevation prompts
+</span><span class="z-text z-plain">spawn-at-startup &quot;/usr/lib/mate-polkit/polkit-mate-authentication-agent-1&quot;
+</span><span class="z-text z-plain">// This may be a different path on different distributions, the above is for the arch linux mate-polkit package
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">// Starts DankShell
+</span><span class="z-text z-plain">spawn-at-startup &quot;dms&quot; &quot;run&quot;
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">// If using niri newer than 271534e115e5915231c99df287bbfe396185924d (~aug 17 2025)
+</span><span class="z-text z-plain">// you can add this to disable built in config load errors since dank shell provides this
+</span><span class="z-text z-plain">config-notification {
+</span><span class="z-text z-plain">    disable-failed
+</span><span class="z-text z-plain">}
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">// Dank keybinds
+</span><span class="z-text z-plain">// 1. These should not be in conflict with any pre-existing keybindings
+</span><span class="z-text z-plain">// 2. You need to merge them with your existing config if you want to use these
+</span><span class="z-text z-plain">// 3. You can change the keys to whatever you want, if you prefer something different
+</span><span class="z-text z-plain">// 4. For the increment/decrement ones you can change the steps to whatever you like too
+</span><span class="z-text z-plain">binds {
+</span><span class="z-text z-plain">   Mod+Space hotkey-overlay-title=&quot;Application Launcher&quot; {
+</span><span class="z-text z-plain">      spawn &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;spotlight&quot; &quot;toggle&quot;;
+</span><span class="z-text z-plain">   }
+</span><span class="z-text z-plain">   Mod+V hotkey-overlay-title=&quot;Clipboard Manager&quot; {
+</span><span class="z-text z-plain">      spawn &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;clipboard&quot; &quot;toggle&quot;;
+</span><span class="z-text z-plain">   }
+</span><span class="z-text z-plain">   Mod+M hotkey-overlay-title=&quot;Task Manager&quot; {
+</span><span class="z-text z-plain">      spawn &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;processlist&quot; &quot;toggle&quot;;
+</span><span class="z-text z-plain">   }
+</span><span class="z-text z-plain">   Mod+N hotkey-overlay-title=&quot;Notification Center&quot; {
+</span><span class="z-text z-plain">      spawn &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;notifications&quot; &quot;toggle&quot;;
+</span><span class="z-text z-plain">   }
+</span><span class="z-text z-plain">   Mod+Comma hotkey-overlay-title=&quot;Settings&quot; {
+</span><span class="z-text z-plain">      spawn &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;settings&quot; &quot;toggle&quot;;
+</span><span class="z-text z-plain">   }
+</span><span class="z-text z-plain">   Mod+P hotkey-overlay-title=&quot;Notepad&quot; {
+</span><span class="z-text z-plain">      spawn &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;notepad&quot; &quot;toggle&quot;;
+</span><span class="z-text z-plain">   }
+</span><span class="z-text z-plain">   Super+Alt+L hotkey-overlay-title=&quot;Lock Screen&quot; {
+</span><span class="z-text z-plain">      spawn &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;lock&quot; &quot;lock&quot;;
+</span><span class="z-text z-plain">   }
+</span><span class="z-text z-plain">   Mod+X hotkey-overlay-title=&quot;Power Menu&quot; {
+</span><span class="z-text z-plain">      spawn &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;powermenu&quot; &quot;toggle&quot;;
+</span><span class="z-text z-plain">   }
+</span><span class="z-text z-plain">   XF86AudioRaiseVolume allow-when-locked=true {
+</span><span class="z-text z-plain">      spawn &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;audio&quot; &quot;increment&quot; &quot;3&quot;;
+</span><span class="z-text z-plain">   }
+</span><span class="z-text z-plain">   XF86AudioLowerVolume allow-when-locked=true {
+</span><span class="z-text z-plain">      spawn &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;audio&quot; &quot;decrement&quot; &quot;3&quot;;
+</span><span class="z-text z-plain">   }
+</span><span class="z-text z-plain">   XF86AudioMute allow-when-locked=true {
+</span><span class="z-text z-plain">      spawn &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;audio&quot; &quot;mute&quot;;
+</span><span class="z-text z-plain">   }
+</span><span class="z-text z-plain">   XF86AudioMicMute allow-when-locked=true {
+</span><span class="z-text z-plain">      spawn &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;audio&quot; &quot;micmute&quot;;
+</span><span class="z-text z-plain">   }
+</span><span class="z-text z-plain">   XF86MonBrightnessUp allow-when-locked=true {
+</span><span class="z-text z-plain">      spawn &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;brightness&quot; &quot;increment&quot; &quot;5&quot; &quot;&quot;;
+</span><span class="z-text z-plain">   }
+</span><span class="z-text z-plain">   // You can override the default device for e.g. keyboards by adding the device name to the last param
+</span><span class="z-text z-plain">   XF86MonBrightnessDown allow-when-locked=true {
+</span><span class="z-text z-plain">      spawn &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;brightness&quot; &quot;decrement&quot; &quot;5&quot; &quot;&quot;;
+</span><span class="z-text z-plain">   }
+</span><span class="z-text z-plain">   // Night mode toggle
+</span><span class="z-text z-plain">   Mod+Shift+N allow-when-locked=true {
+</span><span class="z-text z-plain">      spawn &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;night&quot; &quot;toggle&quot;;
+</span><span class="z-text z-plain">   }
+</span><span class="z-text z-plain">}
+</span></code></pre>
+<p>注意：<code>binds</code>部分需要和已有的配置合并。</p>
+<h3 id="display-manager"><a class="zola-anchor" href="#display-manager" aria-label="Anchor link for: display-manager">Display Manager</a></h3>
+<p>自动登录<code>Niri</code>，这里使用<code>lemurs</code>。</p>
+<!-- #! /bin/sh -->
+<!-- exec niri-session -->
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">paru</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>S</span> lemurs</span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-support z-function z-echo z-shell">echo</span></span><span class="z-meta z-function-call z-arguments z-shell"> <span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>#!/bin/sh
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-string z-quoted z-double z-shell">exec niri-session<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span></span> <span class="z-keyword z-operator z-logical z-pipe z-shell">|</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> tee /etc/lemurs/wayland/niri</span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell"> Not needed if you don&#39;t have a window manager yet</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell"> sudo systemctl disable display-manager.service</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> systemctl enable lemurs.service</span>
+</span></code></pre>
+<h4 id="an-zhuang-1"><a class="zola-anchor" href="#an-zhuang-1" aria-label="Anchor link for: an-zhuang-1">安装</a></h4>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">paru</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>S</span> lemurs</span>
+</span></code></pre>
+<h4 id="pei-zhi-1"><a class="zola-anchor" href="#pei-zhi-1" aria-label="Anchor link for: pei-zhi-1">配置</a></h4>
+<p>创建<code>/etc/lemurs/wayland/niri</code>文件：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-support z-function z-echo z-shell">echo</span></span><span class="z-meta z-function-call z-arguments z-shell"> <span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>#!/bin/sh
+</span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-arguments z-shell"><span class="z-string z-quoted z-double z-shell">exec niri-session<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span></span> <span class="z-keyword z-operator z-logical z-pipe z-shell">|</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> tee /etc/lemurs/wayland/niri</span>
+</span></code></pre>
+<p>启用<code>lemurs</code>服务：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> systemctl enable lemurs.service</span>
+</span></code></pre>
+<p>如果你已经有一个显示管理器在运行，可能需要先禁用它：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> systemctl disable display-manager.service</span>
+</span></code></pre>
+<h2 id="faq"><a class="zola-anchor" href="#faq" aria-label="Anchor link for: faq">FAQ</a></h2>
+<h3 id="nvidiaqu-dong"><a class="zola-anchor" href="#nvidiaqu-dong" aria-label="Anchor link for: nvidiaqu-dong">Nvidia驱动</a></h3>
+<p>参考：<a rel="noopener" target="_blank" href="https://wiki.archlinux.org/title/NVIDIA">Arch Wiki - NVIDIA</a></p>
+<h3 id="bi-ji-ben-zi-dai-yin-pin-she-bei-bu-neng-shi-bie"><a class="zola-anchor" href="#bi-ji-ben-zi-dai-yin-pin-she-bei-bu-neng-shi-bie" aria-label="Anchor link for: bi-ji-ben-zi-dai-yin-pin-she-bei-bu-neng-shi-bie">笔记本自带音频设备不能识别</a></h3>
+<p>安装<code>sof-firmware</code>与<code>pipewire-pulse</code>：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">paru</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>S</span> sof-firmware pipewire-pulse</span>
+</span></code></pre>
+
+      <nav>
+        <div>
+          <a href="https://blog.101248.xyz/blog/wildcard-domain-name/">&#8249; 通配符域名证书</a>
+        </div>
+        <div>
+          <a href="https://blog.101248.xyz/blog/kvm-pass-through/"> KVM 设备直通 &#8250;</a>
+        </div>
+      </nav>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">索引</a>
+        <div>
+          <a href="#huan-jing">环境</a>
+        </div>
+        <div>
+          <a href="#an-zhuang">安装</a>
+        </div>
+        <div>
+          <a href="#pei-zhi">配置</a>
+        </div>
+        <div class="hpad">
+          <a href="#font"><small>- Font</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#shu-ru-fa"><small>- 输入法</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#chrome"><small>- Chrome</small></a>
+        </div>
+        <div>
+          <a href="#jin-jie">进阶</a>
+        </div>
+        <div class="hpad">
+          <a href="#dankmaterialshell"><small>- DankMaterialShell</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#display-manager"><small>- Display Manager</small></a>
+        </div>
+        <div>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="hpad">
+          <a href="#nvidiaqu-dong"><small>- Nvidia驱动</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#bi-ji-ben-zi-dai-yin-pin-she-bei-bu-neng-shi-bie"><small>- 笔记本自带音频设备不能识别</small></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://blog.101248.xyz/atom.xml" target="_blank" title="笔记 Atom Feed"><i type="Button" class="svg rss" title="笔记 Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://blog.101248.xyz/about/"> About </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/contact/"> Contact </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/privacy/"> Privacy </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2025</span> 笔记</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer>
+</body>
+</html>
