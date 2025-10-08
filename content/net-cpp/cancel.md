@@ -1,6 +1,6 @@
 +++
 date = 2025-09-15T23:27:44Z
-update-date = 2025-09-14T15:01:26Z
+updated = 2025-09-14T15:01:26Z
 description = "讨论XSL 协程的 Cancel 机制"
 draft = true
 title = "XSL 协程 Cancel机制"

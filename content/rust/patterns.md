@@ -1,6 +1,6 @@
 +++
 date = 2025-09-14T13:48:30Z
-update-date = 2025-09-14T13:48:30Z
+updated = 2025-09-14T13:48:30Z
 description = "Rust Patterns 相关内容"
 draft = true
 title = "Rust Patterns"

@@ -1,6 +1,6 @@
 +++
 date = 2025-02-27T05:13:46Z
-update-date = 2025-04-02T13:39:29Z
+updated = 2025-04-02T13:39:29Z
 description = "A simple CLI to use dv-api with rune"
 draft = false
 title = "Dv4rune"

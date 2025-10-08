@@ -1,6 +1,6 @@
 +++
 date = 2025-02-25T11:13:51Z
-update-date = 2025-10-07T16:20:09Z
+updated = 2025-10-07T16:20:09Z
 description = "如何配置软路由"
 draft = false
 title = "软路由配置"

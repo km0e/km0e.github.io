@@ -1,6 +1,6 @@
 +++
 date = 2025-09-14T14:11:44Z
-update-date = 2025-09-14T14:42:12Z
+updated = 2025-09-14T14:42:12Z
 description = "Rust 变量共享专题"
 draft =true 
 title = "Rust 变量共享专题"

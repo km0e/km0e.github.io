@@ -1,6 +1,6 @@
 +++
 date = 2025-07-26T02:25:41Z
-update-date = 2025-08-06T15:58:22Z
+updated = 2025-08-06T15:58:22Z
 description = "A simple CLI to use dv-api with lua"
 draft = false
 title = "Dv4lua"

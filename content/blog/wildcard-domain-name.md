@@ -1,6 +1,6 @@
 +++
 date = 2025-10-07T16:20:45Z
-update-date = 2025-10-07T16:20:45Z
+updated = 2025-10-07T16:20:45Z
 description = "ACME 从 Google Domains 获取通配符域名证书"
 draft = false
 title = "通配符域名证书"

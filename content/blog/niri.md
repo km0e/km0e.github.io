@@ -1,6 +1,6 @@
 +++
 date = 2025-09-22T13:00:50Z
-update-date = 2025-10-07T16:20:23Z
+updated = 2025-10-07T16:20:23Z
 description = "安装和配置Niri"
 draft = false
 title = "Niri"
