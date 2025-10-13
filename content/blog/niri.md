@@ -1,6 +1,6 @@
 +++
 date = 2025-09-22T13:00:50Z
-updated = 2025-10-07T16:20:23Z
+updated = 2025-10-13T18:08:47Z
 description = "安装和配置Niri"
 draft = false
 title = "Niri"
@@ -96,13 +96,20 @@ spawn-at-startup "fcitx5"
 paru -S google-chrome
 ```
 
-修改`Niri`的配置文件，添加以下内容以启用`Wayland`与`IME`支持：
+添加以下内容到`~/.config/chrome-flags.conf`文件中：
 
-```kdl
-environment {
-    CHROME_FLAGS "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3"
-}
+```text
+--enable-features=AcceleratedVideoDecodeLinuxGL
+--enable-features=UseOzonePlatform
+--ozone-platform=wayland
+--enable-wayland-ime
+--wayland-text-input-version=3
 ```
+
+- 启用硬件加速
+- 启用`Wayland`支持
+- 启用`Wayland`输入法支持
+- 使用`Wayland`文本输入版本3
 
 ## 进阶
 
@@ -218,49 +225,13 @@ binds {
 
 ### Display Manager
 
-自动登录`Niri`，这里使用`lemurs`。
-<!-- #! /bin/sh -->
-<!-- exec niri-session -->
-```bash
-paru -S lemurs
-
-echo "#!/bin/sh
-exec niri-session" | sudo tee /etc/lemurs/wayland/niri
-
-# Not needed if you don't have a window manager yet
-# sudo systemctl disable display-manager.service
-
-sudo systemctl enable lemurs.service
-```
-
-#### 安装
+使用`greetd`作为显示管理器：
 
 ```bash
-paru -S lemurs
+dms greeter install
 ```
 
-#### 配置
-
-创建`/etc/lemurs/wayland/niri`文件：
-
-```bash
-echo "#!/bin/sh
-exec niri-session" | sudo tee /etc/lemurs/wayland/niri
-```
-
-启用`lemurs`服务：
-
-```bash
-sudo systemctl enable lemurs.service
-```
-
-如果你已经有一个显示管理器在运行，可能需要先禁用它：
-
-```bash
-sudo systemctl disable display-manager.service
-```
-
-
+按照说明启用`greetd`服务即可。
 
 ## FAQ
 
