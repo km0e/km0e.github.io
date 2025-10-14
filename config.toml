@@ -92,7 +92,7 @@ series_items = 9  # Max number of items to display in series list, use 0 to disa
 
 #arrow_pagination = true # If set to true then the pagination will use the old arrows mode, be sure to also enable the icons.
 
-meta_index = { position = "bottom", size = "s90", author = false, readtime = false, readstring = "min", date = true, updated = false, categories_tags = true, divider = "" }
+meta_index = { position = "bottom", size = "s90", author = false, readtime = false, readstring = "min", date = true, updated = true, categories_tags = true, divider = "" }
 meta_post = { position = "top", size = "s95", author = true, readtime = false, readstring = "min read", date = true, updated = true, categories_tags = true, divider = "" }
 
 hide_section_dates = false        # hides the date for sections that use posts.html as their template.
@@ -258,8 +258,13 @@ favicon16 = "favicon-16x16.png"        # favicon-16x16.png
 ###   hyvor talk
 ###############################################################################
 
-#comments.hyvor = "9366" # hyvor website id, comment out to disable.
-#comments.hyvorcolor = "os" # set the color property for hyvor
+comment_system = "remark42" # valid values are: false, "disqus", "hyvor", "remark42"
+
+# comments.hyvor = "9366"    # hyvor website id, comment out to disable.
+# comments.hyvorcolor = "os" # set the color property for hyvor
+
+comments.remark42 = "https://remark42.101248.xyz" # remark42 server url, comment out to disable.
+comments.remark42_site_id = "blog"                # remark42 site id
 
 
 ###############################################################################

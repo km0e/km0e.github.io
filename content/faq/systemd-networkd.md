@@ -9,7 +9,7 @@ title = "systemd-networkd"
 toc = true
 
 [taxonomies]
-tags = ["NETWORK"]
+tags = ["Network"]
 +++
 
 ## `/etc/systemd/network` 目录下配置文件未生效

@@ -1,6 +1,6 @@
 +++
 date = 2025-09-22T13:00:50Z
-updated = 2025-10-13T18:08:47Z
+updated = 2025-10-13T23:00:39Z
 description = "安装和配置Niri"
 draft = false
 title = "Niri"
@@ -9,7 +9,7 @@ title = "Niri"
 toc = true
 
 [taxonomies]
-tags = ["Note"]
+tags = ["Note","DE","Wayland"]
 +++
 
 ## 环境
@@ -116,34 +116,14 @@ paru -S google-chrome
 
 ### DankMaterialShell
 
+本节参考[GitHub - DankMaterialShell](https://github.com/AvengeMedia/DankMaterialShell?tab=readme-ov-file#dank-shell-installation)
+
 使用一些已经配置好的`Niri`环境，这里选择`DankMaterialShell`：
 
 安装软件包：
 
 ```bash
-paru -S dms-shell-git matugen-bin cava wl-clipboard cliphist brightnessctl
-```
-
-安装字体
-
-```bash
-mkdir -p ~/.local/share/fonts &&
-curl -L "https://github.com/google/material-design-icons/raw/master/variablefont/MaterialSymbolsRounded%5BFILL%2CGRAD%2Copsz%2Cwght%5D.ttf" -o ~/.local/share/fonts/MaterialSymbolsRounded.ttf
-curl -L "https://github.com/rsms/inter/raw/refs/tags/v4.1/docs/font-files/InterVariable.ttf" -o ~/.local/share/fonts/InterVariable.ttf
-curl -L "https://github.com/tonsky/FiraCode/releases/latest/download/FiraCode-Regular.ttf" -o ~/.local/share/fonts/FiraCode-Regular.ttf
-fc-cache -fv
-```
-
-克隆配置
-
-```bash
-mkdir ~/.config/quickshell && git clone --depth 1 https://github.com/AvengeMedia/DankMaterialShell.git ~/.config/quickshell/dms
-```
-
-安装最新`dms`：
-
-```bash
-sudo sh -c "curl -L https://github.com/AvengeMedia/danklinux/releases/latest/download/dms-$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').gz | gunzip | tee /usr/local/bin/dms > /dev/null && chmod +x /usr/local/bin/dms"
+paru -S dms-shell-git matugen-bin cava wl-clipboard cliphist brightnessctl dms-shell-niri
 ```
 
 修改`Niri`的配置文件，添加以下内容：
@@ -225,13 +205,66 @@ binds {
 
 ### Display Manager
 
-使用`greetd`作为显示管理器：
+自动登录`Niri`，这里使用`greetd`或`lemurs`。
+
+#### greetd
+
+本节参考[DankMaterialShell - Greeter](https://github.com/AvengeMedia/DankMaterialShell?tab=readme-ov-file#greeter)
+
+`dms`有对`greetd`的支持，直接执行以下命令：
 
 ```bash
 dms greeter install
 ```
 
-按照说明启用`greetd`服务即可。
+不支持的话，可以参考[Arch Wiki - Greetd](https://wiki.archlinux.org/title/Greetd)进行安装与配置。
+
+
+#### lemurs
+
+本节参考[GitHub - lemurs](https://github.com/coastalwhite/lemurs?tab=readme-ov-file#arch-linux)
+
+##### 总览
+
+```bash
+paru -S lemurs
+
+echo "#!/bin/sh
+exec niri-session" | sudo tee /etc/lemurs/wayland/niri
+
+# Not needed if you don't have a window manager yet
+# sudo systemctl disable display-manager.service
+
+sudo systemctl enable lemurs.service
+```
+
+#### 安装
+
+```bash
+paru -S lemurs
+```
+
+#### 配置
+
+创建`/etc/lemurs/wayland/niri`文件：
+
+```bash
+echo "#!/bin/sh
+exec niri-session" | sudo tee /etc/lemurs/wayland/niri
+```
+
+启用`lemurs`服务：
+
+```bash
+sudo systemctl enable lemurs.service
+```
+
+如果你已经有一个显示管理器在运行，可能需要先禁用它：
+
+```bash
+sudo systemctl disable display-manager.service
+```
+
 
 ## FAQ
 
