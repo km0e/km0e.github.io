@@ -43,47 +43,63 @@ Note:
 Example:
 
 ```lua
-dv:sync("this", "a/b/c", "remote_user", "a/b/c", "y") -- 拷贝文件
-dv:sync("this", {"a/b/c", "a/b/d"}, "remote_user", {"a/b/c", "a/b/d"}, "u") -- 拷贝多个文件
+dv:sync("this", "a/b/c", "remote_user", "a/b/c", "1") -- 拷贝文件
+dv:sync("this", {"a/b/c", "a/b/d"}, "remote_user", {"a/b/c", "a/b/d"}, "2") -- 拷贝多个文件
 ```
 
 路径首先会尝试使用`variable`与环境变量展开，格式为`${var}`，如果是相对路径，则还会尝试使用`mount`展开。
-`confirm`为`y`（覆盖），`d`（删除），u`（更新,新增），`n`（不变）组成的字符串。
 
-对于目录会扫描目录下的所有文件,复制文件行为规则如下：
+`confirm`为一个由特殊字符组成的字符串，表示在复制文件时的默认行为。
+
+注意每个行为都在特定条件下才会被执行，具体请参考下方的`Check`与`Match`步骤。
+
+目前支持的字符有：
+
+| char | description                |
+| ---- | -------------------------- |
+| 0    | 不进行任何操作             |
+| 1    | 直接覆盖目标文件         |
+| 2    | 更新文件                   |
+| 3    | 删除目标文件               |
+| 4    | 删除源文件               |
+| 5    | 上传文件               |
+| 6    | 下载文件               |
+
+
+对于`sync`操作，主要有以下几个步骤：
 
 ##### `Check`
 
-根据源文件与目标文件状态，检查可执行操作的类型。
+检查源文件与目标文件的状态（对于目录会扫描目录下的所有文件），确定可执行的操作类型。
 
-| src  | dst  | action | description                |
-| ---- | ---- | ------ | -------------------------- |
-| \*   | none | y      | 直接覆盖文件               |
-| none | \*   | d      | 直接删除文件               |
-| none | \*   | u      | 下载文件                   |
-| new  | old  | y      | 可以覆盖文件或者不变       |
-| old  | new  | u      | 可以更新文件或者不变       |
-| old  | old  | n      | 不变                       |
-| new  | new  | yu     | 可以覆盖文件，更新或者不变 |
+| src  | dst  | executable action | description                |
+| ---- | ---- | ----------------- | -------------------------- |
+| \*   | none | 0,4,5 | 无视，删除源文件，上传到目标文件               |
+| none | \*   | 0,3,6 | 无视，删除目标文件，下载到目标文件               |
+| new  | old | 0,1 | 无视，覆盖目标文件               |
+| old  | new | 0,2 | 无视，更新源文件               |
+| old  | old | | 直接无视                       |
+| new  | new | 0,1,2 | 无视，覆盖目标文件，更新源文件 |
+
 
 ##### `Match`
 
-根据`confirm`参数，按顺序匹配可执行操作的类型。
+根据`confirm`参数，按顺序匹配可执行操作的类型，没有匹配则进行交互。
 
 Example:
 
-| action | confirm | result |
-| ------ | ------- | ------ |
-| y      | y       | y      |
-| y      | uy      | y      |
-| y      | n       | n      |
-| y      | ny      | n      |
-| u      | y       |        |
-| yu     | y       |        |
+| executable action | confirm | matched action | result description        |
+| ----------------- | ------- | -------------- | ------------------------- |
+| 0,4,5             | 0 | 0              | 无视                     |
+| 0,4,5             | 4 | 4              | 删除源文件               |
+| 0,4,5             | 5 | 5              | 上传文件               |
+| 0,4,5             | 04 | 0              | 无视                     |
+| 0,4,5             | 1 | none           | 进入交互模式             |
+| 0,4,5             | 10 | 0              | 无视                     |
+| 0,4,5             | 01 | 0              | 无视                     |
 
-如果可以确定`result`则执行`result`操作，否则进入交互模式。
 
-##### `dl`
+#### `dl`
 
 Example:
 
@@ -92,7 +108,7 @@ dv:dl("https://example.com/file.txt", "1h") -- 下载文件，过期时间为1�
 dv:dl("https://example.com/file.txt") -- 下载文件，默认更新
 ```
 
-##### `json`
+#### `json`
 
 Example:
 
@@ -101,7 +117,7 @@ local tbl = dv:json('{"key": "value"}') -- 解析 JSON 字符串为 Lua 表
 local str = dv:json({key = "value"}) -- 将 Lua 表转换为 JSON 字符串
 ```
 
-##### um, dot, pm
+#### um, dot, pm
 
 Example:
 
@@ -123,7 +139,7 @@ local pm = dv:pm()
 ---@field etor string? # 脚本执行器
 
 ---@class User
----@field exec fun(this: User, cmd: string, opt:boolean|ExecOptions?)
+---@field exec fun(this: User, cmd: string, opt:boolean|ExecOptions?) : (number, string?, string?) 
 ---@field read fun(this: User, path: string): string|nil
 ---@field write fun(this: User, path: string, content: string)
 ---@field user string
