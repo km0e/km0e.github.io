@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <script src="https://blog.101248.xyz/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://blog.101248.xyz/abridge.css?h=3ef6b36a1c3b5611bbd6" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://blog.101248.xyz" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.101248.xyz/manifest.min.json" />
+  <link rel="mask-icon" href="https://blog.101248.xyz/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://blog.101248.xyz/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.101248.xyz/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.101248.xyz/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.101248.xyz/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="笔记 Atom Feed" href="https://blog.101248.xyz/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Linux软路由配置 | 笔记</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="笔记" />
+  <meta name="description" content="如何使用Linux系统搭建软路由" />
+  <link rel="canonical" href="https://blog.101248.xyz/blog/soft-router/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.101248.xyz/blog/soft-router/" />
+  <meta name="twitter:url" content="https://blog.101248.xyz/blog/soft-router/" />
+  <meta property="og:description" content="如何使用Linux系统搭建软路由" />
+  <meta name="twitter:description" content="如何使用Linux系统搭建软路由" />
+  <meta property="og:title" content="Linux软路由配置 | 笔记" />
+  <meta name="twitter:title" content="Linux软路由配置 | 笔记" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="笔记" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-10-14" />
+  <script>
+	var remark_config = {
+		host: "https://remark42.101248.xyz",
+		site_id: "blog",
+	}
+  </script>
+  <script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+  <script defer src="https://blog.101248.xyz/js/abridge.min.js?h=e0f9a881a665c86cce9c" integrity="sha384-QF67y7RnPkuDrJNQqn3/7nYxqxWkW/qHI7zN0WTES1aXbf+TotoByRBb835fUE6U"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.stemmer.support.min.js" integrity="sha384-f0MKdC/9ZSGTpDiuWusC0SbLXNCBp6NgzDZpjR/4UdHXAQBqvTEKyinnsa1wQ7oA"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.zh.min.js" integrity="sha384-rQz9F0qWFRA0H4snbYEJ0VLIgOuLas/bm/j2HVui1L3lPvV16lr5u0L1XqhUJV6a"></script>
+  <noscript><link rel="stylesheet" href="https://blog.101248.xyz/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://blog.101248.xyz" title="笔记">笔记</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://blog.101248.xyz/archive/"> Posts </a></li><li><a class="s110" href="https://blog.101248.xyz/tags/"> Tags </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>中文</span><a href="https://blog.101248.xyz/en/blog/soft-router/">English</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+          <div>
+            <form autocomplete=off class="js" name="goSearch" id="searchbox">
+              <div class="searchd">
+                <input id="searchinput" type="text" placeholder="搜索" title="Search" />
+                <button type="submit" title="Search" class="svgs svgm search"></button>
+              </div>
+              <div class="results"><div id="suggestions"></div></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://blog.101248.xyz/blog/soft-router/">Linux软路由配置</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> 二月 25, 2025 <span class="rpad"></span>更新: 十月 14, 2025 <span class="rpad"></span> #<a href="https://blog.101248.xyz/tags/network/">Network</a>  #<a href="https://blog.101248.xyz/tags/router/">Router</a> </span>
+
+    
+
+
+<h2 id="systemd-networkd-systemd-resolved"><a class="zola-anchor" href="#systemd-networkd-systemd-resolved" aria-label="Anchor link for: systemd-networkd-systemd-resolved"><code>systemd-networkd</code> + <code>systemd-resolved</code></a></h2>
+<p>本节参考<a rel="noopener" target="_blank" href="https://man.archlinux.org/man/systemd.network.5">Arch Manual</a>。</p>
+<p>假设我们有两个网口<code>enp1s0</code>，<code>enp2s0</code>，<code>enp1s0</code>作为<code>WAN</code>口，<code>enp2s0</code>作为<code>LAN</code>口。</p>
+<p>多个<code>LAN</code>口可以通过桥接的方式来实现，具体配置方式根据网络管理器自行查阅。</p>
+<h3 id="ji-ben-wang-luo-pei-zhi"><a class="zola-anchor" href="#ji-ben-wang-luo-pei-zhi" aria-label="Anchor link for: ji-ben-wang-luo-pei-zhi">基本网络配置</a></h3>
+<p>将以下配置写入<code>/etc/systemd/network/10-enp1s0.network</code>文件</p>
+<pre data-lang="ini" class="language-ini z-code"><code class="language-ini" data-lang="ini"><span class="z-source z-genconfig"><span class="z-storage z-type z-genconfig">[Match]
+</span></span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">MACAddress</span><span class="z-keyword z-operator z-genconfig">=</span></span>xx<span class="z-keyword z-operator z-genconfig">:</span>xx<span class="z-keyword z-operator z-genconfig">:</span>xx<span class="z-keyword z-operator z-genconfig">:</span>xx<span class="z-keyword z-operator z-genconfig">:</span>xx<span class="z-keyword z-operator z-genconfig">:</span>xx
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-storage z-type z-genconfig">[Network]
+</span></span><span class="z-source z-genconfig"><span class="z-support z-constant z-genconfig">DHCP</span><span class="z-keyword z-operator z-genconfig">=</span>ipv4
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">IPForward</span><span class="z-keyword z-operator z-genconfig">=</span></span><span class="z-constant z-language z-genconfig">yes</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-comment z-genconfig"><span class="z-comment z-line z-number-sign z-genconfig"># ipv6配置
+</span></span></span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">IPv6AcceptRA</span><span class="z-keyword z-operator z-genconfig">=</span></span><span class="z-constant z-language z-genconfig">yes</span>
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-storage z-type z-genconfig">[DHCP]
+</span></span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">RouteMetric</span><span class="z-keyword z-operator z-genconfig">=</span></span><span class="z-constant z-numeric z-genconfig">100</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">UseMTU</span><span class="z-keyword z-operator z-genconfig">=</span></span><span class="z-constant z-language z-genconfig">true</span>
+</span></code></pre>
+<p>以上配置中<code>MACAddress</code>填写<code>enp1s0</code>的<code>MAC</code>地址。
+配置<code>enp1s0</code>通过<code>DHCP</code>获取<code>ipv4</code>地址，并且开启<code>ip</code>转发功能。
+<code>ipv6</code>配置中开启<code>IPv6AcceptRA</code>，表示接受路由器通告。</p>
+<p>将以下配置写入<code>/etc/systemd/network/20-enp2s0.network</code>文件</p>
+<pre data-lang="ini" class="language-ini z-code"><code class="language-ini" data-lang="ini"><span class="z-source z-genconfig"><span class="z-storage z-type z-genconfig">[Match]
+</span></span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">MACAddress</span><span class="z-keyword z-operator z-genconfig">=</span></span>xx<span class="z-keyword z-operator z-genconfig">:</span>xx<span class="z-keyword z-operator z-genconfig">:</span>xx<span class="z-keyword z-operator z-genconfig">:</span>xx<span class="z-keyword z-operator z-genconfig">:</span>xx<span class="z-keyword z-operator z-genconfig">:</span>xx
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-storage z-type z-genconfig">[Network]
+</span></span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">DHCPServer</span><span class="z-keyword z-operator z-genconfig">=</span></span><span class="z-constant z-language z-genconfig">yes</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">IPMasquerade</span><span class="z-keyword z-operator z-genconfig">=</span></span>both
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">Address</span><span class="z-keyword z-operator z-genconfig">=</span></span><span class="z-meta z-ip z-genconfig"><span class="z-constant z-other z-genconfig">192.168.5.1/24</span></span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-comment z-genconfig"><span class="z-comment z-line z-number-sign z-genconfig"># ipv6配置
+</span></span></span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">Address</span><span class="z-keyword z-operator z-genconfig">=</span></span>fd00<span class="z-keyword z-operator z-genconfig">:</span><span class="z-constant z-numeric z-genconfig">1</span><span class="z-keyword z-operator z-genconfig">:</span><span class="z-keyword z-operator z-genconfig">:</span><span class="z-keyword z-operator z-genconfig">/</span><span class="z-constant z-numeric z-genconfig">64</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">IPv6SendRA</span><span class="z-keyword z-operator z-genconfig">=</span></span><span class="z-constant z-language z-genconfig">yes</span>
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-storage z-type z-genconfig">[DHCPServer]
+</span></span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">PoolOffset</span><span class="z-keyword z-operator z-genconfig">=</span></span><span class="z-constant z-numeric z-genconfig">3</span>
+</span><span class="z-source z-genconfig"><span class="z-support z-constant z-genconfig">DNS</span><span class="z-keyword z-operator z-genconfig">=</span>_server_address
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-meta z-comment z-genconfig"><span class="z-comment z-line z-number-sign z-genconfig"># 静态分配
+</span></span></span><span class="z-source z-genconfig"><span class="z-storage z-type z-genconfig">[DHCPServerStaticLease]
+</span></span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">MACAddress</span><span class="z-keyword z-operator z-genconfig">=</span></span>xx<span class="z-keyword z-operator z-genconfig">:</span>xx<span class="z-keyword z-operator z-genconfig">:</span>xx<span class="z-keyword z-operator z-genconfig">:</span>xx<span class="z-keyword z-operator z-genconfig">:</span>xx<span class="z-keyword z-operator z-genconfig">:</span>xx
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">Address</span><span class="z-keyword z-operator z-genconfig">=</span></span><span class="z-meta z-ip z-genconfig"><span class="z-constant z-other z-genconfig">192.168.5.2</span></span>
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-meta z-comment z-genconfig"><span class="z-comment z-line z-number-sign z-genconfig"># ipv6配置
+</span></span></span><span class="z-source z-genconfig"><span class="z-storage z-type z-genconfig">[IPv6SendRA]
+</span></span><span class="z-source z-genconfig"><span class="z-support z-constant z-genconfig">DNS</span><span class="z-keyword z-operator z-genconfig">=</span>_link_local
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-storage z-type z-genconfig">[IPv6Prefix]
+</span></span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">Prefix</span><span class="z-keyword z-operator z-genconfig">=</span></span>fd00<span class="z-keyword z-operator z-genconfig">:</span><span class="z-constant z-numeric z-genconfig">1</span><span class="z-keyword z-operator z-genconfig">:</span><span class="z-keyword z-operator z-genconfig">:</span><span class="z-keyword z-operator z-genconfig">/</span><span class="z-constant z-numeric z-genconfig">64</span>
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-storage z-type z-genconfig">[IPv6RoutePrefix]
+</span></span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">Route</span><span class="z-keyword z-operator z-genconfig">=</span></span>fd00<span class="z-keyword z-operator z-genconfig">:</span><span class="z-constant z-numeric z-genconfig">1</span><span class="z-keyword z-operator z-genconfig">:</span><span class="z-keyword z-operator z-genconfig">:</span><span class="z-keyword z-operator z-genconfig">/</span><span class="z-constant z-numeric z-genconfig">64</span>
+</span></code></pre>
+<p>以上配置中<code>MACAddress</code>填写<code>enp2s0</code>的<code>MAC</code>地址。
+配置<code>enp2s0</code>开启<code>DHCP</code>服务，并且开启<code>ip</code>伪装功能。
+<code>Address</code>配置<code>enp2s0</code>的<code>ipv4</code>地址为<code>192.168.5.1/24</code>。
+<code>DHCPServer</code>配置中<code>DNS=_server_address</code>表示将<code>LAN</code>口的地址作为<code>DNS</code>服务器地址，需配合<code>DNS</code>服务使用。
+<code>ipv6</code>配置中配置<code>ipv6</code>地址为<code>fd00:1::/64</code>，并且开启<code>IPv6SendRA</code>，表示发送路由器通告。</p>
+<p>注意:如果以上配置不生效，检查<code>net.ipv4.ip_forward</code>和<code>net.ipv6.conf.all.forwarding</code>是否开启。具体配置方式自行查阅。</p>
+<p><a href="https://blog.101248.xyz/faq/systemd-networkd/">Note - FAQ - systemd-networkd</a></p>
+<h3 id="dnspei-zhi"><a class="zola-anchor" href="#dnspei-zhi" aria-label="Anchor link for: dnspei-zhi">DNS配置</a></h3>
+<p>将以下配置写入（修改至）<code>/etc/systemd/resolved.conf</code>文件</p>
+<pre data-lang="ini" class="language-ini z-code"><code class="language-ini" data-lang="ini"><span class="z-source z-genconfig"><span class="z-keyword z-operator z-genconfig">.</span><span class="z-keyword z-operator z-genconfig">.</span><span class="z-keyword z-operator z-genconfig">.</span>
+</span><span class="z-source z-genconfig"><span class="z-storage z-type z-genconfig">[Resolve]
+</span></span><span class="z-source z-genconfig"><span class="z-keyword z-operator z-genconfig">.</span><span class="z-keyword z-operator z-genconfig">.</span><span class="z-keyword z-operator z-genconfig">.</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">DNSStubListener</span><span class="z-keyword z-operator z-genconfig">=</span></span><span class="z-constant z-language z-genconfig">yes</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">DNSStubListenerExtra</span><span class="z-keyword z-operator z-genconfig">=</span></span><span class="z-meta z-ip z-genconfig"><span class="z-constant z-other z-genconfig">192.168.5.1</span></span>
+</span><span class="z-source z-genconfig"><span class="z-keyword z-operator z-genconfig">.</span><span class="z-keyword z-operator z-genconfig">.</span><span class="z-keyword z-operator z-genconfig">.</span>
+</span></code></pre>
+<p>开启<code>DNSStubListenerExtra</code>，并指定<code>LAN</code>口的地址。</p>
+<p>更多<code>DNS</code>配置请参考<a href="https://blog.101248.xyz/blog/dns/">Note - DNS</a>。</p>
+<h3 id="qi-dong-fu-wu"><a class="zola-anchor" href="#qi-dong-fu-wu" aria-label="Anchor link for: qi-dong-fu-wu">启动服务</a></h3>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> systemctl enable<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>now</span> systemd-networkd systemd-resolved</span>
+</span></code></pre>
+<h2 id="qi-ta-da-pei-ruan-jian"><a class="zola-anchor" href="#qi-ta-da-pei-ruan-jian" aria-label="Anchor link for: qi-ta-da-pei-ruan-jian">其它搭配软件</a></h2>
+<h3 id="netplan"><a class="zola-anchor" href="#netplan" aria-label="Anchor link for: netplan"><code>netplan</code></a></h3>
+<p>本节参考<a rel="noopener" target="_blank" href="https://netplan.readthedocs.io/en/stable/">Netplan.io</a>。</p>
+<p>注意<code>netplan</code>目前还不支持<code>DHCPServer</code>和<code>IPMasquerade</code>配置。
+可以通过<code>netplan</code>来配置网口</p>
+<pre data-lang="yaml" class="language-yaml z-code"><code class="language-yaml" data-lang="yaml"><span class="z-source z-yaml"><span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> /etc/netplan/01-netcfg.yaml
+</span></span><span class="z-source z-yaml"><span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">network</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
+</span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">version</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-constant z-numeric z-integer z-decimal z-yaml">2</span>
+</span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">renderer</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">networkd</span>
+</span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">ethernets</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
+</span><span class="z-source z-yaml">    <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">enp1s0</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
+</span><span class="z-source z-yaml">      <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">dhcp4</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-constant z-language z-boolean z-yaml">true</span>
+</span><span class="z-source z-yaml">      <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">accept-ra</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-constant z-language z-boolean z-yaml">true</span>
+</span><span class="z-source z-yaml">    <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">enp2s0</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
+</span><span class="z-source z-yaml">      <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">addresses</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> 
+</span><span class="z-source z-yaml">        <span class="z-punctuation z-definition z-block z-sequence z-item z-yaml">-</span> <span class="z-string z-unquoted z-plain z-out z-yaml">192.168.5.1/24</span>
+</span><span class="z-source z-yaml">        <span class="z-punctuation z-definition z-block z-sequence z-item z-yaml">-</span> <span class="z-string z-unquoted z-plain z-out z-yaml">fd00:1::1/64</span>
+</span></code></pre>
+<p>如果选择<code>systemd-networkd</code>作为渲染器，则不要在<code>/etc/systemd/network/</code>目录下配置网口，否则将会覆盖<code>netplan</code>的配置。</p>
+<p>应用配置</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> netplan apply</span>
+</span></code></pre>
+<h3 id="dnsmasq"><a class="zola-anchor" href="#dnsmasq" aria-label="Anchor link for: dnsmasq"><code>dnsmasq</code></a></h3>
+<p>本节参考<a rel="noopener" target="_blank" href="https://wiki.archlinux.org/title/Dnsmasq">Arch Wiki - Dnsmasq</a>。</p>
+<p><code>dnsmasq</code>可以作为<code>DNS</code>和<code>DHCP</code>服务来使用。
+将以下配置写入<code>/etc/dnsmasq.d/lan.conf</code>文件</p>
+<pre data-lang="ini" class="language-ini z-code"><code class="language-ini" data-lang="ini"><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">interface</span><span class="z-keyword z-operator z-genconfig">=</span></span>enp2s0
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-meta z-comment z-genconfig"><span class="z-comment z-line z-number-sign z-genconfig"># 只启用 DHCP
+</span></span></span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">port</span><span class="z-keyword z-operator z-genconfig">=</span></span><span class="z-constant z-numeric z-genconfig">0</span>
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">listen-address</span><span class="z-keyword z-operator z-genconfig">=</span></span>fd00<span class="z-keyword z-operator z-genconfig">:</span><span class="z-constant z-numeric z-genconfig">1</span><span class="z-keyword z-operator z-genconfig">:</span><span class="z-keyword z-operator z-genconfig">:</span><span class="z-constant z-numeric z-genconfig">1</span><span class="z-keyword z-operator z-genconfig">,</span><span class="z-meta z-ip z-genconfig"><span class="z-constant z-other z-genconfig">192.168.5.1</span></span>
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-meta z-comment z-genconfig"><span class="z-comment z-line z-number-sign z-genconfig"># DHCP 地址池
+</span></span></span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">dhcp-range</span><span class="z-keyword z-operator z-genconfig">=</span></span><span class="z-meta z-ip z-genconfig"><span class="z-constant z-other z-genconfig">192.168.5.3</span></span><span class="z-keyword z-operator z-genconfig">,</span><span class="z-meta z-ip z-genconfig"><span class="z-constant z-other z-genconfig">192.168.5.255</span></span><span class="z-keyword z-operator z-genconfig">,</span><span class="z-constant z-numeric z-genconfig">24h</span>
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-meta z-comment z-genconfig"><span class="z-comment z-line z-number-sign z-genconfig"># 网关（可选）
+</span></span></span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">dhcp-option</span><span class="z-keyword z-operator z-genconfig">=</span></span><span class="z-constant z-numeric z-genconfig">3</span><span class="z-keyword z-operator z-genconfig">,</span><span class="z-meta z-ip z-genconfig"><span class="z-constant z-other z-genconfig">192.168.5.1</span></span>
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-meta z-comment z-genconfig"><span class="z-comment z-line z-number-sign z-genconfig"># DNS 服务器
+</span></span></span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">dhcp-option</span><span class="z-keyword z-operator z-genconfig">=</span></span><span class="z-constant z-numeric z-genconfig">6</span><span class="z-keyword z-operator z-genconfig">,</span><span class="z-meta z-ip z-genconfig"><span class="z-constant z-other z-genconfig">192.168.5.1</span></span>
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">dhcp-host</span><span class="z-keyword z-operator z-genconfig">=</span></span><span class="z-constant z-numeric z-genconfig">98</span><span class="z-keyword z-operator z-genconfig">:</span>fc<span class="z-keyword z-operator z-genconfig">:</span><span class="z-constant z-numeric z-genconfig">84</span><span class="z-keyword z-operator z-genconfig">:</span>e5<span class="z-keyword z-operator z-genconfig">:</span><span class="z-constant z-numeric z-genconfig">13</span><span class="z-keyword z-operator z-genconfig">:</span><span class="z-constant z-numeric z-genconfig">6a</span><span class="z-keyword z-operator z-genconfig">,</span><span class="z-meta z-ip z-genconfig"><span class="z-constant z-other z-genconfig">192.168.5.2</span></span>
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">enable-ra</span>
+</span></span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">dhcp-range</span><span class="z-keyword z-operator z-genconfig">=</span></span>fd00<span class="z-keyword z-operator z-genconfig">:</span><span class="z-constant z-numeric z-genconfig">1</span><span class="z-keyword z-operator z-genconfig">:</span><span class="z-keyword z-operator z-genconfig">:</span><span class="z-constant z-numeric z-genconfig">100</span><span class="z-keyword z-operator z-genconfig">,</span>fd00<span class="z-keyword z-operator z-genconfig">:</span><span class="z-constant z-numeric z-genconfig">1</span><span class="z-keyword z-operator z-genconfig">:</span><span class="z-keyword z-operator z-genconfig">:</span>ffff<span class="z-keyword z-operator z-genconfig">,</span><span class="z-constant z-numeric z-genconfig">64</span><span class="z-keyword z-operator z-genconfig">,</span><span class="z-constant z-numeric z-genconfig">12h</span>
+</span></code></pre>
+<p>注意这里<code>dnsmasq</code>没有配置自带的<code>DNS</code>服务。</p>
+<p>应用同时配置自动启动</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> systemctl enable<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>now</span> dnsmasq</span>
+</span></code></pre>
+<h2 id="masqueradepei-zhi"><a class="zola-anchor" href="#masqueradepei-zhi" aria-label="Anchor link for: masqueradepei-zhi"><code>Masquerade</code>配置</a></h2>
+<p>如果不使用<code>systemd-networkd</code>的<code>IPMasquerade</code>功能，同样需要配置<code>NAT</code>转发功能。</p>
+<p>同时注意<code>net.ipv4.ip_forward</code>和<code>net.ipv6.conf.all.forwarding</code>需要开启。</p>
+<p>这里可以选择用<code>iptables</code>或者<code>nftables</code>来配置<code>Masquerade</code>。
+注意如果机器上同时配有其他使用<code>iptables</code>的服务如<code>Docker</code>和<code>TailScale</code>，则建议使用<code>iptables</code>,或者安装<code>nftables</code>但是用<code>iptables</code>的兼容模式。</p>
+<h4 id="iptables"><a class="zola-anchor" href="#iptables" aria-label="Anchor link for: iptables"><code>iptables</code></a></h4>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> iptables<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>t</span> nat<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>A</span> POSTROUTING<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>o</span> enp1s0<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>j</span> MASQUERADE</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> iptables<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>A</span> FORWARD<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>i</span> enp2s0<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>o</span> enp1s0<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>j</span> ACCEPT</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> iptables<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>A</span> FORWARD<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>i</span> enp1s0<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>o</span> enp2s0<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>m</span> state<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>state</span> RELATED,ESTABLISHED<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>j</span> ACCEPT</span>
+</span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell"> ipv6</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> ip6tables<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>t</span> nat<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>A</span> POSTROUTING<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>o</span> enp1s0<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>j</span> MASQUERADE</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> ip6tables<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>A</span> FORWARD<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>i</span> enp2s0<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>o</span> enp1s0<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>j</span> ACCEPT</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> ip6tables<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>A</span> FORWARD<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>i</span> enp1s0<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>o</span> enp2s0<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>m</span> state<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>state</span> RELATED,ESTABLISHED<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>j</span> ACCEPT</span>
+</span></code></pre>
+<p>可以使用<code>iptables-persistent</code>来保存<code>iptables</code>规则</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> apt install iptables-persistent</span>
+</span></code></pre>
+<p>应该在安装过程中选择保存当前规则。没有则查看是否有<code>/etc/iptables/rules.v4</code>和<code>/etc/iptables/rules.v6</code>文件，如果没有则手动保存</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> iptables-save <span class="z-keyword z-operator z-assignment z-redirection z-shell">&gt;</span> /etc/iptables/rules.v4</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> ip6tables-save <span class="z-keyword z-operator z-assignment z-redirection z-shell">&gt;</span> /etc/iptables/rules.v6</span>
+</span></code></pre>
+<h4 id="nftables"><a class="zola-anchor" href="#nftables" aria-label="Anchor link for: nftables"><code>nftables</code></a></h4>
+<pre data-lang="nft" class="language-nft z-code"><code class="language-nft" data-lang="nft"><span class="z-text z-plain">#!/usr/sbin/nft -f
+</span><span class="z-text z-plain">#/etc/nftables.conf
+</span><span class="z-text z-plain">table ip nat {
+</span><span class="z-text z-plain">    chain postrouting {
+</span><span class="z-text z-plain">        type nat hook postrouting priority 100;
+</span><span class="z-text z-plain">        counter oif &quot;enp1s0&quot; masquerade
+</span><span class="z-text z-plain">    }
+</span><span class="z-text z-plain">}
+</span><span class="z-text z-plain">table ip filter {
+</span><span class="z-text z-plain">    chain forward {
+</span><span class="z-text z-plain">        type filter hook forward priority 0; policy drop;
+</span><span class="z-text z-plain">        iif &quot;enp2s0&quot; oif &quot;enp1s0&quot; accept
+</span><span class="z-text z-plain">        iif &quot;enp1s0&quot; oif &quot;enp2s0&quot; ct state related,established accept
+</span><span class="z-text z-plain">    }
+</span><span class="z-text z-plain">}
+</span><span class="z-text z-plain">table ip6 nat {
+</span><span class="z-text z-plain">    chain postrouting {
+</span><span class="z-text z-plain">        type nat hook postrouting priority 100;
+</span><span class="z-text z-plain">        counter oif &quot;enp1s0&quot; masquerade
+</span><span class="z-text z-plain">    }
+</span><span class="z-text z-plain">}
+</span><span class="z-text z-plain">table ip6 filter {
+</span><span class="z-text z-plain">    chain forward {
+</span><span class="z-text z-plain">        type filter hook forward priority 0; policy drop;
+</span><span class="z-text z-plain">        iif &quot;enp2s0&quot; oif &quot;enp1s0&quot; accept
+</span><span class="z-text z-plain">        iif &quot;enp1s0&quot; oif &quot;enp2s0&quot; ct state related,established accept
+</span><span class="z-text z-plain">    }
+</span><span class="z-text z-plain">}
+</span></code></pre>
+<p>应用同时配置自动启动</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> systemctl enable<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>now</span> nftables</span>
+</span></code></pre>
+
+      <nav>
+        <div>
+          <a href="https://blog.101248.xyz/dv4rune/">&#8249; Dv4rune</a>
+        </div>
+        <div>
+          <a href="https://blog.101248.xyz/faq/git-rm-submodule/"> 移除Git子模块 &#8250;</a>
+        </div>
+      </nav>
+    <div id="remark42"></div>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">索引</a>
+        <div>
+          <a href="#systemd-networkd-systemd-resolved">systemd-networkd + systemd-resolved</a>
+        </div>
+        <div class="hpad">
+          <a href="#ji-ben-wang-luo-pei-zhi"><small>- 基本网络配置</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#dnspei-zhi"><small>- DNS配置</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#qi-dong-fu-wu"><small>- 启动服务</small></a>
+        </div>
+        <div>
+          <a href="#qi-ta-da-pei-ruan-jian">其它搭配软件</a>
+        </div>
+        <div class="hpad">
+          <a href="#netplan"><small>- netplan</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#dnsmasq"><small>- dnsmasq</small></a>
+        </div>
+        <div>
+          <a href="#masqueradepei-zhi">Masquerade配置</a>
+        </div>
+        <div class="hpad">
+          <a href="#iptables"><small>- iptables</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#nftables"><small>- nftables</small></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://blog.101248.xyz/atom.xml" target="_blank" title="笔记 Atom Feed"><i type="Button" class="svg rss" title="笔记 Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://blog.101248.xyz/about/"> About </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/contact/"> Contact </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/privacy/"> Privacy </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2025</span> 笔记</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer><span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

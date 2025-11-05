@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+    <title>笔记 - FAQ</title>
+    <subtitle>Just a simple blog</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://blog.101248.xyz/tags/faq/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://blog.101248.xyz"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-04-12T05:55:28+00:00</updated>
+    <id>https://blog.101248.xyz/tags/faq/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>Linux依赖FAQ</title>
+        <published>2025-04-12T05:55:28+00:00</published>
+        <updated>2025-04-12T05:55:28+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://blog.101248.xyz/faq/lib-dep/"/>
+        <id>https://blog.101248.xyz/faq/lib-dep/</id>
+        
+        <content type="html" xml:base="https://blog.101248.xyz/faq/lib-dep/">&lt;h3 id=&quot;dong-tai-ku&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#dong-tai-ku&quot; aria-label=&quot;Anchor link for: dong-tai-ku&quot;&gt;动态库&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;an-zhuang-zhi-hou-zhao-bu-dao&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#an-zhuang-zhi-hou-zhao-bu-dao&quot; aria-label=&quot;Anchor link for: an-zhuang-zhi-hou-zhao-bu-dao&quot;&gt;安装之后找不到&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;问题：
+安装之后，运行时提示找不到动态库。&lt;&#x2F;p&gt;
+&lt;p&gt;解决：
+尝试刷新动态库缓存：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; ldconfig&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh">
+        <title>移除Git子模块</title>
+        <published>2025-02-25T09:14:59+00:00</published>
+        <updated>2025-02-25T09:14:59+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://blog.101248.xyz/faq/git-rm-submodule/"/>
+        <id>https://blog.101248.xyz/faq/git-rm-submodule/</id>
+        
+        <content type="html" xml:base="https://blog.101248.xyz/faq/git-rm-submodule/">&lt;p&gt;原文: &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;16162000&quot;&gt;Stackoverflow&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;mv&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; a&#x2F;submodule a&#x2F;submodule_tmp&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;git&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; submodule deinit&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;f&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-end-of-options z-shell&quot;&gt; --&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; a&#x2F;submodule&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;rm&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;rf&lt;&#x2F;span&gt; .git&#x2F;modules&#x2F;a&#x2F;submodule&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;git&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; rm&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;f&lt;&#x2F;span&gt; a&#x2F;submodule&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; Note: a&#x2F;submodule (no trailing slash)&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; or, if you want to leave it in your working tree and have done step 0&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;git&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; rm&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;cached&lt;&#x2F;span&gt; a&#x2F;submodule&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;mv&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; a&#x2F;submodule_tmp a&#x2F;submodule&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh">
+        <title>Redirects after Cloudflare Proxy</title>
+        <published>2025-02-25T09:08:53+00:00</published>
+        <updated>2025-02-25T09:08:53+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://blog.101248.xyz/faq/cf/"/>
+        <id>https://blog.101248.xyz/faq/cf/</id>
+        
+        <content type="html" xml:base="https://blog.101248.xyz/faq/cf/">&lt;p&gt;&lt;code&gt;Github Pages&lt;&#x2F;code&gt; 启用了&lt;code&gt;Enforce HTTPS&lt;&#x2F;code&gt;后，&lt;code&gt;Cloudflare&lt;&#x2F;code&gt;代理后尝试使用&lt;code&gt;HTTP&lt;&#x2F;code&gt;访问&lt;code&gt;Github Pages&lt;&#x2F;code&gt;时，会触发重定向，然后又去访问&lt;code&gt;Cloudflare&lt;&#x2F;code&gt;，导致一直重定向。
+解决办法：将&lt;code&gt;Cloudflare&lt;&#x2F;code&gt;的&lt;code&gt;SSL&#x2F;TLS&lt;&#x2F;code&gt;设置模式改为&lt;code&gt;Full&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+ &lt;img src=&quot;https:&#x2F;&#x2F;blog.101248.xyz&#x2F;images&#x2F;image-3.png&quot; alt=&quot;image-3&quot; width=&quot;813&quot; height=&quot;885&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh">
+        <title>GitHub Pages FAQ</title>
+        <published>2025-02-25T09:08:53+00:00</published>
+        <updated>2025-02-25T09:08:53+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://blog.101248.xyz/faq/gh/"/>
+        <id>https://blog.101248.xyz/faq/gh/</id>
+        
+        <content type="html" xml:base="https://blog.101248.xyz/faq/gh/">&lt;h2 id=&quot;pemission-denied&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#pemission-denied&quot; aria-label=&quot;Anchor link for: pemission-denied&quot;&gt;Pemission denied&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+ &lt;img src=&quot;https:&#x2F;&#x2F;blog.101248.xyz&#x2F;images&#x2F;image-2.png&quot; alt=&quot;image-2&quot; width=&quot;899&quot; height=&quot;123&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;blog.101248.xyz&#x2F;faq&#x2F;gh&#x2F;&amp;#x27;https:&#x2F;&#x2F;github.com&#x2F;ad-m&#x2F;github-push-action&#x2F;issues&#x2F;96#issuecomment-889984928&amp;#x27;&quot;&gt;解决办法&lt;&#x2F;a&gt;
+&lt;code&gt;Settings&lt;&#x2F;code&gt; -&amp;gt; &lt;code&gt;Actions&lt;&#x2F;code&gt; -&amp;gt; &lt;code&gt;General&lt;&#x2F;code&gt; -&amp;gt; &lt;code&gt;Workflows permissions&lt;&#x2F;code&gt; -&amp;gt; &lt;code&gt;Read and write permissions&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;browser-shows-insecure-content-warning&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#browser-shows-insecure-content-warning&quot; aria-label=&quot;Anchor link for: browser-shows-insecure-content-warning&quot;&gt;Browser shows insecure content warning&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+ &lt;img src=&quot;https:&#x2F;&#x2F;blog.101248.xyz&#x2F;images&#x2F;image-4.png&quot; alt=&quot;image-4&quot; width=&quot;959&quot; height=&quot;64&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;46672993&quot;&gt;解决办法&lt;&#x2F;a&gt;
+修改你使用框架的配置文件，改&lt;code&gt;url&lt;&#x2F;code&gt;为你自定义的域名，而不是&lt;code&gt;github.io&lt;&#x2F;code&gt;域名。&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
