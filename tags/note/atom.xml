@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+    <title>笔记 - NOTE</title>
+    <subtitle>Just a simple blog</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://blog.101248.xyz/tags/note/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://blog.101248.xyz"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-11-04T20:51:31+00:00</updated>
+    <id>https://blog.101248.xyz/tags/note/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>SMB客户端</title>
+        <published>2025-11-04T20:51:31+00:00</published>
+        <updated>2025-11-04T20:51:31+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://blog.101248.xyz/blog/smb/"/>
+        <id>https://blog.101248.xyz/blog/smb/</id>
+        
+        <content type="html" xml:base="https://blog.101248.xyz/blog/smb/">&lt;h2 id=&quot;smbfu-wu-qi-pei-zhi&quot;&gt;SMB服务器配置&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; MOUNT_DIR&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;mnt&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;my&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; SMB_SHARE&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;&#x2F;&#x2F;host&#x2F;dir&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; CREDENTIALS_FILE&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;etc&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;samba&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;credentials&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; SMB_TIMEOUT&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;30&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;kuai-su-pei-zhi&quot;&gt;快速配置&lt;&#x2F;h2&gt;
+&lt;p&gt;快速为当前用户配置SMB挂载：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; SMB_UID&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;$(&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -u&lt;&#x2F;span&gt;&lt;span&gt; your_username)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; UNIT_NAME&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;$(&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;echo&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $MOUNT_DIR&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; |&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt; sed&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;#39;s&#x2F;^\&#x2F;&#x2F;&#x2F;; s&#x2F;\&#x2F;&#x2F;-&#x2F;g&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; pacman&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; cifs-utils&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; mkdir&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -p&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $MOUNT_DIR&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; mkdir&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -p&lt;&#x2F;span&gt;&lt;span&gt; $(&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;dirname&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $CREDENTIALS_FILE&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; vim&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $CREDENTIALS_FILE&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# 在文件中添加：&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# username=your_username&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# password=your_password&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; chmod&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; 600&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $CREDENTIALS_FILE&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;echo&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;[Unit]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;Description=Mount SMB Share at &lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$MOUNT_DIR&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;After=network-online.target&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;Wants=network-online.target&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;[Mount]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;What=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$SMB_SHARE&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;Where=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$MOUNT_DIR&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;Type=cifs&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;Options=_netdev,credentials=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$CREDENTIALS_FILE&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;,uid=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$SMB_UID&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;,iocharset=utf8,rw&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;Timeout=30&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;[Install]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;WantedBy=multi-user.target&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; |&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt; sudo&lt;&#x2F;span&gt;&lt;span&gt; tee &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$UNIT_NAME&lt;&#x2F;span&gt;&lt;span&gt;.mount&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; systemctl enable&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --now&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $UNIT_NAME&lt;&#x2F;span&gt;&lt;span&gt;.mount&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# 可选自动挂载&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; systemctl disable&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --now&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $UNIT_NAME&lt;&#x2F;span&gt;&lt;span&gt;.mount&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;echo&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;[Unit]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;Description=Auto mount SMB Share at &lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$MOUNT_DIR&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;[Automount]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;Where=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$MOUNT_DIR&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;TimeoutIdleSec=600&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;[Install]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;WantedBy=multi-user.target&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; |&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt; sudo&lt;&#x2F;span&gt;&lt;span&gt; tee &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$UNIT_NAME&lt;&#x2F;span&gt;&lt;span&gt;.automount&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; systemctl enable&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --now&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $UNIT_NAME&lt;&#x2F;span&gt;&lt;span&gt;.automount&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;zhun-bei&quot;&gt;准备&lt;&#x2F;h2&gt;
+&lt;p&gt;确保系统已安装&lt;code&gt;cifs-utils&lt;&#x2F;code&gt;包：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; pacman&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; cifs-utils&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;chuang-jian-gua-zai-dian&quot;&gt;创建挂载点&lt;&#x2F;h2&gt;
+&lt;p&gt;选择一个合适的位置创建挂载点，例如：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; mkdir&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -p&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;mnt&#x2F;my&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;pei-zhi-ping-ju-wen-jian&quot;&gt;配置凭据文件&lt;&#x2F;h2&gt;
+&lt;p&gt;为了安全起见，建议将SMB的用户名和密码存储在一个单独的凭据文件中，例如&lt;code&gt;&#x2F;etc&#x2F;samba&#x2F;credentials&lt;&#x2F;code&gt;：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; vim &#x2F;etc&#x2F;samba&#x2F;credentials&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在文件中添加以下内容：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;username&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;your_username&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;password&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;your_password&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;设置文件权限以保护凭据：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; chmod&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; 600&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;etc&#x2F;samba&#x2F;credentials&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;bian-ji-mountpei-zhi&quot;&gt;编辑&lt;code&gt;mount&lt;&#x2F;code&gt;配置&lt;&#x2F;h2&gt;
+&lt;p&gt;使用&lt;code&gt;systemd&lt;&#x2F;code&gt;的挂载单元文件来配置SMB挂载。创建一个新的挂载单元文件，例如&lt;code&gt;&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;mnt-my.mount&lt;&#x2F;code&gt;：
+注意这里的路径需要将&lt;code&gt;&#x2F;&lt;&#x2F;code&gt;替换为&lt;code&gt;-&lt;&#x2F;code&gt;，例如&lt;code&gt;&#x2F;mnt&#x2F;my&lt;&#x2F;code&gt;对应的单元文件名为&lt;code&gt;mnt-my.mount&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; vim &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;mnt-my.mount&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在文件中添加以下内容：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Unit]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Description&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;Mount SMB Share at &#x2F;mnt&#x2F;my&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;After&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;network-online.target&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Wants&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;network-online.target&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Mount]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;What&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&#x2F;host&#x2F;dir&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Where&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;mnt&#x2F;my&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Type&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;cifs&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Options&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;_netdev,&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;credentials&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;etc&#x2F;samba&#x2F;credentials,&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;uid&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;1000,&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;iocharset&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;utf8,rw&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Timeout&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;30&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Install]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;WantedBy&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;multi-user.target&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;将&lt;code&gt;&#x2F;&#x2F;host&#x2F;dir&lt;&#x2F;code&gt;替换为实际的SMB共享路径，&lt;code&gt;uid=1000&lt;&#x2F;code&gt;替换为你的用户ID。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;qi-yong-bing-qi-dong-gua-zai&quot;&gt;启用并启动挂载&lt;&#x2F;h2&gt;
+&lt;p&gt;启用并启动挂载单元：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; systemctl enable&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --now&lt;&#x2F;span&gt;&lt;span&gt; mnt-my.mount&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;ke-xuan-zi-dong-gua-zai&quot;&gt;可选：自动挂载&lt;&#x2F;h2&gt;
+&lt;p&gt;如果希望在访问挂载点时自动挂载，可以创建一个自动挂载单元文件，例如&lt;code&gt;&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;mnt-my.automount&lt;&#x2F;code&gt;：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; vim &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;mnt-my.automount&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在文件中添加以下内容：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Unit]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Description&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;Auto mount SMB Share at &#x2F;mnt&#x2F;my&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Automount]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Where&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;mnt&#x2F;my&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;TimeoutIdleSec&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;600&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Install]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;WantedBy&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;multi-user.target&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;启用并启动自动挂载单元：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# sudo systemctl disable --now mnt-my.mount # 如果之前启用了挂载单元，先禁用它&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; systemctl enable&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --now&lt;&#x2F;span&gt;&lt;span&gt; mnt-my.automount&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;yan-zheng-gua-zai&quot;&gt;验证挂载&lt;&#x2F;h2&gt;
+&lt;p&gt;可以使用以下命令验证挂载是否成功：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;mount&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; |&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt; grep&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;mnt&#x2F;my&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;如果看到相关的挂载信息，说明SMB共享已经成功挂载。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;xie-zai-gong-xiang&quot;&gt;卸载共享&lt;&#x2F;h2&gt;
+&lt;p&gt;如果需要卸载SMB共享，可以使用以下命令：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; systemctl disable&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --now&lt;&#x2F;span&gt;&lt;span&gt; mnt-my.mount&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# 或者如果使用了自动挂载&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# sudo systemctl disable --now mnt-my.automount&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;wen-ti-pai-cha&quot;&gt;问题排查&lt;&#x2F;h2&gt;
+&lt;p&gt;如果遇到挂载问题，可以查看&lt;code&gt;systemd&lt;&#x2F;code&gt;的日志以获取更多信息：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;journalctl&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -u&lt;&#x2F;span&gt;&lt;span&gt; mnt-my.mount&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# 或者&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;journalctl&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -u&lt;&#x2F;span&gt;&lt;span&gt; mnt-my.automount&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;can-kao&quot;&gt;参考&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;title&#x2F;Samba&quot;&gt;Arch Wiki - Samba&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh">
+        <title>通配符域名证书</title>
+        <published>2025-10-07T16:20:45+00:00</published>
+        <updated>2025-10-07T16:20:45+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://blog.101248.xyz/blog/wildcard-domain-name/"/>
+        <id>https://blog.101248.xyz/blog/wildcard-domain-name/</id>
+        
+        <content type="html" xml:base="https://blog.101248.xyz/blog/wildcard-domain-name/">&lt;h2 id=&quot;huo-qu-googleyun-fu-wu-de-b64mackeyhe-keyid&quot;&gt;获取Google云服务的b64MacKey和KeyID&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;huo-qu-googleyun-fu-wu-de-b64mackeyhe-keyid-1&quot;&gt;获取Google云服务的b64MacKey和KeyID&lt;&#x2F;h3&gt;
+&lt;p&gt;打开google云服务，选择API和服务&lt;&#x2F;p&gt;
+ &lt;img src=&quot;https:&#x2F;&#x2F;blog.101248.xyz&#x2F;images&#x2F;image-5.png&quot; alt=&quot;image-5&quot; width=&quot;2558&quot; height=&quot;1223&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;p&gt;点击右上角的Shell&lt;&#x2F;p&gt;
+ &lt;img src=&quot;https:&#x2F;&#x2F;blog.101248.xyz&#x2F;images&#x2F;image-6.png&quot; alt=&quot;image-6&quot; width=&quot;2566&quot; height=&quot;456&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;p&gt;成功后输入以下命令&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;gcloud publicca external-account-keys create&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;得到b64MacKey和KeyID&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;shi-yong-acme-shshen-qing-zheng-shu&quot;&gt;使用acme.sh申请证书&lt;&#x2F;h3&gt;
+&lt;p&gt;安装acme.sh到～&#x2F;.acme.sh&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;curl https:&#x2F;&#x2F;get.acme.sh | sh -s&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;注册账号&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;acme.sh --register-account \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        --server https:&#x2F;&#x2F;dv.acme-v02.api.pki.goog&#x2F;directory \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        --server google -m [Your Mail]] \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        --eab-kid [Your keyId] \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        --eab-hmac-key [Your b64MacKey]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;由于域名托管在Cloudflare，所以需要添加环境变量
+首先在Cloudflare上拿到Global API Key&lt;&#x2F;p&gt;
+ &lt;img src=&quot;https:&#x2F;&#x2F;blog.101248.xyz&#x2F;images&#x2F;image-7.png&quot; alt=&quot;image-7&quot; width=&quot;2566&quot; height=&quot;680&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;p&gt;在account.conf中添加&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;CF_Key=&amp;quot;Global API Key&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;CF_Email=&amp;quot;Your Mail&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;申请证书&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;acme.sh --server google --issue --dns dns_cf -d [Your Domain]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;可以设置默认证书的CA&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;acme.sh --set-default-ca  --server google&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;geng-xin-zheng-shu&quot;&gt;更新证书&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;acme.sh&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --renew -d&lt;&#x2F;span&gt;&lt;span&gt; [Your Domain]&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --force&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+    <entry xml:lang="zh">
+        <title>Niri</title>
+        <published>2025-09-22T13:00:50+00:00</published>
+        <updated>2025-10-13T23:00:39+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://blog.101248.xyz/blog/niri/"/>
+        <id>https://blog.101248.xyz/blog/niri/</id>
+        
+        <content type="html" xml:base="https://blog.101248.xyz/blog/niri/">&lt;h2 id=&quot;huan-jing&quot;&gt;环境&lt;&#x2F;h2&gt;
+&lt;p&gt;在&lt;code&gt;Arch Linux&lt;&#x2F;code&gt;下使用&lt;code&gt;Niri&lt;&#x2F;code&gt;，并通过&lt;code&gt;paru&lt;&#x2F;code&gt;进行安装。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;NAME&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Arch Linux&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;PRETTY_NAME&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Arch Linux&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;ID&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;arch&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;BUILD_ID&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;rolling&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;ANSI_COLOR&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;38;2;23;147;209&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;HOME_URL&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;https:&#x2F;&#x2F;archlinux.org&#x2F;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;DOCUMENTATION_URL&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;SUPPORT_URL&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;https:&#x2F;&#x2F;bbs.archlinux.org&#x2F;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;BUG_REPORT_URL&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;https:&#x2F;&#x2F;gitlab.archlinux.org&#x2F;groups&#x2F;archlinux&#x2F;-&#x2F;issues&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;PRIVACY_POLICY_URL&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;https:&#x2F;&#x2F;terms.archlinux.org&#x2F;docs&#x2F;privacy-policy&#x2F;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;LOGO&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;archlinux-logo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;an-zhuang&quot;&gt;安装&lt;&#x2F;h2&gt;
+&lt;p&gt;首先安装&lt;code&gt;paru&lt;&#x2F;code&gt;，如果已经安装可以跳过这一步：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; pacman&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S --needed&lt;&#x2F;span&gt;&lt;span&gt; rustup base-devel git&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;rustup&lt;&#x2F;span&gt;&lt;span&gt; default stable&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; clone&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --depth 1&lt;&#x2F;span&gt;&lt;span&gt; https:&#x2F;&#x2F;aur.archlinux.org&#x2F;paru.git &#x2F;tmp&#x2F;paru&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;cd&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;tmp&#x2F;paru&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;makepkg&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -si&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;然后使用&lt;code&gt;paru&lt;&#x2F;code&gt;安装&lt;code&gt;Niri&lt;&#x2F;code&gt;：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;paru&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; niri&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;pei-zhi&quot;&gt;配置&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;Niri&lt;&#x2F;code&gt;的配置文件位于&lt;code&gt;~&#x2F;.config&#x2F;niri&#x2F;config.kdl&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;font&quot;&gt;Font&lt;&#x2F;h3&gt;
+&lt;p&gt;安装中文与表情字体：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;paru&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; noto-fonts-cjk noto-fonts-emoji&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;然后运行以下命令更新字体缓存：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;fc-cache&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -fv&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;退出&lt;code&gt;Niri&lt;&#x2F;code&gt;重启后，字体即可生效。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;shu-ru-fa&quot;&gt;输入法&lt;&#x2F;h3&gt;
+&lt;p&gt;安装&lt;code&gt;fcitx5-im&lt;&#x2F;code&gt;和&lt;code&gt;fcitx5-chinese-addons&lt;&#x2F;code&gt;：&lt;&#x2F;p&gt;
+&lt;p&gt;注意：这里会让你选音频提供者，如果担心音频问题，可以选择&lt;code&gt;pipewire&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;paru&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; fcitx5-im fcitx5-chinese-addons&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;修改&lt;code&gt;Niri&lt;&#x2F;code&gt;的配置文件，添加以下内容：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;kdl&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;environment&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;    XMODIFIERS&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;@im=fcitx&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;spawn-at-startup&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;fcitx5&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;chrome&quot;&gt;Chrome&lt;&#x2F;h3&gt;
+&lt;p&gt;安装&lt;code&gt;Chrome&lt;&#x2F;code&gt;浏览器：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;paru&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; google-chrome&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;添加以下内容到&lt;code&gt;~&#x2F;.config&#x2F;chrome-flags.conf&lt;&#x2F;code&gt;文件中：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;--enable-features=AcceleratedVideoDecodeLinuxGL&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;--enable-features=UseOzonePlatform&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;--ozone-platform=wayland&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;--enable-wayland-ime&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;--wayland-text-input-version=3&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;启用硬件加速&lt;&#x2F;li&gt;
+&lt;li&gt;启用&lt;code&gt;Wayland&lt;&#x2F;code&gt;支持&lt;&#x2F;li&gt;
+&lt;li&gt;启用&lt;code&gt;Wayland&lt;&#x2F;code&gt;输入法支持&lt;&#x2F;li&gt;
+&lt;li&gt;使用&lt;code&gt;Wayland&lt;&#x2F;code&gt;文本输入版本3&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;jin-jie&quot;&gt;进阶&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;dankmaterialshell&quot;&gt;DankMaterialShell&lt;&#x2F;h3&gt;
+&lt;p&gt;本节参考&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;AvengeMedia&#x2F;DankMaterialShell?tab=readme-ov-file#dank-shell-installation&quot;&gt;GitHub - DankMaterialShell&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;使用一些已经配置好的&lt;code&gt;Niri&lt;&#x2F;code&gt;环境，这里选择&lt;code&gt;DankMaterialShell&lt;&#x2F;code&gt;：&lt;&#x2F;p&gt;
+&lt;p&gt;安装软件包：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;paru&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; dms-shell-git matugen-bin cava wl-clipboard cliphist brightnessctl dms-shell-niri&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;修改&lt;code&gt;Niri&lt;&#x2F;code&gt;的配置文件，添加以下内容：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;kdl&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; Required for clipboard history integration&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;spawn-at-startup&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;bash&amp;quot; &amp;quot;-c&amp;quot; &amp;quot;wl-paste --watch cliphist store &amp;amp;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; Recommended (must install polkit-mate before hand) for elevation prompts&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;spawn-at-startup&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;&#x2F;usr&#x2F;lib&#x2F;mate-polkit&#x2F;polkit-mate-authentication-agent-1&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; This may be a different path on different distributions, the above is for the arch linux mate-polkit package&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; Starts DankShell&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;spawn-at-startup&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;run&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; If using niri newer than 271534e115e5915231c99df287bbfe396185924d (~aug 17 2025)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; you can add this to disable built in config load errors since dank shell provides this&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;config-notification&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;    disable-failed&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; Dank keybinds&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; 1. These should not be in conflict with any pre-existing keybindings&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; 2. You need to merge them with your existing config if you want to use these&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; 3. You can change the keys to whatever you want, if you prefer something different&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; 4. For the increment&#x2F;decrement ones you can change the steps to whatever you like too&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;binds&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   Mod+Space&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; hotkey-overlay-title&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Application Launcher&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;spotlight&amp;quot; &amp;quot;toggle&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   Mod+V&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; hotkey-overlay-title&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Clipboard Manager&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;clipboard&amp;quot; &amp;quot;toggle&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   Mod+M&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; hotkey-overlay-title&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Task Manager&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;processlist&amp;quot; &amp;quot;toggle&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   Mod+N&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; hotkey-overlay-title&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Notification Center&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;notifications&amp;quot; &amp;quot;toggle&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   Mod+Comma&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; hotkey-overlay-title&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Settings&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;settings&amp;quot; &amp;quot;toggle&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   Mod+P&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; hotkey-overlay-title&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Notepad&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;notepad&amp;quot; &amp;quot;toggle&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   Super+Alt+L&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; hotkey-overlay-title&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Lock Screen&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;lock&amp;quot; &amp;quot;lock&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   Mod+X&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; hotkey-overlay-title&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Power Menu&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;powermenu&amp;quot; &amp;quot;toggle&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   XF86AudioRaiseVolume&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; allow-when-locked&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;true {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;audio&amp;quot; &amp;quot;increment&amp;quot; &amp;quot;3&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   XF86AudioLowerVolume&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; allow-when-locked&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;true {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;audio&amp;quot; &amp;quot;decrement&amp;quot; &amp;quot;3&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   XF86AudioMute&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; allow-when-locked&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;true {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;audio&amp;quot; &amp;quot;mute&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   XF86AudioMicMute&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; allow-when-locked&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;true {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;audio&amp;quot; &amp;quot;micmute&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   XF86MonBrightnessUp&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; allow-when-locked&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;true {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;brightness&amp;quot; &amp;quot;increment&amp;quot; &amp;quot;5&amp;quot; &amp;quot;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;   &#x2F;&#x2F; You can override the default device for e.g. keyboards by adding the device name to the last param&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   XF86MonBrightnessDown&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; allow-when-locked&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;true {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;brightness&amp;quot; &amp;quot;decrement&amp;quot; &amp;quot;5&amp;quot; &amp;quot;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;   &#x2F;&#x2F; Night mode toggle&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   Mod+Shift+N&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; allow-when-locked&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;true {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;night&amp;quot; &amp;quot;toggle&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;注意：&lt;code&gt;binds&lt;&#x2F;code&gt;部分需要和已有的配置合并。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;display-manager&quot;&gt;Display Manager&lt;&#x2F;h3&gt;
+&lt;p&gt;自动登录&lt;code&gt;Niri&lt;&#x2F;code&gt;，这里使用&lt;code&gt;greetd&lt;&#x2F;code&gt;或&lt;code&gt;lemurs&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;greetd&quot;&gt;greetd&lt;&#x2F;h4&gt;
+&lt;p&gt;本节参考&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;AvengeMedia&#x2F;DankMaterialShell?tab=readme-ov-file#greeter&quot;&gt;DankMaterialShell - Greeter&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;dms&lt;&#x2F;code&gt;有对&lt;code&gt;greetd&lt;&#x2F;code&gt;的支持，直接执行以下命令：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;dms&lt;&#x2F;span&gt;&lt;span&gt; greeter install&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;不支持的话，可以参考&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;title&#x2F;Greetd&quot;&gt;Arch Wiki - Greetd&lt;&#x2F;a&gt;进行安装与配置。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;lemurs&quot;&gt;lemurs&lt;&#x2F;h4&gt;
+&lt;p&gt;本节参考&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;coastalwhite&#x2F;lemurs?tab=readme-ov-file#arch-linux&quot;&gt;GitHub - lemurs&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h5 id=&quot;zong-lan&quot;&gt;总览&lt;&#x2F;h5&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;paru&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; lemurs&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;echo&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;#!&#x2F;bin&#x2F;sh&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;exec niri-session&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; |&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt; sudo&lt;&#x2F;span&gt;&lt;span&gt; tee &#x2F;etc&#x2F;lemurs&#x2F;wayland&#x2F;niri&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# Not needed if you don&amp;#39;t have a window manager yet&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# sudo systemctl disable display-manager.service&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; systemctl enable lemurs.service&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h4 id=&quot;an-zhuang-1&quot;&gt;安装&lt;&#x2F;h4&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;paru&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; lemurs&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h4 id=&quot;pei-zhi-1&quot;&gt;配置&lt;&#x2F;h4&gt;
+&lt;p&gt;创建&lt;code&gt;&#x2F;etc&#x2F;lemurs&#x2F;wayland&#x2F;niri&lt;&#x2F;code&gt;文件：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;echo&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;#!&#x2F;bin&#x2F;sh&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;exec niri-session&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; |&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt; sudo&lt;&#x2F;span&gt;&lt;span&gt; tee &#x2F;etc&#x2F;lemurs&#x2F;wayland&#x2F;niri&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;启用&lt;code&gt;lemurs&lt;&#x2F;code&gt;服务：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; systemctl enable lemurs.service&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;如果你已经有一个显示管理器在运行，可能需要先禁用它：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; systemctl disable display-manager.service&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;faq&quot;&gt;FAQ&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;nvidiaqu-dong&quot;&gt;Nvidia驱动&lt;&#x2F;h3&gt;
+&lt;p&gt;参考：&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;title&#x2F;NVIDIA&quot;&gt;Arch Wiki - NVIDIA&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;bi-ji-ben-zi-dai-yin-pin-she-bei-bu-neng-shi-bie&quot;&gt;笔记本自带音频设备不能识别&lt;&#x2F;h3&gt;
+&lt;p&gt;安装&lt;code&gt;sof-firmware&lt;&#x2F;code&gt;与&lt;code&gt;pipewire-pulse&lt;&#x2F;code&gt;：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;paru&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; sof-firmware pipewire-pulse&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+    <entry xml:lang="zh">
+        <title>KVM 设备直通</title>
+        <published>2025-09-05T17:01:51+00:00</published>
+        <updated>2025-09-05T17:01:51+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://blog.101248.xyz/blog/kvm-pass-through/"/>
+        <id>https://blog.101248.xyz/blog/kvm-pass-through/</id>
+        
+        <content type="html" xml:base="https://blog.101248.xyz/blog/kvm-pass-through/">&lt;h2 id=&quot;cha-kan-zhi-tong-she-bei&quot;&gt;查看直通设备&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;lshw&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -c&lt;&#x2F;span&gt;&lt;span&gt; network&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -businfo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;...&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;pci@0000:5e:00.2&lt;&#x2F;span&gt;&lt;span&gt;                   network        ConnectX Family mlx5Gen Virtual Function&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;pei-zhi-zhi-tong-she-bei&quot;&gt;配置直通设备&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; virsh attach-interface&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; &amp;lt;&lt;&#x2F;span&gt;&lt;span&gt;domain&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; hostdev 0000:5e:00.2&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --managed --live --config&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Note:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--live&lt;&#x2F;code&gt; 选项表示应用到正在运行的虚拟机&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh">
+        <title>KVM 安装虚拟机及相关配置</title>
+        <published>2025-08-21T16:42:40+00:00</published>
+        <updated>2025-08-21T16:42:40+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://blog.101248.xyz/blog/kvm/"/>
+        <id>https://blog.101248.xyz/blog/kvm/</id>
+        
+        <content type="html" xml:base="https://blog.101248.xyz/blog/kvm/">&lt;h2 id=&quot;xiang-guan&quot;&gt;相关&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;virbr0-qiao-jie-wang-luo-pei-zhi&quot;&gt;&lt;code&gt;virbr0&lt;&#x2F;code&gt; 桥接网络配置&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;virbr0&lt;&#x2F;code&gt; 是 libvirt 默认创建的桥接网络接口，允许虚拟机通过宿主机的网络连接到外部网络。它通常配置为 NAT 模式，这意味着虚拟机可以访问外部网络，但外部网络无法直接访问虚拟机。
+配置文件位于 &lt;code&gt;&#x2F;etc&#x2F;libvirt&#x2F;qemu&#x2F;networks&#x2F;default.xml&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;huan-jing&quot;&gt;环境&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;jian-cha-cpuxu-ni-hua-zhi-chi&quot;&gt;检查CPU虚拟化支持&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;grep&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -cE&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;#39;(vmx|svm)&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;proc&#x2F;cpuinfo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;输出大于0表示支持。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;an-zhuang-xiang-guan-ruan-jian-bao&quot;&gt;安装相关软件包&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;debian-ubuntu&quot;&gt;Debian&#x2F;Ubuntu&lt;&#x2F;h4&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -y&lt;&#x2F;span&gt;&lt;span&gt; install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager cloud-image-utils&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h4 id=&quot;manjaro&quot;&gt;Manjaro&lt;&#x2F;h4&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; pacman&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; qemu libvirt virt-install&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;tian-jia-dang-qian-yong-hu-dao-libvirt-he-kvm-zu&quot;&gt;添加当前用户到 &lt;code&gt;libvirt&lt;&#x2F;code&gt; 和 &lt;code&gt;kvm&lt;&#x2F;code&gt; 组&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; usermod&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -aG&lt;&#x2F;span&gt;&lt;span&gt; libvirt&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $USER&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; usermod&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -aG&lt;&#x2F;span&gt;&lt;span&gt; kvm&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $USER&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;jian-cha-bing-qi-dong-libvirtd-fu-wu-yu-mo-ren-wang-luo&quot;&gt;检查并启动 &lt;code&gt;libvirtd&lt;&#x2F;code&gt; 服务与默认网络&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; systemctl status libvirtd&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; systemctl start libvirtd&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; virsh net-start default&lt;&#x2F;span&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt; # 启动默认网络，启动失败可重启设备（可能是某个服务未启动）&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;kvm-ok&lt;&#x2F;span&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;  # 仅Debian&#x2F;Ubuntu&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;an-zhuang-ubuntuxu-ni-ji&quot;&gt;安装Ubuntu虚拟机&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;huan-jing-bian-liang&quot;&gt;环境变量&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; VM_NAME&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;ubuntu20&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; UBUNTU_RELEASE&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;focal&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; VM_IMAGE_PATH&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;opt&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;kvm&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;img&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; VM_IMAGE&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$VM_IMAGE_PATH&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;cloud-ubuntu-$UBUNTU_RELEASE&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;img&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;### 下载Ubuntu 镜像&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span&gt; [国内镜像](&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;https:&#x2F;&#x2F;mirror.nyist.edu.cn&#x2F;ubuntu-cloud-images&#x2F;&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;```&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;bash&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;wget&lt;&#x2F;span&gt;&lt;span&gt; https:&#x2F;&#x2F;mirror.nyist.edu.cn&#x2F;ubuntu-cloud-images&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$UBUNTU_RELEASE&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;current&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$UBUNTU_RELEASE&lt;&#x2F;span&gt;&lt;span&gt;-server-cloudimg-amd64-disk-kvm.img&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# 或者使用 curl&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;curl&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -LO&lt;&#x2F;span&gt;&lt;span&gt; https:&#x2F;&#x2F;mirror.nyist.edu.cn&#x2F;ubuntu-cloud-images&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$UBUNTU_RELEASE&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;current&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$UBUNTU_RELEASE&lt;&#x2F;span&gt;&lt;span&gt;-server-cloudimg-amd64-disk-kvm.img&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;zhun-bei-ying-pan&quot;&gt;准备硬盘&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;cloud image&lt;&#x2F;code&gt; 通常是已经安装好的系统镜像文件，我们需要创建一个基于该镜像的虚拟硬盘。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;qemu-img&lt;&#x2F;span&gt;&lt;span&gt; create&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -F&lt;&#x2F;span&gt;&lt;span&gt; qcow2&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -b&lt;&#x2F;span&gt;&lt;span&gt; .&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$UBUNTU_RELEASE&lt;&#x2F;span&gt;&lt;span&gt;-server-cloudimg-amd64-disk-kvm.img&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -f&lt;&#x2F;span&gt;&lt;span&gt; qcow2 .&#x2F;np-ubuntu18.qcow2 40G&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;pei-zhi&quot;&gt;配置&lt;&#x2F;h3&gt;
+&lt;p&gt;创建 &lt;code&gt;user-data&lt;&#x2F;code&gt; 文件：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#cloud-config&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;hostname&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span&gt; np-ubuntu18&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;manage_etc_hosts&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; true&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;users&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  -&lt;&#x2F;span&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt; name&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span&gt; phx2&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;    sudo&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span&gt; ALL=(ALL) NOPASSWD:ALL&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;    groups&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span&gt; users, admin&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;    home&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;home&#x2F;phx2&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;    shell&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;bin&#x2F;bash&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;    lock_passwd&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; false&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;ssh_pwauth&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; true&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;disable_root&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; false&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;chpasswd&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;  list&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; |&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    vmadm:password&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;  expire&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; false&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;按实际情况修改 &lt;code&gt;hostname&lt;&#x2F;code&gt;、&lt;code&gt;users&lt;&#x2F;code&gt; 和 &lt;code&gt;chpasswd&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;创建 &lt;code&gt;meta-data&lt;&#x2F;code&gt; 空文件&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;touch&lt;&#x2F;span&gt;&lt;span&gt; meta-data&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;sheng-cheng-seed-wen-jian&quot;&gt;生成 seed 文件&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;cloud-localds&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -v&lt;&#x2F;span&gt;&lt;span&gt; .&#x2F;np-ubuntu18-seed.qcow2 user-data meta-data&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;chuang-jian-xu-ni-ji&quot;&gt;创建虚拟机&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; virt-install&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --name&lt;&#x2F;span&gt;&lt;span&gt; np-ubuntu18&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --os-variant&lt;&#x2F;span&gt;&lt;span&gt; ubuntu18.04&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --vcpus 2&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --ram 2048&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --network&lt;&#x2F;span&gt;&lt;span&gt; bridge=virbr0,model=virtio&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --disk&lt;&#x2F;span&gt;&lt;span&gt; path=np-ubuntu18-seed.qcow2,device=disk&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --disk&lt;&#x2F;span&gt;&lt;span&gt; path=&#x2F;var&#x2F;lib&#x2F;libvirt&#x2F;images&#x2F;ubuntu18.qcow2,size=40,format=qcow2,backing_store=np-ubuntu18.qcow2&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --import&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --nographics&lt;&#x2F;span&gt;&lt;span&gt; none&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# sudo virt-install --name np-ubuntu18 --os-variant ubuntu18.04 --vcpus 2 --ram 2048 --location $iso_path --network bridge=virbr0,model=virtio --graphics none --extra-args=&amp;#39;console=ttyS0,115200n8 serial&amp;#39; --disk path=&#x2F;var&#x2F;lib&#x2F;libvirt&#x2F;images&#x2F;ubuntu18.qcow2,size=40,format=qcow2,bus=virtio&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--name&lt;&#x2F;code&gt;：虚拟机名称&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;--os-variant&lt;&#x2F;code&gt;：操作系统版本&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;--vcpus&lt;&#x2F;code&gt;：虚拟CPU数量&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;--ram&lt;&#x2F;code&gt;：内存大小（MB）&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;--location&lt;&#x2F;code&gt;：安装介质路径（ISO文件路径）&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;--network&lt;&#x2F;code&gt;：网络配置，这里使用桥接模式&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;--graphics none&lt;&#x2F;code&gt;：无图形界面，使用命令行安装&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;--extra-args&lt;&#x2F;code&gt;：传递给安装程序的额外参数，这里配置为使用串口控制台&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;--disk&lt;&#x2F;code&gt;：磁盘配置，这里创建一个40GB的QCOW2格式磁盘&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;wan-zheng-jiao-ben&quot;&gt;完整脚本&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;set&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -e&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; VM_NAME&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;np-ubuntu18&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; UBUNTU_RELEASE&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;bionic&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; VM_IMAGE&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$UBUNTU_RELEASE&lt;&#x2F;span&gt;&lt;span&gt;-&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;server-cloudimg-amd64&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;img&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;wget&lt;&#x2F;span&gt;&lt;span&gt; https:&#x2F;&#x2F;mirror.nyist.edu.cn&#x2F;ubuntu-cloud-images&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$UBUNTU_RELEASE&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;current&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$UBUNTU_RELEASE&lt;&#x2F;span&gt;&lt;span&gt;-server-cloudimg-amd64.img&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# qemu-img create -F qcow2 -b .&#x2F;$VM_IMAGE -f qcow2 .&#x2F;$VM_NAME.qcow2 10G&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# cat &amp;gt;network-config &amp;lt;&amp;lt;EOF&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# ethernets:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#     $INTERFACE:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#         addresses:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#         - $IP_ADDR&#x2F;24&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#         dhcp4: false&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#         gateway4: 192.168.122.1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#         match:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#             macaddress: $MAC_ADDR&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#         nameservers:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#             addresses:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#             - 1.1.1.1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#             - 8.8.8.8&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#         set-name: $INTERFACE&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# version: 2&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# EOF&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;cat&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; &amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;user-data&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; &amp;lt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;EOF&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;#cloud-config&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;manage_etc_hosts: true&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;users:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  - name: vmadm&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    sudo: ALL=(ALL) NOPASSWD:ALL&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    groups: users, admin&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    home: &#x2F;home&#x2F;vmadm&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    shell: &#x2F;bin&#x2F;bash&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    lock_passwd: false&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;ssh_pwauth: true&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;disable_root: false&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;chpasswd:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  list: |&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    vmadm:vmadm&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  expire: false&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;EOF&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;touch&lt;&#x2F;span&gt;&lt;span&gt; meta-data&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# cloud-localds -v --network-config=network-config .&#x2F;$VM_NAME-seed.qcow2 user-data meta-data&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;cloud-localds&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -v&lt;&#x2F;span&gt;&lt;span&gt; .&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$VM_NAME&lt;&#x2F;span&gt;&lt;span&gt;-seed.qcow2 user-data meta-data&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;virt-install&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --connect&lt;&#x2F;span&gt;&lt;span&gt; qemu:&#x2F;&#x2F;&#x2F;system&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --virt-type&lt;&#x2F;span&gt;&lt;span&gt; kvm&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --name&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $VM_NAME&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --ram 1024&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --vcpus=2&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --os-type&lt;&#x2F;span&gt;&lt;span&gt; linux&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --os-variant&lt;&#x2F;span&gt;&lt;span&gt; ubuntu18.04&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --disk&lt;&#x2F;span&gt;&lt;span&gt; path=&#x2F;var&#x2F;lib&#x2F;libvirt&#x2F;images&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$VM_NAME&lt;&#x2F;span&gt;&lt;span&gt;.qcow2,size=40,format=qcow2,backing_store=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$VM_IMAGE&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --disk&lt;&#x2F;span&gt;&lt;span&gt; path=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$VM_NAME&lt;&#x2F;span&gt;&lt;span&gt;-seed.qcow2,device=disk&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --import&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --network&lt;&#x2F;span&gt;&lt;span&gt; network=default,model=virtio&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;  --noautoconsole&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;virt-install&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;an-zhuang-windows-10&quot;&gt;安装 Windows 10&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;zhun-bei-virt-install&quot;&gt;准备virt-install&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; ISO_PATH&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;opt&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;kvm&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;iso&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; IMG_PATH&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;opt&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;kvm&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;img&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; VM_NAME&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;win&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; mkdir&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -p&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $ISO_PATH&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; mkdir&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -p&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $IMG_PATH&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;xia-zai-windows-10-iso-he-virtio-qu-dong&quot;&gt;下载 Windows 10 ISO 和 VirtIO 驱动&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.microsoft.com&#x2F;en-us&#x2F;evalcenter&#x2F;download-windows-10-enterprise&quot;&gt;Windows 10 LTSC&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;fedorapeople.org&#x2F;groups&#x2F;virt&#x2F;virtio-win&#x2F;direct-downloads&#x2F;archive-virtio&#x2F;&quot;&gt;VirtIO 驱动&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;wget&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -O&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $ISO_PATH&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;win10_ltsc.iso https:&#x2F;&#x2F;go.microsoft.com&#x2F;fwlink&#x2F;p&#x2F;?LinkID=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt;2195404&lt;&#x2F;span&gt;&lt;span&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;clcid&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;0x409&amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;culture&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;en-us&amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;country&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;US&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;wget&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -O&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $ISO_PATH&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;virtio-win.iso https:&#x2F;&#x2F;fedorapeople.org&#x2F;groups&#x2F;virt&#x2F;virtio-win&#x2F;direct-downloads&#x2F;archive-virtio&#x2F;virtio-win-0.1.271-1&#x2F;virtio-win.iso&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;an-zhuang&quot;&gt;安装&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; virt-install&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --name&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $VM_NAME&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --memory 4096&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --vcpus 2&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --os-variant&lt;&#x2F;span&gt;&lt;span&gt; win10&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --cdrom&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $ISO_PATH&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;win10_ltsc.iso&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --disk&lt;&#x2F;span&gt;&lt;span&gt; path=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$ISO_PATH&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;virtio-win.iso,device=cdrom&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --disk&lt;&#x2F;span&gt;&lt;span&gt; path=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;$IMG_PATH&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;win.qcow2,size=60,format=qcow2,bus=virtio&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt; \&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --network&lt;&#x2F;span&gt;&lt;span&gt; network=default,model=virtio&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;zhu-yi&quot;&gt;注意&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;an-zhuang-shi-xu-yao-jia-zai-virtio-qu-dong&quot;&gt;安装时需要加载 VirtIO 驱动&lt;&#x2F;h4&gt;
+&lt;p&gt;在安装过程中，当提示选择磁盘时，选择&lt;code&gt;加载驱动程序&lt;&#x2F;code&gt;，然后选择 VirtIO 驱动的&lt;code&gt;w10&lt;&#x2F;code&gt;目录&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;an-zhuang-wan-bi-zhi-hou-xu-yao-geng-xin-qu-dong&quot;&gt;安装完毕之后需要更新驱动&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;打开&lt;code&gt;设备管理器&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;右键点击需要更新的设备，选择&lt;code&gt;更新驱动程序&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;选择&lt;code&gt;浏览计算机以查找驱动程序软件&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;选择&lt;code&gt;D:\&lt;&#x2F;code&gt;（假设 VirtIO 驱动挂载在&lt;code&gt;D&lt;&#x2F;code&gt;盘）进行更新（根目录即可）&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;qu-xiao-virtio-win-isode-gua-zai&quot;&gt;取消&lt;code&gt;virtio-win.iso&lt;&#x2F;code&gt;的挂载&lt;&#x2F;h4&gt;
+&lt;p&gt;执行以下命令取消挂载：
+注意如果虚拟机正在运行，需要添加&lt;code&gt;--live&lt;&#x2F;code&gt;参数&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; virsh change-media&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $VM_NAME $ISO_PATH&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;virtio-win.iso&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --eject --config&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;wang-luo-pei-zhi&quot;&gt;网络配置&lt;&#x2F;h2&gt;
+&lt;p&gt;前面提到 &lt;code&gt;virbr0&lt;&#x2F;code&gt; 是 libvirt 默认创建的桥接网络接口，允许虚拟机通过宿主机的网络连接到外部网络。它通常配置为 NAT 模式，这意味着虚拟机可以访问外部网络，但外部网络无法直接访问虚拟机。&lt;&#x2F;p&gt;
+&lt;p&gt;我们可以通过配置桥接网络来实现虚拟机与宿主机在同一局域网内通信。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;pei-zhi-qiao-jie-wang-luo&quot;&gt;配置桥接网络&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;pei-zhi-su-zhu-ji-qiao-jie-jie-kou&quot;&gt;配置宿主机桥接接口&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;code&gt;libvirt&lt;&#x2F;code&gt; 桥接网络需要宿主机上有一个桥接接口。这里以创建一个名为 &lt;code&gt;virbr1&lt;&#x2F;code&gt; 的桥接接口为例。&lt;&#x2F;p&gt;
+&lt;p&gt;编辑宿主机的网络配置文件，一般需要根据具体的网络管理工具进行配置，例如&lt;code&gt;Netplan&lt;&#x2F;code&gt;、&lt;code&gt;NetworkManager&lt;&#x2F;code&gt;或&lt;code&gt;systemd-networkd&lt;&#x2F;code&gt;。这里以&lt;code&gt;systemd-networkd&lt;&#x2F;code&gt;为例：&lt;&#x2F;p&gt;
+&lt;p&gt;创建一个新的网络设备&lt;code&gt;&#x2F;etc&#x2F;systemd&#x2F;network&#x2F;20-bridge-br1.netdev&lt;&#x2F;code&gt;：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[NetDev]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Name&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;virbr1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Kind&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;bridge&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;创建桥接接口配置文件&lt;code&gt;&#x2F;etc&#x2F;systemd&#x2F;network&#x2F;30-bridge-br1.network&lt;&#x2F;code&gt;：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Match]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Name&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;virbr1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Network]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;DHCP&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;yes&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# 或者使用静态IP&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;修改宿主机的物理网络接口配置文件，可能是&lt;code&gt;&#x2F;etc&#x2F;systemd&#x2F;network&#x2F;89-ethernet.network&lt;&#x2F;code&gt;，具体文件名根据实际情况而定：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Match]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Name&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;enp5s0  &lt;&#x2F;span&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# 替换为实际的物理网络接口名称&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Network]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Bridge&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;virbr1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;然后重启&lt;code&gt;systemd-networkd&lt;&#x2F;code&gt;服务：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; systemctl restart systemd-networkd&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h4 id=&quot;bian-ji-libvirtwang-luo-pei-zhi-wen-jian&quot;&gt;编辑&lt;code&gt;libvirt&lt;&#x2F;code&gt;网络配置文件&lt;&#x2F;h4&gt;
+&lt;p&gt;新建一个桥接网络配置文件&lt;code&gt;br1.xml&lt;&#x2F;code&gt;，内容如下：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;network&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;  &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;br1&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;  &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;uuid&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;f1e12345-abcd-4e67-9876-123456abcdef&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;uuid&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;  &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;forward&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; mode&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;#39;bridge&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&#x2F;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;  &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;bridge&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; name&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;#39;virbr1&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&#x2F;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;network&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;name&lt;&#x2F;code&gt;：网络名称，可以自定义&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;uuid&lt;&#x2F;code&gt;：网络的唯一标识符，可以使用&lt;code&gt;uuidgen&lt;&#x2F;code&gt;命令生成&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;forward mode=&#x27;bridge&#x27;&lt;&#x2F;code&gt;：设置为桥接模式&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;bridge name&lt;&#x2F;code&gt;：桥接接口名称，需要与宿主机上的桥接接口名称一致&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;ding-yi-bing-qi-dong-xin-wang-luo&quot;&gt;定义并启动新网络&lt;&#x2F;h4&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; virsh net-define br1.xml&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; virsh net-start br1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; virsh net-autostart br1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h4 id=&quot;pei-zhi-xu-ni-ji-shi-yong-xin-wang-luo&quot;&gt;配置虚拟机使用新网络&lt;&#x2F;h4&gt;
+&lt;p&gt;在创建虚拟机时，使用&lt;code&gt;--network bridge=virbr1,model=virtio&lt;&#x2F;code&gt;参数指定使用新的桥接网络。&lt;&#x2F;p&gt;
+&lt;p&gt;或者直接修改已有虚拟机的网络配置：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; virsh edit&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; &amp;lt;&lt;&#x2F;span&gt;&lt;span&gt;vm-name&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;将网络部分修改为：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;interface&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; type&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;#39;bridge&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;  &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;mac&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; address&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;#39;52:54:00:xx:xx:xx&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&#x2F;&amp;gt;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt; &amp;lt;!-- 替换为实际的MAC地址 --&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;  &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;source&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; bridge&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;#39;virbr1&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&#x2F;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;  &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;model&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; type&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;#39;virtio&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&#x2F;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;interface&lt;&#x2F;span&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;保存并退出后，重启虚拟机使配置生效：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; virsh reboot&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; &amp;lt;&lt;&#x2F;span&gt;&lt;span&gt;vm-name&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+</feed>

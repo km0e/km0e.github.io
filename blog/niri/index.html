@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <script src="https://blog.101248.xyz/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://blog.101248.xyz/abridge.css?h=e167a0ae757c8231aba7" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://blog.101248.xyz" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.101248.xyz/manifest.min.json" />
+  <link rel="mask-icon" href="https://blog.101248.xyz/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://blog.101248.xyz/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.101248.xyz/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.101248.xyz/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.101248.xyz/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="笔记 Atom Feed" href="https://blog.101248.xyz/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Niri | 笔记</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="笔记" />
+  <meta name="description" content="安装和配置Niri" />
+  <link rel="canonical" href="https://blog.101248.xyz/blog/niri/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.101248.xyz/blog/niri/" />
+  <meta name="twitter:url" content="https://blog.101248.xyz/blog/niri/" />
+  <meta property="og:description" content="安装和配置Niri" />
+  <meta name="twitter:description" content="安装和配置Niri" />
+  <meta property="og:title" content="Niri | 笔记" />
+  <meta name="twitter:title" content="Niri | 笔记" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="笔记" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-10-13" />
+  <script>
+	var remark_config = {
+		host: "https://remark42.101248.xyz",
+		site_id: "blog",
+	}
+  </script>
+  <script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+  <script defer src="https://blog.101248.xyz/js/abridge.min.js?h=e0f9a881a665c86cce9c" integrity="sha384-QF67y7RnPkuDrJNQqn3/7nYxqxWkW/qHI7zN0WTES1aXbf+TotoByRBb835fUE6U"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.stemmer.support.min.js" integrity="sha384-f0MKdC/9ZSGTpDiuWusC0SbLXNCBp6NgzDZpjR/4UdHXAQBqvTEKyinnsa1wQ7oA"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.zh.min.js" integrity="sha384-rQz9F0qWFRA0H4snbYEJ0VLIgOuLas/bm/j2HVui1L3lPvV16lr5u0L1XqhUJV6a"></script>
+  <noscript><link rel="stylesheet" href="https://blog.101248.xyz/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://blog.101248.xyz" title="笔记">笔记</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://blog.101248.xyz/archive/"> Posts </a></li><li><a class="s110" href="https://blog.101248.xyz/tags/"> Tags </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>中文</span><a href="https://blog.101248.xyz/en/blog/niri/">English</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+          <div>
+            <form autocomplete=off class="js" name="goSearch" id="searchbox">
+              <div class="searchd">
+                <input id="searchinput" type="text" placeholder="搜索" title="Search" />
+                <button type="submit" title="Search" class="svgs svgm search"></button>
+              </div>
+              <div class="results"><div id="suggestions"></div></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://blog.101248.xyz/blog/niri/">Niri</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> 九月 22, 2025 <span class="rpad"></span>更新: 十月 13, 2025 <span class="rpad"></span> #<a href="https://blog.101248.xyz/tags/note/">Note</a>  #<a href="https://blog.101248.xyz/tags/de/">DE</a>  #<a href="https://blog.101248.xyz/tags/wayland/">Wayland</a> </span>
+
+    
+
+
+<h2 id="huan-jing">环境</h2>
+<p>在<code>Arch Linux</code>下使用<code>Niri</code>，并通过<code>paru</code>进行安装。</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FF7EDB;">NAME</span><span style="color: #FFFFFFEE;">=</span><span style="color: #FF8B39;">&quot;Arch Linux&quot;</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">PRETTY_NAME</span><span style="color: #FFFFFFEE;">=</span><span style="color: #FF8B39;">&quot;Arch Linux&quot;</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">ID</span><span style="color: #FFFFFFEE;">=</span><span>arch</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">BUILD_ID</span><span style="color: #FFFFFFEE;">=</span><span>rolling</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">ANSI_COLOR</span><span style="color: #FFFFFFEE;">=</span><span style="color: #FF8B39;">&quot;38;2;23;147;209&quot;</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">HOME_URL</span><span style="color: #FFFFFFEE;">=</span><span style="color: #FF8B39;">&quot;https://archlinux.org/&quot;</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">DOCUMENTATION_URL</span><span style="color: #FFFFFFEE;">=</span><span style="color: #FF8B39;">&quot;https://wiki.archlinux.org/&quot;</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">SUPPORT_URL</span><span style="color: #FFFFFFEE;">=</span><span style="color: #FF8B39;">&quot;https://bbs.archlinux.org/&quot;</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">BUG_REPORT_URL</span><span style="color: #FFFFFFEE;">=</span><span style="color: #FF8B39;">&quot;https://gitlab.archlinux.org/groups/archlinux/-/issues&quot;</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">PRIVACY_POLICY_URL</span><span style="color: #FFFFFFEE;">=</span><span style="color: #FF8B39;">&quot;https://terms.archlinux.org/docs/privacy-policy/&quot;</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">LOGO</span><span style="color: #FFFFFFEE;">=</span><span>archlinux-logo</span></span></code></pre><h2 id="an-zhuang">安装</h2>
+<p>首先安装<code>paru</code>，如果已经安装可以跳过这一步：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> pacman</span><span style="color: #F97E72;"> -S --needed</span><span> rustup base-devel git</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">rustup</span><span> default stable</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">git</span><span> clone</span><span style="color: #F97E72;"> --depth 1</span><span> https://aur.archlinux.org/paru.git /tmp/paru</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">cd</span><span> /tmp/paru</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">makepkg</span><span style="color: #F97E72;"> -si</span></span></code></pre>
+<p>然后使用<code>paru</code>安装<code>Niri</code>：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">paru</span><span style="color: #F97E72;"> -S</span><span> niri</span></span></code></pre><h2 id="pei-zhi">配置</h2>
+<p><code>Niri</code>的配置文件位于<code>~/.config/niri/config.kdl</code>。</p>
+<h3 id="font">Font</h3>
+<p>安装中文与表情字体：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">paru</span><span style="color: #F97E72;"> -S</span><span> noto-fonts-cjk noto-fonts-emoji</span></span></code></pre>
+<p>然后运行以下命令更新字体缓存：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">fc-cache</span><span style="color: #F97E72;"> -fv</span></span></code></pre>
+<p>退出<code>Niri</code>重启后，字体即可生效。</p>
+<h3 id="shu-ru-fa">输入法</h3>
+<p>安装<code>fcitx5-im</code>和<code>fcitx5-chinese-addons</code>：</p>
+<p>注意：这里会让你选音频提供者，如果担心音频问题，可以选择<code>pipewire</code>。</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">paru</span><span style="color: #F97E72;"> -S</span><span> fcitx5-im fcitx5-chinese-addons</span></span></code></pre>
+<p>修改<code>Niri</code>的配置文件，添加以下内容：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="kdl"><span class="giallo-l"><span style="color: #72F1B8;">environment</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">    XMODIFIERS</span><span style="color: #FF8B39;"> &quot;@im=fcitx&quot;</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #72F1B8;">spawn-at-startup</span><span style="color: #FF8B39;"> &quot;fcitx5&quot;</span></span></code></pre><h3 id="chrome">Chrome</h3>
+<p>安装<code>Chrome</code>浏览器：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">paru</span><span style="color: #F97E72;"> -S</span><span> google-chrome</span></span></code></pre>
+<p>添加以下内容到<code>~/.config/chrome-flags.conf</code>文件中：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="plain"><span class="giallo-l"><span>--enable-features=AcceleratedVideoDecodeLinuxGL</span></span>
+<span class="giallo-l"><span>--enable-features=UseOzonePlatform</span></span>
+<span class="giallo-l"><span>--ozone-platform=wayland</span></span>
+<span class="giallo-l"><span>--enable-wayland-ime</span></span>
+<span class="giallo-l"><span>--wayland-text-input-version=3</span></span></code></pre>
+<ul>
+<li>启用硬件加速</li>
+<li>启用<code>Wayland</code>支持</li>
+<li>启用<code>Wayland</code>输入法支持</li>
+<li>使用<code>Wayland</code>文本输入版本3</li>
+</ul>
+<h2 id="jin-jie">进阶</h2>
+<h3 id="dankmaterialshell">DankMaterialShell</h3>
+<p>本节参考<a rel="noopener external" target="_blank" href="https://github.com/AvengeMedia/DankMaterialShell?tab=readme-ov-file#dank-shell-installation">GitHub - DankMaterialShell</a></p>
+<p>使用一些已经配置好的<code>Niri</code>环境，这里选择<code>DankMaterialShell</code>：</p>
+<p>安装软件包：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">paru</span><span style="color: #F97E72;"> -S</span><span> dms-shell-git matugen-bin cava wl-clipboard cliphist brightnessctl dms-shell-niri</span></span></code></pre>
+<p>修改<code>Niri</code>的配置文件，添加以下内容：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="kdl"><span class="giallo-l"><span style="color: #848BBD;font-style: italic;">// Required for clipboard history integration</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">spawn-at-startup</span><span style="color: #FF8B39;"> &quot;bash&quot; &quot;-c&quot; &quot;wl-paste --watch cliphist store &amp;&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">// Recommended (must install polkit-mate before hand) for elevation prompts</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">spawn-at-startup</span><span style="color: #FF8B39;"> &quot;/usr/lib/mate-polkit/polkit-mate-authentication-agent-1&quot;</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">// This may be a different path on different distributions, the above is for the arch linux mate-polkit package</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">// Starts DankShell</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">spawn-at-startup</span><span style="color: #FF8B39;"> &quot;dms&quot; &quot;run&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">// If using niri newer than 271534e115e5915231c99df287bbfe396185924d (~aug 17 2025)</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">// you can add this to disable built in config load errors since dank shell provides this</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">config-notification</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">    disable-failed</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">// Dank keybinds</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">// 1. These should not be in conflict with any pre-existing keybindings</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">// 2. You need to merge them with your existing config if you want to use these</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">// 3. You can change the keys to whatever you want, if you prefer something different</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">// 4. For the increment/decrement ones you can change the steps to whatever you like too</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">binds</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">   Mod+Space</span><span style="color: #FEDE5D;"> hotkey-overlay-title</span><span style="color: #B6B1B1;">=</span><span style="color: #FF8B39;">&quot;Application Launcher&quot;</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">      spawn</span><span style="color: #FF8B39;"> &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;spotlight&quot; &quot;toggle&quot;</span><span>;</span></span>
+<span class="giallo-l"><span>   }</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">   Mod+V</span><span style="color: #FEDE5D;"> hotkey-overlay-title</span><span style="color: #B6B1B1;">=</span><span style="color: #FF8B39;">&quot;Clipboard Manager&quot;</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">      spawn</span><span style="color: #FF8B39;"> &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;clipboard&quot; &quot;toggle&quot;</span><span>;</span></span>
+<span class="giallo-l"><span>   }</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">   Mod+M</span><span style="color: #FEDE5D;"> hotkey-overlay-title</span><span style="color: #B6B1B1;">=</span><span style="color: #FF8B39;">&quot;Task Manager&quot;</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">      spawn</span><span style="color: #FF8B39;"> &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;processlist&quot; &quot;toggle&quot;</span><span>;</span></span>
+<span class="giallo-l"><span>   }</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">   Mod+N</span><span style="color: #FEDE5D;"> hotkey-overlay-title</span><span style="color: #B6B1B1;">=</span><span style="color: #FF8B39;">&quot;Notification Center&quot;</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">      spawn</span><span style="color: #FF8B39;"> &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;notifications&quot; &quot;toggle&quot;</span><span>;</span></span>
+<span class="giallo-l"><span>   }</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">   Mod+Comma</span><span style="color: #FEDE5D;"> hotkey-overlay-title</span><span style="color: #B6B1B1;">=</span><span style="color: #FF8B39;">&quot;Settings&quot;</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">      spawn</span><span style="color: #FF8B39;"> &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;settings&quot; &quot;toggle&quot;</span><span>;</span></span>
+<span class="giallo-l"><span>   }</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">   Mod+P</span><span style="color: #FEDE5D;"> hotkey-overlay-title</span><span style="color: #B6B1B1;">=</span><span style="color: #FF8B39;">&quot;Notepad&quot;</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">      spawn</span><span style="color: #FF8B39;"> &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;notepad&quot; &quot;toggle&quot;</span><span>;</span></span>
+<span class="giallo-l"><span>   }</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">   Super+Alt+L</span><span style="color: #FEDE5D;"> hotkey-overlay-title</span><span style="color: #B6B1B1;">=</span><span style="color: #FF8B39;">&quot;Lock Screen&quot;</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">      spawn</span><span style="color: #FF8B39;"> &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;lock&quot; &quot;lock&quot;</span><span>;</span></span>
+<span class="giallo-l"><span>   }</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">   Mod+X</span><span style="color: #FEDE5D;"> hotkey-overlay-title</span><span style="color: #B6B1B1;">=</span><span style="color: #FF8B39;">&quot;Power Menu&quot;</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">      spawn</span><span style="color: #FF8B39;"> &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;powermenu&quot; &quot;toggle&quot;</span><span>;</span></span>
+<span class="giallo-l"><span>   }</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">   XF86AudioRaiseVolume</span><span style="color: #FEDE5D;"> allow-when-locked</span><span style="color: #B6B1B1;">=</span><span>true {</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">      spawn</span><span style="color: #FF8B39;"> &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;audio&quot; &quot;increment&quot; &quot;3&quot;</span><span>;</span></span>
+<span class="giallo-l"><span>   }</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">   XF86AudioLowerVolume</span><span style="color: #FEDE5D;"> allow-when-locked</span><span style="color: #B6B1B1;">=</span><span>true {</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">      spawn</span><span style="color: #FF8B39;"> &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;audio&quot; &quot;decrement&quot; &quot;3&quot;</span><span>;</span></span>
+<span class="giallo-l"><span>   }</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">   XF86AudioMute</span><span style="color: #FEDE5D;"> allow-when-locked</span><span style="color: #B6B1B1;">=</span><span>true {</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">      spawn</span><span style="color: #FF8B39;"> &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;audio&quot; &quot;mute&quot;</span><span>;</span></span>
+<span class="giallo-l"><span>   }</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">   XF86AudioMicMute</span><span style="color: #FEDE5D;"> allow-when-locked</span><span style="color: #B6B1B1;">=</span><span>true {</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">      spawn</span><span style="color: #FF8B39;"> &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;audio&quot; &quot;micmute&quot;</span><span>;</span></span>
+<span class="giallo-l"><span>   }</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">   XF86MonBrightnessUp</span><span style="color: #FEDE5D;"> allow-when-locked</span><span style="color: #B6B1B1;">=</span><span>true {</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">      spawn</span><span style="color: #FF8B39;"> &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;brightness&quot; &quot;increment&quot; &quot;5&quot; &quot;&quot;</span><span>;</span></span>
+<span class="giallo-l"><span>   }</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">   // You can override the default device for e.g. keyboards by adding the device name to the last param</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">   XF86MonBrightnessDown</span><span style="color: #FEDE5D;"> allow-when-locked</span><span style="color: #B6B1B1;">=</span><span>true {</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">      spawn</span><span style="color: #FF8B39;"> &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;brightness&quot; &quot;decrement&quot; &quot;5&quot; &quot;&quot;</span><span>;</span></span>
+<span class="giallo-l"><span>   }</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">   // Night mode toggle</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">   Mod+Shift+N</span><span style="color: #FEDE5D;"> allow-when-locked</span><span style="color: #B6B1B1;">=</span><span>true {</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">      spawn</span><span style="color: #FF8B39;"> &quot;dms&quot; &quot;ipc&quot; &quot;call&quot; &quot;night&quot; &quot;toggle&quot;</span><span>;</span></span>
+<span class="giallo-l"><span>   }</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p>注意：<code>binds</code>部分需要和已有的配置合并。</p>
+<h3 id="display-manager">Display Manager</h3>
+<p>自动登录<code>Niri</code>，这里使用<code>greetd</code>或<code>lemurs</code>。</p>
+<h4 id="greetd">greetd</h4>
+<p>本节参考<a rel="noopener external" target="_blank" href="https://github.com/AvengeMedia/DankMaterialShell?tab=readme-ov-file#greeter">DankMaterialShell - Greeter</a></p>
+<p><code>dms</code>有对<code>greetd</code>的支持，直接执行以下命令：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">dms</span><span> greeter install</span></span></code></pre>
+<p>不支持的话，可以参考<a rel="noopener external" target="_blank" href="https://wiki.archlinux.org/title/Greetd">Arch Wiki - Greetd</a>进行安装与配置。</p>
+<h4 id="lemurs">lemurs</h4>
+<p>本节参考<a rel="noopener external" target="_blank" href="https://github.com/coastalwhite/lemurs?tab=readme-ov-file#arch-linux">GitHub - lemurs</a></p>
+<h5 id="zong-lan">总览</h5>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">paru</span><span style="color: #F97E72;"> -S</span><span> lemurs</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #36F9F6;">echo</span><span style="color: #FF8B39;"> &quot;#!/bin/sh</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">exec niri-session&quot;</span><span style="color: #FEDE5D;"> |</span><span style="color: #FE4450;"> sudo</span><span> tee /etc/lemurs/wayland/niri</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># Not needed if you don&#39;t have a window manager yet</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># sudo systemctl disable display-manager.service</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> systemctl enable lemurs.service</span></span></code></pre><h4 id="an-zhuang-1">安装</h4>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">paru</span><span style="color: #F97E72;"> -S</span><span> lemurs</span></span></code></pre><h4 id="pei-zhi-1">配置</h4>
+<p>创建<code>/etc/lemurs/wayland/niri</code>文件：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #36F9F6;">echo</span><span style="color: #FF8B39;"> &quot;#!/bin/sh</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">exec niri-session&quot;</span><span style="color: #FEDE5D;"> |</span><span style="color: #FE4450;"> sudo</span><span> tee /etc/lemurs/wayland/niri</span></span></code></pre>
+<p>启用<code>lemurs</code>服务：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> systemctl enable lemurs.service</span></span></code></pre>
+<p>如果你已经有一个显示管理器在运行，可能需要先禁用它：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> systemctl disable display-manager.service</span></span></code></pre><h2 id="faq">FAQ</h2>
+<h3 id="nvidiaqu-dong">Nvidia驱动</h3>
+<p>参考：<a rel="noopener external" target="_blank" href="https://wiki.archlinux.org/title/NVIDIA">Arch Wiki - NVIDIA</a></p>
+<h3 id="bi-ji-ben-zi-dai-yin-pin-she-bei-bu-neng-shi-bie">笔记本自带音频设备不能识别</h3>
+<p>安装<code>sof-firmware</code>与<code>pipewire-pulse</code>：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">paru</span><span style="color: #F97E72;"> -S</span><span> sof-firmware pipewire-pulse</span></span></code></pre>
+      <nav>
+        <div>
+          <a href="https://blog.101248.xyz/blog/wildcard-domain-name/">&#8249; 通配符域名证书</a>
+        </div>
+        <div>
+          <a href="https://blog.101248.xyz/blog/kvm-pass-through/"> KVM 设备直通 &#8250;</a>
+        </div>
+      </nav>
+    <div id="remark42"></div>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">索引</a>
+        <div>
+          <a href="#huan-jing">环境</a>
+        </div>
+        <div>
+          <a href="#an-zhuang">安装</a>
+        </div>
+        <div>
+          <a href="#pei-zhi">配置</a>
+        </div>
+        <div class="hpad">
+          <a href="#font"><small>- Font</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#shu-ru-fa"><small>- 输入法</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#chrome"><small>- Chrome</small></a>
+        </div>
+        <div>
+          <a href="#jin-jie">进阶</a>
+        </div>
+        <div class="hpad">
+          <a href="#dankmaterialshell"><small>- DankMaterialShell</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#display-manager"><small>- Display Manager</small></a>
+        </div>
+        <div>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="hpad">
+          <a href="#nvidiaqu-dong"><small>- Nvidia驱动</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#bi-ji-ben-zi-dai-yin-pin-she-bei-bu-neng-shi-bie"><small>- 笔记本自带音频设备不能识别</small></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://blog.101248.xyz/atom.xml" target="_blank" title="笔记 Atom Feed"><i type="Button" class="svg rss" title="笔记 Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://blog.101248.xyz/about/"> About </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/contact/"> Contact </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/privacy/"> Privacy </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2026</span> 笔记</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer><span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

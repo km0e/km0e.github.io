@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>F - Git</title>
+    <subtitle>Just a simple blog</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://blog.101248.xyz/en/tags/git/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://blog.101248.xyz"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-02-25T09:08:53+00:00</updated>
+    <id>https://blog.101248.xyz/en/tags/git/atom.xml</id>
+    <entry xml:lang="en">
+        <title>git rm submodule</title>
+        <published>2025-02-25T09:08:53+00:00</published>
+        <updated>2025-02-25T09:08:53+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://blog.101248.xyz/en/faq/git-rm-submodule/"/>
+        <id>https://blog.101248.xyz/en/faq/git-rm-submodule/</id>
+        
+        <content type="html" xml:base="https://blog.101248.xyz/en/faq/git-rm-submodule/">&lt;p&gt;Original source: &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;16162000&quot;&gt;Stackoverflow&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;mv&lt;&#x2F;span&gt;&lt;span&gt; a&#x2F;submodule a&#x2F;submodule_tmp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; submodule deinit&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -f --&lt;&#x2F;span&gt;&lt;span&gt; a&#x2F;submodule&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;rm&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -rf&lt;&#x2F;span&gt;&lt;span&gt; .git&#x2F;modules&#x2F;a&#x2F;submodule&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; rm&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -f&lt;&#x2F;span&gt;&lt;span&gt; a&#x2F;submodule&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# Note: a&#x2F;submodule (no trailing slash)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# or, if you want to leave it in your working tree and have done step 0&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; rm&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --cached&lt;&#x2F;span&gt;&lt;span&gt; a&#x2F;submodule&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;mv&lt;&#x2F;span&gt;&lt;span&gt; a&#x2F;submodule_tmp a&#x2F;submodule&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+</feed>

@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <script src="https://blog.101248.xyz/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://blog.101248.xyz/abridge.css?h=e167a0ae757c8231aba7" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://blog.101248.xyz" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.101248.xyz/manifest.min.json" />
+  <link rel="mask-icon" href="https://blog.101248.xyz/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://blog.101248.xyz/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.101248.xyz/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.101248.xyz/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.101248.xyz/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="笔记 Atom Feed" href="https://blog.101248.xyz/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>SMB客户端 | 笔记</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="笔记" />
+  <meta name="description" content="Arch Linux下使用`systemd`自动挂载SMB网络共享目录的配置方法。" />
+  <link rel="canonical" href="https://blog.101248.xyz/blog/smb/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.101248.xyz/blog/smb/" />
+  <meta name="twitter:url" content="https://blog.101248.xyz/blog/smb/" />
+  <meta property="og:description" content="Arch Linux下使用`systemd`自动挂载SMB网络共享目录的配置方法。" />
+  <meta name="twitter:description" content="Arch Linux下使用`systemd`自动挂载SMB网络共享目录的配置方法。" />
+  <meta property="og:title" content="SMB客户端 | 笔记" />
+  <meta name="twitter:title" content="SMB客户端 | 笔记" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="笔记" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-11-04" />
+  <script>
+	var remark_config = {
+		host: "https://remark42.101248.xyz",
+		site_id: "blog",
+	}
+  </script>
+  <script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+  <script defer src="https://blog.101248.xyz/js/abridge.min.js?h=e0f9a881a665c86cce9c" integrity="sha384-QF67y7RnPkuDrJNQqn3/7nYxqxWkW/qHI7zN0WTES1aXbf+TotoByRBb835fUE6U"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.stemmer.support.min.js" integrity="sha384-f0MKdC/9ZSGTpDiuWusC0SbLXNCBp6NgzDZpjR/4UdHXAQBqvTEKyinnsa1wQ7oA"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.zh.min.js" integrity="sha384-rQz9F0qWFRA0H4snbYEJ0VLIgOuLas/bm/j2HVui1L3lPvV16lr5u0L1XqhUJV6a"></script>
+  <noscript><link rel="stylesheet" href="https://blog.101248.xyz/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://blog.101248.xyz" title="笔记">笔记</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://blog.101248.xyz/archive/"> Posts </a></li><li><a class="s110" href="https://blog.101248.xyz/tags/"> Tags </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>中文</span><a href="https://blog.101248.xyz/en/blog/smb/">English</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+          <div>
+            <form autocomplete=off class="js" name="goSearch" id="searchbox">
+              <div class="searchd">
+                <input id="searchinput" type="text" placeholder="搜索" title="Search" />
+                <button type="submit" title="Search" class="svgs svgm search"></button>
+              </div>
+              <div class="results"><div id="suggestions"></div></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://blog.101248.xyz/blog/smb/">SMB客户端</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> 十一月 04, 2025 <span class="rpad"></span>更新: 十一月 04, 2025 <span class="rpad"></span> #<a href="https://blog.101248.xyz/tags/note/">Note</a> </span>
+
+    
+
+
+<h2 id="smbfu-wu-qi-pei-zhi">SMB服务器配置</h2>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FEDE5D;">export</span><span style="color: #FF7EDB;"> MOUNT_DIR</span><span style="color: #FFFFFFEE;">=</span><span>/</span><span style="color: #FF7EDB;">mnt</span><span>/</span><span style="color: #FF7EDB;">my</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">export</span><span style="color: #FF7EDB;"> SMB_SHARE</span><span style="color: #FFFFFFEE;">=</span><span style="color: #FF8B39;">&quot;//host/dir&quot;</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">export</span><span style="color: #FF7EDB;"> CREDENTIALS_FILE</span><span style="color: #FFFFFFEE;">=</span><span>/</span><span style="color: #FF7EDB;">etc</span><span>/</span><span style="color: #FF7EDB;">samba</span><span>/</span><span style="color: #FF7EDB;">credentials</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">export</span><span style="color: #FF7EDB;"> SMB_TIMEOUT</span><span style="color: #FFFFFFEE;">=</span><span style="color: #F97E72;">30</span></span></code></pre><h2 id="kuai-su-pei-zhi">快速配置</h2>
+<p>快速为当前用户配置SMB挂载：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FEDE5D;">export</span><span style="color: #FF7EDB;"> SMB_UID</span><span style="color: #FFFFFFEE;">=</span><span>$(</span><span style="color: #FE4450;">id</span><span style="color: #F97E72;"> -u</span><span> your_username)</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">export</span><span style="color: #FF7EDB;"> UNIT_NAME</span><span style="color: #FFFFFFEE;">=</span><span>$(</span><span style="color: #36F9F6;">echo</span><span style="color: #FF7EDB;"> $MOUNT_DIR</span><span style="color: #FEDE5D;"> |</span><span style="color: #FE4450;"> sed</span><span style="color: #FF8B39;"> &#39;s/^\///; s/\//-/g&#39;</span><span>)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> pacman</span><span style="color: #F97E72;"> -S</span><span> cifs-utils</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> mkdir</span><span style="color: #F97E72;"> -p</span><span style="color: #FF7EDB;"> $MOUNT_DIR</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> mkdir</span><span style="color: #F97E72;"> -p</span><span> $(</span><span style="color: #FE4450;">dirname</span><span style="color: #FF7EDB;"> $CREDENTIALS_FILE</span><span>)</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> vim</span><span style="color: #FF7EDB;"> $CREDENTIALS_FILE</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># 在文件中添加：</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># username=your_username</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># password=your_password</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> chmod</span><span style="color: #F97E72;"> 600</span><span style="color: #FF7EDB;"> $CREDENTIALS_FILE</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #36F9F6;">echo</span><span style="color: #FF8B39;"> &quot;[Unit]</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">Description=Mount SMB Share at </span><span style="color: #FF7EDB;">$MOUNT_DIR</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">After=network-online.target</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">Wants=network-online.target</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FF8B39;">[Mount]</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">What=</span><span style="color: #FF7EDB;">$SMB_SHARE</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">Where=</span><span style="color: #FF7EDB;">$MOUNT_DIR</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">Type=cifs</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">Options=_netdev,credentials=</span><span style="color: #FF7EDB;">$CREDENTIALS_FILE</span><span style="color: #FF8B39;">,uid=</span><span style="color: #FF7EDB;">$SMB_UID</span><span style="color: #FF8B39;">,iocharset=utf8,rw</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">Timeout=30</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FF8B39;">[Install]</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">WantedBy=multi-user.target&quot;</span><span style="color: #FEDE5D;"> |</span><span style="color: #FE4450;"> sudo</span><span> tee /etc/systemd/system/</span><span style="color: #FF7EDB;">$UNIT_NAME</span><span>.mount</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> systemctl enable</span><span style="color: #F97E72;"> --now</span><span style="color: #FF7EDB;"> $UNIT_NAME</span><span>.mount</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># 可选自动挂载</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> systemctl disable</span><span style="color: #F97E72;"> --now</span><span style="color: #FF7EDB;"> $UNIT_NAME</span><span>.mount</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">echo</span><span style="color: #FF8B39;"> &quot;[Unit]</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">Description=Auto mount SMB Share at </span><span style="color: #FF7EDB;">$MOUNT_DIR</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FF8B39;">[Automount]</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">Where=</span><span style="color: #FF7EDB;">$MOUNT_DIR</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">TimeoutIdleSec=600</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FF8B39;">[Install]</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">WantedBy=multi-user.target&quot;</span><span style="color: #FEDE5D;"> |</span><span style="color: #FE4450;"> sudo</span><span> tee /etc/systemd/system/</span><span style="color: #FF7EDB;">$UNIT_NAME</span><span>.automount</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> systemctl enable</span><span style="color: #F97E72;"> --now</span><span style="color: #FF7EDB;"> $UNIT_NAME</span><span>.automount</span></span></code></pre><h2 id="zhun-bei">准备</h2>
+<p>确保系统已安装<code>cifs-utils</code>包：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> pacman</span><span style="color: #F97E72;"> -S</span><span> cifs-utils</span></span></code></pre><h2 id="chuang-jian-gua-zai-dian">创建挂载点</h2>
+<p>选择一个合适的位置创建挂载点，例如：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> mkdir</span><span style="color: #F97E72;"> -p</span><span> /mnt/my</span></span></code></pre><h2 id="pei-zhi-ping-ju-wen-jian">配置凭据文件</h2>
+<p>为了安全起见，建议将SMB的用户名和密码存储在一个单独的凭据文件中，例如<code>/etc/samba/credentials</code>：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> vim /etc/samba/credentials</span></span></code></pre>
+<p>在文件中添加以下内容：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="ini"><span class="giallo-l"><span style="color: #FEDE5D;">username</span><span style="color: #B6B1B1;">=</span><span>your_username</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">password</span><span style="color: #B6B1B1;">=</span><span>your_password</span></span></code></pre>
+<p>设置文件权限以保护凭据：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> chmod</span><span style="color: #F97E72;"> 600</span><span> /etc/samba/credentials</span></span></code></pre><h2 id="bian-ji-mountpei-zhi">编辑<code>mount</code>配置</h2>
+<p>使用<code>systemd</code>的挂载单元文件来配置SMB挂载。创建一个新的挂载单元文件，例如<code>/etc/systemd/system/mnt-my.mount</code>：
+注意这里的路径需要将<code>/</code>替换为<code>-</code>，例如<code>/mnt/my</code>对应的单元文件名为<code>mnt-my.mount</code>。</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> vim /etc/systemd/system/mnt-my.mount</span></span></code></pre>
+<p>在文件中添加以下内容：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="ini"><span class="giallo-l"><span style="color: #FF7EDB;">[Unit]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Description</span><span style="color: #B6B1B1;">=</span><span>Mount SMB Share at /mnt/my</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">After</span><span style="color: #B6B1B1;">=</span><span>network-online.target</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Wants</span><span style="color: #B6B1B1;">=</span><span>network-online.target</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">[Mount]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">What</span><span style="color: #B6B1B1;">=</span><span>//host/dir</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Where</span><span style="color: #B6B1B1;">=</span><span>/mnt/my</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Type</span><span style="color: #B6B1B1;">=</span><span>cifs</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Options</span><span style="color: #B6B1B1;">=</span><span>_netdev,</span><span style="color: #FEDE5D;">credentials</span><span style="color: #B6B1B1;">=</span><span>/etc/samba/credentials,</span><span style="color: #FEDE5D;">uid</span><span style="color: #B6B1B1;">=</span><span>1000,</span><span style="color: #FEDE5D;">iocharset</span><span style="color: #B6B1B1;">=</span><span>utf8,rw</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Timeout</span><span style="color: #B6B1B1;">=</span><span>30</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">[Install]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">WantedBy</span><span style="color: #B6B1B1;">=</span><span>multi-user.target</span></span></code></pre>
+<p>将<code>//host/dir</code>替换为实际的SMB共享路径，<code>uid=1000</code>替换为你的用户ID。</p>
+<h2 id="qi-yong-bing-qi-dong-gua-zai">启用并启动挂载</h2>
+<p>启用并启动挂载单元：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> systemctl enable</span><span style="color: #F97E72;"> --now</span><span> mnt-my.mount</span></span></code></pre><h2 id="ke-xuan-zi-dong-gua-zai">可选：自动挂载</h2>
+<p>如果希望在访问挂载点时自动挂载，可以创建一个自动挂载单元文件，例如<code>/etc/systemd/system/mnt-my.automount</code>：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> vim /etc/systemd/system/mnt-my.automount</span></span></code></pre>
+<p>在文件中添加以下内容：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="ini"><span class="giallo-l"><span style="color: #FF7EDB;">[Unit]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Description</span><span style="color: #B6B1B1;">=</span><span>Auto mount SMB Share at /mnt/my</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">[Automount]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Where</span><span style="color: #B6B1B1;">=</span><span>/mnt/my</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">TimeoutIdleSec</span><span style="color: #B6B1B1;">=</span><span>600</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">[Install]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">WantedBy</span><span style="color: #B6B1B1;">=</span><span>multi-user.target</span></span></code></pre>
+<p>启用并启动自动挂载单元：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># sudo systemctl disable --now mnt-my.mount # 如果之前启用了挂载单元，先禁用它</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> systemctl enable</span><span style="color: #F97E72;"> --now</span><span> mnt-my.automount</span></span></code></pre><h2 id="yan-zheng-gua-zai">验证挂载</h2>
+<p>可以使用以下命令验证挂载是否成功：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">mount</span><span style="color: #FEDE5D;"> |</span><span style="color: #FE4450;"> grep</span><span> /mnt/my</span></span></code></pre>
+<p>如果看到相关的挂载信息，说明SMB共享已经成功挂载。</p>
+<h2 id="xie-zai-gong-xiang">卸载共享</h2>
+<p>如果需要卸载SMB共享，可以使用以下命令：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> systemctl disable</span><span style="color: #F97E72;"> --now</span><span> mnt-my.mount</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># 或者如果使用了自动挂载</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># sudo systemctl disable --now mnt-my.automount</span></span></code></pre><h2 id="wen-ti-pai-cha">问题排查</h2>
+<p>如果遇到挂载问题，可以查看<code>systemd</code>的日志以获取更多信息：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">journalctl</span><span style="color: #F97E72;"> -u</span><span> mnt-my.mount</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># 或者</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">journalctl</span><span style="color: #F97E72;"> -u</span><span> mnt-my.automount</span></span></code></pre><h2 id="can-kao">参考</h2>
+<ul>
+<li><a rel="noopener external" target="_blank" href="https://wiki.archlinux.org/title/Samba">Arch Wiki - Samba</a></li>
+</ul>
+
+      <nav>
+        <div>
+        </div>
+        <div>
+          <a href="https://blog.101248.xyz/blog/dns/"> Linux DNS配置 &#8250;</a>
+        </div>
+      </nav>
+    <div id="remark42"></div>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">索引</a>
+        <div>
+          <a href="#smbfu-wu-qi-pei-zhi">SMB服务器配置</a>
+        </div>
+        <div>
+          <a href="#kuai-su-pei-zhi">快速配置</a>
+        </div>
+        <div>
+          <a href="#zhun-bei">准备</a>
+        </div>
+        <div>
+          <a href="#chuang-jian-gua-zai-dian">创建挂载点</a>
+        </div>
+        <div>
+          <a href="#pei-zhi-ping-ju-wen-jian">配置凭据文件</a>
+        </div>
+        <div>
+          <a href="#bian-ji-mountpei-zhi">编辑mount配置</a>
+        </div>
+        <div>
+          <a href="#qi-yong-bing-qi-dong-gua-zai">启用并启动挂载</a>
+        </div>
+        <div>
+          <a href="#ke-xuan-zi-dong-gua-zai">可选：自动挂载</a>
+        </div>
+        <div>
+          <a href="#yan-zheng-gua-zai">验证挂载</a>
+        </div>
+        <div>
+          <a href="#xie-zai-gong-xiang">卸载共享</a>
+        </div>
+        <div>
+          <a href="#wen-ti-pai-cha">问题排查</a>
+        </div>
+        <div>
+          <a href="#can-kao">参考</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://blog.101248.xyz/atom.xml" target="_blank" title="笔记 Atom Feed"><i type="Button" class="svg rss" title="笔记 Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://blog.101248.xyz/about/"> About </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/contact/"> Contact </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/privacy/"> Privacy </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2026</span> 笔记</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer>
+</body>
+</html>

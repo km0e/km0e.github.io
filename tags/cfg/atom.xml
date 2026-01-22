@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+    <title>笔记 - CFG</title>
+    <subtitle>Just a simple blog</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://blog.101248.xyz/tags/cfg/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://blog.101248.xyz"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-03-23T07:49:46+00:00</updated>
+    <id>https://blog.101248.xyz/tags/cfg/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>更换Ubuntu内核</title>
+        <published>2025-03-23T07:49:46+00:00</published>
+        <updated>2025-03-23T07:49:46+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://blog.101248.xyz/blog/ubuntu-change-kernel/"/>
+        <id>https://blog.101248.xyz/blog/ubuntu-change-kernel/</id>
+        
+        <content type="html" xml:base="https://blog.101248.xyz/blog/ubuntu-change-kernel/">&lt;h2 id=&quot;xia-zai-nei-he-debbao&quot;&gt;下载内核&lt;code&gt;deb&lt;&#x2F;code&gt;包&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;kernel.ubuntu.com&#x2F;mainline&#x2F;&quot;&gt;这里&lt;&#x2F;a&gt;可以找到指定的内核版本，下载对应的&lt;code&gt;deb&lt;&#x2F;code&gt;包。
+一般需要下载&lt;code&gt;header&lt;&#x2F;code&gt;和&lt;code&gt;image&lt;&#x2F;code&gt;两个包。&lt;&#x2F;p&gt;
+&lt;p&gt;我需要安装&lt;code&gt;5.4.284-generic&lt;&#x2F;code&gt;内核，需要下载四个包：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;linux-headers-5.4.284-0504284-generic_5.4.284-0504284.202409121056_amd64.deb&lt;&#x2F;li&gt;
+&lt;li&gt;linux-headers-5.4.284-0504284_5.4.284-0504284.202409121056_all.deb&lt;&#x2F;li&gt;
+&lt;li&gt;linux-modules-5.4.284-0504284-generic_5.4.284-0504284.202409121056_amd64.deb&lt;&#x2F;li&gt;
+&lt;li&gt;linux-image-unsigned-5.4.284-0504284-generic_5.4.284-0504284.202409121056_amd64.deb&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;an-zhuang-debbao&quot;&gt;安装&lt;code&gt;deb&lt;&#x2F;code&gt;包&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; dpkg&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -i&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FE4450;font-weight: bold;&quot;&gt; *&lt;&#x2F;span&gt;&lt;span&gt;.deb&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;xiu-gai-grubpei-zhi&quot;&gt;修改&lt;code&gt;grub&lt;&#x2F;code&gt;配置&lt;&#x2F;h2&gt;
+&lt;p&gt;一般安装之后会默认作为启动内核，可以在开机时选择内核版本。
+如果希望开机时自动选用某个内核，可以修改&lt;code&gt;&#x2F;etc&#x2F;default&#x2F;grub&lt;&#x2F;code&gt;文件。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;cha-kan-menuentrylie-biao&quot;&gt;查看&lt;code&gt;menuentry&lt;&#x2F;code&gt;列表&lt;&#x2F;h3&gt;
+&lt;p&gt;首先运行一下命令&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;cat&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;boot&#x2F;grub&#x2F;grub.cfg&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; |&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt; grep&lt;&#x2F;span&gt;&lt;span&gt; menuentry&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;可以得到类似以下输出&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;...&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;menuentry&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;#39;Ubuntu&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; ubuntu&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; gnu-linux&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; gnu&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; os&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $menuentry_id_option&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;#39;gnulinux-simple-26f8e534-308d-4ec1-81f1-1019aa47a25d&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;submenu&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;#39;Advanced options for Ubuntu&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $menuentry_id_option&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;#39;gnulinux-advanced-26f8e534-308d-4ec1-81f1-1019aa47a25d&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt; menuentry&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;#39;Ubuntu, with Linux 5.4.284-0504284-generic&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; ubuntu&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; gnu-linux&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; gnu&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; os&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $menuentry_id_option&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;#39;gnulinux-5.4.284-0504284-generic-advanced-26f8e534-308d-4ec1-81f1-1019aa47a25d&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt; menuentry&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;#39;Ubuntu, with Linux 5.4.284-0504284-generic (recovery mode)&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; ubuntu&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; gnu-linux&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; gnu&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; os&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $menuentry_id_option&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;#39;gnulinux-5.4.284-0504284-generic-recovery-26f8e534-308d-4ec1-81f1-1019aa47a25d&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt; menuentry&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;#39;Ubuntu, with Linux 4.15.0-156-generic&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; ubuntu&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; gnu-linux&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; gnu&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; os&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $menuentry_id_option&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;#39;gnulinux-4.15.0-156-generic-advanced-26f8e534-308d-4ec1-81f1-1019aa47a25d&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt; menuentry&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;#39;Ubuntu, with Linux 4.15.0-156-generic (recovery mode)&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; ubuntu&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; gnu-linux&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; gnu&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --class&lt;&#x2F;span&gt;&lt;span&gt; os&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; $menuentry_id_option&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;#39;gnulinux-4.15.0-156-generic-recovery-26f8e534-308d-4ec1-81f1-1019aa47a25d&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;第一个&lt;code&gt;menuentry&lt;&#x2F;code&gt;就是默认启动的内核，编号为&lt;code&gt;0&lt;&#x2F;code&gt;。第二个为&lt;code&gt;Advanced options&lt;&#x2F;code&gt;，编号为&lt;code&gt;1&lt;&#x2F;code&gt;。可以看到有四个内核可供选择。编号为&lt;code&gt;1&amp;gt;0&lt;&#x2F;code&gt;，&lt;code&gt;1&amp;gt;1&lt;&#x2F;code&gt;，&lt;code&gt;1&amp;gt;2&lt;&#x2F;code&gt;，&lt;code&gt;1&amp;gt;3&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;xiu-gai-grubpei-zhi-1&quot;&gt;修改&lt;code&gt;grub&lt;&#x2F;code&gt;配置&lt;&#x2F;h3&gt;
+&lt;p&gt;打开&lt;code&gt;&#x2F;etc&#x2F;default&#x2F;grub&lt;&#x2F;code&gt;文件，找到&lt;code&gt;GRUB_DEFAULT&lt;&#x2F;code&gt;字段，修改为对应内核编号。如：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;GRUB_DEFAULT&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;1&amp;gt;0&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;以上表示默认启动第一个内核。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;geng-xin-grub&quot;&gt;更新&lt;code&gt;grub&lt;&#x2F;code&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;执行以下命令&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; update-grub&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;an-zhuang-e-wai-mo-kuai-ke-xuan-jian-yi&quot;&gt;安装额外模块（可选,建议）&lt;&#x2F;h3&gt;
+&lt;p&gt;如果需要安装额外的内核模块，可以使用以下命令：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install linux-modules-extra-$(&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;uname&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -r&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+</feed>

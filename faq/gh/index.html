@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <script src="https://blog.101248.xyz/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://blog.101248.xyz/abridge.css?h=e167a0ae757c8231aba7" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://blog.101248.xyz" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.101248.xyz/manifest.min.json" />
+  <link rel="mask-icon" href="https://blog.101248.xyz/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://blog.101248.xyz/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.101248.xyz/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.101248.xyz/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.101248.xyz/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="笔记 Atom Feed" href="https://blog.101248.xyz/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>GitHub Pages FAQ | 笔记</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="笔记" />
+  <meta name="description" content="Solve some common issues when using GitHub Pages" />
+  <link rel="canonical" href="https://blog.101248.xyz/faq/gh/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.101248.xyz/faq/gh/" />
+  <meta name="twitter:url" content="https://blog.101248.xyz/faq/gh/" />
+  <meta property="og:description" content="Solve some common issues when using GitHub Pages" />
+  <meta name="twitter:description" content="Solve some common issues when using GitHub Pages" />
+  <meta property="og:title" content="GitHub Pages FAQ | 笔记" />
+  <meta name="twitter:title" content="GitHub Pages FAQ | 笔记" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="笔记" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-02-25" />
+  <script>
+	var remark_config = {
+		host: "https://remark42.101248.xyz",
+		site_id: "blog",
+	}
+  </script>
+  <script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+  <script defer src="https://blog.101248.xyz/js/abridge.min.js?h=e0f9a881a665c86cce9c" integrity="sha384-QF67y7RnPkuDrJNQqn3/7nYxqxWkW/qHI7zN0WTES1aXbf+TotoByRBb835fUE6U"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.stemmer.support.min.js" integrity="sha384-f0MKdC/9ZSGTpDiuWusC0SbLXNCBp6NgzDZpjR/4UdHXAQBqvTEKyinnsa1wQ7oA"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.zh.min.js" integrity="sha384-rQz9F0qWFRA0H4snbYEJ0VLIgOuLas/bm/j2HVui1L3lPvV16lr5u0L1XqhUJV6a"></script>
+  <noscript><link rel="stylesheet" href="https://blog.101248.xyz/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://blog.101248.xyz" title="笔记">笔记</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://blog.101248.xyz/archive/"> Posts </a></li><li><a class="s110" href="https://blog.101248.xyz/tags/"> Tags </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>中文</span><a href="https://blog.101248.xyz/en/faq/gh/">English</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+          <div>
+            <form autocomplete=off class="js" name="goSearch" id="searchbox">
+              <div class="searchd">
+                <input id="searchinput" type="text" placeholder="搜索" title="Search" />
+                <button type="submit" title="Search" class="svgs svgm search"></button>
+              </div>
+              <div class="results"><div id="suggestions"></div></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://blog.101248.xyz/faq/gh/">GitHub Pages FAQ</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> 二月 25, 2025 <span class="rpad"></span> #<a href="https://blog.101248.xyz/tags/gh/">GH</a>  #<a href="https://blog.101248.xyz/tags/faq/">FAQ</a> </span>
+
+    
+
+
+<h2 id="pemission-denied">Pemission denied</h2>
+ <img src="https://blog.101248.xyz/images/image-2.png" alt="image-2" width="899" height="123" loading="lazy" />
+<p><a href="https://blog.101248.xyz/faq/gh/&#x27;https://github.com/ad-m/github-push-action/issues/96#issuecomment-889984928&#x27;">解决办法</a>
+<code>Settings</code> -&gt; <code>Actions</code> -&gt; <code>General</code> -&gt; <code>Workflows permissions</code> -&gt; <code>Read and write permissions</code></p>
+<h2 id="browser-shows-insecure-content-warning">Browser shows insecure content warning</h2>
+ <img src="https://blog.101248.xyz/images/image-4.png" alt="image-4" width="959" height="64" loading="lazy" />
+<p><a rel="noopener external" target="_blank" href="https://stackoverflow.com/a/46672993">解决办法</a>
+修改你使用框架的配置文件，改<code>url</code>为你自定义的域名，而不是<code>github.io</code>域名。</p>
+
+      <nav>
+        <div>
+          <a href="https://blog.101248.xyz/faq/cf/">&#8249; Redirects after Cloudflare Proxy</a>
+        </div>
+        <div>
+        </div>
+      </nav>
+    <div id="remark42"></div>
+    </article>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://blog.101248.xyz/atom.xml" target="_blank" title="笔记 Atom Feed"><i type="Button" class="svg rss" title="笔记 Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://blog.101248.xyz/about/"> About </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/contact/"> Contact </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/privacy/"> Privacy </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2026</span> 笔记</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer>
+</body>
+</html>

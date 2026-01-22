@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <script src="https://blog.101248.xyz/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://blog.101248.xyz/abridge.css?h=e167a0ae757c8231aba7" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://blog.101248.xyz" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.101248.xyz/manifest.min.json" />
+  <link rel="mask-icon" href="https://blog.101248.xyz/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://blog.101248.xyz/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.101248.xyz/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.101248.xyz/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.101248.xyz/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="笔记 Atom Feed" href="https://blog.101248.xyz/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Ubuntu 安装OFED | 笔记</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="笔记" />
+  <meta name="description" content="安装`OFED`" />
+  <link rel="canonical" href="https://blog.101248.xyz/blog/install-ofed/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.101248.xyz/blog/install-ofed/" />
+  <meta name="twitter:url" content="https://blog.101248.xyz/blog/install-ofed/" />
+  <meta property="og:description" content="安装`OFED`" />
+  <meta name="twitter:description" content="安装`OFED`" />
+  <meta property="og:title" content="Ubuntu 安装OFED | 笔记" />
+  <meta name="twitter:title" content="Ubuntu 安装OFED | 笔记" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="笔记" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-04-07" />
+  <script>
+	var remark_config = {
+		host: "https://remark42.101248.xyz",
+		site_id: "blog",
+	}
+  </script>
+  <script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+  <script defer src="https://blog.101248.xyz/js/abridge.min.js?h=e0f9a881a665c86cce9c" integrity="sha384-QF67y7RnPkuDrJNQqn3/7nYxqxWkW/qHI7zN0WTES1aXbf+TotoByRBb835fUE6U"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.stemmer.support.min.js" integrity="sha384-f0MKdC/9ZSGTpDiuWusC0SbLXNCBp6NgzDZpjR/4UdHXAQBqvTEKyinnsa1wQ7oA"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.zh.min.js" integrity="sha384-rQz9F0qWFRA0H4snbYEJ0VLIgOuLas/bm/j2HVui1L3lPvV16lr5u0L1XqhUJV6a"></script>
+  <noscript><link rel="stylesheet" href="https://blog.101248.xyz/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://blog.101248.xyz" title="笔记">笔记</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://blog.101248.xyz/archive/"> Posts </a></li><li><a class="s110" href="https://blog.101248.xyz/tags/"> Tags </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>中文</span><a href="https://blog.101248.xyz/en/blog/install-ofed/">English</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+          <div>
+            <form autocomplete=off class="js" name="goSearch" id="searchbox">
+              <div class="searchd">
+                <input id="searchinput" type="text" placeholder="搜索" title="Search" />
+                <button type="submit" title="Search" class="svgs svgm search"></button>
+              </div>
+              <div class="results"><div id="suggestions"></div></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://blog.101248.xyz/blog/install-ofed/">Ubuntu 安装OFED</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> 四月 07, 2025 <span class="rpad"></span> #<a href="https://blog.101248.xyz/tags/pro/">PRO</a> </span>
+
+    
+
+
+<h2 id="ubuntu18-04"><code>Ubuntu18.04</code></h2>
+<h3 id="huan-jing">环境</h3>
+<ul>
+<li><code>Linux np01 5.4.0-150-generic #167~18.04.1-Ubuntu SMP Wed May 24 00:51:42 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux</code></li>
+<li><code>MLNX_OFED_SRC-debian-4.9-7.1.0.0.tgz</code></li>
+</ul>
+<h3 id="an-zhuang-bu-zou">安装步骤</h3>
+<p>解压压缩包之后执行：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> ./install.pl</span><span style="color: #F97E72;"> -vvv</span></span></code></pre><h3 id="yu-dao-de-wen-ti">遇到的问题</h3>
+<p>解决办法整合</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> apt install python3-distutils bison flex</span></span></code></pre>
+<p>一般情况下如果安装失败，会有以下内容</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #36F9F6;">...</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">Failed</span><span> to build mlnx-ofed-kernel DEB</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">Collecting</span><span> debug info...</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">See</span><span> /tmp/OFED.1639.logs/mlnx-ofed-kernel.debbuild.log</span></span></code></pre>
+<p>查看<code>log</code>再加以搜索一般就可以解决，这里只列举我遇到的</p>
+<h4 id="no-module-named-distutils-core">"No module named 'distutils.core'"</h4>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #36F9F6;">...</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">cd</span><span> ofed_scripts/utils;</span><span style="color: #FE4450;"> python3</span><span> ./setup.py install</span><span style="color: #F97E72;"> --install-layout=deb --root=../../debian/mlnx-ofed-kernel-utils</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">Traceback</span><span> (most recent call last):</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  File</span><span style="color: #FF8B39;"> &quot;./setup.py&quot;</span><span>, line 28, in</span><span style="color: #FEDE5D;"> &lt;</span><span>module</span><span style="color: #FEDE5D;">&gt;</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">    from</span><span> distutils.core import setup</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">ModuleNotFoundError:</span><span> No module named</span><span style="color: #FF8B39;"> &#39;distutils.core&#39;</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">...</span></span></code></pre>
+<p>解决办法：
+<a rel="noopener external" target="_blank" href="https://stackoverflow.com/a/55796603">原帖</a>，简单来说就是安装<code>python3-distutils</code></p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> apt install python3-distutils</span></span></code></pre><h4 id="bison-not-found">"bison: not found"</h4>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #36F9F6;">...</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">/bin/sh:</span><span> 1: bison: not found</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">Makefile:182:</span><span> recipe for target</span><span style="color: #FF8B39;"> &#39;emp_ematch.yacc.c&#39;</span><span> failed</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">...</span></span></code></pre>
+<p>解决办法：
+安装<code>bison</code></p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> apt install bison</span></span></code></pre><h4 id="flex-not-found">"flex: not found"</h4>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #36F9F6;">...</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">/bin/sh:</span><span> 1: flex: not found</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">Makefile:185:</span><span> recipe for target</span><span style="color: #FF8B39;"> &#39;emp_ematch.lex.c&#39;</span><span> failed</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">...</span></span></code></pre>
+<p>解决办法：
+安装<code>flex</code></p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> apt install flex</span></span></code></pre><h2 id="ubuntu22-04"><code>Ubuntu22.04</code></h2>
+<h3 id="huan-jing-1">环境</h3>
+<ul>
+<li><code>Linux np01 5.15.0-125-generic #135-Ubuntu SMP Fri Sep 27 13:53:58 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux</code></li>
+<li><code>MLNX_OFED_SRC-debian-24.04-0.7.0.0.tgz</code></li>
+</ul>
+<h3 id="an-zhuang-bu-zou-1">安装步骤</h3>
+<p>解压压缩包之后执行：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> ./install.pl</span><span style="color: #F97E72;"> -vvv</span></span></code></pre>
+      <nav>
+        <div>
+          <a href="https://blog.101248.xyz/faq/lib-dep/">&#8249; Linux依赖FAQ</a>
+        </div>
+        <div>
+          <a href="https://blog.101248.xyz/blog/ubuntu-change-kernel/"> 更换Ubuntu内核 &#8250;</a>
+        </div>
+      </nav>
+    <div id="remark42"></div>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">索引</a>
+        <div>
+          <a href="#ubuntu18-04">Ubuntu18.04</a>
+        </div>
+        <div class="hpad">
+          <a href="#huan-jing"><small>- 环境</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#an-zhuang-bu-zou"><small>- 安装步骤</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#yu-dao-de-wen-ti"><small>- 遇到的问题</small></a>
+        </div>
+        <div>
+          <a href="#ubuntu22-04">Ubuntu22.04</a>
+        </div>
+        <div class="hpad">
+          <a href="#huan-jing-1"><small>- 环境</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#an-zhuang-bu-zou-1"><small>- 安装步骤</small></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://blog.101248.xyz/atom.xml" target="_blank" title="笔记 Atom Feed"><i type="Button" class="svg rss" title="笔记 Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://blog.101248.xyz/about/"> About </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/contact/"> Contact </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/privacy/"> Privacy </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2026</span> 笔记</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <script src="https://blog.101248.xyz/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://blog.101248.xyz/abridge.css?h=e167a0ae757c8231aba7" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://blog.101248.xyz" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.101248.xyz/manifest.min.json" />
+  <link rel="mask-icon" href="https://blog.101248.xyz/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://blog.101248.xyz/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.101248.xyz/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.101248.xyz/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.101248.xyz/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="笔记 Atom Feed" href="https://blog.101248.xyz/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Dv4lua | 笔记</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="笔记" />
+  <meta name="description" content="A simple CLI to use dv-api with lua" />
+  <link rel="canonical" href="https://blog.101248.xyz/dv4lua/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.101248.xyz/dv4lua/" />
+  <meta name="twitter:url" content="https://blog.101248.xyz/dv4lua/" />
+  <meta property="og:description" content="A simple CLI to use dv-api with lua" />
+  <meta name="twitter:description" content="A simple CLI to use dv-api with lua" />
+  <meta property="og:title" content="Dv4lua | 笔记" />
+  <meta name="twitter:title" content="Dv4lua | 笔记" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="笔记" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-08-06" />
+  <script>
+	var remark_config = {
+		host: "https://remark42.101248.xyz",
+		site_id: "blog",
+	}
+  </script>
+  <script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+  <script defer src="https://blog.101248.xyz/js/abridge.min.js?h=e0f9a881a665c86cce9c" integrity="sha384-QF67y7RnPkuDrJNQqn3/7nYxqxWkW/qHI7zN0WTES1aXbf+TotoByRBb835fUE6U"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.stemmer.support.min.js" integrity="sha384-f0MKdC/9ZSGTpDiuWusC0SbLXNCBp6NgzDZpjR/4UdHXAQBqvTEKyinnsa1wQ7oA"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.zh.min.js" integrity="sha384-rQz9F0qWFRA0H4snbYEJ0VLIgOuLas/bm/j2HVui1L3lPvV16lr5u0L1XqhUJV6a"></script>
+  <noscript><link rel="stylesheet" href="https://blog.101248.xyz/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://blog.101248.xyz" title="笔记">笔记</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://blog.101248.xyz/archive/"> Posts </a></li><li><a class="s110" href="https://blog.101248.xyz/tags/"> Tags </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>中文</span><a href="https://blog.101248.xyz/en/dv4lua/">English</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+          <div>
+            <form autocomplete=off class="js" name="goSearch" id="searchbox">
+              <div class="searchd">
+                <input id="searchinput" type="text" placeholder="搜索" title="Search" />
+                <button type="submit" title="Search" class="svgs svgm search"></button>
+              </div>
+              <div class="results"><div id="suggestions"></div></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://blog.101248.xyz/dv4lua/">Dv4lua</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> 七月 26, 2025 <span class="rpad"></span>更新: 八月 06, 2025 <span class="rpad"></span> #<a href="https://blog.101248.xyz/tags/pro/">PRO</a> </span>
+
+    
+
+
+<h2 id="jie-shao">介绍</h2>
+<p>这个工具主要功能是用来方便的执行一系列操作，如：自动化任务、文件备份、应用管理、执行命令，配置文件管理等。
+由于自定义执行逻辑以配置文件的形式呈现过于复杂，本工具选择与<a rel="noopener external" target="_blank" href="https://github.com/mlua-rs/mlua.git"><code>Lua</code></a>结合，以全局变量<code>dv</code>的形式提供API接口。</p>
+<p>Note:</p>
+<ul>
+<li>🚧：表示该功能尚未实现或存在问题</li>
+</ul>
+<h2 id="api">API</h2>
+<h3 id="dv">Dv</h3>
+<p><code>Dv</code>类是整个API的核心，包含了用户管理（<code>um</code>）、配置文件管理（<code>dot</code>）和包管理（<code>pm</code>）等功能模块。
+以下是<code>Dv</code>类的定义和成员变量：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="lua"><span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@class</span><span style="color: #FE4450;font-style: italic;"> Dv</span><span style="color: #848BBD;font-style: italic;">        # `dv` 的类型</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> sync</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">Dv</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">src</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">src_paths</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">|</span><span style="color: #FE4450;font-style: italic;">table</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">dest</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">dest_paths</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">|</span><span style="color: #FE4450;font-style: italic;">table</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">confirm</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">?)</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> dl</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">Dv</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">url</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">expire</span><span style="color: #FEDE5D;font-style: italic;">?: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">): </span><span style="color: #FE4450;font-style: italic;">string</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> json</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">Dv</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">str</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">|</span><span style="color: #FE4450;font-style: italic;">any</span><span style="color: #FEDE5D;font-style: italic;">): </span><span style="color: #FE4450;font-style: italic;">table</span><span style="color: #FEDE5D;font-style: italic;">|</span><span style="color: #FE4450;font-style: italic;">string</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> um</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">Dv</span><span style="color: #FEDE5D;font-style: italic;">):</span><span style="color: #FE4450;font-style: italic;">UM  </span><span style="color: #848BBD;font-style: italic;"># 关联 `um` 字段的类型</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> dot</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">Dv</span><span style="color: #FEDE5D;font-style: italic;">):</span><span style="color: #FE4450;font-style: italic;">Dot  </span><span style="color: #848BBD;font-style: italic;"># 关联 `dot` 字段的类型</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> pm</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">Dv</span><span style="color: #FEDE5D;font-style: italic;">):</span><span style="color: #FE4450;font-style: italic;">Pm  </span><span style="color: #848BBD;font-style: italic;"># 关联 `pm` 字段的类型</span></span></code></pre><h4 id="sync">sync</h4>
+<p>Example:</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="lua"><span class="giallo-l"><span style="color: #FE4450;">dv</span><span>:</span><span style="color: #36F9F6;">sync</span><span>(</span><span style="color: #FF8B39;">&quot;this&quot;</span><span>, </span><span style="color: #FF8B39;">&quot;a/b/c&quot;</span><span>, </span><span style="color: #FF8B39;">&quot;remote_user&quot;</span><span>, </span><span style="color: #FF8B39;">&quot;a/b/c&quot;</span><span>, </span><span style="color: #FF8B39;">&quot;1&quot;</span><span>) </span><span style="color: #848BBD;font-style: italic;">-- 拷贝文件</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">dv</span><span>:</span><span style="color: #36F9F6;">sync</span><span>(</span><span style="color: #FF8B39;">&quot;this&quot;</span><span>, {</span><span style="color: #FF8B39;">&quot;a/b/c&quot;</span><span>, </span><span style="color: #FF8B39;">&quot;a/b/d&quot;</span><span>}, </span><span style="color: #FF8B39;">&quot;remote_user&quot;</span><span>, {</span><span style="color: #FF8B39;">&quot;a/b/c&quot;</span><span>, </span><span style="color: #FF8B39;">&quot;a/b/d&quot;</span><span>}, </span><span style="color: #FF8B39;">&quot;2&quot;</span><span>) </span><span style="color: #848BBD;font-style: italic;">-- 拷贝多个文件</span></span></code></pre>
+<p>路径首先会尝试使用<code>variable</code>与环境变量展开，格式为<code>${var}</code>，如果是相对路径，则还会尝试使用<code>mount</code>展开。</p>
+<p><code>confirm</code>为一个由特殊字符组成的字符串，表示在复制文件时的默认行为。</p>
+<p>注意每个行为都在特定条件下才会被执行，具体请参考下方的<code>Check</code>与<code>Match</code>步骤。</p>
+<p>目前支持的字符有：</p>
+<table><thead><tr><th>char</th><th>description</th></tr></thead><tbody>
+<tr><td>0</td><td>不进行任何操作</td></tr>
+<tr><td>1</td><td>直接覆盖目标文件</td></tr>
+<tr><td>2</td><td>更新文件</td></tr>
+<tr><td>3</td><td>删除目标文件</td></tr>
+<tr><td>4</td><td>删除源文件</td></tr>
+<tr><td>5</td><td>上传文件</td></tr>
+<tr><td>6</td><td>下载文件</td></tr>
+</tbody></table>
+<p>对于<code>sync</code>操作，主要有以下几个步骤：</p>
+<h5 id="check"><code>Check</code></h5>
+<p>检查源文件与目标文件的状态（对于目录会扫描目录下的所有文件），确定可执行的操作类型。</p>
+<table><thead><tr><th>src</th><th>dst</th><th>executable action</th><th>description</th></tr></thead><tbody>
+<tr><td>*</td><td>none</td><td>0,4,5</td><td>无视，删除源文件，上传到目标文件</td></tr>
+<tr><td>none</td><td>*</td><td>0,3,6</td><td>无视，删除目标文件，下载到目标文件</td></tr>
+<tr><td>new</td><td>old</td><td>0,1</td><td>无视，覆盖目标文件</td></tr>
+<tr><td>old</td><td>new</td><td>0,2</td><td>无视，更新源文件</td></tr>
+<tr><td>old</td><td>old</td><td></td><td>直接无视</td></tr>
+<tr><td>new</td><td>new</td><td>0,1,2</td><td>无视，覆盖目标文件，更新源文件</td></tr>
+</tbody></table>
+<h5 id="match"><code>Match</code></h5>
+<p>根据<code>confirm</code>参数，按顺序匹配可执行操作的类型，没有匹配则进行交互。</p>
+<p>Example:</p>
+<table><thead><tr><th>executable action</th><th>confirm</th><th>matched action</th><th>result description</th></tr></thead><tbody>
+<tr><td>0,4,5</td><td>0</td><td>0</td><td>无视</td></tr>
+<tr><td>0,4,5</td><td>4</td><td>4</td><td>删除源文件</td></tr>
+<tr><td>0,4,5</td><td>5</td><td>5</td><td>上传文件</td></tr>
+<tr><td>0,4,5</td><td>04</td><td>0</td><td>无视</td></tr>
+<tr><td>0,4,5</td><td>1</td><td>none</td><td>进入交互模式</td></tr>
+<tr><td>0,4,5</td><td>10</td><td>0</td><td>无视</td></tr>
+<tr><td>0,4,5</td><td>01</td><td>0</td><td>无视</td></tr>
+</tbody></table>
+<h4 id="dl"><code>dl</code></h4>
+<p>Example:</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="lua"><span class="giallo-l"><span style="color: #FE4450;">dv</span><span>:</span><span style="color: #36F9F6;">dl</span><span>(</span><span style="color: #FF8B39;">&quot;https://example.com/file.txt&quot;</span><span>, </span><span style="color: #FF8B39;">&quot;1h&quot;</span><span>) </span><span style="color: #848BBD;font-style: italic;">-- 下载文件，过期时间为1小时。格式参考这里[Duration](https://docs.rs/humantime/latest/humantime/)</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">dv</span><span>:</span><span style="color: #36F9F6;">dl</span><span>(</span><span style="color: #FF8B39;">&quot;https://example.com/file.txt&quot;</span><span>) </span><span style="color: #848BBD;font-style: italic;">-- 下载文件，默认更新</span></span></code></pre><h4 id="json"><code>json</code></h4>
+<p>Example:</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="lua"><span class="giallo-l"><span style="color: #FEDE5D;">local</span><span style="color: #FF7EDB;"> tbl</span><span style="color: #FEDE5D;"> =</span><span style="color: #FE4450;"> dv</span><span>:</span><span style="color: #36F9F6;">json</span><span>(</span><span style="color: #FF8B39;">&#39;{&quot;key&quot;: &quot;value&quot;}&#39;</span><span>) </span><span style="color: #848BBD;font-style: italic;">-- 解析 JSON 字符串为 Lua 表</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">local</span><span style="color: #FF7EDB;"> str</span><span style="color: #FEDE5D;"> =</span><span style="color: #FE4450;"> dv</span><span>:</span><span style="color: #36F9F6;">json</span><span>({</span><span style="color: #FF7EDB;">key</span><span style="color: #FEDE5D;"> =</span><span style="color: #FF8B39;"> &quot;value&quot;</span><span>}) </span><span style="color: #848BBD;font-style: italic;">-- 将 Lua 表转换为 JSON 字符串</span></span></code></pre><h4 id="um-dot-pm">um, dot, pm</h4>
+<p>Example:</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="lua"><span class="giallo-l"><span style="color: #FEDE5D;">local</span><span style="color: #FF7EDB;"> um</span><span style="color: #FEDE5D;"> =</span><span style="color: #FE4450;"> dv</span><span>:</span><span style="color: #36F9F6;">um</span><span>()</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">local</span><span style="color: #FF7EDB;"> dot</span><span style="color: #FEDE5D;"> =</span><span style="color: #FE4450;"> dv</span><span>:</span><span style="color: #36F9F6;">dot</span><span>()</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">local</span><span style="color: #FF7EDB;"> pm</span><span style="color: #FEDE5D;"> =</span><span style="color: #FE4450;"> dv</span><span>:</span><span style="color: #36F9F6;">pm</span><span>()</span></span></code></pre><h3 id="um">UM</h3>
+<p><code>UM</code>类提供了用户管理的功能，实际数据存储在<code>Dv</code>类中。</p>
+<p>以下是<code>UM</code>类的定义和成员函数：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="lua"><span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@class</span><span style="color: #FE4450;font-style: italic;"> ExecOptions</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> reply</span><span style="color: #FE4450;font-style: italic;"> boolean </span><span style="color: #848BBD;font-style: italic;"># 是否为交互式命令</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> etor</span><span style="color: #FE4450;font-style: italic;"> string</span><span style="color: #FEDE5D;font-style: italic;">? </span><span style="color: #848BBD;font-style: italic;"># 脚本执行器</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@class</span><span style="color: #FE4450;font-style: italic;"> User</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> exec</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">User</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">cmd</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">opt</span><span style="color: #FEDE5D;font-style: italic;">:</span><span style="color: #FE4450;font-style: italic;">boolean</span><span style="color: #FEDE5D;font-style: italic;">|</span><span style="color: #FE4450;font-style: italic;">ExecOptions</span><span style="color: #FEDE5D;font-style: italic;">?) : (</span><span style="color: #FE4450;font-style: italic;">number</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">?, </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">?) </span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> read</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">User</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">path</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">): </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">|</span><span style="color: #FE4450;font-style: italic;">nil</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> write</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">User</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">path</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">content</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">)</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> user</span><span style="color: #FE4450;font-style: italic;"> string</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> os</span><span style="color: #FE4450;font-style: italic;"> string</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field [</span><span style="color: #FE4450;font-style: italic;">string] string </span><span style="color: #848BBD;font-style: italic;"># env variables or user config</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@class</span><span style="color: #FE4450;font-style: italic;"> UM</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> add_cur</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">UM</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">cfg</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">table</span><span style="color: #FEDE5D;font-style: italic;">)  </span><span style="color: #848BBD;font-style: italic;"># 声明方法</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> add_ssh</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">UM</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">uid</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">cfg</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">table</span><span style="color: #FEDE5D;font-style: italic;">)  </span><span style="color: #848BBD;font-style: italic;"># 声明方法</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field [</span><span style="color: #FE4450;font-style: italic;">string] User </span><span style="color: #848BBD;font-style: italic;"># 用户列表</span></span></code></pre>
+<p><code>cfg</code>参数为用户配置表，可以任意添加字段。可以影响<code>dv</code>的行为字段如下：</p>
+<table><thead><tr><th>name</th><th>value</th><th>description</th></tr></thead><tbody>
+<tr><td><code>hid</code></td><td>any string</td><td>用户所在的主机标识符，<code>cur</code>用户会自动设置为<code>local</code></td></tr>
+<tr><td><code>mount</code></td><td>any string</td><td>用户的挂载目录，影响文件操作的路径解析</td></tr>
+<tr><td><code>os</code></td><td><code>linux</code>/<code>windows</code>/<code>macos</code>/<code>unix</code>/<code>ubuntu</code>/<code>...</code></td><td>用户的操作系统，影响包管理器，变量加载，等等</td></tr>
+</tbody></table>
+<p>Example:</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="lua"><span class="giallo-l"><span style="color: #FEDE5D;">local</span><span style="color: #FF7EDB;"> um</span><span style="color: #FEDE5D;"> =</span><span style="color: #FE4450;"> dv</span><span>:</span><span style="color: #36F9F6;">um</span><span>()</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">um</span><span>:</span><span style="color: #36F9F6;">add_cur</span><span>({</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">    mount</span><span style="color: #FEDE5D;"> =</span><span style="color: #FF8B39;"> &quot;~/.local/share/dv&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">    os</span><span style="color: #FEDE5D;"> =</span><span style="color: #FF8B39;"> &quot;linux&quot;</span></span>
+<span class="giallo-l"><span>})</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">um</span><span>:</span><span style="color: #36F9F6;">add_ssh</span><span>(</span><span style="color: #FF8B39;">&quot;remote_user&quot;</span><span>, {</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">    hid</span><span style="color: #FEDE5D;"> =</span><span style="color: #FF8B39;"> &quot;remote_machine&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">    mount</span><span style="color: #FEDE5D;"> =</span><span style="color: #FF8B39;"> &quot;~/.local/share/dv&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">    os</span><span style="color: #FEDE5D;"> =</span><span style="color: #FF8B39;"> &quot;linux&quot;</span></span>
+<span class="giallo-l"><span>})</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">print</span><span>(</span><span style="color: #FF7EDB;">um</span><span>[</span><span style="color: #FF8B39;">&quot;cur&quot;</span><span>].user) </span><span style="color: #848BBD;font-style: italic;">-- 输出当前用户</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">print</span><span>(</span><span style="color: #FF7EDB;">um</span><span>[</span><span style="color: #FF8B39;">&quot;remote_user&quot;</span><span>].user) </span><span style="color: #848BBD;font-style: italic;">-- 输出远程用户</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">um</span><span>[</span><span style="color: #FF8B39;">&quot;remote_user&quot;</span><span>]:</span><span style="color: #36F9F6;">exec</span><span>(</span><span style="color: #FF8B39;">&quot;echo hello&quot;</span><span>) </span><span style="color: #848BBD;font-style: italic;">-- 在远程用户下执行命令</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">um</span><span>[</span><span style="color: #FF8B39;">&quot;remote_user&quot;</span><span>]:</span><span style="color: #36F9F6;">exec</span><span>(</span><span style="color: #FF8B39;">&quot;bash&quot;</span><span>, </span><span style="color: #F97E72;">true</span><span>) </span><span style="color: #848BBD;font-style: italic;">-- 交互式执行 bash</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">um</span><span>[</span><span style="color: #FF8B39;">&quot;remote_user&quot;</span><span>]:</span><span style="color: #36F9F6;">exec</span><span>(</span><span style="color: #FF8B39;">&quot;echo hello&quot;</span><span>, {</span><span style="color: #FF7EDB;">reply</span><span style="color: #FEDE5D;"> =</span><span style="color: #F97E72;"> false</span><span>, </span><span style="color: #FF7EDB;">etor</span><span style="color: #FEDE5D;"> =</span><span style="color: #FF8B39;"> &quot;bash&quot;</span><span>}) </span><span style="color: #848BBD;font-style: italic;">-- 使用 bash 执行命令</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">um</span><span>[</span><span style="color: #FF8B39;">&quot;remote_user&quot;</span><span>]:</span><span style="color: #36F9F6;">write</span><span>(</span><span style="color: #FF8B39;">&quot;a.txt&quot;</span><span>, </span><span style="color: #FF8B39;">&quot;hello world&quot;</span><span>) </span><span style="color: #848BBD;font-style: italic;">-- 写文件</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">print</span><span>(</span><span style="color: #FF7EDB;">um</span><span>[</span><span style="color: #FF8B39;">&quot;remote_user&quot;</span><span>]:</span><span style="color: #36F9F6;">read</span><span>(</span><span style="color: #FF8B39;">&quot;a.txt&quot;</span><span>)) </span><span style="color: #848BBD;font-style: italic;">-- 读文件</span></span></code></pre>
+<p>Note:</p>
+<ul>
+<li>即便设置了<code>os</code>，<code>dv</code>仍然会尝试探测用户的操作系统，并在必要时覆盖该值。目前<code>ssh</code>用户的操作系统探测只支持<code>linux</code>（且需要先设置<code>os</code>为<code>linux</code>），其他操作系统的探测为<code>TODO</code>状态。</li>
+</ul>
+<h3 id="dot"><code>Dot</code></h3>
+<p><code>Dot</code>类提供了配置文件的管理功能，主要用于加载配置文件、备份配置文件等。</p>
+<p>注意所有配置文件相关数据均存储在此类中。</p>
+<p>以下是<code>Dot</code>类的定义和成员函数：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="lua"><span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@class</span><span style="color: #FE4450;font-style: italic;"> Dot</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> confirm</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">Dot</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">default</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">)</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> add_schema</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">Dot</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">name</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">path</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">)</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> add_source</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">Dot</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">name</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">path</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">)</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> sync</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">Dot</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">apps</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">table</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">uid</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">)</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> upload</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">Dot</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">apps</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">table</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">uid</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">)</span></span></code></pre>
+<p><code>confirm</code>方法用于配置复制文件时的默认方式，参见<a href="https://blog.101248.xyz/dv4lua/#sync"><code>Op</code></a></p>
+<p><code>Schema</code>格式举例如下：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="toml"><span class="giallo-l"><span style="color: #FF7EDB;">name</span><span style="color: #B6B1B1;"> =</span><span style="color: #FF8B39;"> &quot;default&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[</span><span style="color: #FF7EDB;">schemas</span><span>.</span><span style="color: #FF7EDB;">fish</span><span>.</span><span style="color: #FF7EDB;">repo</span><span>.</span><span style="color: #FF7EDB;">linux</span><span>.</span><span style="color: #FF7EDB;">paths</span><span>]</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">default</span><span style="color: #B6B1B1;"> =</span><span> [</span><span style="color: #FF8B39;">&quot;~/.config/fish&quot;</span><span>]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[</span><span style="color: #FF7EDB;">schemas</span><span>.</span><span style="color: #FF7EDB;">alacritty</span><span>.</span><span style="color: #FF7EDB;">repo</span><span>.</span><span style="color: #FF7EDB;">windows</span><span>.</span><span style="color: #FF7EDB;">paths</span><span>]</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">default</span><span style="color: #B6B1B1;"> =</span><span> [</span><span style="color: #FF8B39;">&quot;${APPDATA}/alacritty/alacritty.toml&quot;</span><span>]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[</span><span style="color: #FF7EDB;">schemas</span><span>.</span><span style="color: #FF7EDB;">alacritty</span><span>.</span><span style="color: #FF7EDB;">repo</span><span>.</span><span style="color: #FF7EDB;">unix</span><span>.</span><span style="color: #FF7EDB;">paths</span><span>]</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">default</span><span style="color: #B6B1B1;"> =</span><span> [</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">  &quot;${XDG_CONFIG_HOME}/alacritty/alacritty.toml&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">  &quot;${XDG_CONFIG_HOME}/alacritty.toml&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">  &quot;~/.config/alacritty/alacritty.toml&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">  &quot;~/.alacritty.toml&quot;</span><span>,</span></span>
+<span class="giallo-l"><span>]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[</span><span style="color: #FF7EDB;">schemas</span><span>.</span><span style="color: #FF7EDB;">fcitx5</span><span>.</span><span style="color: #FF7EDB;">repo</span><span>.</span><span style="color: #FF7EDB;">linux</span><span>.</span><span style="color: #FF7EDB;">paths</span><span>]</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">data</span><span style="color: #B6B1B1;"> =</span><span> [</span><span style="color: #FF8B39;">&quot;~/.local/share/fcitx5&quot;</span><span>]</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">default</span><span style="color: #B6B1B1;"> =</span><span> [</span><span style="color: #FF8B39;">&quot;~/.config/fcitx5&quot;</span><span>]</span></span></code></pre>
+<p><code>name</code>为配置文件的名称，<code>paths</code>中每一项为一个配置文件的所有可能路径。
+对于以上配置文件，解析如下：</p>
+<ul>
+<li><code>fish</code>配置文件在<code>linux</code>下的配置文件<code>default</code>路径为<code>~/.config/fish</code></li>
+<li><code>alacritty</code>配置文件在<code>windows</code>下的配置文件<code>default</code>路径为<code>${APPDATA}/alacritty/alacritty.toml</code>，注意<code>${APPDATA}</code>将会被展开</li>
+<li><code>alacritty</code>配置文件在<code>unix</code>下的配置文件<code>default</code>路径有四个可能的路径</li>
+<li><code>fcitx5</code>配置文件在<code>linux</code>下的配置文件<code>data</code>路径为<code>~/.local/share/fcitx5</code>，<code>default</code>路径为<code>~/.config/fcitx5</code></li>
+</ul>
+<p><code>add_schema</code>方法用于添加配置文件的schema
+支持加载方式</p>
+<ul>
+<li><code>uid</code> + <code>path</code>：加载指定用户的配置文件，<code>path</code>为配置文件的路径。</li>
+</ul>
+<p><code>Source</code>格式与<code>Schema</code>相同，举例如下：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="toml"><span class="giallo-l"><span style="color: #FF7EDB;">name</span><span style="color: #B6B1B1;"> =</span><span style="color: #FF8B39;"> &quot;default&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[</span><span style="color: #FF7EDB;">schemas</span><span>.</span><span style="color: #FF7EDB;">fish</span><span>.</span><span style="color: #FF7EDB;">repo</span><span>.</span><span style="color: #FF7EDB;">linux</span><span>.</span><span style="color: #FF7EDB;">paths</span><span>]</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">default</span><span style="color: #B6B1B1;"> =</span><span> [</span><span style="color: #FF8B39;">&quot;fish&quot;</span><span>]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[</span><span style="color: #FF7EDB;">schemas</span><span>.</span><span style="color: #FF7EDB;">alacritty</span><span>.</span><span style="color: #FF7EDB;">repo</span><span>.</span><span style="color: #FF7EDB;">unknown</span><span>.</span><span style="color: #FF7EDB;">paths</span><span>]</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">default</span><span style="color: #B6B1B1;"> =</span><span> [</span><span style="color: #FF8B39;">&quot;alacritty/alacritty.toml&quot;</span><span>]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[</span><span style="color: #FF7EDB;">schemas</span><span>.</span><span style="color: #FF7EDB;">fcitx5</span><span>.</span><span style="color: #FF7EDB;">repo</span><span>.</span><span style="color: #FF7EDB;">linux</span><span>.</span><span style="color: #FF7EDB;">paths</span><span>]</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">default</span><span style="color: #B6B1B1;"> =</span><span> [</span><span style="color: #FF8B39;">&quot;fcitx5/config&quot;</span><span>]</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">data</span><span style="color: #B6B1B1;"> =</span><span> [</span><span style="color: #FF8B39;">&quot;fcitx5/data&quot;</span><span>]</span></span></code></pre>
+<p><code>add_source</code>方法用于添加配置文件的源，目前只支持以<code>uid</code>和<code>path</code>为参数加载配置文件。
+默认会加载<code>path</code>目录下<code>config.toml</code>文件作为配置文件，所有<code>paths</code>会被以<code>path</code>为前缀进行拼接。</p>
+<p><code>sync</code>方法用于同步配置文件到指定用户，<code>apps</code>参数为一个列表，每个元素为一个配置文件的名称，<code>uid</code>参数为用户的<code>id</code>。
+<code>upload</code>方法用于上传指定用户配置文件到<code>source</code>，<code>apps</code>参数为一个列表，每个元素为一个配置文件的名称，<code>uid</code>参数为用户的<code>id</code>。</p>
+<p>Example:</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="lua"><span class="giallo-l"><span style="color: #FEDE5D;">local</span><span style="color: #FF7EDB;"> dot</span><span style="color: #FEDE5D;"> =</span><span style="color: #FE4450;"> dv</span><span>:</span><span style="color: #36F9F6;">dot</span><span>()</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">dot</span><span>:</span><span style="color: #36F9F6;">add_schema</span><span>(</span><span style="color: #FF8B39;">&quot;default&quot;</span><span>, </span><span style="color: #FF8B39;">&quot;path/to/schema.toml&quot;</span><span>)</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">local</span><span style="color: #FF7EDB;"> schema</span><span style="color: #FEDE5D;"> =</span><span style="color: #FE4450;"> dv</span><span>:</span><span style="color: #36F9F6;">dl</span><span>(</span><span style="color: #FF8B39;">&quot;https://raw.githubusercontent.com/km0e/schema/main/dot.toml&quot;</span><span>)</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">dot</span><span>:</span><span style="color: #36F9F6;">add_schema</span><span>(</span><span style="color: #FF8B39;">&quot;cur&quot;</span><span>, </span><span style="color: #FF7EDB;">schema</span><span>)</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">dot</span><span>:</span><span style="color: #36F9F6;">add_source</span><span>(</span><span style="color: #FF8B39;">&quot;default&quot;</span><span>, </span><span style="color: #FF8B39;">&quot;path/to/source&quot;</span><span>)</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">dot</span><span>:</span><span style="color: #36F9F6;">sync</span><span>({</span><span style="color: #FF8B39;">&quot;fish&quot;</span><span>, </span><span style="color: #FF8B39;">&quot;alacritty&quot;</span><span>, </span><span style="color: #FF8B39;">&quot;fcitx5&quot;</span><span>}, </span><span style="color: #FF8B39;">&quot;remote_user&quot;</span><span>)</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">dot</span><span>:</span><span style="color: #36F9F6;">upload</span><span>({</span><span style="color: #FF8B39;">&quot;fish&quot;</span><span>, </span><span style="color: #FF8B39;">&quot;alacritty&quot;</span><span>, </span><span style="color: #FF8B39;">&quot;fcitx5&quot;</span><span>}, </span><span style="color: #FF8B39;">&quot;remote_user&quot;</span><span>)</span></span></code></pre><h3 id="pm"><code>Pm</code></h3>
+<p><code>Pm</code>类提供了一些包管理器的功能，主要用于安装、更新软件包，实际并没有存储任何数据。</p>
+<p>以下是<code>Pm</code>类的定义和成员函数：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="lua"><span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@class</span><span style="color: #FE4450;font-style: italic;"> Pm</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> install</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">Pm</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">hid</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">pkg</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">yes</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">boolean</span><span style="color: #FEDE5D;font-style: italic;">?)</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> update</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">Pm</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">hid</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">yes</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">boolean</span><span style="color: #FEDE5D;font-style: italic;">?)</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">---</span><span style="color: #FEDE5D;font-style: italic;">@field</span><span style="color: #FF7EDB;font-style: italic;"> upgrade</span><span style="color: #FEDE5D;font-style: italic;"> fun(</span><span style="color: #FF7EDB;font-style: italic;">this</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">Pm</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">hid</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">string</span><span style="color: #FEDE5D;font-style: italic;">, </span><span style="color: #FF7EDB;font-style: italic;">yes</span><span style="color: #FEDE5D;font-style: italic;">: </span><span style="color: #FE4450;font-style: italic;">boolean</span><span style="color: #FEDE5D;font-style: italic;">?)</span></span></code></pre>
+<p><code>install</code>方法用于安装软件包，<code>pkg</code>参数为软件包名称（可以是多个软件包，用空格分隔），<code>yes</code>参数为是否自动确认安装。</p>
+<p>对包管理器的支持如下：</p>
+<ul>
+<li><code>apt</code>（Debian/Ubuntu）</li>
+<li><code>apk</code>（Alpine）</li>
+<li><code>yay</code>（Arch Based Linux）</li>
+<li><code>dnf</code>（Fedora）🚧</li>
+<li><code>pacman</code>（Arch Based Linux）</li>
+<li><code>paru</code>（Arch Based Linux）</li>
+<li><code>winget</code>（Windows）🚧</li>
+</ul>
+<p>Note：注意需要的是设备<code>hid</code>，而不是用户的<code>uid</code>。</p>
+<p>Example:</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="lua"><span class="giallo-l"><span style="color: #FE4450;">dv</span><span>:</span><span style="color: #36F9F6;">um</span><span>():</span><span style="color: #36F9F6;">add_ssh</span><span>(</span><span style="color: #FF8B39;">&quot;remote_user&quot;</span><span>, {</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">    hid</span><span style="color: #FEDE5D;"> =</span><span style="color: #FF8B39;"> &quot;remote_machine&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">    mount</span><span style="color: #FEDE5D;"> =</span><span style="color: #FF8B39;"> &quot;~/.local/share/dv&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">    os</span><span style="color: #FEDE5D;"> =</span><span style="color: #FF8B39;"> &quot;linux&quot;</span></span>
+<span class="giallo-l"><span>})</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">local</span><span style="color: #FF7EDB;"> pm</span><span style="color: #FEDE5D;"> =</span><span style="color: #FE4450;"> dv</span><span>:</span><span style="color: #36F9F6;">pm</span><span>()</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">pm</span><span>:</span><span style="color: #36F9F6;">install</span><span>(</span><span style="color: #FF8B39;">&quot;remote_machine&quot;</span><span>, </span><span style="color: #FF8B39;">&quot;git neovim&quot;</span><span>, </span><span style="color: #F97E72;">true</span><span>) </span><span style="color: #848BBD;font-style: italic;">-- 安装 git 和 vim</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">pm</span><span>:</span><span style="color: #36F9F6;">update</span><span>(</span><span style="color: #FF8B39;">&quot;remote_machine&quot;</span><span>, </span><span style="color: #F97E72;">true</span><span>) </span><span style="color: #848BBD;font-style: italic;">-- 更新软件包</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">pm</span><span>:</span><span style="color: #36F9F6;">upgrade</span><span>(</span><span style="color: #FF8B39;">&quot;remote_machine&quot;</span><span>, </span><span style="color: #F97E72;">true</span><span>) </span><span style="color: #848BBD;font-style: italic;">-- 升级软件包</span></span></code></pre><h2 id="cli"><code>CLI</code></h2>
+<p><code>dv4lua</code>命令行工具的使用方法如下：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">Simple</span><span> CLI to use dv-api with lua</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">Usage:</span><span> dv4lua [OPTIONS] [ENTRY] [RARGS]...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">Arguments:</span></span>
+<span class="giallo-l"><span>  [ENTRY]</span><span style="color: #FE4450;">     The</span><span> entry point of the script [default: Main]</span></span>
+<span class="giallo-l"><span>  [RARGS]</span><span style="color: #36F9F6;">...</span><span>  Arguments to pass to the entry point</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">Options:</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -b,</span><span style="color: #F97E72;"> --dbpath</span><span style="color: #FEDE5D;"> &lt;</span><span>DBPATH</span><span style="color: #FEDE5D;">&gt;</span><span>        cache database path [default:</span><span style="color: #FF7EDB;"> $directory</span><span>/.cache]</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -c,</span><span style="color: #F97E72;"> --config</span><span style="color: #FEDE5D;"> &lt;</span><span>CONFIG</span><span style="color: #FEDE5D;">&gt;</span><span>        The config file to use [default:</span><span style="color: #FF7EDB;"> $directory</span><span>/config.lua]</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -d,</span><span style="color: #F97E72;"> --directory</span><span style="color: #FEDE5D;"> &lt;</span><span>DIRECTORY</span><span style="color: #FEDE5D;">&gt;</span><span>  The directory to use for the config and cache [default: /home/km/.config/dv/]</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -n,</span><span style="color: #F97E72;"> --dry-run</span><span>                Do not actually modify anything</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -h,</span><span style="color: #F97E72;"> --help</span><span>                   Print help</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -V,</span><span style="color: #F97E72;"> --version</span><span>                Print version</span></span></code></pre>
+      <nav>
+        <div>
+          <a href="https://blog.101248.xyz/blog/kvm/">&#8249; KVM 安装虚拟机及相关配置</a>
+        </div>
+        <div>
+          <a href="https://blog.101248.xyz/faq/lib-dep/"> Linux依赖FAQ &#8250;</a>
+        </div>
+      </nav>
+    <div id="remark42"></div>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">索引</a>
+        <div>
+          <a href="#jie-shao">介绍</a>
+        </div>
+        <div>
+          <a href="#api">API</a>
+        </div>
+        <div class="hpad">
+          <a href="#dv"><small>- Dv</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#um"><small>- UM</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#dot"><small>- Dot</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#pm"><small>- Pm</small></a>
+        </div>
+        <div>
+          <a href="#cli">CLI</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://blog.101248.xyz/atom.xml" target="_blank" title="笔记 Atom Feed"><i type="Button" class="svg rss" title="笔记 Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://blog.101248.xyz/about/"> About </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/contact/"> Contact </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/privacy/"> Privacy </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2026</span> 笔记</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer><span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

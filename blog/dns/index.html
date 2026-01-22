@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <script src="https://blog.101248.xyz/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://blog.101248.xyz/abridge.css?h=e167a0ae757c8231aba7" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://blog.101248.xyz" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.101248.xyz/manifest.min.json" />
+  <link rel="mask-icon" href="https://blog.101248.xyz/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://blog.101248.xyz/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.101248.xyz/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.101248.xyz/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.101248.xyz/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="笔记 Atom Feed" href="https://blog.101248.xyz/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Linux DNS配置 | 笔记</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="笔记" />
+  <meta name="description" content="如何正确配置DNS" />
+  <link rel="canonical" href="https://blog.101248.xyz/blog/dns/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.101248.xyz/blog/dns/" />
+  <meta name="twitter:url" content="https://blog.101248.xyz/blog/dns/" />
+  <meta property="og:description" content="如何正确配置DNS" />
+  <meta name="twitter:description" content="如何正确配置DNS" />
+  <meta property="og:title" content="Linux DNS配置 | 笔记" />
+  <meta name="twitter:title" content="Linux DNS配置 | 笔记" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="笔记" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-10-14" />
+  <script>
+	var remark_config = {
+		host: "https://remark42.101248.xyz",
+		site_id: "blog",
+	}
+  </script>
+  <script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+  <script defer src="https://blog.101248.xyz/js/abridge.min.js?h=e0f9a881a665c86cce9c" integrity="sha384-QF67y7RnPkuDrJNQqn3/7nYxqxWkW/qHI7zN0WTES1aXbf+TotoByRBb835fUE6U"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.stemmer.support.min.js" integrity="sha384-f0MKdC/9ZSGTpDiuWusC0SbLXNCBp6NgzDZpjR/4UdHXAQBqvTEKyinnsa1wQ7oA"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.zh.min.js" integrity="sha384-rQz9F0qWFRA0H4snbYEJ0VLIgOuLas/bm/j2HVui1L3lPvV16lr5u0L1XqhUJV6a"></script>
+  <noscript><link rel="stylesheet" href="https://blog.101248.xyz/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://blog.101248.xyz" title="笔记">笔记</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://blog.101248.xyz/archive/"> Posts </a></li><li><a class="s110" href="https://blog.101248.xyz/tags/"> Tags </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>中文</span><a href="https://blog.101248.xyz/en/blog/dns/">English</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+          <div>
+            <form autocomplete=off class="js" name="goSearch" id="searchbox">
+              <div class="searchd">
+                <input id="searchinput" type="text" placeholder="搜索" title="Search" />
+                <button type="submit" title="Search" class="svgs svgm search"></button>
+              </div>
+              <div class="results"><div id="suggestions"></div></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://blog.101248.xyz/blog/dns/">Linux DNS配置</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> 十月 14, 2025 <span class="rpad"></span>更新: 十月 14, 2025 <span class="rpad"></span> #<a href="https://blog.101248.xyz/tags/network/">Network</a>  #<a href="https://blog.101248.xyz/tags/router/">Router</a> </span>
+
+    
+
+
+<h2 id="ben-ji-dnspei-zhi">本机DNS配置</h2>
+<p>在<code>Linux</code>系统中，DNS配置主要通过<code>/etc/resolv.conf</code>文件进行管理。该文件包含了DNS服务器的地址和搜索域等信息。</p>
+<h3 id="pei-zhi-resolv-conf">配置<code>resolv.conf</code></h3>
+<p><code>resolv.conf</code>文件的基本格式如下：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="ini"><span class="giallo-l"><span>nameserver 223.5.5.5</span></span>
+<span class="giallo-l"><span>nameserver 223.6.6.6</span></span>
+<span class="giallo-l"><span>search example.com</span></span></code></pre><h3 id="pei-zhi-systemd-resolved">配置<code>systemd-resolved</code></h3>
+<p>主要配置文件位于<code>/etc/systemd/resolved.conf</code>，可以通过编辑该文件来配置DNS服务器。
+大致格式如下</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="ini"><span class="giallo-l"><span style="color: #FF7EDB;">[Resolve]</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># Some examples of DNS servers which may be used for DNS= and FallbackDNS=:</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># Cloudflare: 1.1.1.1#cloudflare-dns.com 1.0.0.1#cloudflare-dns.com 2606:4700:4700::1111#cloudflare-dns.com 2606:4700:4700::1001#cloudflare-dns.com</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># Google:     8.8.8.8#dns.google 8.8.4.4#dns.google 2001:4860:4860::8888#dns.google 2001:4860:4860::8844#dns.google</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># Quad9:      9.9.9.9#dns.quad9.net 149.112.112.112#dns.quad9.net 2620:fe::fe#dns.quad9.net 2620:fe::9#dns.quad9.net</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># DNS0:       193.110.81.0#dns0.eu 185.253.5.0#dns0.eu 2a0f:fc80::#dns0.eu 2a0f:fc81::#dns0.eu</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># Using DNS= configures global DNS servers and does not suppress link-specific</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># configuration. Parallel requests will be sent to per-link DNS servers</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># configured automatically by systemd-networkd.service(8), NetworkManager(8), or</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># similar management services, or configured manually via resolvectl(1). See</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># resolved.conf(5) and systemd-resolved(8) for more details.</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#DNS=</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#FallbackDNS=9.9.9.9#dns.quad9.net 2620:fe::9#dns.quad9.net 1.1.1.1#cloudflare-dns.com 2606:4700:4700::1111#cloudflare-dns.com 8.8.8.8#dns.google 2001:4860:4860::8888#dns.google</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#Domains=</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#DNSSEC=no</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#DNSOverTLS=no</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#MulticastDNS=yes</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#LLMNR=yes</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#Cache=yes</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#CacheFromLocalhost=no</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#DNSStubListener=yes</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#DNSStubListenerExtra=</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#ReadEtcHosts=yes</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#ResolveUnicastSingleLabel=no</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#StaleRetentionSec=0</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#RefuseRecordTypes=</span></span></code></pre>
+<p>并且<code>systemd-resolved</code>会自动生成<code>/etc/resolv.conf</code>文件，用来接管系统的DNS解析功能。
+通过以下命令可以覆盖默认的<code>resolv.conf</code>文件：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> ln</span><span style="color: #F97E72;"> -sf</span><span> /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf</span></span></code></pre>
+<p>注意该文件以全局配置形式，类似于<code>Fallback</code>的方式。如果你的网络接口有单独的DNS配置（手动配置或通过<code>DHCP</code>获取），则优先于该文件。
+可以通过以下命令查看当前的DNS配置：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">resolvectl</span><span> status</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">...</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">Link</span><span style="color: #F97E72;"> 3</span><span> (enp0s20f0u2u1)</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">    Current</span><span> Scopes: DNS LLMNR/IPv4 LLMNR/IPv6 mDNS/IPv4 mDNS/IPv6</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">         Protocols:</span><span> +DefaultRoute +LLMNR +mDNS</span><span style="color: #F97E72;"> -DNSOverTLS</span><span> DNSSEC=no/unsupported</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">Current</span><span> DNS Server:</span><span style="color: #F97E72;"> 192.168.5.1</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">       DNS</span><span> Servers:</span><span style="color: #F97E72;"> 192.168.5.1</span><span> fe80::62be:b4ff:fe19:2641</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">     Default</span><span> Route: yes</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">...</span></span></code></pre>
+<p>类似于上面的输出，<code>Current DNS Server</code>表示当前使用的DNS服务器地址。</p>
+<h4 id="ju-ti-wen-ti">具体问题</h4>
+<h5 id="wai-wang-ju-yu-wang-you-zi-ding-yi-de-dns-zone-ji-mou-xie-yu-ming-xu-yao-tong-guo-te-ding-de-dnsfu-wu-qi-jie-xi-dan-shi-you-xiang-bi-mian-wu-ran">外网局域网有自定义的<code>DNS zone</code>，即某些域名需要通过特定的<code>DNS</code>服务器解析,但是又想避免污染</h5>
+<p>先在<code>/etc/systemd/resolved.conf</code>中添加你希望使用的<code>DNS</code>服务器：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="ini"><span class="giallo-l"><span style="color: #FF7EDB;">[Resolve]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">DNS</span><span style="color: #B6B1B1;">=</span><span>223.5.5.5</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Domains</span><span style="color: #B6B1B1;">=</span><span>~.</span></span></code></pre>
+<p><code>~.</code>表示所有其他域名的请求会通过该<code>DNS</code>服务器进行解析。</p>
+<p>如果网络管理器为<code>systemd-networkd</code>，则在<code>/etc/systemd/network/</code>目录下<code>WAN</code>口的配置文件中添加以下内容：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="ini"><span class="giallo-l"><span style="color: #FF7EDB;">[Network]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Domains</span><span style="color: #B6B1B1;">=</span><span>~example.com</span></span></code></pre>
+<p><code>~</code>表示该域名后缀的请求会通过该网络接口的<code>DNS</code>服务器进行解析。</p>
+<p>最后重启生效。</p>
+<h5 id="zi-ding-yi-de-dnsfu-wu-qi-xi-wang-shi-yong-dns-over-tlsxie-yi-dan-shi-ju-yu-wang-nei-de-dnsfu-wu-qi-bu-zhi-chi-dotxie-yi">自定义的<code>DNS</code>服务器希望使用<code>DNS over TLS</code>协议，但是局域网内的<code>DNS</code>服务器不支持<code>DoT</code>协议</h5>
+<p>先时在<code>/etc/systemd/resolved.conf</code>中开启<code>DoT</code>协议：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="ini"><span class="giallo-l"><span style="color: #FF7EDB;">[Resolve]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">DNS</span><span style="color: #B6B1B1;">=</span><span>9.9.9.9</span><span style="color: #848BBD;font-style: italic;">#dns.quad9.net</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">DNSOverTLS</span><span style="color: #B6B1B1;">=</span><span>yes</span></span></code></pre>
+<p><code>DNSOverTLS=yes</code>表示全局的<code>DNS</code>请求会使用<code>DoT</code>协议。</p>
+<p>如果使用<code>systemd-networkd</code>，则在<code>/etc/systemd/network/</code>目录下<code>WAN</code>口的配置文件中添加以下内容：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="ini"><span class="giallo-l"><span style="color: #FF7EDB;">[Network]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">DNSOverTLS</span><span style="color: #B6B1B1;">=</span><span>no</span></span></code></pre>
+<p><code>DNSOverTLS=no</code>表示该网络接口的<code>DNS</code>请求不会使用<code>DoT</code>协议。</p>
+<p>如果使用<code>NetworkManager</code>，则可以通过<code>nmcli</code>命令配置：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> nmcli connection modify</span><span style="color: #FEDE5D;"> &lt;</span><span>connection_name</span><span style="color: #FEDE5D;">&gt;</span><span> connection.dns-over-tls</span><span style="color: #F97E72;"> 0</span></span></code></pre>
+      <nav>
+        <div>
+          <a href="https://blog.101248.xyz/blog/smb/">&#8249; SMB客户端</a>
+        </div>
+        <div>
+          <a href="https://blog.101248.xyz/faq/systemd-networkd/"> systemd-networkd &#8250;</a>
+        </div>
+      </nav>
+    <div id="remark42"></div>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">索引</a>
+        <div>
+          <a href="#ben-ji-dnspei-zhi">本机DNS配置</a>
+        </div>
+        <div class="hpad">
+          <a href="#pei-zhi-resolv-conf"><small>- 配置resolv.conf</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#pei-zhi-systemd-resolved"><small>- 配置systemd-resolved</small></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://blog.101248.xyz/atom.xml" target="_blank" title="笔记 Atom Feed"><i type="Button" class="svg rss" title="笔记 Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://blog.101248.xyz/about/"> About </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/contact/"> Contact </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/privacy/"> Privacy </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2026</span> 笔记</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer><span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

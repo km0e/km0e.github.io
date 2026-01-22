@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://blog.101248.xyz/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://blog.101248.xyz/abridge.css?h=e167a0ae757c8231aba7" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://blog.101248.xyz" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.101248.xyz/manifest.min.json" />
+  <link rel="mask-icon" href="https://blog.101248.xyz/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://blog.101248.xyz/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.101248.xyz/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.101248.xyz/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.101248.xyz/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="F Atom Feed" href="https://blog.101248.xyz/en/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Dv4cfg | F</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="F" />
+  <meta name="description" content="A simple CLI to use dv-api with toml&#x2F;yaml&#x2F;json" />
+  <link rel="canonical" href="https://blog.101248.xyz/en/archive/dv4cfg/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.101248.xyz/en/archive/dv4cfg/" />
+  <meta name="twitter:url" content="https://blog.101248.xyz/en/archive/dv4cfg/" />
+  <meta property="og:description" content="A simple CLI to use dv-api with toml&#x2F;yaml&#x2F;json" />
+  <meta name="twitter:description" content="A simple CLI to use dv-api with toml&#x2F;yaml&#x2F;json" />
+  <meta property="og:title" content="Dv4cfg | F" />
+  <meta name="twitter:title" content="Dv4cfg | F" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="F" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-02-25" />
+  <script>
+	var remark_config = {
+		host: "https://remark42.101248.xyz",
+		site_id: "blog",
+	}
+  </script>
+  <script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+  <script defer src="https://blog.101248.xyz/js/abridge_nosearch.min.js?h=6dab37f7e7cd788c6976" integrity="sha384-77nO/4xlWq4jm3nrI6r48S4y4s/3D3d9FScy7N095fGTXGVuA0oCyyxgsbl8KhIm"></script>
+  <noscript><link rel="stylesheet" href="https://blog.101248.xyz/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://blog.101248.xyz/en/" title="F">F</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://blog.101248.xyz/en/archive/"> Posts </a></li><li><a class="s110" href="https://blog.101248.xyz/en/tags/"> Tags </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>English</span><a href="https://blog.101248.xyz/archive/dv4cfg/">中文</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://blog.101248.xyz/en/archive/dv4cfg/">Dv4cfg</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> February 25, 2025 <span class="rpad"></span> #<a href="https://blog.101248.xyz/en/tags/pro/">PRO</a> </span>
+
+    
+
+
+<h2 id="usage">Usage</h2>
+<h3 id="config">Config</h3>
+<h4 id="basic">Basic</h4>
+<table><thead><tr><th>name</th><th>necessity</th><th>type</th><th>default</th><th>description</th><th>todo</th></tr></thead><tbody>
+<tr><td><code>id</code></td><td><code>opt</code></td><td><code>string</code></td><td></td><td>use to distinguish different vault</td><td></td></tr>
+<tr><td><code>local</code></td><td><code>opt</code></td><td><code>local_device</code></td><td></td><td>local device config</td><td></td></tr>
+<tr><td><code>ssh</code></td><td><code>opt</code></td><td><code>[ssh_device]</code></td><td></td><td><code>ssh</code> device config</td><td></td></tr>
+<tr><td><code>group</code></td><td><code>opt</code></td><td><code>[task_group]</code></td><td></td><td>execution unit</td><td></td></tr>
+<tr><td><span id="auto_desc"><code>auto</code></span></td><td><code>opt</code></td><td><code>[auto_task]</code></td><td></td><td>some daemon services or autostart applications</td><td></td></tr>
+<tr><td><span id="copy_desc"><code>copy</code></span></td><td><code>opt</code></td><td><code>[copy_task]</code></td><td></td><td>copy files/directories between devices</td><td></td></tr>
+<tr><td><span id="app_desc"><code>app</code></span></td><td><code>opt</code></td><td><code>[app_task]</code></td><td></td><td>device package management</td><td></td></tr>
+<tr><td><span id="exec_desc"><code>exec</code></span></td><td><code>opt</code></td><td><code>[exec_task]</code></td><td></td><td>exec_desc"&gt;execute commands/script</td><td></td></tr>
+</tbody></table>
+<h4 id="device-config">Device Config</h4>
+<p>Each device is composed of ordinary users and super users. Currently, users only have the current user and <code>ssh</code> users.</p>
+<p>Current user (<code>local</code>) config as follows</p>
+<table><thead><tr><th>name</th><th>necessity</th><th>type</th><th>default</th><th>description</th><th>todo</th></tr></thead><tbody>
+<tr><td><code>uid</code></td><td><code>opt</code></td><td><code>string</code></td><td><code>this</code></td><td>use to distinguish different user</td><td></td></tr>
+<tr><td><code>mount</code></td><td><code>opt</code></td><td><code>path</code></td><td><code>~/.config/dv</code></td><td>relative path expansion in <code>copy_task</code></td><td></td></tr>
+</tbody></table>
+<p><code>ssh</code> user (<code>ssh_user</code>) config as follows</p>
+<table><thead><tr><th>name</th><th>necessity</th><th>type</th><th>default</th><th>description</th><th>todo</th></tr></thead><tbody>
+<tr><td><code>uid</code></td><td><code>must</code></td><td><code>string</code></td><td></td><td>use to distinguish different user</td><td></td></tr>
+<tr><td><code>host</code></td><td><code>must</code></td><td><code>string</code></td><td></td><td>The <code>Host</code> field in the <code>ssh_config</code> file is used to find the <code>ssh</code> configuration</td><td></td></tr>
+<tr><td><code>passwd</code></td><td><code>opt</code></td><td><code>string</code></td><td></td><td><code>ssh</code> user passwd</td><td></td></tr>
+</tbody></table>
+<p>Local device config (<code>local_device</code>) as follows</p>
+<table><thead><tr><th>name</th><th>necessity</th><th>type</th><th>default</th><th>description</th><th>todo</th></tr></thead><tbody>
+<tr><td><code>hid</code></td><td><code>must</code></td><td><code>string</code></td><td><code>local</code></td><td>use to distinguish different user</td><td></td></tr>
+<tr><td><code>user</code></td><td><code>must</code></td><td><code>local</code></td><td></td><td>current user config</td><td></td></tr>
+<tr><td><code>system</code></td><td><code>opt</code></td><td><code>ssh_user</code></td><td></td><td>local device super user(administrator)</td><td>Temporarily reuse <code>ssh</code>, and may write a general <code>agent</code> in the future</td></tr>
+</tbody></table>
+<p><code>ssh</code> device config (<code>ssh_device</code>) as follows</p>
+<table><thead><tr><th>name</th><th>necessity</th><th>type</th><th>default</th><th>description</th><th>todo</th></tr></thead><tbody>
+<tr><td><code>hid</code></td><td><code>must</code></td><td><code>string</code></td><td></td><td>use to distinguish different user</td><td></td></tr>
+<tr><td><code>os</code></td><td><code>opt</code></td><td><code>manjaro|alpine|...</code></td><td></td><td>remote device os</td><td></td></tr>
+<tr><td><code>users</code></td><td><code>opt</code></td><td><code>[ssh_user]</code></td><td></td><td><code>ssh</code> user config</td><td></td></tr>
+<tr><td><code>system</code></td><td><code>opt</code></td><td><code>ssh_user</code></td><td></td><td>remote device super user(administrator)</td><td></td></tr>
+</tbody></table>
+<h4 id="basic-task">Basic Task</h4>
+<p>Each task has basic attributes (<code>task_attr</code>) as follows</p>
+<table><thead><tr><th>name</th><th>necessity</th><th>type</th><th>default</th><th>description</th><th>todo</th></tr></thead><tbody>
+<tr><td><code>id</code></td><td><code>must</code></td><td><code>string</code></td><td></td><td>use to distinguish different user</td><td></td></tr>
+<tr><td><code>next</code></td><td><code>opt</code></td><td><code>[string]</code></td><td></td><td>indicates the topological relationship between tasks</td><td></td></tr>
+</tbody></table>
+<p>Currently, only the <code>next</code> relationship is supported between tasks, and more relationships may be supported in the future.</p>
+<p>The task target (<code>target</code>) type is as follows</p>
+<table><thead><tr><th>name</th><th>necessity</th><th>type</th><th>default</th><th>description</th><th>todo</th></tr></thead><tbody>
+<tr><td><code>src_uid</code></td><td><code>opt</code></td><td><code>string</code></td><td></td><td>operation source</td><td></td></tr>
+<tr><td><code>dst_uid</code></td><td><code>opt</code></td><td><code>string</code></td><td></td><td>operation destination</td><td></td></tr>
+</tbody></table>
+<p>Auto start service (<code>auto_task</code>)</p>
+<table><thead><tr><th>name</th><th>necessity</th><th>type</th><th>default</th><th>description</th><th>todo</th></tr></thead><tbody>
+<tr><td><code>attr</code></td><td><code>must</code></td><td><code>task_attr</code></td><td></td><td>basic attributes</td><td></td></tr>
+<tr><td><code>uid</code></td><td><code>opt</code></td><td><code>string</code></td><td></td><td>operation destination</td><td></td></tr>
+<tr><td><code>name</code></td><td><code>must</code></td><td><code>string</code></td><td></td><td>service name</td><td></td></tr>
+<tr><td><code>action</code></td><td><code>must</code></td><td><code>setup|reload</code></td><td></td><td>operation</td><td></td></tr>
+</tbody></table>
+<p>File copy (<code>copy_task</code>)</p>
+<table><thead><tr><th>name</th><th>necessity</th><th>type</th><th>default</th><th>description</th><th>todo</th></tr></thead><tbody>
+<tr><td><code>attr</code></td><td><code>must</code></td><td><code>task_attr</code></td><td></td><td>basic attributes</td><td></td></tr>
+<tr><td><code>target</code></td><td><code>opt</code></td><td><code>target</code></td><td></td><td>operation destination</td><td></td></tr>
+<tr><td><code>pair</code></td><td><code>must</code></td><td><code>[(string,string)]</code></td><td></td><td>the path of the file to be copied</td><td></td></tr>
+</tbody></table>
+<p>App management (<code>app_task</code>)</p>
+<table><thead><tr><th>name</th><th>necessity</th><th>type</th><th>default</th><th>description</th><th>todo</th></tr></thead><tbody>
+<tr><td><code>attr</code></td><td><code>must</code></td><td><code>task_attr</code></td><td></td><td>basic attributes</td><td></td></tr>
+<tr><td><code>uid</code></td><td><code>opt</code></td><td><code>string</code></td><td></td><td>operation destination</td><td></td></tr>
+<tr><td><code>pkgs</code></td><td><code>must</code></td><td><code>[string]</code></td><td></td><td>apps need to be installed</td><td></td></tr>
+</tbody></table>
+<p>Execute command (<code>exec_task</code>)</p>
+<table><thead><tr><th>name</th><th>necessity</th><th>type</th><th>default</th><th>description</th><th>todo</th></tr></thead><tbody>
+<tr><td><code>attr</code></td><td><code>must</code></td><td><code>task_attr</code></td><td></td><td>basic attributes</td><td></td></tr>
+<tr><td><code>uid</code></td><td><code>opt</code></td><td><code>string</code></td><td></td><td>operation destination</td><td></td></tr>
+<tr><td><code>shell</code></td><td><code>opt</code></td><td><code>string</code></td><td></td><td>the <code>shell</code> used to execute command</td><td></td></tr>
+<tr><td><code>command</code></td><td><code>must</code></td><td><code>string</code></td><td></td><td>commands</td><td></td></tr>
+</tbody></table>
+<h4 id="task-group">Task Group</h4>
+<p>Cite (cite)</p>
+<table><thead><tr><th>name</th><th>necessity</th><th>type</th><th>default</th><th>description</th><th>todo</th></tr></thead><tbody>
+<tr><td><code>attr</code></td><td><code>must</code></td><td><code>task_attr</code></td><td></td><td>basic attributes</td><td></td></tr>
+<tr><td><code>target</code></td><td><code>opt</code></td><td><code>target</code></td><td></td><td>related users</td><td></td></tr>
+</tbody></table>
+<p>The <code>id</code> of the basic attribute of the task to be referenced is the same as the <code>id</code> of the referenced task. You can reference task groups or individual tasks. <code>target</code> will fill the <code>target</code> of the referenced task, and <code>dst_uid</code> will fill the <code>uid</code> of the referenced task.</p>
+<!-- e.g.
+{{< code-toggle >}}
+app:
+  attr:
+    id: 'task1'
+  pkgs:
+    - "fakeroot"
+group:
+  id: 'group1'
+  cites:
+    - attr:
+        id: 'task1'
+      target:
+        dst_uid: 'this'
+{{< /code-toggle >}}
+will be replaced by
+{{< code-toggle >}}
+group:
+  id: 'group1'
+  app:
+    attr:
+      id: 'task1'
+    uid: 'this'
+    pkgs:
+      - "fakeroot"
+{{< /code-toggle >}} -->
+<p>Task group (<code>task_group</code>)</p>
+<table><thead><tr><th>name</th><th>necessity</th><th>type</th><th>default</th><th>description</th><th>todo</th></tr></thead><tbody>
+<tr><td><code>id</code></td><td><code>must</code></td><td><code>string</code></td><td></td><td>use to distinguish different user(group)</td><td></td></tr>
+<tr><td><code>target</code></td><td><code>opt</code></td><td><code>target</code></td><td></td><td>related users</td><td></td></tr>
+<tr><td><code>cites</code></td><td><code>opt</code></td><td><code>[cite]</code></td><td></td><td>Other tasks referenced (groups)</td><td></td></tr>
+<tr><td><code>auto</code>(<a href="https://blog.101248.xyz/en/archive/dv4cfg/#auto_desc">see previous</a>)</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td><code>copy</code>(<a href="https://blog.101248.xyz/en/archive/dv4cfg/#copy_desc">see previous</a>)</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td><code>app</code>(<a href="https://blog.101248.xyz/en/archive/dv4cfg/#app_desc">see previous</a>)</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td><code>exec</code>(<a href="https://blog.101248.xyz/en/archive/dv4cfg/#exec_desc">see previous</a>)</td><td></td><td></td><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>The grouped <code>taget</code> is the same as above, passed down level by level</p>
+<h3 id="command">Command</h3>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">Simple</span><span> CLI to use dv-api with toml/yaml/json</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">Usage:</span><span> dv4cfg [OPTIONS] </span><span style="color: #FEDE5D;">&lt;</span><span>COMMAND</span><span style="color: #FEDE5D;">&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">Commands:</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  full-config</span><span>  Print example config [aliases: fc]</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">  exec</span><span>         Execute plan [aliases: e]</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  help</span><span>         Print this message or the help of the given subcommand(</span><span style="color: #FE4450;">s</span><span>)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">Options:</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -d,</span><span style="color: #F97E72;"> --directory</span><span style="color: #FEDE5D;"> &lt;</span><span>DIRECTORY</span><span style="color: #FEDE5D;">&gt;</span><span>  [default: /home/</span><span style="color: #FF7EDB;">$USER</span><span>/.config/dv/]</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -c,</span><span style="color: #F97E72;"> --config</span><span style="color: #FEDE5D;"> &lt;</span><span>CONFIG</span><span style="color: #FEDE5D;">&gt;</span><span>        </span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -h,</span><span style="color: #F97E72;"> --help</span><span>                   Print help</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -V,</span><span style="color: #F97E72;"> --version</span><span>                Print version</span></span></code></pre>
+<ul>
+<li><code>-d</code>：used to read the configuration file (<code>config.toml/yaml/json</code>) and <code>cache.db</code></li>
+<li><code>-c</code>：used to specify the configuration file path, which takes precedence over the configuration file in the specified directory</li>
+</ul>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">Print</span><span> example config</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">Usage:</span><span> dv4cfg full-config [EXTENSION]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">Arguments:</span></span>
+<span class="giallo-l"><span>  [EXTENSION]  </span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">Options:</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -h,</span><span style="color: #F97E72;"> --help</span><span>  Print help</span></span></code></pre>
+<p><code>EXTENSION</code>：<code>opt</code>，used to specify the configuration file format (<code>toml/yaml/json</code>)</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">Execute</span><span> plan</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">Usage:</span><span> dv4cfg exec [OPTIONS] [PLAN_ID]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">Arguments:</span></span>
+<span class="giallo-l"><span>  [PLAN_ID]  </span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">Options:</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -n,</span><span style="color: #F97E72;"> --dry-run</span><span>  </span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -h,</span><span style="color: #F97E72;"> --help</span><span>     Print help</span></span></code></pre>
+<ul>
+<li><code>PLAN_ID</code>：<code>opt</code>，used to specify the plan to be executed, currently supports task group <code>id</code></li>
+<li><code>-n</code>：<code>opt</code>，used to test the execution plan, will not actually execute</li>
+</ul>
+
+    <div id="remark42"></div>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">Index</a>
+        <div>
+          <a href="#usage">Usage</a>
+        </div>
+        <div class="hpad">
+          <a href="#config"><small>- Config</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#command"><small>- Command</small></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://blog.101248.xyz/en/atom.xml" target="_blank" title="F Atom Feed"><i type="Button" class="svg rss" title="F Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://blog.101248.xyz/en/about/"> About </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/en/contact/"> Contact </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/en/privacy/"> Privacy </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2026</span> F</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer><span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

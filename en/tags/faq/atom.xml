@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>F - FAQ</title>
+    <subtitle>Just a simple blog</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://blog.101248.xyz/en/tags/faq/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://blog.101248.xyz"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-03-06T17:03:15+00:00</updated>
+    <id>https://blog.101248.xyz/en/tags/faq/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Cargo Dependency Version</title>
+        <published>2025-03-06T17:03:15+00:00</published>
+        <updated>2025-03-06T17:03:15+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://blog.101248.xyz/en/faq/cargo-dep/"/>
+        <id>https://blog.101248.xyz/en/faq/cargo-dep/</id>
+        
+        <content type="html" xml:base="https://blog.101248.xyz/en/faq/cargo-dep/">&lt;h2 id=&quot;first&quot;&gt;First&lt;&#x2F;h2&gt;
+&lt;p&gt;Check the version of the dependency you want to use. Get the repository URL of the dependency from &lt;code&gt;crates.io&lt;&#x2F;code&gt; and &lt;code&gt;tag&lt;&#x2F;code&gt;(or &lt;code&gt;commit&lt;&#x2F;code&gt; hash) of the version you want to use.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;second&quot;&gt;Second&lt;&#x2F;h2&gt;
+&lt;p&gt;Write the dependency in the &lt;code&gt;Cargo.toml&lt;&#x2F;code&gt; file as follows:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;toml&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;patch&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;crates-io&lt;&#x2F;span&gt;&lt;span&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;crate_name&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt; =&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; git&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt; =&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;url&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;tag&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt; =&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;version&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt; }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Or&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;toml&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;crate_name&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt; =&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt; git&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt; =&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;url&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;rev&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt; =&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;commit&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt; }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;third&quot;&gt;Third&lt;&#x2F;h2&gt;
+&lt;p&gt;Run the following command to update the dependency:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;cargo&lt;&#x2F;span&gt;&lt;span&gt; update&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -p&lt;&#x2F;span&gt;&lt;span&gt; crate_name&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>git rm submodule</title>
+        <published>2025-02-25T09:08:53+00:00</published>
+        <updated>2025-02-25T09:08:53+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://blog.101248.xyz/en/faq/git-rm-submodule/"/>
+        <id>https://blog.101248.xyz/en/faq/git-rm-submodule/</id>
+        
+        <content type="html" xml:base="https://blog.101248.xyz/en/faq/git-rm-submodule/">&lt;p&gt;Original source: &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;16162000&quot;&gt;Stackoverflow&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;mv&lt;&#x2F;span&gt;&lt;span&gt; a&#x2F;submodule a&#x2F;submodule_tmp&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; submodule deinit&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -f --&lt;&#x2F;span&gt;&lt;span&gt; a&#x2F;submodule&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;rm&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -rf&lt;&#x2F;span&gt;&lt;span&gt; .git&#x2F;modules&#x2F;a&#x2F;submodule&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; rm&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -f&lt;&#x2F;span&gt;&lt;span&gt; a&#x2F;submodule&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# Note: a&#x2F;submodule (no trailing slash)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# or, if you want to leave it in your working tree and have done step 0&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; rm&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --cached&lt;&#x2F;span&gt;&lt;span&gt; a&#x2F;submodule&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;mv&lt;&#x2F;span&gt;&lt;span&gt; a&#x2F;submodule_tmp a&#x2F;submodule&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+</feed>

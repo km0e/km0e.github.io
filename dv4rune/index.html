@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <script src="https://blog.101248.xyz/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://blog.101248.xyz/abridge.css?h=e167a0ae757c8231aba7" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://blog.101248.xyz" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.101248.xyz/manifest.min.json" />
+  <link rel="mask-icon" href="https://blog.101248.xyz/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://blog.101248.xyz/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.101248.xyz/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.101248.xyz/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.101248.xyz/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="笔记 Atom Feed" href="https://blog.101248.xyz/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Dv4rune | 笔记</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="笔记" />
+  <meta name="description" content="A simple CLI to use dv-api with rune" />
+  <link rel="canonical" href="https://blog.101248.xyz/dv4rune/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.101248.xyz/dv4rune/" />
+  <meta name="twitter:url" content="https://blog.101248.xyz/dv4rune/" />
+  <meta property="og:description" content="A simple CLI to use dv-api with rune" />
+  <meta name="twitter:description" content="A simple CLI to use dv-api with rune" />
+  <meta property="og:title" content="Dv4rune | 笔记" />
+  <meta name="twitter:title" content="Dv4rune | 笔记" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="笔记" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-04-02" />
+  <script>
+	var remark_config = {
+		host: "https://remark42.101248.xyz",
+		site_id: "blog",
+	}
+  </script>
+  <script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+  <script defer src="https://blog.101248.xyz/js/abridge.min.js?h=e0f9a881a665c86cce9c" integrity="sha384-QF67y7RnPkuDrJNQqn3/7nYxqxWkW/qHI7zN0WTES1aXbf+TotoByRBb835fUE6U"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.stemmer.support.min.js" integrity="sha384-f0MKdC/9ZSGTpDiuWusC0SbLXNCBp6NgzDZpjR/4UdHXAQBqvTEKyinnsa1wQ7oA"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.zh.min.js" integrity="sha384-rQz9F0qWFRA0H4snbYEJ0VLIgOuLas/bm/j2HVui1L3lPvV16lr5u0L1XqhUJV6a"></script>
+  <noscript><link rel="stylesheet" href="https://blog.101248.xyz/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://blog.101248.xyz" title="笔记">笔记</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://blog.101248.xyz/archive/"> Posts </a></li><li><a class="s110" href="https://blog.101248.xyz/tags/"> Tags </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>中文</span><a href="https://blog.101248.xyz/en/dv4rune/">English</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+          <div>
+            <form autocomplete=off class="js" name="goSearch" id="searchbox">
+              <div class="searchd">
+                <input id="searchinput" type="text" placeholder="搜索" title="Search" />
+                <button type="submit" title="Search" class="svgs svgm search"></button>
+              </div>
+              <div class="results"><div id="suggestions"></div></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://blog.101248.xyz/dv4rune/">Dv4rune</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> 二月 27, 2025 <span class="rpad"></span>更新: 四月 02, 2025 <span class="rpad"></span> #<a href="https://blog.101248.xyz/tags/pro/">PRO</a> </span>
+
+    
+
+
+<h2 id="jie-shao">介绍</h2>
+<p>这个工具主要功能是用来方便的执行一系列操作，如：自动化任务、文件拷贝、应用管理、执行命令等。
+由于自定义执行逻辑以配置文件的形式呈现过于复杂，本工具选择与<a rel="noopener external" target="_blank" href="https://rune-rs.github.io/"><code>Rune</code></a>结合，以<code>Module</code>形式嵌入，可以在<code>Rune</code>代码中直接调用<code>dv-api</code>的功能。</p>
+<h2 id="api">API</h2>
+<h3 id="wai-bu-lei-xing">外部类型</h3>
+<table><thead><tr><th>type</th><th>description</th></tr></thead><tbody>
+<tr><td><a href="https://blog.101248.xyz/dv4rune/#config"><code>Config</code></a></td><td>用户配置</td></tr>
+<tr><td><a href="https://blog.101248.xyz/dv4rune/#Os"><code>Os</code></a></td><td>操作系统</td></tr>
+<tr><td><a href="https://blog.101248.xyz/dv4rune/#packages"><code>Packages</code></a></td><td>包</td></tr>
+<tr><td><a href="https://blog.101248.xyz/dv4rune/#dv"><code>Dv</code></a></td><td>API</td></tr>
+</tbody></table>
+<h4 id="config"><code>Config</code></h4>
+<p>成员函数</p>
+<table><thead><tr><th>sig</th><th>description</th></tr></thead><tbody>
+<tr><td><code>fn cur() -&gt; Config</code></td><td>创建当前用户的<code>Config</code>，默认设置<code>HID</code>为<code>local</code>，<code>MOUNT</code>为<code>~/.local/share/dv</code>，<code>OS</code>为<code>linux</code></td></tr>
+<tr><td><code>fn ssh(host: &amp;str) -&gt; Config</code></td><td>创建<code>ssh</code>用户的<code>Config</code>，默认设置<code>HOST</code>为<code>host</code>参数，<code>MOUNT</code>为<code>~/.local/share/dv</code>，<code>OS</code>为<code>linux</code></td></tr>
+<tr><td><code>fn index_set(&amp;mut self, key: &amp;str, value: &amp;str)</code></td><td>设置<code>Config</code>的成员变量</td></tr>
+</tbody></table>
+<p>成员变量</p>
+<table><thead><tr><th>name</th><th>type</th><th>description</th></tr></thead><tbody>
+<tr><td><code>is_system</code></td><td><code>Option&lt;bool&gt;</code></td><td>设置用户是否为系统用户，如果不设置则当前用户自行探测，<code>ssh</code>目前为为<code>TODO</code>状态</td></tr>
+</tbody></table>
+<p>Example:</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="rust"><span class="giallo-l"><span style="color: #FEDE5D;">let</span><span style="color: #FF7EDB;"> cur</span><span style="color: #FFFFFFEE;"> =</span><span style="color: #FE4450;"> Config</span><span style="color: #FEDE5D;">::</span><span style="color: #36F9F6;">cur</span><span>();</span><span style="color: #848BBD;font-style: italic;">// 创建当前用户的配置</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">cur</span><span>[</span><span style="color: #FF8B39;">&quot;HID&quot;</span><span>]</span><span style="color: #FFFFFFEE;"> =</span><span style="color: #FF8B39;"> &quot;local_machine&quot;</span><span>;</span><span style="color: #848BBD;font-style: italic;">// 修改当前用户的`HID`为`local_machine`</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">let</span><span style="color: #FF7EDB;"> ssh</span><span style="color: #FFFFFFEE;"> =</span><span style="color: #FE4450;"> Config</span><span style="color: #FEDE5D;">::</span><span style="color: #36F9F6;">ssh</span><span>(</span><span style="color: #FF8B39;">&quot;host&quot;</span><span>);</span><span style="color: #848BBD;font-style: italic;">// 创建ssh用户的配置</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">ssh</span><span style="color: #FEDE5D;">.</span><span>is_system </span><span style="color: #FFFFFFEE;">=</span><span style="color: #FE4450;"> Some</span><span>(</span><span style="color: #F97E72;">true</span><span>);</span><span style="color: #848BBD;font-style: italic;">// 设置`ssh`用户为`root`用户</span></span></code></pre><h4 id="os"><code>Os</code></h4>
+<p>成员函数</p>
+<table><thead><tr><th>sig</th><th>description</th></tr></thead><tbody>
+<tr><td><code>fn compat(&amp;self, oth: &amp;str) -&gt; bool</code></td><td>判断<code>Os</code>是否兼容于<code>oth</code>,如<code>linux</code>兼容于<code>unix</code></td></tr>
+<tr><td><code>fn as_str(&amp;self) -&gt; String</code></td><td>将<code>Os</code>转换为字符串</td></tr>
+</tbody></table>
+<p>Example:</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="rust"><span class="giallo-l"><span style="color: #FEDE5D;">let</span><span style="color: #FF7EDB;"> os</span><span style="color: #FFFFFFEE;"> =</span><span style="color: #FF7EDB;"> dv</span><span style="color: #FEDE5D;">.</span><span style="color: #36F9F6;">os</span><span>(</span><span style="color: #FF8B39;">&quot;this&quot;</span><span>)</span><span style="color: #FEDE5D;">?</span><span>;</span><span style="color: #848BBD;font-style: italic;">// 获取`this`用户的`Os`</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">os</span><span style="color: #FEDE5D;">.</span><span style="color: #36F9F6;">compat</span><span>(</span><span style="color: #FF8B39;">&quot;linux&quot;</span><span>);</span><span style="color: #848BBD;font-style: italic;"> // 判断`os`是否兼容于`linux`</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">dbg!</span><span>(</span><span style="color: #FF7EDB;">os</span><span style="color: #FEDE5D;">.</span><span style="color: #36F9F6;">as_str</span><span>());</span><span style="color: #848BBD;font-style: italic;"> // 打印`os`的字符串表示</span></span></code></pre><h4 id="packages"><code>Packages</code></h4>
+<p>成员函数</p>
+<table><thead><tr><th>sig</th><th>description</th></tr></thead><tbody>
+<tr><td><code>fn new() -&gt; Packages</code></td><td>创建一个新的<code>Packages</code></td></tr>
+<tr><td><code>fn add_assign(&amp;mut self, pkg: &amp;Packages)</code></td><td>合并另一个<code>Packages</code></td></tr>
+<tr><td><code>fn index_set(&amp;mut self, key: &amp;str, value: &amp;str)</code></td><td>设置包管理器对应的包</td></tr>
+</tbody></table>
+<p>Example:</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="rust"><span class="giallo-l"><span style="color: #FEDE5D;">let</span><span style="color: #FF7EDB;"> pkg</span><span style="color: #FFFFFFEE;"> =</span><span style="color: #FE4450;"> Packages</span><span style="color: #FEDE5D;">::</span><span style="color: #36F9F6;">new</span><span>();</span><span style="color: #848BBD;font-style: italic;">// 创建一个新的`Packages`</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">pkg</span><span>[</span><span style="color: #FF8B39;">&quot;apt&quot;</span><span>]</span><span style="color: #FFFFFFEE;"> =</span><span style="color: #FF8B39;"> &quot;zellij&quot;</span><span>;</span><span style="color: #848BBD;font-style: italic;">// 设置`apt`包管理器对应的包为`zellij`</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">pkg</span><span>[</span><span style="color: #FF8B39;">&quot;pacman&quot;</span><span>]</span><span style="color: #FFFFFFEE;"> =</span><span style="color: #FF8B39;"> &quot;zellij&quot;</span><span>;</span><span style="color: #848BBD;font-style: italic;">// 设置`pacman`包管理器对应的包为`zellij`</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">let</span><span style="color: #FF7EDB;"> pkg2</span><span style="color: #FFFFFFEE;"> =</span><span style="color: #FE4450;"> Packages</span><span style="color: #FEDE5D;">::</span><span style="color: #36F9F6;">new</span><span>();</span><span style="color: #848BBD;font-style: italic;">// 创建另一个新的`Packages`</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">pkg2</span><span>[</span><span style="color: #FF8B39;">&quot;apt&quot;</span><span>]</span><span style="color: #FFFFFFEE;"> =</span><span style="color: #FF8B39;"> &quot;alacritty&quot;</span><span>;</span><span style="color: #848BBD;font-style: italic;">// 设置`apt`包管理器对应的包为`alacritty`</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">pkg</span><span style="color: #FFFFFFEE;"> +=</span><span style="color: #FF7EDB;"> pkg2</span><span>;</span><span style="color: #848BBD;font-style: italic;">// 合并两个`Packages`</span></span></code></pre><h4 id="dv"><code>Dv</code></h4>
+<p>成员函数</p>
+<table><thead><tr><th>sig</th><th>description</th><th>link</th></tr></thead><tbody>
+<tr><td><code>async fn add_user(id: &amp;str, user: Config) -&gt; Result&lt;(), Error&gt;</code></td><td>添加用户</td><td><a href="https://blog.101248.xyz/dv4rune/#add-user">link</a></td></tr>
+<tr><td><code>async fn auto(id: &amp;str, service: &amp;str, action: &amp;str, args: Option&lt;&amp;str&gt;) -&gt; Result&lt;bool, Error&gt;</code></td><td>自动化任务</td><td><a href="https://blog.101248.xyz/dv4rune/#auto">link</a></td></tr>
+<tr><td><code>async fn copy(id: &amp;str, src:(&amp;str, &amp;str), dst:(&amp;str, &amp;str), confirm: Option&lt;&amp;str&gt;) -&gt; Result&lt;bool, Error&gt;</code></td><td>拷贝文件</td><td><a href="https://blog.101248.xyz/dv4rune/#copy">link</a></td></tr>
+<tr><td><code>async fn exec(id: &amp;str, shell: Option&lt;&amp;str&gt;, cmd: &amp;str) -&gt; Result&lt;bool, Error&gt;</code></td><td>执行命令</td><td><a href="https://blog.101248.xyz/dv4rune/#exec">link</a></td></tr>
+<tr><td><code>load_src(id: &amp;str, path: &amp;str) -&gt; Result&lt;Vec, Error&gt;</code></td><td>加载源文件</td><td><a href="https://blog.101248.xyz/dv4rune/#load-src">link</a></td></tr>
+<tr><td><code>async fn once(id: &amp;str, tid: &amp;str, f: fn() -&gt; Future&lt;Result&lt;(),Error&gt;&gt;) -&gt; Result&lt;bool, Error&gt;</code></td><td>执行一次</td><td><a href="https://blog.101248.xyz/dv4rune/#once">link</a></td></tr>
+<tr><td><code>fn os(id: &amp;str) -&gt; Result&lt;Os, Error&gt;</code></td><td>获取用户的操作系统</td><td><a href="https://blog.101248.xyz/dv4rune/#os">link</a></td></tr>
+<tr><td><code>async fn pm(id: &amp;str, pkg: Package) -&gt; Result&lt;bool, Error&gt;</code></td><td>包安装器</td><td><a href="https://blog.101248.xyz/dv4rune/#pm">link</a></td></tr>
+<tr><td><code>async fn refresh(id: &amp;str, key: &amp;str) -&gt; Result&lt;(), Error&gt;</code></td><td>刷新某些内置的机制</td><td><a href="https://blog.101248.xyz/dv4rune/#refresh">link</a></td></tr>
+</tbody></table>
+<h5 id="add-user"><code>add_user</code></h5>
+<p>添加一个用户，用户的配置可以是当前用户或<code>ssh</code>用户。</p>
+<p>Example:</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="rust"><span class="giallo-l"><span style="color: #FF7EDB;">dv</span><span style="color: #FEDE5D;">.</span><span style="color: #36F9F6;">add_user</span><span>(</span><span style="color: #FF8B39;">&quot;this&quot;</span><span>,</span><span style="color: #FE4450;"> Config</span><span style="color: #FEDE5D;">::</span><span style="color: #36F9F6;">cur</span><span>())</span><span style="color: #FEDE5D;">.await?</span><span>;</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">dv</span><span style="color: #FEDE5D;">.</span><span style="color: #36F9F6;">add_user</span><span>(</span><span style="color: #FF8B39;">&quot;system&quot;</span><span>,</span><span style="color: #FE4450;"> Config</span><span style="color: #FEDE5D;">::</span><span style="color: #36F9F6;">ssh</span><span>(</span><span style="color: #FF8B39;">&quot;system&quot;</span><span>))</span><span style="color: #FEDE5D;">.await?</span><span>;</span></span></code></pre><h5 id="auto"><code>auto</code></h5>
+<p>对指定的服务执行指定的动作，动作可以是<code>setup</code>，<code>reload</code>，<code>destroy</code>。</p>
+<p>平台支持：</p>
+<ul>
+<li>
+<p><code>current</code></p>
+<ul>
+<li>
+<p><code>linux</code>: 使用<a rel="noopener external" target="_blank" href="https://wiki.archlinux.org/title/Systemd"><code>systemd</code></a>作为后端实现</p>
+<table><thead><tr><th>action</th><th>description</th></tr></thead><tbody>
+<tr><td>setup</td><td>理解为<code>enable</code></td></tr>
+<tr><td>reload</td><td>理解为<code>reload_or_restart</code></td></tr>
+<tr><td>destroy</td><td>理解为<code>disable</code></td></tr>
+</tbody></table>
+</li>
+<li>
+<p><code>windows</code>: 使用<a rel="noopener external" target="_blank" href="https://learn.microsoft.com/en-us/windows/win32/services/using-services"><code>system service</code></a>作为后端实现（实验）</p>
+<table><thead><tr><th>action</th><th>description</th></tr></thead><tbody>
+<tr><td>setup</td><td>理解为<code>install enable start</code></td></tr>
+<tr><td>reload</td><td>理解为<code>stop start</code></td></tr>
+<tr><td>destroy</td><td>理解为<code>stop uninstall</code></td></tr>
+</tbody></table>
+</li>
+<li>
+<p><code>macos</code>: TODO</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>ssh</code></p>
+<ul>
+<li>
+<p><code>linux</code>: 使用<code>systemd</code>作为后端实现（systemctl）</p>
+<table><thead><tr><th>action</th><th>description</th></tr></thead><tbody>
+<tr><td>setup</td><td>理解为<code>enable</code></td></tr>
+<tr><td>reload</td><td>理解为<code>reload_or_restart</code></td></tr>
+<tr><td>destroy</td><td>理解为<code>disable</code></td></tr>
+</tbody></table>
+</li>
+<li>
+<p><code>windows</code>: TODO</p>
+</li>
+<li>
+<p><code>macos</code>: TODO</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="rust"><span class="giallo-l"><span style="color: #FF7EDB;">dv</span><span style="color: #FEDE5D;">.</span><span style="color: #36F9F6;">auto</span><span>(</span><span style="color: #FF8B39;">&quot;this&quot;</span><span>,</span><span style="color: #FF8B39;"> &quot;sshd&quot;</span><span>,</span><span style="color: #FF8B39;"> &quot;reload&quot;</span><span>,</span><span style="color: #FE4450;"> None</span><span>)</span><span style="color: #FEDE5D;">.await?</span><span>;</span></span></code></pre><h5 id="copy"><code>copy</code></h5>
+<p><code>copy</code>文件到指定的用户，<code>confirm</code>参数可以是<code>y</code>，<code>u</code>，<code>n</code>，分别表示覆盖，更新，不变。如果不指定<code>confirm</code>参数，则运行时会询问用户。</p>
+<p>路径规则</p>
+<ul>
+<li><code>~</code>会展开为用户的<code>home</code>目录</li>
+<li>尝试使用<code>variable</code>与环境变量展开，格式为<code>${var}</code></li>
+<li>相对路径会尝试使用<code>MOUNT</code>展开</li>
+<li>格式如下：</li>
+</ul>
+<table><thead><tr><th>src</th><th>dst</th><th>action</th><th>description</th></tr></thead><tbody>
+<tr><td>a/</td><td>b/</td><td>a/* -&gt; b/*</td><td>拷贝目录下所有文件到目标目录</td></tr>
+<tr><td>a/</td><td>b</td><td>a/* -&gt; b/*</td><td>拷贝目录下所有文件到目标目录</td></tr>
+<tr><td>a</td><td>b/</td><td>a -&gt; b/a</td><td>拷贝目录/文件到目标目录</td></tr>
+<tr><td>a</td><td>b</td><td>a -&gt; b</td><td>拷贝目录（文件）到目标路径</td></tr>
+</tbody></table>
+<p><strong><em>注意</em></strong>：实际上是通过两个文件的<code>mtime</code>来判断文件是否需要更新</p>
+<ul>
+<li>源文件<code>mtime</code>变化则尝试覆盖</li>
+<li>目标文件<code>mtime</code>变化则尝试更新</li>
+</ul>
+<h5 id="exec"><code>exec</code></h5>
+<p>执行命令或脚本，<code>shell</code>参数可以是<code>None</code>或<code>shell</code>的路径，如果<code>shell</code>为<code>None</code>，则直接执行命令，如果<code>shell</code>不为<code>None</code>，则将命令作为脚本传入<code>shell</code>执行。</p>
+<p>Example:</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="rust"><span class="giallo-l"><span style="color: #FF7EDB;">dv</span><span style="color: #FEDE5D;">.</span><span style="color: #36F9F6;">exec</span><span>(</span><span style="color: #FF8B39;">&quot;this&quot;</span><span>,</span><span style="color: #FE4450;"> None</span><span>,</span><span style="color: #FF8B39;"> &quot;echo hello&quot;</span><span>)</span><span style="color: #FEDE5D;">.await?</span><span>;</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">dv</span><span style="color: #FEDE5D;">.</span><span style="color: #36F9F6;">exec</span><span>(</span><span style="color: #FF8B39;">&quot;this&quot;</span><span>,</span><span style="color: #FE4450;"> Some</span><span>(</span><span style="color: #FF8B39;">&quot;bash&quot;</span><span>),</span><span style="color: #FF8B39;"> &quot;if test -f ~/.bashrc; then echo &#39;exist&#39;; else echo &#39;not exist&#39;; fi&quot;</span><span>)</span><span style="color: #FEDE5D;">.await?</span><span>;</span></span></code></pre><h5 id="load-src"><code>load_src</code></h5>
+<p>加载源文件，返回一个<code>Vec</code>，每个元素为一个<code>String</code>，表示源文件的内容。</p>
+<h5 id="once"><code>once</code></h5>
+<p>确保某个函数只执行一次，<code>tid</code>参数为任务的<code>id</code>，<code>f</code>参数为函数指针，函数指针的返回值为<code>Future&lt;Result&lt;(),Error&gt;&gt;</code>类型。</p>
+<p>Example:</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="rust"><span class="giallo-l"><span style="color: #FEDE5D;">let</span><span style="color: #FF7EDB;"> pkg</span><span style="color: #FFFFFFEE;"> =</span><span style="color: #FE4450;"> Packages</span><span style="color: #FEDE5D;">::</span><span style="color: #36F9F6;">new</span><span>();</span><span style="color: #848BBD;font-style: italic;">// 创建一个新的`Packages`</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">pkg</span><span>[</span><span style="color: #FF8B39;">&quot;apt&quot;</span><span>]</span><span style="color: #FFFFFFEE;"> =</span><span style="color: #FF8B39;"> &quot;zellij&quot;</span><span>;</span><span style="color: #848BBD;font-style: italic;">// 设置`apt`包管理器对应的包为`zellij`</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">dv</span><span style="color: #FEDE5D;">.</span><span style="color: #36F9F6;">once</span><span>(</span><span style="color: #FF8B39;">&quot;app_install&quot;</span><span>,</span><span style="color: #FEDE5D;"> ||</span><span style="color: #FF7EDB;">dv</span><span style="color: #FEDE5D;">.</span><span style="color: #36F9F6;">pm</span><span>(</span><span style="color: #FF8B39;">&quot;this&quot;</span><span>,</span><span style="color: #FF7EDB;"> pkg</span><span>))</span><span style="color: #FEDE5D;">.await?</span><span>;</span><span style="color: #848BBD;font-style: italic;">// 这里会执行一次`pm`函数</span></span></code></pre><h5 id="os-1"><code>os</code></h5>
+<p>获得用户的操作系统，返回一个<code>Os</code>类型的对象，包含了操作系统的名称。</p>
+<p>Example:</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="rust"><span class="giallo-l"><span style="color: #FEDE5D;">let</span><span style="color: #FF7EDB;"> os</span><span style="color: #FFFFFFEE;"> =</span><span style="color: #FF7EDB;"> dv</span><span style="color: #FEDE5D;">.</span><span style="color: #36F9F6;">os</span><span>(</span><span style="color: #FF8B39;">&quot;this&quot;</span><span>)</span><span style="color: #FEDE5D;">?</span><span>;</span><span style="color: #848BBD;font-style: italic;">// 获取`this`用户的`Os`</span></span></code></pre><h5 id="pm"><code>pm</code></h5>
+<p>安装某个包，<code>pkg</code>参数为一个<code>Packages</code>类型的对象，表示要安装的包。</p>
+<p>Example:</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="rust"><span class="giallo-l"><span style="color: #FEDE5D;">let</span><span style="color: #FF7EDB;"> pkg</span><span style="color: #FFFFFFEE;"> =</span><span style="color: #FE4450;"> Packages</span><span style="color: #FEDE5D;">::</span><span style="color: #36F9F6;">new</span><span>();</span><span style="color: #848BBD;font-style: italic;">// 创建一个新的`Packages`</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">pkg</span><span>[</span><span style="color: #FF8B39;">&quot;apt&quot;</span><span>]</span><span style="color: #FFFFFFEE;"> =</span><span style="color: #FF8B39;"> &quot;zellij&quot;</span><span>;</span><span style="color: #848BBD;font-style: italic;">// 设置`apt`包管理器对应的包为`zellij`</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">pkg</span><span>[</span><span style="color: #FF8B39;">&quot;pacman&quot;</span><span>]</span><span style="color: #FFFFFFEE;"> =</span><span style="color: #FF8B39;"> &quot;zellij&quot;</span><span>;</span><span style="color: #848BBD;font-style: italic;">// 设置`pacman`包管理器对应的包为`zellij`</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">dv</span><span style="color: #FEDE5D;">.</span><span style="color: #36F9F6;">pm</span><span>(</span><span style="color: #FF8B39;">&quot;this&quot;</span><span>,</span><span style="color: #FF7EDB;"> pkg</span><span>)</span><span style="color: #FEDE5D;">.await?</span><span>;</span><span style="color: #848BBD;font-style: italic;">// 安装`zellij`</span></span></code></pre><h5 id="refresh"><code>refresh</code></h5>
+<p>刷新某些内置的机制，<code>key</code>参数为要刷新的键值。如果<code>key</code>为空，则会刷新所有的键值。</p>
+<table><thead><tr><th>key</th><th>description</th></tr></thead><tbody>
+<tr><td><code>path</code></td><td>则会删除对应的<code>path</code>的<code>mtime</code>记录</td></tr>
+<tr><td><code>once_id</code></td><td>则会删除对应的<code>once_id</code>的记录</td></tr>
+</tbody></table>
+<h2 id="shi-yong">使用</h2>
+<p><code>cli</code>命令行工具的使用方法如下：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">Simple</span><span> CLI to use dv-api with rune</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">Usage:</span><span> dv4rune [OPTIONS] [ENTRY] [RARGS]...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">Arguments:</span></span>
+<span class="giallo-l"><span>  [ENTRY]</span><span style="color: #FE4450;">     The</span><span> entry point of the script [default: main]</span></span>
+<span class="giallo-l"><span>  [RARGS]</span><span style="color: #36F9F6;">...</span><span>  Arguments to pass to the entry point</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">Options:</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -d,</span><span style="color: #F97E72;"> --directory</span><span style="color: #FEDE5D;"> &lt;</span><span>DIRECTORY</span><span style="color: #FEDE5D;">&gt;</span><span>  [default: /home/km/.config/dv/]</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -c,</span><span style="color: #F97E72;"> --config</span><span style="color: #FEDE5D;"> &lt;</span><span>CONFIG</span><span style="color: #FEDE5D;">&gt;</span><span>        The config file to use</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -b,</span><span style="color: #F97E72;"> --dbpath</span><span style="color: #FEDE5D;"> &lt;</span><span>DBPATH</span><span style="color: #FEDE5D;">&gt;</span><span>        Default is</span><span style="color: #FF7EDB;"> $directory</span><span>/.cache</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -n,</span><span style="color: #F97E72;"> --dry-run</span><span>                Do not actually modify anything</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">      --direct-run</span><span>             Run the script directly without running the __build.rn script</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -h,</span><span style="color: #F97E72;"> --help</span><span>                   Print help</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">  -V,</span><span style="color: #F97E72;"> --version</span><span>                Print version</span></span></code></pre>
+<p>相关文件</p>
+<table><thead><tr><th>file</th><th>description</th></tr></thead><tbody>
+<tr><td><code>.cache</code></td><td>缓存文件，默认路径为<code>$directory/.cache</code>，可通过<code>-b</code>指定</td></tr>
+<tr><td><code>config.rn</code></td><td>配置文件，默认路径为<code>$directory/config.rn</code>，可通过<code>-c</code>指定</td></tr>
+<tr><td><code>__build.rn</code></td><td>单独运行的<code>rune</code>文件，路径为<code>$directory/__build.rn</code></td></tr>
+</tbody></table>
+<p>Example:</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="rust"><span class="giallo-l"><span style="color: #848BBD;font-style: italic;">// __build.rn</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">// 这是一个简单的示例</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">// 加载配置文件</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">pub async fn</span><span style="color: #36F9F6;"> main</span><span>(</span><span style="color: #FF7EDB;">dv</span><span>) {</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">    dv</span><span style="color: #FEDE5D;">.</span><span style="color: #36F9F6;">add_user</span><span>(</span><span style="color: #FF8B39;">&quot;r&quot;</span><span>,</span><span style="color: #FE4450;"> Config</span><span style="color: #FEDE5D;">::</span><span style="color: #36F9F6;">ssh</span><span>(</span><span style="color: #FF8B39;">&quot;r&quot;</span><span>))</span><span style="color: #FEDE5D;">.await?</span><span>;</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">    dv</span><span style="color: #FEDE5D;">.</span><span style="color: #36F9F6;">load_src</span><span>(</span><span style="color: #FF8B39;">&quot;r&quot;</span><span>,</span><span style="color: #FF8B39;"> &quot;rune/lib.rn&quot;</span><span>)</span><span style="color: #FEDE5D;">.await</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="rust"><span class="giallo-l"><span style="color: #848BBD;font-style: italic;">// r:~/.local/share/dv/rune/lib.rn</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">pub async fn</span><span style="color: #36F9F6;"> setup_a</span><span>(</span><span style="color: #FF7EDB;">dv</span><span>) {</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">  // 配置`a`应用</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">pub async fn</span><span style="color: #36F9F6;"> setup_b</span><span>(</span><span style="color: #FF7EDB;">dv</span><span>) {</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">  // 配置`b`应用</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="rust"><span class="giallo-l"><span style="color: #848BBD;font-style: italic;">// config.rn</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">pub fn</span><span style="color: #36F9F6;"> main</span><span>(</span><span style="color: #FF7EDB;">dv</span><span>) {</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">  setup_a</span><span>(</span><span style="color: #FF7EDB;">dv</span><span>)</span><span style="color: #FEDE5D;">.await?</span><span>;</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">  setup_b</span><span>(</span><span style="color: #FF7EDB;">dv</span><span>)</span><span style="color: #FEDE5D;">.await?</span><span>;</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h2 id="lu-xian-tu">路线图</h2>
+<h3 id="zhi-xing-jiao-ben">执行脚本</h3>
+<ul>
+<li>
+<p><input disabled="" type="checkbox" checked=""/>
+执行命令</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox" checked=""/>
+执行内嵌脚本</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"/>
+指定脚本文件</p>
+</li>
+</ul>
+<h3 id="wen-jian-cao-zuo">文件操作</h3>
+<ul>
+<li>
+<p><input disabled="" type="checkbox" checked=""/>
+拷贝文件</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox" checked=""/>
+拷贝目录</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"/>
+修改文件</p>
+</li>
+</ul>
+<h3 id="fu-wu-guan-li">服务管理</h3>
+<ul>
+<li>
+<p><input disabled="" type="checkbox" checked=""/>
+<code>linux</code>服务管理</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"/>
+<code>windows</code>服务管理</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"/>
+更多后端支持</p>
+</li>
+</ul>
+<h3 id="ying-yong-bao-guan-li">应用（包）管理</h3>
+<p><code>platform</code>支持：</p>
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+<code>apt</code></li>
+<li><input disabled="" type="checkbox" checked=""/>
+<code>pacman</code></li>
+<li><input disabled="" type="checkbox" checked=""/>
+<code>yay</code></li>
+<li><input disabled="" type="checkbox" checked=""/>
+<code>paru</code></li>
+</ul>
+<p>基础操作</p>
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+安装</li>
+<li><input disabled="" type="checkbox"/>
+卸载等其他操作</li>
+</ul>
+
+      <nav>
+        <div>
+          <a href="https://blog.101248.xyz/blog/ubuntu-change-kernel/">&#8249; 更换Ubuntu内核</a>
+        </div>
+        <div>
+          <a href="https://blog.101248.xyz/blog/soft-router/"> Linux软路由配置 &#8250;</a>
+        </div>
+      </nav>
+    <div id="remark42"></div>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">索引</a>
+        <div>
+          <a href="#jie-shao">介绍</a>
+        </div>
+        <div>
+          <a href="#api">API</a>
+        </div>
+        <div class="hpad">
+          <a href="#wai-bu-lei-xing"><small>- 外部类型</small></a>
+        </div>
+        <div>
+          <a href="#shi-yong">使用</a>
+        </div>
+        <div>
+          <a href="#lu-xian-tu">路线图</a>
+        </div>
+        <div class="hpad">
+          <a href="#zhi-xing-jiao-ben"><small>- 执行脚本</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#wen-jian-cao-zuo"><small>- 文件操作</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#fu-wu-guan-li"><small>- 服务管理</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#ying-yong-bao-guan-li"><small>- 应用（包）管理</small></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://blog.101248.xyz/atom.xml" target="_blank" title="笔记 Atom Feed"><i type="Button" class="svg rss" title="笔记 Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://blog.101248.xyz/about/"> About </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/contact/"> Contact </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/privacy/"> Privacy </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2026</span> 笔记</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer><span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

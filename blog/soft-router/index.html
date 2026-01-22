@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <script src="https://blog.101248.xyz/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://blog.101248.xyz/abridge.css?h=e167a0ae757c8231aba7" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://blog.101248.xyz" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.101248.xyz/manifest.min.json" />
+  <link rel="mask-icon" href="https://blog.101248.xyz/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://blog.101248.xyz/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.101248.xyz/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.101248.xyz/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.101248.xyz/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="笔记 Atom Feed" href="https://blog.101248.xyz/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Linux软路由配置 | 笔记</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="笔记" />
+  <meta name="description" content="如何使用Linux系统搭建软路由" />
+  <link rel="canonical" href="https://blog.101248.xyz/blog/soft-router/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.101248.xyz/blog/soft-router/" />
+  <meta name="twitter:url" content="https://blog.101248.xyz/blog/soft-router/" />
+  <meta property="og:description" content="如何使用Linux系统搭建软路由" />
+  <meta name="twitter:description" content="如何使用Linux系统搭建软路由" />
+  <meta property="og:title" content="Linux软路由配置 | 笔记" />
+  <meta name="twitter:title" content="Linux软路由配置 | 笔记" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="笔记" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-10-14" />
+  <script>
+	var remark_config = {
+		host: "https://remark42.101248.xyz",
+		site_id: "blog",
+	}
+  </script>
+  <script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+  <script defer src="https://blog.101248.xyz/js/abridge.min.js?h=e0f9a881a665c86cce9c" integrity="sha384-QF67y7RnPkuDrJNQqn3/7nYxqxWkW/qHI7zN0WTES1aXbf+TotoByRBb835fUE6U"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.stemmer.support.min.js" integrity="sha384-f0MKdC/9ZSGTpDiuWusC0SbLXNCBp6NgzDZpjR/4UdHXAQBqvTEKyinnsa1wQ7oA"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.zh.min.js" integrity="sha384-rQz9F0qWFRA0H4snbYEJ0VLIgOuLas/bm/j2HVui1L3lPvV16lr5u0L1XqhUJV6a"></script>
+  <noscript><link rel="stylesheet" href="https://blog.101248.xyz/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://blog.101248.xyz" title="笔记">笔记</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://blog.101248.xyz/archive/"> Posts </a></li><li><a class="s110" href="https://blog.101248.xyz/tags/"> Tags </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>中文</span><a href="https://blog.101248.xyz/en/blog/soft-router/">English</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+          <div>
+            <form autocomplete=off class="js" name="goSearch" id="searchbox">
+              <div class="searchd">
+                <input id="searchinput" type="text" placeholder="搜索" title="Search" />
+                <button type="submit" title="Search" class="svgs svgm search"></button>
+              </div>
+              <div class="results"><div id="suggestions"></div></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://blog.101248.xyz/blog/soft-router/">Linux软路由配置</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> 二月 25, 2025 <span class="rpad"></span>更新: 十月 14, 2025 <span class="rpad"></span> #<a href="https://blog.101248.xyz/tags/network/">Network</a>  #<a href="https://blog.101248.xyz/tags/router/">Router</a> </span>
+
+    
+
+
+<h2 id="systemd-networkd-systemd-resolved"><code>systemd-networkd</code> + <code>systemd-resolved</code></h2>
+<p>本节参考<a rel="noopener external" target="_blank" href="https://man.archlinux.org/man/systemd.network.5">Arch Manual</a>。</p>
+<p>假设我们有两个网口<code>enp1s0</code>，<code>enp2s0</code>，<code>enp1s0</code>作为<code>WAN</code>口，<code>enp2s0</code>作为<code>LAN</code>口。</p>
+<p>多个<code>LAN</code>口可以通过桥接的方式来实现，具体配置方式根据网络管理器自行查阅。</p>
+<h3 id="ji-ben-wang-luo-pei-zhi">基本网络配置</h3>
+<p>将以下配置写入<code>/etc/systemd/network/10-enp1s0.network</code>文件</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="ini"><span class="giallo-l"><span style="color: #FF7EDB;">[Match]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">MACAddress</span><span style="color: #B6B1B1;">=</span><span>xx:xx:xx:xx:xx:xx</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">[Network]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">DHCP</span><span style="color: #B6B1B1;">=</span><span>ipv4</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">IPForward</span><span style="color: #B6B1B1;">=</span><span>yes</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># ipv6配置</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">IPv6AcceptRA</span><span style="color: #B6B1B1;">=</span><span>yes</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">[DHCP]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">RouteMetric</span><span style="color: #B6B1B1;">=</span><span>100</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">UseMTU</span><span style="color: #B6B1B1;">=</span><span>true</span></span></code></pre>
+<p>以上配置中<code>MACAddress</code>填写<code>enp1s0</code>的<code>MAC</code>地址。
+配置<code>enp1s0</code>通过<code>DHCP</code>获取<code>ipv4</code>地址，并且开启<code>ip</code>转发功能。
+<code>ipv6</code>配置中开启<code>IPv6AcceptRA</code>，表示接受路由器通告。</p>
+<p>将以下配置写入<code>/etc/systemd/network/20-enp2s0.network</code>文件</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="ini"><span class="giallo-l"><span style="color: #FF7EDB;">[Match]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">MACAddress</span><span style="color: #B6B1B1;">=</span><span>xx:xx:xx:xx:xx:xx</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">[Network]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">DHCPServer</span><span style="color: #B6B1B1;">=</span><span>yes</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">IPMasquerade</span><span style="color: #B6B1B1;">=</span><span>both</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Address</span><span style="color: #B6B1B1;">=</span><span>192.168.5.1/24</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># ipv6配置</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Address</span><span style="color: #B6B1B1;">=</span><span>fd00:1::/64</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">IPv6SendRA</span><span style="color: #B6B1B1;">=</span><span>yes</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">[DHCPServer]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">PoolOffset</span><span style="color: #B6B1B1;">=</span><span>3</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">DNS</span><span style="color: #B6B1B1;">=</span><span>_server_address</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># 静态分配</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">[DHCPServerStaticLease]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">MACAddress</span><span style="color: #B6B1B1;">=</span><span>xx:xx:xx:xx:xx:xx</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Address</span><span style="color: #B6B1B1;">=</span><span>192.168.5.2</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># ipv6配置</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">[IPv6SendRA]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">DNS</span><span style="color: #B6B1B1;">=</span><span>_link_local</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">[IPv6Prefix]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Prefix</span><span style="color: #B6B1B1;">=</span><span>fd00:1::/64</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">[IPv6RoutePrefix]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Route</span><span style="color: #B6B1B1;">=</span><span>fd00:1::/64</span></span></code></pre>
+<p>以上配置中<code>MACAddress</code>填写<code>enp2s0</code>的<code>MAC</code>地址。
+配置<code>enp2s0</code>开启<code>DHCP</code>服务，并且开启<code>ip</code>伪装功能。
+<code>Address</code>配置<code>enp2s0</code>的<code>ipv4</code>地址为<code>192.168.5.1/24</code>。
+<code>DHCPServer</code>配置中<code>DNS=_server_address</code>表示将<code>LAN</code>口的地址作为<code>DNS</code>服务器地址，需配合<code>DNS</code>服务使用。
+<code>ipv6</code>配置中配置<code>ipv6</code>地址为<code>fd00:1::/64</code>，并且开启<code>IPv6SendRA</code>，表示发送路由器通告。</p>
+<p>注意:如果以上配置不生效，检查<code>net.ipv4.ip_forward</code>和<code>net.ipv6.conf.all.forwarding</code>是否开启。具体配置方式自行查阅。</p>
+<p><a href="https://blog.101248.xyz/faq/systemd-networkd/">Note - FAQ - systemd-networkd</a></p>
+<h3 id="dnspei-zhi">DNS配置</h3>
+<p>将以下配置写入（修改至）<code>/etc/systemd/resolved.conf</code>文件</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="ini"><span class="giallo-l"><span>...</span></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">[Resolve]</span></span>
+<span class="giallo-l"><span>...</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">DNSStubListener</span><span style="color: #B6B1B1;">=</span><span>yes</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">DNSStubListenerExtra</span><span style="color: #B6B1B1;">=</span><span>192.168.5.1</span></span>
+<span class="giallo-l"><span>...</span></span></code></pre>
+<p>开启<code>DNSStubListenerExtra</code>，并指定<code>LAN</code>口的地址。</p>
+<p>更多<code>DNS</code>配置请参考<a href="https://blog.101248.xyz/blog/dns/">Note - DNS</a>。</p>
+<h3 id="qi-dong-fu-wu">启动服务</h3>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> systemctl enable</span><span style="color: #F97E72;"> --now</span><span> systemd-networkd systemd-resolved</span></span></code></pre><h2 id="qi-ta-da-pei-ruan-jian">其它搭配软件</h2>
+<h3 id="netplan"><code>netplan</code></h3>
+<p>本节参考<a rel="noopener external" target="_blank" href="https://netplan.readthedocs.io/en/stable/">Netplan.io</a>。</p>
+<p>注意<code>netplan</code>目前还不支持<code>DHCPServer</code>和<code>IPMasquerade</code>配置。
+可以通过<code>netplan</code>来配置网口</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="yaml"><span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># /etc/netplan/01-netcfg.yaml</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">network</span><span style="color: #B6B1B1;">:</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">  version</span><span style="color: #B6B1B1;">:</span><span style="color: #F97E72;"> 2</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">  renderer</span><span style="color: #B6B1B1;">:</span><span> networkd</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">  ethernets</span><span style="color: #B6B1B1;">:</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">    enp1s0</span><span style="color: #B6B1B1;">:</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">      dhcp4</span><span style="color: #B6B1B1;">:</span><span style="color: #F97E72;"> true</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">      accept-ra</span><span style="color: #B6B1B1;">:</span><span style="color: #F97E72;"> true</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">    enp2s0</span><span style="color: #B6B1B1;">:</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">      addresses</span><span style="color: #B6B1B1;">:</span><span> </span></span>
+<span class="giallo-l"><span>        - 192.168.5.1/24</span></span>
+<span class="giallo-l"><span>        - fd00:1::1/64</span></span></code></pre>
+<p>如果选择<code>systemd-networkd</code>作为渲染器，则不要在<code>/etc/systemd/network/</code>目录下配置网口，否则将会覆盖<code>netplan</code>的配置。</p>
+<p>应用配置</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> netplan apply</span></span></code></pre><h3 id="dnsmasq"><code>dnsmasq</code></h3>
+<p>本节参考<a rel="noopener external" target="_blank" href="https://wiki.archlinux.org/title/Dnsmasq">Arch Wiki - Dnsmasq</a>。</p>
+<p><code>dnsmasq</code>可以作为<code>DNS</code>和<code>DHCP</code>服务来使用。
+将以下配置写入<code>/etc/dnsmasq.d/lan.conf</code>文件</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="ini"><span class="giallo-l"><span style="color: #FEDE5D;">interface</span><span style="color: #B6B1B1;">=</span><span>enp2s0</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># 只启用 DHCP</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">port</span><span style="color: #B6B1B1;">=</span><span>0</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">listen-address</span><span style="color: #B6B1B1;">=</span><span>fd00:1::1,192.168.5.1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># DHCP 地址池</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">dhcp-range</span><span style="color: #B6B1B1;">=</span><span>192.168.5.3,192.168.5.255,24h</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># 网关（可选）</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">dhcp-option</span><span style="color: #B6B1B1;">=</span><span>3,192.168.5.1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># DNS 服务器</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">dhcp-option</span><span style="color: #B6B1B1;">=</span><span>6,192.168.5.1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">dhcp-host</span><span style="color: #B6B1B1;">=</span><span>98:fc:84:e5:13:6a,192.168.5.2</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>enable-ra</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">dhcp-range</span><span style="color: #B6B1B1;">=</span><span>fd00:1::100,fd00:1::ffff,64,12h</span></span></code></pre>
+<p>注意这里<code>dnsmasq</code>没有配置自带的<code>DNS</code>服务。</p>
+<p>应用同时配置自动启动</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> systemctl enable</span><span style="color: #F97E72;"> --now</span><span> dnsmasq</span></span></code></pre><h2 id="masqueradepei-zhi"><code>Masquerade</code>配置</h2>
+<p>如果不使用<code>systemd-networkd</code>的<code>IPMasquerade</code>功能，同样需要配置<code>NAT</code>转发功能。</p>
+<p>同时注意<code>net.ipv4.ip_forward</code>和<code>net.ipv6.conf.all.forwarding</code>需要开启。</p>
+<p>这里可以选择用<code>iptables</code>或者<code>nftables</code>来配置<code>Masquerade</code>。
+注意如果机器上同时配有其他使用<code>iptables</code>的服务如<code>Docker</code>和<code>TailScale</code>，则建议使用<code>iptables</code>,或者安装<code>nftables</code>但是用<code>iptables</code>的兼容模式。</p>
+<h4 id="iptables"><code>iptables</code></h4>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> iptables</span><span style="color: #F97E72;"> -t</span><span> nat</span><span style="color: #F97E72;"> -A</span><span> POSTROUTING</span><span style="color: #F97E72;"> -o</span><span> enp1s0</span><span style="color: #F97E72;"> -j</span><span> MASQUERADE</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> iptables</span><span style="color: #F97E72;"> -A</span><span> FORWARD</span><span style="color: #F97E72;"> -i</span><span> enp2s0</span><span style="color: #F97E72;"> -o</span><span> enp1s0</span><span style="color: #F97E72;"> -j</span><span> ACCEPT</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> iptables</span><span style="color: #F97E72;"> -A</span><span> FORWARD</span><span style="color: #F97E72;"> -i</span><span> enp1s0</span><span style="color: #F97E72;"> -o</span><span> enp2s0</span><span style="color: #F97E72;"> -m</span><span> state</span><span style="color: #F97E72;"> --state</span><span> RELATED,ESTABLISHED</span><span style="color: #F97E72;"> -j</span><span> ACCEPT</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># ipv6</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> ip6tables</span><span style="color: #F97E72;"> -t</span><span> nat</span><span style="color: #F97E72;"> -A</span><span> POSTROUTING</span><span style="color: #F97E72;"> -o</span><span> enp1s0</span><span style="color: #F97E72;"> -j</span><span> MASQUERADE</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> ip6tables</span><span style="color: #F97E72;"> -A</span><span> FORWARD</span><span style="color: #F97E72;"> -i</span><span> enp2s0</span><span style="color: #F97E72;"> -o</span><span> enp1s0</span><span style="color: #F97E72;"> -j</span><span> ACCEPT</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> ip6tables</span><span style="color: #F97E72;"> -A</span><span> FORWARD</span><span style="color: #F97E72;"> -i</span><span> enp1s0</span><span style="color: #F97E72;"> -o</span><span> enp2s0</span><span style="color: #F97E72;"> -m</span><span> state</span><span style="color: #F97E72;"> --state</span><span> RELATED,ESTABLISHED</span><span style="color: #F97E72;"> -j</span><span> ACCEPT</span></span></code></pre>
+<p>可以使用<code>iptables-persistent</code>来保存<code>iptables</code>规则</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> apt install iptables-persistent</span></span></code></pre>
+<p>应该在安装过程中选择保存当前规则。没有则查看是否有<code>/etc/iptables/rules.v4</code>和<code>/etc/iptables/rules.v6</code>文件，如果没有则手动保存</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> iptables-save</span><span style="color: #FEDE5D;"> &gt;</span><span> /etc/iptables/rules.v4</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> ip6tables-save</span><span style="color: #FEDE5D;"> &gt;</span><span> /etc/iptables/rules.v6</span></span></code></pre><h4 id="nftables"><code>nftables</code></h4>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="plain"><span class="giallo-l"><span>#!/usr/sbin/nft -f</span></span>
+<span class="giallo-l"><span>#/etc/nftables.conf</span></span>
+<span class="giallo-l"><span>table ip nat {</span></span>
+<span class="giallo-l"><span>    chain postrouting {</span></span>
+<span class="giallo-l"><span>        type nat hook postrouting priority 100;</span></span>
+<span class="giallo-l"><span>        counter oif &quot;enp1s0&quot; masquerade</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"><span>table ip filter {</span></span>
+<span class="giallo-l"><span>    chain forward {</span></span>
+<span class="giallo-l"><span>        type filter hook forward priority 0; policy drop;</span></span>
+<span class="giallo-l"><span>        iif &quot;enp2s0&quot; oif &quot;enp1s0&quot; accept</span></span>
+<span class="giallo-l"><span>        iif &quot;enp1s0&quot; oif &quot;enp2s0&quot; ct state related,established accept</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"><span>table ip6 nat {</span></span>
+<span class="giallo-l"><span>    chain postrouting {</span></span>
+<span class="giallo-l"><span>        type nat hook postrouting priority 100;</span></span>
+<span class="giallo-l"><span>        counter oif &quot;enp1s0&quot; masquerade</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"><span>table ip6 filter {</span></span>
+<span class="giallo-l"><span>    chain forward {</span></span>
+<span class="giallo-l"><span>        type filter hook forward priority 0; policy drop;</span></span>
+<span class="giallo-l"><span>        iif &quot;enp2s0&quot; oif &quot;enp1s0&quot; accept</span></span>
+<span class="giallo-l"><span>        iif &quot;enp1s0&quot; oif &quot;enp2s0&quot; ct state related,established accept</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p>应用同时配置自动启动</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> systemctl enable</span><span style="color: #F97E72;"> --now</span><span> nftables</span></span></code></pre>
+      <nav>
+        <div>
+          <a href="https://blog.101248.xyz/dv4rune/">&#8249; Dv4rune</a>
+        </div>
+        <div>
+          <a href="https://blog.101248.xyz/faq/git-rm-submodule/"> 移除Git子模块 &#8250;</a>
+        </div>
+      </nav>
+    <div id="remark42"></div>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">索引</a>
+        <div>
+          <a href="#systemd-networkd-systemd-resolved">systemd-networkd + systemd-resolved</a>
+        </div>
+        <div class="hpad">
+          <a href="#ji-ben-wang-luo-pei-zhi"><small>- 基本网络配置</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#dnspei-zhi"><small>- DNS配置</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#qi-dong-fu-wu"><small>- 启动服务</small></a>
+        </div>
+        <div>
+          <a href="#qi-ta-da-pei-ruan-jian">其它搭配软件</a>
+        </div>
+        <div class="hpad">
+          <a href="#netplan"><small>- netplan</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#dnsmasq"><small>- dnsmasq</small></a>
+        </div>
+        <div>
+          <a href="#masqueradepei-zhi">Masquerade配置</a>
+        </div>
+        <div class="hpad">
+          <a href="#iptables"><small>- iptables</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#nftables"><small>- nftables</small></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://blog.101248.xyz/atom.xml" target="_blank" title="笔记 Atom Feed"><i type="Button" class="svg rss" title="笔记 Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://blog.101248.xyz/about/"> About </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/contact/"> Contact </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/privacy/"> Privacy </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2026</span> 笔记</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer><span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

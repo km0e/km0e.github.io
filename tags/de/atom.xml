@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+    <title>笔记 - DE</title>
+    <subtitle>Just a simple blog</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://blog.101248.xyz/tags/de/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://blog.101248.xyz"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-10-13T23:00:39+00:00</updated>
+    <id>https://blog.101248.xyz/tags/de/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>Niri</title>
+        <published>2025-09-22T13:00:50+00:00</published>
+        <updated>2025-10-13T23:00:39+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://blog.101248.xyz/blog/niri/"/>
+        <id>https://blog.101248.xyz/blog/niri/</id>
+        
+        <content type="html" xml:base="https://blog.101248.xyz/blog/niri/">&lt;h2 id=&quot;huan-jing&quot;&gt;环境&lt;&#x2F;h2&gt;
+&lt;p&gt;在&lt;code&gt;Arch Linux&lt;&#x2F;code&gt;下使用&lt;code&gt;Niri&lt;&#x2F;code&gt;，并通过&lt;code&gt;paru&lt;&#x2F;code&gt;进行安装。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;NAME&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Arch Linux&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;PRETTY_NAME&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Arch Linux&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;ID&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;arch&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;BUILD_ID&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;rolling&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;ANSI_COLOR&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;38;2;23;147;209&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;HOME_URL&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;https:&#x2F;&#x2F;archlinux.org&#x2F;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;DOCUMENTATION_URL&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;SUPPORT_URL&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;https:&#x2F;&#x2F;bbs.archlinux.org&#x2F;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;BUG_REPORT_URL&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;https:&#x2F;&#x2F;gitlab.archlinux.org&#x2F;groups&#x2F;archlinux&#x2F;-&#x2F;issues&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;PRIVACY_POLICY_URL&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;https:&#x2F;&#x2F;terms.archlinux.org&#x2F;docs&#x2F;privacy-policy&#x2F;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;LOGO&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FFFFFFEE;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;archlinux-logo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;an-zhuang&quot;&gt;安装&lt;&#x2F;h2&gt;
+&lt;p&gt;首先安装&lt;code&gt;paru&lt;&#x2F;code&gt;，如果已经安装可以跳过这一步：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; pacman&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S --needed&lt;&#x2F;span&gt;&lt;span&gt; rustup base-devel git&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;rustup&lt;&#x2F;span&gt;&lt;span&gt; default stable&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; clone&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --depth 1&lt;&#x2F;span&gt;&lt;span&gt; https:&#x2F;&#x2F;aur.archlinux.org&#x2F;paru.git &#x2F;tmp&#x2F;paru&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;cd&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;tmp&#x2F;paru&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;makepkg&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -si&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;然后使用&lt;code&gt;paru&lt;&#x2F;code&gt;安装&lt;code&gt;Niri&lt;&#x2F;code&gt;：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;paru&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; niri&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;pei-zhi&quot;&gt;配置&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;Niri&lt;&#x2F;code&gt;的配置文件位于&lt;code&gt;~&#x2F;.config&#x2F;niri&#x2F;config.kdl&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;font&quot;&gt;Font&lt;&#x2F;h3&gt;
+&lt;p&gt;安装中文与表情字体：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;paru&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; noto-fonts-cjk noto-fonts-emoji&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;然后运行以下命令更新字体缓存：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;fc-cache&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -fv&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;退出&lt;code&gt;Niri&lt;&#x2F;code&gt;重启后，字体即可生效。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;shu-ru-fa&quot;&gt;输入法&lt;&#x2F;h3&gt;
+&lt;p&gt;安装&lt;code&gt;fcitx5-im&lt;&#x2F;code&gt;和&lt;code&gt;fcitx5-chinese-addons&lt;&#x2F;code&gt;：&lt;&#x2F;p&gt;
+&lt;p&gt;注意：这里会让你选音频提供者，如果担心音频问题，可以选择&lt;code&gt;pipewire&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;paru&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; fcitx5-im fcitx5-chinese-addons&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;修改&lt;code&gt;Niri&lt;&#x2F;code&gt;的配置文件，添加以下内容：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;kdl&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;environment&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;    XMODIFIERS&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;@im=fcitx&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;spawn-at-startup&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;fcitx5&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;chrome&quot;&gt;Chrome&lt;&#x2F;h3&gt;
+&lt;p&gt;安装&lt;code&gt;Chrome&lt;&#x2F;code&gt;浏览器：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;paru&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; google-chrome&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;添加以下内容到&lt;code&gt;~&#x2F;.config&#x2F;chrome-flags.conf&lt;&#x2F;code&gt;文件中：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;--enable-features=AcceleratedVideoDecodeLinuxGL&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;--enable-features=UseOzonePlatform&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;--ozone-platform=wayland&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;--enable-wayland-ime&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;--wayland-text-input-version=3&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;启用硬件加速&lt;&#x2F;li&gt;
+&lt;li&gt;启用&lt;code&gt;Wayland&lt;&#x2F;code&gt;支持&lt;&#x2F;li&gt;
+&lt;li&gt;启用&lt;code&gt;Wayland&lt;&#x2F;code&gt;输入法支持&lt;&#x2F;li&gt;
+&lt;li&gt;使用&lt;code&gt;Wayland&lt;&#x2F;code&gt;文本输入版本3&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;jin-jie&quot;&gt;进阶&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;dankmaterialshell&quot;&gt;DankMaterialShell&lt;&#x2F;h3&gt;
+&lt;p&gt;本节参考&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;AvengeMedia&#x2F;DankMaterialShell?tab=readme-ov-file#dank-shell-installation&quot;&gt;GitHub - DankMaterialShell&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;使用一些已经配置好的&lt;code&gt;Niri&lt;&#x2F;code&gt;环境，这里选择&lt;code&gt;DankMaterialShell&lt;&#x2F;code&gt;：&lt;&#x2F;p&gt;
+&lt;p&gt;安装软件包：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;paru&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; dms-shell-git matugen-bin cava wl-clipboard cliphist brightnessctl dms-shell-niri&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;修改&lt;code&gt;Niri&lt;&#x2F;code&gt;的配置文件，添加以下内容：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;kdl&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; Required for clipboard history integration&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;spawn-at-startup&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;bash&amp;quot; &amp;quot;-c&amp;quot; &amp;quot;wl-paste --watch cliphist store &amp;amp;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; Recommended (must install polkit-mate before hand) for elevation prompts&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;spawn-at-startup&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;&#x2F;usr&#x2F;lib&#x2F;mate-polkit&#x2F;polkit-mate-authentication-agent-1&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; This may be a different path on different distributions, the above is for the arch linux mate-polkit package&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; Starts DankShell&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;spawn-at-startup&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;run&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; If using niri newer than 271534e115e5915231c99df287bbfe396185924d (~aug 17 2025)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; you can add this to disable built in config load errors since dank shell provides this&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;config-notification&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;    disable-failed&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; Dank keybinds&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; 1. These should not be in conflict with any pre-existing keybindings&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; 2. You need to merge them with your existing config if you want to use these&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; 3. You can change the keys to whatever you want, if you prefer something different&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;&#x2F;&#x2F; 4. For the increment&#x2F;decrement ones you can change the steps to whatever you like too&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;binds&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   Mod+Space&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; hotkey-overlay-title&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Application Launcher&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;spotlight&amp;quot; &amp;quot;toggle&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   Mod+V&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; hotkey-overlay-title&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Clipboard Manager&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;clipboard&amp;quot; &amp;quot;toggle&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   Mod+M&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; hotkey-overlay-title&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Task Manager&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;processlist&amp;quot; &amp;quot;toggle&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   Mod+N&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; hotkey-overlay-title&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Notification Center&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;notifications&amp;quot; &amp;quot;toggle&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   Mod+Comma&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; hotkey-overlay-title&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Settings&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;settings&amp;quot; &amp;quot;toggle&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   Mod+P&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; hotkey-overlay-title&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Notepad&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;notepad&amp;quot; &amp;quot;toggle&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   Super+Alt+L&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; hotkey-overlay-title&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Lock Screen&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;lock&amp;quot; &amp;quot;lock&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   Mod+X&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; hotkey-overlay-title&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;&amp;quot;Power Menu&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;powermenu&amp;quot; &amp;quot;toggle&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   XF86AudioRaiseVolume&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; allow-when-locked&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;true {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;audio&amp;quot; &amp;quot;increment&amp;quot; &amp;quot;3&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   XF86AudioLowerVolume&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; allow-when-locked&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;true {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;audio&amp;quot; &amp;quot;decrement&amp;quot; &amp;quot;3&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   XF86AudioMute&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; allow-when-locked&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;true {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;audio&amp;quot; &amp;quot;mute&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   XF86AudioMicMute&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; allow-when-locked&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;true {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;audio&amp;quot; &amp;quot;micmute&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   XF86MonBrightnessUp&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; allow-when-locked&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;true {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;brightness&amp;quot; &amp;quot;increment&amp;quot; &amp;quot;5&amp;quot; &amp;quot;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;   &#x2F;&#x2F; You can override the default device for e.g. keyboards by adding the device name to the last param&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   XF86MonBrightnessDown&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; allow-when-locked&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;true {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;brightness&amp;quot; &amp;quot;decrement&amp;quot; &amp;quot;5&amp;quot; &amp;quot;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;   &#x2F;&#x2F; Night mode toggle&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;   Mod+Shift+N&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; allow-when-locked&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;true {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      spawn&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;dms&amp;quot; &amp;quot;ipc&amp;quot; &amp;quot;call&amp;quot; &amp;quot;night&amp;quot; &amp;quot;toggle&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;注意：&lt;code&gt;binds&lt;&#x2F;code&gt;部分需要和已有的配置合并。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;display-manager&quot;&gt;Display Manager&lt;&#x2F;h3&gt;
+&lt;p&gt;自动登录&lt;code&gt;Niri&lt;&#x2F;code&gt;，这里使用&lt;code&gt;greetd&lt;&#x2F;code&gt;或&lt;code&gt;lemurs&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;greetd&quot;&gt;greetd&lt;&#x2F;h4&gt;
+&lt;p&gt;本节参考&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;AvengeMedia&#x2F;DankMaterialShell?tab=readme-ov-file#greeter&quot;&gt;DankMaterialShell - Greeter&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;dms&lt;&#x2F;code&gt;有对&lt;code&gt;greetd&lt;&#x2F;code&gt;的支持，直接执行以下命令：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;dms&lt;&#x2F;span&gt;&lt;span&gt; greeter install&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;不支持的话，可以参考&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;title&#x2F;Greetd&quot;&gt;Arch Wiki - Greetd&lt;&#x2F;a&gt;进行安装与配置。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;lemurs&quot;&gt;lemurs&lt;&#x2F;h4&gt;
+&lt;p&gt;本节参考&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;coastalwhite&#x2F;lemurs?tab=readme-ov-file#arch-linux&quot;&gt;GitHub - lemurs&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h5 id=&quot;zong-lan&quot;&gt;总览&lt;&#x2F;h5&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;paru&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; lemurs&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;echo&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;#!&#x2F;bin&#x2F;sh&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;exec niri-session&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; |&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt; sudo&lt;&#x2F;span&gt;&lt;span&gt; tee &#x2F;etc&#x2F;lemurs&#x2F;wayland&#x2F;niri&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# Not needed if you don&amp;#39;t have a window manager yet&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# sudo systemctl disable display-manager.service&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; systemctl enable lemurs.service&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h4 id=&quot;an-zhuang-1&quot;&gt;安装&lt;&#x2F;h4&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;paru&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; lemurs&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h4 id=&quot;pei-zhi-1&quot;&gt;配置&lt;&#x2F;h4&gt;
+&lt;p&gt;创建&lt;code&gt;&#x2F;etc&#x2F;lemurs&#x2F;wayland&#x2F;niri&lt;&#x2F;code&gt;文件：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;echo&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt; &amp;quot;#!&#x2F;bin&#x2F;sh&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF8B39;&quot;&gt;exec niri-session&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; |&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt; sudo&lt;&#x2F;span&gt;&lt;span&gt; tee &#x2F;etc&#x2F;lemurs&#x2F;wayland&#x2F;niri&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;启用&lt;code&gt;lemurs&lt;&#x2F;code&gt;服务：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; systemctl enable lemurs.service&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;如果你已经有一个显示管理器在运行，可能需要先禁用它：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; systemctl disable display-manager.service&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;faq&quot;&gt;FAQ&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;nvidiaqu-dong&quot;&gt;Nvidia驱动&lt;&#x2F;h3&gt;
+&lt;p&gt;参考：&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;title&#x2F;NVIDIA&quot;&gt;Arch Wiki - NVIDIA&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;bi-ji-ben-zi-dai-yin-pin-she-bei-bu-neng-shi-bie&quot;&gt;笔记本自带音频设备不能识别&lt;&#x2F;h3&gt;
+&lt;p&gt;安装&lt;code&gt;sof-firmware&lt;&#x2F;code&gt;与&lt;code&gt;pipewire-pulse&lt;&#x2F;code&gt;：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;paru&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; sof-firmware pipewire-pulse&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+</feed>

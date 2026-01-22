@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+    <title>笔记 - Network</title>
+    <subtitle>Just a simple blog</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://blog.101248.xyz/tags/network/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://blog.101248.xyz"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-10-14T15:32:48+00:00</updated>
+    <id>https://blog.101248.xyz/tags/network/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>Linux DNS配置</title>
+        <published>2025-10-14T14:42:27+00:00</published>
+        <updated>2025-10-14T15:32:48+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://blog.101248.xyz/blog/dns/"/>
+        <id>https://blog.101248.xyz/blog/dns/</id>
+        
+        <content type="html" xml:base="https://blog.101248.xyz/blog/dns/">&lt;h2 id=&quot;ben-ji-dnspei-zhi&quot;&gt;本机DNS配置&lt;&#x2F;h2&gt;
+&lt;p&gt;在&lt;code&gt;Linux&lt;&#x2F;code&gt;系统中，DNS配置主要通过&lt;code&gt;&#x2F;etc&#x2F;resolv.conf&lt;&#x2F;code&gt;文件进行管理。该文件包含了DNS服务器的地址和搜索域等信息。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;pei-zhi-resolv-conf&quot;&gt;配置&lt;code&gt;resolv.conf&lt;&#x2F;code&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;resolv.conf&lt;&#x2F;code&gt;文件的基本格式如下：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;nameserver 223.5.5.5&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;nameserver 223.6.6.6&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;search example.com&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;pei-zhi-systemd-resolved&quot;&gt;配置&lt;code&gt;systemd-resolved&lt;&#x2F;code&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;主要配置文件位于&lt;code&gt;&#x2F;etc&#x2F;systemd&#x2F;resolved.conf&lt;&#x2F;code&gt;，可以通过编辑该文件来配置DNS服务器。
+大致格式如下&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Resolve]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# Some examples of DNS servers which may be used for DNS= and FallbackDNS=:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# Cloudflare: 1.1.1.1#cloudflare-dns.com 1.0.0.1#cloudflare-dns.com 2606:4700:4700::1111#cloudflare-dns.com 2606:4700:4700::1001#cloudflare-dns.com&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# Google:     8.8.8.8#dns.google 8.8.4.4#dns.google 2001:4860:4860::8888#dns.google 2001:4860:4860::8844#dns.google&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# Quad9:      9.9.9.9#dns.quad9.net 149.112.112.112#dns.quad9.net 2620:fe::fe#dns.quad9.net 2620:fe::9#dns.quad9.net&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# DNS0:       193.110.81.0#dns0.eu 185.253.5.0#dns0.eu 2a0f:fc80::#dns0.eu 2a0f:fc81::#dns0.eu&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# Using DNS= configures global DNS servers and does not suppress link-specific&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# configuration. Parallel requests will be sent to per-link DNS servers&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# configured automatically by systemd-networkd.service(8), NetworkManager(8), or&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# similar management services, or configured manually via resolvectl(1). See&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# resolved.conf(5) and systemd-resolved(8) for more details.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#DNS=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#FallbackDNS=9.9.9.9#dns.quad9.net 2620:fe::9#dns.quad9.net 1.1.1.1#cloudflare-dns.com 2606:4700:4700::1111#cloudflare-dns.com 8.8.8.8#dns.google 2001:4860:4860::8888#dns.google&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#Domains=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#DNSSEC=no&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#DNSOverTLS=no&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#MulticastDNS=yes&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#LLMNR=yes&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#Cache=yes&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#CacheFromLocalhost=no&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#DNSStubListener=yes&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#DNSStubListenerExtra=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#ReadEtcHosts=yes&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#ResolveUnicastSingleLabel=no&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#StaleRetentionSec=0&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#RefuseRecordTypes=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;并且&lt;code&gt;systemd-resolved&lt;&#x2F;code&gt;会自动生成&lt;code&gt;&#x2F;etc&#x2F;resolv.conf&lt;&#x2F;code&gt;文件，用来接管系统的DNS解析功能。
+通过以下命令可以覆盖默认的&lt;code&gt;resolv.conf&lt;&#x2F;code&gt;文件：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; ln&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -sf&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;run&#x2F;systemd&#x2F;resolve&#x2F;stub-resolv.conf &#x2F;etc&#x2F;resolv.conf&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;注意该文件以全局配置形式，类似于&lt;code&gt;Fallback&lt;&#x2F;code&gt;的方式。如果你的网络接口有单独的DNS配置（手动配置或通过&lt;code&gt;DHCP&lt;&#x2F;code&gt;获取），则优先于该文件。
+可以通过以下命令查看当前的DNS配置：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;resolvectl&lt;&#x2F;span&gt;&lt;span&gt; status&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;...&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;Link&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; 3&lt;&#x2F;span&gt;&lt;span&gt; (enp0s20f0u2u1)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;    Current&lt;&#x2F;span&gt;&lt;span&gt; Scopes: DNS LLMNR&#x2F;IPv4 LLMNR&#x2F;IPv6 mDNS&#x2F;IPv4 mDNS&#x2F;IPv6&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;         Protocols:&lt;&#x2F;span&gt;&lt;span&gt; +DefaultRoute +LLMNR +mDNS&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -DNSOverTLS&lt;&#x2F;span&gt;&lt;span&gt; DNSSEC=no&#x2F;unsupported&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;Current&lt;&#x2F;span&gt;&lt;span&gt; DNS Server:&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; 192.168.5.1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;       DNS&lt;&#x2F;span&gt;&lt;span&gt; Servers:&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; 192.168.5.1&lt;&#x2F;span&gt;&lt;span&gt; fe80::62be:b4ff:fe19:2641&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;     Default&lt;&#x2F;span&gt;&lt;span&gt; Route: yes&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #36F9F6;&quot;&gt;...&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;类似于上面的输出，&lt;code&gt;Current DNS Server&lt;&#x2F;code&gt;表示当前使用的DNS服务器地址。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;ju-ti-wen-ti&quot;&gt;具体问题&lt;&#x2F;h4&gt;
+&lt;h5 id=&quot;wai-wang-ju-yu-wang-you-zi-ding-yi-de-dns-zone-ji-mou-xie-yu-ming-xu-yao-tong-guo-te-ding-de-dnsfu-wu-qi-jie-xi-dan-shi-you-xiang-bi-mian-wu-ran&quot;&gt;外网局域网有自定义的&lt;code&gt;DNS zone&lt;&#x2F;code&gt;，即某些域名需要通过特定的&lt;code&gt;DNS&lt;&#x2F;code&gt;服务器解析,但是又想避免污染&lt;&#x2F;h5&gt;
+&lt;p&gt;先在&lt;code&gt;&#x2F;etc&#x2F;systemd&#x2F;resolved.conf&lt;&#x2F;code&gt;中添加你希望使用的&lt;code&gt;DNS&lt;&#x2F;code&gt;服务器：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Resolve]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;DNS&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;223.5.5.5&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Domains&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;~.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;~.&lt;&#x2F;code&gt;表示所有其他域名的请求会通过该&lt;code&gt;DNS&lt;&#x2F;code&gt;服务器进行解析。&lt;&#x2F;p&gt;
+&lt;p&gt;如果网络管理器为&lt;code&gt;systemd-networkd&lt;&#x2F;code&gt;，则在&lt;code&gt;&#x2F;etc&#x2F;systemd&#x2F;network&#x2F;&lt;&#x2F;code&gt;目录下&lt;code&gt;WAN&lt;&#x2F;code&gt;口的配置文件中添加以下内容：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Network]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Domains&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;~example.com&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;~&lt;&#x2F;code&gt;表示该域名后缀的请求会通过该网络接口的&lt;code&gt;DNS&lt;&#x2F;code&gt;服务器进行解析。&lt;&#x2F;p&gt;
+&lt;p&gt;最后重启生效。&lt;&#x2F;p&gt;
+&lt;h5 id=&quot;zi-ding-yi-de-dnsfu-wu-qi-xi-wang-shi-yong-dns-over-tlsxie-yi-dan-shi-ju-yu-wang-nei-de-dnsfu-wu-qi-bu-zhi-chi-dotxie-yi&quot;&gt;自定义的&lt;code&gt;DNS&lt;&#x2F;code&gt;服务器希望使用&lt;code&gt;DNS over TLS&lt;&#x2F;code&gt;协议，但是局域网内的&lt;code&gt;DNS&lt;&#x2F;code&gt;服务器不支持&lt;code&gt;DoT&lt;&#x2F;code&gt;协议&lt;&#x2F;h5&gt;
+&lt;p&gt;先时在&lt;code&gt;&#x2F;etc&#x2F;systemd&#x2F;resolved.conf&lt;&#x2F;code&gt;中开启&lt;code&gt;DoT&lt;&#x2F;code&gt;协议：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Resolve]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;DNS&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;9.9.9.9&lt;&#x2F;span&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;#dns.quad9.net&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;DNSOverTLS&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;yes&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;DNSOverTLS=yes&lt;&#x2F;code&gt;表示全局的&lt;code&gt;DNS&lt;&#x2F;code&gt;请求会使用&lt;code&gt;DoT&lt;&#x2F;code&gt;协议。&lt;&#x2F;p&gt;
+&lt;p&gt;如果使用&lt;code&gt;systemd-networkd&lt;&#x2F;code&gt;，则在&lt;code&gt;&#x2F;etc&#x2F;systemd&#x2F;network&#x2F;&lt;&#x2F;code&gt;目录下&lt;code&gt;WAN&lt;&#x2F;code&gt;口的配置文件中添加以下内容：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Network]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;DNSOverTLS&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;no&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;DNSOverTLS=no&lt;&#x2F;code&gt;表示该网络接口的&lt;code&gt;DNS&lt;&#x2F;code&gt;请求不会使用&lt;code&gt;DoT&lt;&#x2F;code&gt;协议。&lt;&#x2F;p&gt;
+&lt;p&gt;如果使用&lt;code&gt;NetworkManager&lt;&#x2F;code&gt;，则可以通过&lt;code&gt;nmcli&lt;&#x2F;code&gt;命令配置：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; nmcli connection modify&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; &amp;lt;&lt;&#x2F;span&gt;&lt;span&gt;connection_name&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; connection.dns-over-tls&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; 0&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+    <entry xml:lang="zh">
+        <title>systemd-networkd</title>
+        <published>2025-10-13T14:05:56+00:00</published>
+        <updated>2025-10-13T18:26:29+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://blog.101248.xyz/faq/systemd-networkd/"/>
+        <id>https://blog.101248.xyz/faq/systemd-networkd/</id>
+        
+        <content type="html" xml:base="https://blog.101248.xyz/faq/systemd-networkd/">&lt;h2 id=&quot;etc-systemd-network-mu-lu-xia-pei-zhi-wen-jian-wei-sheng-xiao&quot;&gt;&lt;code&gt;&#x2F;etc&#x2F;systemd&#x2F;network&lt;&#x2F;code&gt; 目录下配置文件未生效&lt;&#x2F;h2&gt;
+&lt;p&gt;配置好网络之后重启&lt;code&gt;systemd-networkd&lt;&#x2F;code&gt;服务，发现网络并没有生效：
+&lt;code&gt;networkctl status&lt;&#x2F;code&gt;显示&lt;code&gt;SETUP&lt;&#x2F;code&gt;为&lt;code&gt;unmanaged&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;解决方法：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;修改&lt;code&gt;&#x2F;etc&#x2F;systemd&#x2F;network&#x2F;&lt;&#x2F;code&gt;目录下的配置文件权限为&lt;code&gt;644&lt;&#x2F;code&gt;,&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;systemd&#x2F;systemd&#x2F;issues&#x2F;34436#issuecomment-2353730549&quot;&gt;参考&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh">
+        <title>Linux软路由配置</title>
+        <published>2025-02-25T11:13:51+00:00</published>
+        <updated>2025-10-14T15:24:13+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://blog.101248.xyz/blog/soft-router/"/>
+        <id>https://blog.101248.xyz/blog/soft-router/</id>
+        
+        <content type="html" xml:base="https://blog.101248.xyz/blog/soft-router/">&lt;h2 id=&quot;systemd-networkd-systemd-resolved&quot;&gt;&lt;code&gt;systemd-networkd&lt;&#x2F;code&gt; + &lt;code&gt;systemd-resolved&lt;&#x2F;code&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;本节参考&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;man.archlinux.org&#x2F;man&#x2F;systemd.network.5&quot;&gt;Arch Manual&lt;&#x2F;a&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;假设我们有两个网口&lt;code&gt;enp1s0&lt;&#x2F;code&gt;，&lt;code&gt;enp2s0&lt;&#x2F;code&gt;，&lt;code&gt;enp1s0&lt;&#x2F;code&gt;作为&lt;code&gt;WAN&lt;&#x2F;code&gt;口，&lt;code&gt;enp2s0&lt;&#x2F;code&gt;作为&lt;code&gt;LAN&lt;&#x2F;code&gt;口。&lt;&#x2F;p&gt;
+&lt;p&gt;多个&lt;code&gt;LAN&lt;&#x2F;code&gt;口可以通过桥接的方式来实现，具体配置方式根据网络管理器自行查阅。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ji-ben-wang-luo-pei-zhi&quot;&gt;基本网络配置&lt;&#x2F;h3&gt;
+&lt;p&gt;将以下配置写入&lt;code&gt;&#x2F;etc&#x2F;systemd&#x2F;network&#x2F;10-enp1s0.network&lt;&#x2F;code&gt;文件&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Match]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;MACAddress&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;xx:xx:xx:xx:xx:xx&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Network]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;DHCP&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;ipv4&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;IPForward&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;yes&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# ipv6配置&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;IPv6AcceptRA&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;yes&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[DHCP]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;RouteMetric&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;100&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;UseMTU&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;true&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;以上配置中&lt;code&gt;MACAddress&lt;&#x2F;code&gt;填写&lt;code&gt;enp1s0&lt;&#x2F;code&gt;的&lt;code&gt;MAC&lt;&#x2F;code&gt;地址。
+配置&lt;code&gt;enp1s0&lt;&#x2F;code&gt;通过&lt;code&gt;DHCP&lt;&#x2F;code&gt;获取&lt;code&gt;ipv4&lt;&#x2F;code&gt;地址，并且开启&lt;code&gt;ip&lt;&#x2F;code&gt;转发功能。
+&lt;code&gt;ipv6&lt;&#x2F;code&gt;配置中开启&lt;code&gt;IPv6AcceptRA&lt;&#x2F;code&gt;，表示接受路由器通告。&lt;&#x2F;p&gt;
+&lt;p&gt;将以下配置写入&lt;code&gt;&#x2F;etc&#x2F;systemd&#x2F;network&#x2F;20-enp2s0.network&lt;&#x2F;code&gt;文件&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Match]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;MACAddress&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;xx:xx:xx:xx:xx:xx&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Network]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;DHCPServer&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;yes&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;IPMasquerade&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;both&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Address&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;192.168.5.1&#x2F;24&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# ipv6配置&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Address&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;fd00:1::&#x2F;64&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;IPv6SendRA&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;yes&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[DHCPServer]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;PoolOffset&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;3&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;DNS&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;_server_address&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# 静态分配&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[DHCPServerStaticLease]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;MACAddress&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;xx:xx:xx:xx:xx:xx&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Address&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;192.168.5.2&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# ipv6配置&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[IPv6SendRA]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;DNS&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;_link_local&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[IPv6Prefix]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Prefix&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;fd00:1::&#x2F;64&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[IPv6RoutePrefix]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;Route&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;fd00:1::&#x2F;64&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;以上配置中&lt;code&gt;MACAddress&lt;&#x2F;code&gt;填写&lt;code&gt;enp2s0&lt;&#x2F;code&gt;的&lt;code&gt;MAC&lt;&#x2F;code&gt;地址。
+配置&lt;code&gt;enp2s0&lt;&#x2F;code&gt;开启&lt;code&gt;DHCP&lt;&#x2F;code&gt;服务，并且开启&lt;code&gt;ip&lt;&#x2F;code&gt;伪装功能。
+&lt;code&gt;Address&lt;&#x2F;code&gt;配置&lt;code&gt;enp2s0&lt;&#x2F;code&gt;的&lt;code&gt;ipv4&lt;&#x2F;code&gt;地址为&lt;code&gt;192.168.5.1&#x2F;24&lt;&#x2F;code&gt;。
+&lt;code&gt;DHCPServer&lt;&#x2F;code&gt;配置中&lt;code&gt;DNS=_server_address&lt;&#x2F;code&gt;表示将&lt;code&gt;LAN&lt;&#x2F;code&gt;口的地址作为&lt;code&gt;DNS&lt;&#x2F;code&gt;服务器地址，需配合&lt;code&gt;DNS&lt;&#x2F;code&gt;服务使用。
+&lt;code&gt;ipv6&lt;&#x2F;code&gt;配置中配置&lt;code&gt;ipv6&lt;&#x2F;code&gt;地址为&lt;code&gt;fd00:1::&#x2F;64&lt;&#x2F;code&gt;，并且开启&lt;code&gt;IPv6SendRA&lt;&#x2F;code&gt;，表示发送路由器通告。&lt;&#x2F;p&gt;
+&lt;p&gt;注意:如果以上配置不生效，检查&lt;code&gt;net.ipv4.ip_forward&lt;&#x2F;code&gt;和&lt;code&gt;net.ipv6.conf.all.forwarding&lt;&#x2F;code&gt;是否开启。具体配置方式自行查阅。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;blog.101248.xyz&#x2F;faq&#x2F;systemd-networkd&#x2F;&quot;&gt;Note - FAQ - systemd-networkd&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;dnspei-zhi&quot;&gt;DNS配置&lt;&#x2F;h3&gt;
+&lt;p&gt;将以下配置写入（修改至）&lt;code&gt;&#x2F;etc&#x2F;systemd&#x2F;resolved.conf&lt;&#x2F;code&gt;文件&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;...&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FF7EDB;&quot;&gt;[Resolve]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;...&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;DNSStubListener&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;yes&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;DNSStubListenerExtra&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;192.168.5.1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;...&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;开启&lt;code&gt;DNSStubListenerExtra&lt;&#x2F;code&gt;，并指定&lt;code&gt;LAN&lt;&#x2F;code&gt;口的地址。&lt;&#x2F;p&gt;
+&lt;p&gt;更多&lt;code&gt;DNS&lt;&#x2F;code&gt;配置请参考&lt;a href=&quot;https:&#x2F;&#x2F;blog.101248.xyz&#x2F;blog&#x2F;dns&#x2F;&quot;&gt;Note - DNS&lt;&#x2F;a&gt;。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;qi-dong-fu-wu&quot;&gt;启动服务&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; systemctl enable&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --now&lt;&#x2F;span&gt;&lt;span&gt; systemd-networkd systemd-resolved&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;qi-ta-da-pei-ruan-jian&quot;&gt;其它搭配软件&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;netplan&quot;&gt;&lt;code&gt;netplan&lt;&#x2F;code&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;本节参考&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;netplan.readthedocs.io&#x2F;en&#x2F;stable&#x2F;&quot;&gt;Netplan.io&lt;&#x2F;a&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;注意&lt;code&gt;netplan&lt;&#x2F;code&gt;目前还不支持&lt;code&gt;DHCPServer&lt;&#x2F;code&gt;和&lt;code&gt;IPMasquerade&lt;&#x2F;code&gt;配置。
+可以通过&lt;code&gt;netplan&lt;&#x2F;code&gt;来配置网口&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# &#x2F;etc&#x2F;netplan&#x2F;01-netcfg.yaml&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;network&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;  version&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; 2&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;  renderer&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span&gt; networkd&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;  ethernets&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;    enp1s0&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      dhcp4&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; true&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      accept-ra&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; true&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;    enp2s0&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #72F1B8;&quot;&gt;      addresses&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        - 192.168.5.1&#x2F;24&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        - fd00:1::1&#x2F;64&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;如果选择&lt;code&gt;systemd-networkd&lt;&#x2F;code&gt;作为渲染器，则不要在&lt;code&gt;&#x2F;etc&#x2F;systemd&#x2F;network&#x2F;&lt;&#x2F;code&gt;目录下配置网口，否则将会覆盖&lt;code&gt;netplan&lt;&#x2F;code&gt;的配置。&lt;&#x2F;p&gt;
+&lt;p&gt;应用配置&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; netplan apply&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;dnsmasq&quot;&gt;&lt;code&gt;dnsmasq&lt;&#x2F;code&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;本节参考&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;title&#x2F;Dnsmasq&quot;&gt;Arch Wiki - Dnsmasq&lt;&#x2F;a&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;dnsmasq&lt;&#x2F;code&gt;可以作为&lt;code&gt;DNS&lt;&#x2F;code&gt;和&lt;code&gt;DHCP&lt;&#x2F;code&gt;服务来使用。
+将以下配置写入&lt;code&gt;&#x2F;etc&#x2F;dnsmasq.d&#x2F;lan.conf&lt;&#x2F;code&gt;文件&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;interface&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;enp2s0&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# 只启用 DHCP&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;port&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;0&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;listen-address&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;fd00:1::1,192.168.5.1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# DHCP 地址池&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;dhcp-range&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;192.168.5.3,192.168.5.255,24h&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# 网关（可选）&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;dhcp-option&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;3,192.168.5.1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# DNS 服务器&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;dhcp-option&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;6,192.168.5.1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;dhcp-host&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;98:fc:84:e5:13:6a,192.168.5.2&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;enable-ra&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt;dhcp-range&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B6B1B1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;fd00:1::100,fd00:1::ffff,64,12h&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;注意这里&lt;code&gt;dnsmasq&lt;&#x2F;code&gt;没有配置自带的&lt;code&gt;DNS&lt;&#x2F;code&gt;服务。&lt;&#x2F;p&gt;
+&lt;p&gt;应用同时配置自动启动&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; systemctl enable&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --now&lt;&#x2F;span&gt;&lt;span&gt; dnsmasq&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;masqueradepei-zhi&quot;&gt;&lt;code&gt;Masquerade&lt;&#x2F;code&gt;配置&lt;&#x2F;h2&gt;
+&lt;p&gt;如果不使用&lt;code&gt;systemd-networkd&lt;&#x2F;code&gt;的&lt;code&gt;IPMasquerade&lt;&#x2F;code&gt;功能，同样需要配置&lt;code&gt;NAT&lt;&#x2F;code&gt;转发功能。&lt;&#x2F;p&gt;
+&lt;p&gt;同时注意&lt;code&gt;net.ipv4.ip_forward&lt;&#x2F;code&gt;和&lt;code&gt;net.ipv6.conf.all.forwarding&lt;&#x2F;code&gt;需要开启。&lt;&#x2F;p&gt;
+&lt;p&gt;这里可以选择用&lt;code&gt;iptables&lt;&#x2F;code&gt;或者&lt;code&gt;nftables&lt;&#x2F;code&gt;来配置&lt;code&gt;Masquerade&lt;&#x2F;code&gt;。
+注意如果机器上同时配有其他使用&lt;code&gt;iptables&lt;&#x2F;code&gt;的服务如&lt;code&gt;Docker&lt;&#x2F;code&gt;和&lt;code&gt;TailScale&lt;&#x2F;code&gt;，则建议使用&lt;code&gt;iptables&lt;&#x2F;code&gt;,或者安装&lt;code&gt;nftables&lt;&#x2F;code&gt;但是用&lt;code&gt;iptables&lt;&#x2F;code&gt;的兼容模式。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;iptables&quot;&gt;&lt;code&gt;iptables&lt;&#x2F;code&gt;&lt;&#x2F;h4&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; iptables&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -t&lt;&#x2F;span&gt;&lt;span&gt; nat&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -A&lt;&#x2F;span&gt;&lt;span&gt; POSTROUTING&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -o&lt;&#x2F;span&gt;&lt;span&gt; enp1s0&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -j&lt;&#x2F;span&gt;&lt;span&gt; MASQUERADE&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; iptables&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -A&lt;&#x2F;span&gt;&lt;span&gt; FORWARD&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -i&lt;&#x2F;span&gt;&lt;span&gt; enp2s0&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -o&lt;&#x2F;span&gt;&lt;span&gt; enp1s0&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -j&lt;&#x2F;span&gt;&lt;span&gt; ACCEPT&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; iptables&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -A&lt;&#x2F;span&gt;&lt;span&gt; FORWARD&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -i&lt;&#x2F;span&gt;&lt;span&gt; enp1s0&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -o&lt;&#x2F;span&gt;&lt;span&gt; enp2s0&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -m&lt;&#x2F;span&gt;&lt;span&gt; state&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --state&lt;&#x2F;span&gt;&lt;span&gt; RELATED,ESTABLISHED&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -j&lt;&#x2F;span&gt;&lt;span&gt; ACCEPT&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #848BBD;font-style: italic;&quot;&gt;# ipv6&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; ip6tables&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -t&lt;&#x2F;span&gt;&lt;span&gt; nat&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -A&lt;&#x2F;span&gt;&lt;span&gt; POSTROUTING&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -o&lt;&#x2F;span&gt;&lt;span&gt; enp1s0&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -j&lt;&#x2F;span&gt;&lt;span&gt; MASQUERADE&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; ip6tables&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -A&lt;&#x2F;span&gt;&lt;span&gt; FORWARD&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -i&lt;&#x2F;span&gt;&lt;span&gt; enp2s0&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -o&lt;&#x2F;span&gt;&lt;span&gt; enp1s0&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -j&lt;&#x2F;span&gt;&lt;span&gt; ACCEPT&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; ip6tables&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -A&lt;&#x2F;span&gt;&lt;span&gt; FORWARD&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -i&lt;&#x2F;span&gt;&lt;span&gt; enp1s0&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -o&lt;&#x2F;span&gt;&lt;span&gt; enp2s0&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -m&lt;&#x2F;span&gt;&lt;span&gt; state&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --state&lt;&#x2F;span&gt;&lt;span&gt; RELATED,ESTABLISHED&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; -j&lt;&#x2F;span&gt;&lt;span&gt; ACCEPT&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;可以使用&lt;code&gt;iptables-persistent&lt;&#x2F;code&gt;来保存&lt;code&gt;iptables&lt;&#x2F;code&gt;规则&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install iptables-persistent&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;应该在安装过程中选择保存当前规则。没有则查看是否有&lt;code&gt;&#x2F;etc&#x2F;iptables&#x2F;rules.v4&lt;&#x2F;code&gt;和&lt;code&gt;&#x2F;etc&#x2F;iptables&#x2F;rules.v6&lt;&#x2F;code&gt;文件，如果没有则手动保存&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; iptables-save&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; &amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;etc&#x2F;iptables&#x2F;rules.v4&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; ip6tables-save&lt;&#x2F;span&gt;&lt;span style=&quot;color: #FEDE5D;&quot;&gt; &amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;etc&#x2F;iptables&#x2F;rules.v6&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h4 id=&quot;nftables&quot;&gt;&lt;code&gt;nftables&lt;&#x2F;code&gt;&lt;&#x2F;h4&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;#!&#x2F;usr&#x2F;sbin&#x2F;nft -f&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;#&#x2F;etc&#x2F;nftables.conf&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;table ip nat {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    chain postrouting {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        type nat hook postrouting priority 100;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        counter oif &amp;quot;enp1s0&amp;quot; masquerade&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;table ip filter {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    chain forward {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        type filter hook forward priority 0; policy drop;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        iif &amp;quot;enp2s0&amp;quot; oif &amp;quot;enp1s0&amp;quot; accept&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        iif &amp;quot;enp1s0&amp;quot; oif &amp;quot;enp2s0&amp;quot; ct state related,established accept&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;table ip6 nat {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    chain postrouting {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        type nat hook postrouting priority 100;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        counter oif &amp;quot;enp1s0&amp;quot; masquerade&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;table ip6 filter {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    chain forward {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        type filter hook forward priority 0; policy drop;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        iif &amp;quot;enp2s0&amp;quot; oif &amp;quot;enp1s0&amp;quot; accept&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        iif &amp;quot;enp1s0&amp;quot; oif &amp;quot;enp2s0&amp;quot; ct state related,established accept&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;应用同时配置自动启动&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #FFFFFF; background-color: #262335;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE4450;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; systemctl enable&lt;&#x2F;span&gt;&lt;span style=&quot;color: #F97E72;&quot;&gt; --now&lt;&#x2F;span&gt;&lt;span&gt; nftables&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        
+    </entry>
+</feed>

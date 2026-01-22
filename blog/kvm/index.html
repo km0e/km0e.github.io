@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <script src="https://blog.101248.xyz/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://blog.101248.xyz/abridge.css?h=e167a0ae757c8231aba7" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://blog.101248.xyz" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.101248.xyz/manifest.min.json" />
+  <link rel="mask-icon" href="https://blog.101248.xyz/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://blog.101248.xyz/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.101248.xyz/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.101248.xyz/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.101248.xyz/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="笔记 Atom Feed" href="https://blog.101248.xyz/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>KVM 安装虚拟机及相关配置 | 笔记</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="笔记" />
+  <meta name="description" content="KVM 安装`ubuntu cloud image`，`win10`虚拟机及相关配置" />
+  <link rel="canonical" href="https://blog.101248.xyz/blog/kvm/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.101248.xyz/blog/kvm/" />
+  <meta name="twitter:url" content="https://blog.101248.xyz/blog/kvm/" />
+  <meta property="og:description" content="KVM 安装`ubuntu cloud image`，`win10`虚拟机及相关配置" />
+  <meta name="twitter:description" content="KVM 安装`ubuntu cloud image`，`win10`虚拟机及相关配置" />
+  <meta property="og:title" content="KVM 安装虚拟机及相关配置 | 笔记" />
+  <meta name="twitter:title" content="KVM 安装虚拟机及相关配置 | 笔记" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="笔记" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-08-21" />
+  <script>
+	var remark_config = {
+		host: "https://remark42.101248.xyz",
+		site_id: "blog",
+	}
+  </script>
+  <script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+  <script defer src="https://blog.101248.xyz/js/abridge.min.js?h=e0f9a881a665c86cce9c" integrity="sha384-QF67y7RnPkuDrJNQqn3/7nYxqxWkW/qHI7zN0WTES1aXbf+TotoByRBb835fUE6U"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.stemmer.support.min.js" integrity="sha384-f0MKdC/9ZSGTpDiuWusC0SbLXNCBp6NgzDZpjR/4UdHXAQBqvTEKyinnsa1wQ7oA"></script>
+  <script defer src="https://blog.101248.xyz/js/lunr.zh.min.js" integrity="sha384-rQz9F0qWFRA0H4snbYEJ0VLIgOuLas/bm/j2HVui1L3lPvV16lr5u0L1XqhUJV6a"></script>
+  <noscript><link rel="stylesheet" href="https://blog.101248.xyz/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://blog.101248.xyz" title="笔记">笔记</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://blog.101248.xyz/archive/"> Posts </a></li><li><a class="s110" href="https://blog.101248.xyz/tags/"> Tags </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>中文</span><a href="https://blog.101248.xyz/en/blog/kvm/">English</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+          <div>
+            <form autocomplete=off class="js" name="goSearch" id="searchbox">
+              <div class="searchd">
+                <input id="searchinput" type="text" placeholder="搜索" title="Search" />
+                <button type="submit" title="Search" class="svgs svgm search"></button>
+              </div>
+              <div class="results"><div id="suggestions"></div></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://blog.101248.xyz/blog/kvm/">KVM 安装虚拟机及相关配置</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> 八月 21, 2025 <span class="rpad"></span> #<a href="https://blog.101248.xyz/tags/note/">NOTE</a> </span>
+
+    
+
+
+<h2 id="xiang-guan">相关</h2>
+<h3 id="virbr0-qiao-jie-wang-luo-pei-zhi"><code>virbr0</code> 桥接网络配置</h3>
+<p><code>virbr0</code> 是 libvirt 默认创建的桥接网络接口，允许虚拟机通过宿主机的网络连接到外部网络。它通常配置为 NAT 模式，这意味着虚拟机可以访问外部网络，但外部网络无法直接访问虚拟机。
+配置文件位于 <code>/etc/libvirt/qemu/networks/default.xml</code>。</p>
+<h2 id="huan-jing">环境</h2>
+<h3 id="jian-cha-cpuxu-ni-hua-zhi-chi">检查CPU虚拟化支持</h3>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">grep</span><span style="color: #F97E72;"> -cE</span><span style="color: #FF8B39;"> &#39;(vmx|svm)&#39;</span><span> /proc/cpuinfo</span></span></code></pre>
+<p>输出大于0表示支持。</p>
+<h3 id="an-zhuang-xiang-guan-ruan-jian-bao">安装相关软件包</h3>
+<h4 id="debian-ubuntu">Debian/Ubuntu</h4>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> apt</span><span style="color: #F97E72;"> -y</span><span> install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager cloud-image-utils</span></span></code></pre><h4 id="manjaro">Manjaro</h4>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> pacman</span><span style="color: #F97E72;"> -S</span><span> qemu libvirt virt-install</span></span></code></pre><h3 id="tian-jia-dang-qian-yong-hu-dao-libvirt-he-kvm-zu">添加当前用户到 <code>libvirt</code> 和 <code>kvm</code> 组</h3>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> usermod</span><span style="color: #F97E72;"> -aG</span><span> libvirt</span><span style="color: #FF7EDB;"> $USER</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> usermod</span><span style="color: #F97E72;"> -aG</span><span> kvm</span><span style="color: #FF7EDB;"> $USER</span></span></code></pre><h3 id="jian-cha-bing-qi-dong-libvirtd-fu-wu-yu-mo-ren-wang-luo">检查并启动 <code>libvirtd</code> 服务与默认网络</h3>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> systemctl status libvirtd</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> systemctl start libvirtd</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> virsh net-start default</span><span style="color: #848BBD;font-style: italic;"> # 启动默认网络，启动失败可重启设备（可能是某个服务未启动）</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">kvm-ok</span><span style="color: #848BBD;font-style: italic;">  # 仅Debian/Ubuntu</span></span></code></pre><h2 id="an-zhuang-ubuntuxu-ni-ji">安装Ubuntu虚拟机</h2>
+<h3 id="huan-jing-bian-liang">环境变量</h3>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FEDE5D;">export</span><span style="color: #FF7EDB;"> VM_NAME</span><span style="color: #FFFFFFEE;">=</span><span style="color: #FF7EDB;">ubuntu20</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">export</span><span style="color: #FF7EDB;"> UBUNTU_RELEASE</span><span style="color: #FFFFFFEE;">=</span><span style="color: #FF7EDB;">focal</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">export</span><span style="color: #FF7EDB;"> VM_IMAGE_PATH</span><span style="color: #FFFFFFEE;">=</span><span>/</span><span style="color: #FF7EDB;">opt</span><span>/</span><span style="color: #FF7EDB;">kvm</span><span>/</span><span style="color: #FF7EDB;">img</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">export</span><span style="color: #FF7EDB;"> VM_IMAGE</span><span style="color: #FFFFFFEE;">=</span><span style="color: #FF7EDB;">$VM_IMAGE_PATH</span><span>/</span><span style="color: #FF7EDB;">cloud-ubuntu-$UBUNTU_RELEASE</span><span>.</span><span style="color: #FF7EDB;">img</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">### 下载Ubuntu 镜像</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">-</span><span> [国内镜像](</span><span style="color: #FE4450;">https://mirror.nyist.edu.cn/ubuntu-cloud-images/</span><span>)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>```</span><span style="color: #FE4450;">bash</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">wget</span><span> https://mirror.nyist.edu.cn/ubuntu-cloud-images/</span><span style="color: #FF7EDB;">$UBUNTU_RELEASE</span><span>/current/</span><span style="color: #FF7EDB;">$UBUNTU_RELEASE</span><span>-server-cloudimg-amd64-disk-kvm.img</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># 或者使用 curl</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">curl</span><span style="color: #F97E72;"> -LO</span><span> https://mirror.nyist.edu.cn/ubuntu-cloud-images/</span><span style="color: #FF7EDB;">$UBUNTU_RELEASE</span><span>/current/</span><span style="color: #FF7EDB;">$UBUNTU_RELEASE</span><span>-server-cloudimg-amd64-disk-kvm.img</span></span></code></pre><h3 id="zhun-bei-ying-pan">准备硬盘</h3>
+<p><code>cloud image</code> 通常是已经安装好的系统镜像文件，我们需要创建一个基于该镜像的虚拟硬盘。</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">qemu-img</span><span> create</span><span style="color: #F97E72;"> -F</span><span> qcow2</span><span style="color: #F97E72;"> -b</span><span> ./</span><span style="color: #FF7EDB;">$UBUNTU_RELEASE</span><span>-server-cloudimg-amd64-disk-kvm.img</span><span style="color: #F97E72;"> -f</span><span> qcow2 ./np-ubuntu18.qcow2 40G</span></span></code></pre><h3 id="pei-zhi">配置</h3>
+<p>创建 <code>user-data</code> 文件：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="yaml"><span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#cloud-config</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">hostname</span><span style="color: #B6B1B1;">:</span><span> np-ubuntu18</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">manage_etc_hosts</span><span style="color: #B6B1B1;">:</span><span style="color: #F97E72;"> true</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">users</span><span style="color: #B6B1B1;">:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: #72F1B8;"> name</span><span style="color: #B6B1B1;">:</span><span> phx2</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">    sudo</span><span style="color: #B6B1B1;">:</span><span> ALL=(ALL) NOPASSWD:ALL</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">    groups</span><span style="color: #B6B1B1;">:</span><span> users, admin</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">    home</span><span style="color: #B6B1B1;">:</span><span> /home/phx2</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">    shell</span><span style="color: #B6B1B1;">:</span><span> /bin/bash</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">    lock_passwd</span><span style="color: #B6B1B1;">:</span><span style="color: #F97E72;"> false</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">ssh_pwauth</span><span style="color: #B6B1B1;">:</span><span style="color: #F97E72;"> true</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">disable_root</span><span style="color: #B6B1B1;">:</span><span style="color: #F97E72;"> false</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">chpasswd</span><span style="color: #B6B1B1;">:</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">  list</span><span style="color: #B6B1B1;">:</span><span style="color: #FEDE5D;"> |</span></span>
+<span class="giallo-l"><span>    vmadm:password</span></span>
+<span class="giallo-l"><span style="color: #72F1B8;">  expire</span><span style="color: #B6B1B1;">:</span><span style="color: #F97E72;"> false</span></span></code></pre>
+<p>按实际情况修改 <code>hostname</code>、<code>users</code> 和 <code>chpasswd</code>。</p>
+<p>创建 <code>meta-data</code> 空文件</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">touch</span><span> meta-data</span></span></code></pre><h3 id="sheng-cheng-seed-wen-jian">生成 seed 文件</h3>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">cloud-localds</span><span style="color: #F97E72;"> -v</span><span> ./np-ubuntu18-seed.qcow2 user-data meta-data</span></span></code></pre><h3 id="chuang-jian-xu-ni-ji">创建虚拟机</h3>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> virt-install</span><span style="color: #F97E72;"> --name</span><span> np-ubuntu18</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --os-variant</span><span> ubuntu18.04</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --vcpus 2</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --ram 2048</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --network</span><span> bridge=virbr0,model=virtio</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --disk</span><span> path=np-ubuntu18-seed.qcow2,device=disk</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --disk</span><span> path=/var/lib/libvirt/images/ubuntu18.qcow2,size=40,format=qcow2,backing_store=np-ubuntu18.qcow2</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --import</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --nographics</span><span> none</span></span></code></pre><pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># sudo virt-install --name np-ubuntu18 --os-variant ubuntu18.04 --vcpus 2 --ram 2048 --location $iso_path --network bridge=virbr0,model=virtio --graphics none --extra-args=&#39;console=ttyS0,115200n8 serial&#39; --disk path=/var/lib/libvirt/images/ubuntu18.qcow2,size=40,format=qcow2,bus=virtio</span></span></code></pre>
+<ul>
+<li><code>--name</code>：虚拟机名称</li>
+<li><code>--os-variant</code>：操作系统版本</li>
+<li><code>--vcpus</code>：虚拟CPU数量</li>
+<li><code>--ram</code>：内存大小（MB）</li>
+<li><code>--location</code>：安装介质路径（ISO文件路径）</li>
+<li><code>--network</code>：网络配置，这里使用桥接模式</li>
+<li><code>--graphics none</code>：无图形界面，使用命令行安装</li>
+<li><code>--extra-args</code>：传递给安装程序的额外参数，这里配置为使用串口控制台</li>
+<li><code>--disk</code>：磁盘配置，这里创建一个40GB的QCOW2格式磁盘</li>
+</ul>
+<h3 id="wan-zheng-jiao-ben">完整脚本</h3>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #36F9F6;">set</span><span style="color: #F97E72;"> -e</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">export</span><span style="color: #FF7EDB;"> VM_NAME</span><span style="color: #FFFFFFEE;">=</span><span style="color: #FF7EDB;">np-ubuntu18</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">export</span><span style="color: #FF7EDB;"> UBUNTU_RELEASE</span><span style="color: #FFFFFFEE;">=</span><span style="color: #FF7EDB;">bionic</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">export</span><span style="color: #FF7EDB;"> VM_IMAGE</span><span style="color: #FFFFFFEE;">=</span><span style="color: #FF7EDB;">$UBUNTU_RELEASE</span><span>-</span><span style="color: #FF7EDB;">server-cloudimg-amd64</span><span>.</span><span style="color: #FF7EDB;">img</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">wget</span><span> https://mirror.nyist.edu.cn/ubuntu-cloud-images/</span><span style="color: #FF7EDB;">$UBUNTU_RELEASE</span><span>/current/</span><span style="color: #FF7EDB;">$UBUNTU_RELEASE</span><span>-server-cloudimg-amd64.img</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># qemu-img create -F qcow2 -b ./$VM_IMAGE -f qcow2 ./$VM_NAME.qcow2 10G</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># cat &gt;network-config &lt;&lt;EOF</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># ethernets:</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#     $INTERFACE:</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#         addresses:</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#         - $IP_ADDR/24</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#         dhcp4: false</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#         gateway4: 192.168.122.1</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#         match:</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#             macaddress: $MAC_ADDR</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#         nameservers:</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#             addresses:</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#             - 1.1.1.1</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#             - 8.8.8.8</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;">#         set-name: $INTERFACE</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># version: 2</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># EOF</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">cat</span><span style="color: #FEDE5D;"> &gt;</span><span>user-data</span><span style="color: #FEDE5D;"> &lt;&lt;</span><span style="color: #FF8B39;">EOF</span></span>
+<span class="giallo-l"><span>#cloud-config</span></span>
+<span class="giallo-l"><span>manage_etc_hosts: true</span></span>
+<span class="giallo-l"><span>users:</span></span>
+<span class="giallo-l"><span>  - name: vmadm</span></span>
+<span class="giallo-l"><span>    sudo: ALL=(ALL) NOPASSWD:ALL</span></span>
+<span class="giallo-l"><span>    groups: users, admin</span></span>
+<span class="giallo-l"><span>    home: /home/vmadm</span></span>
+<span class="giallo-l"><span>    shell: /bin/bash</span></span>
+<span class="giallo-l"><span>    lock_passwd: false</span></span>
+<span class="giallo-l"><span>ssh_pwauth: true</span></span>
+<span class="giallo-l"><span>disable_root: false</span></span>
+<span class="giallo-l"><span>chpasswd:</span></span>
+<span class="giallo-l"><span>  list: |</span></span>
+<span class="giallo-l"><span>    vmadm:vmadm</span></span>
+<span class="giallo-l"><span>  expire: false</span></span>
+<span class="giallo-l"><span style="color: #FF8B39;">EOF</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">touch</span><span> meta-data</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># cloud-localds -v --network-config=network-config ./$VM_NAME-seed.qcow2 user-data meta-data</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">cloud-localds</span><span style="color: #F97E72;"> -v</span><span> ./</span><span style="color: #FF7EDB;">$VM_NAME</span><span>-seed.qcow2 user-data meta-data</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">virt-install</span><span style="color: #F97E72;"> --connect</span><span> qemu:///system</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --virt-type</span><span> kvm</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --name</span><span style="color: #FF7EDB;"> $VM_NAME</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --ram 1024</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --vcpus=2</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --os-type</span><span> linux</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --os-variant</span><span> ubuntu18.04</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --disk</span><span> path=/var/lib/libvirt/images/</span><span style="color: #FF7EDB;">$VM_NAME</span><span>.qcow2,size=40,format=qcow2,backing_store=</span><span style="color: #FF7EDB;">$VM_IMAGE</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --disk</span><span> path=</span><span style="color: #FF7EDB;">$VM_NAME</span><span>-seed.qcow2,device=disk</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --import</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --network</span><span> network=default,model=virtio</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;">  --noautoconsole</span></span></code></pre>
+<p>virt-install</p>
+<h2 id="an-zhuang-windows-10">安装 Windows 10</h2>
+<h3 id="zhun-bei-virt-install">准备virt-install</h3>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FEDE5D;">export</span><span style="color: #FF7EDB;"> ISO_PATH</span><span style="color: #FFFFFFEE;">=</span><span>/</span><span style="color: #FF7EDB;">opt</span><span>/</span><span style="color: #FF7EDB;">kvm</span><span>/</span><span style="color: #FF7EDB;">iso</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">export</span><span style="color: #FF7EDB;"> IMG_PATH</span><span style="color: #FFFFFFEE;">=</span><span>/</span><span style="color: #FF7EDB;">opt</span><span>/</span><span style="color: #FF7EDB;">kvm</span><span>/</span><span style="color: #FF7EDB;">img</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">export</span><span style="color: #FF7EDB;"> VM_NAME</span><span style="color: #FFFFFFEE;">=</span><span style="color: #FF7EDB;">win</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> mkdir</span><span style="color: #F97E72;"> -p</span><span style="color: #FF7EDB;"> $ISO_PATH</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> mkdir</span><span style="color: #F97E72;"> -p</span><span style="color: #FF7EDB;"> $IMG_PATH</span></span></code></pre><h3 id="xia-zai-windows-10-iso-he-virtio-qu-dong">下载 Windows 10 ISO 和 VirtIO 驱动</h3>
+<ul>
+<li>
+<p><a rel="noopener external" target="_blank" href="https://www.microsoft.com/en-us/evalcenter/download-windows-10-enterprise">Windows 10 LTSC</a></p>
+</li>
+<li>
+<p><a rel="noopener external" target="_blank" href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/">VirtIO 驱动</a></p>
+</li>
+</ul>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">wget</span><span style="color: #F97E72;"> -O</span><span style="color: #FF7EDB;"> $ISO_PATH</span><span>/win10_ltsc.iso https://go.microsoft.com/fwlink/p/?LinkID=</span><span style="color: #F97E72;">2195404</span><span>&amp;</span><span style="color: #FF7EDB;">clcid</span><span style="color: #FFFFFFEE;">=</span><span>0x409&amp;</span><span style="color: #FF7EDB;">culture</span><span style="color: #FFFFFFEE;">=</span><span>en-us&amp;</span><span style="color: #FF7EDB;">country</span><span style="color: #FFFFFFEE;">=</span><span>US</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">wget</span><span style="color: #F97E72;"> -O</span><span style="color: #FF7EDB;"> $ISO_PATH</span><span>/virtio-win.iso https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.271-1/virtio-win.iso</span></span></code></pre><h3 id="an-zhuang">安装</h3>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> virt-install</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;"> --name</span><span style="color: #FF7EDB;"> $VM_NAME</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;"> --memory 4096</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;"> --vcpus 2</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;"> --os-variant</span><span> win10</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;"> --cdrom</span><span style="color: #FF7EDB;"> $ISO_PATH</span><span>/win10_ltsc.iso</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;"> --disk</span><span> path=</span><span style="color: #FF7EDB;">$ISO_PATH</span><span>/virtio-win.iso,device=cdrom</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;"> --disk</span><span> path=</span><span style="color: #FF7EDB;">$IMG_PATH</span><span>/win.qcow2,size=60,format=qcow2,bus=virtio</span><span style="color: #36F9F6;"> \</span></span>
+<span class="giallo-l"><span style="color: #F97E72;"> --network</span><span> network=default,model=virtio</span></span></code></pre><h3 id="zhu-yi">注意</h3>
+<h4 id="an-zhuang-shi-xu-yao-jia-zai-virtio-qu-dong">安装时需要加载 VirtIO 驱动</h4>
+<p>在安装过程中，当提示选择磁盘时，选择<code>加载驱动程序</code>，然后选择 VirtIO 驱动的<code>w10</code>目录</p>
+<h4 id="an-zhuang-wan-bi-zhi-hou-xu-yao-geng-xin-qu-dong">安装完毕之后需要更新驱动</h4>
+<ul>
+<li>打开<code>设备管理器</code></li>
+<li>右键点击需要更新的设备，选择<code>更新驱动程序</code></li>
+<li>选择<code>浏览计算机以查找驱动程序软件</code></li>
+<li>选择<code>D:\</code>（假设 VirtIO 驱动挂载在<code>D</code>盘）进行更新（根目录即可）</li>
+</ul>
+<h4 id="qu-xiao-virtio-win-isode-gua-zai">取消<code>virtio-win.iso</code>的挂载</h4>
+<p>执行以下命令取消挂载：
+注意如果虚拟机正在运行，需要添加<code>--live</code>参数</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> virsh change-media</span><span style="color: #FF7EDB;"> $VM_NAME $ISO_PATH</span><span>/virtio-win.iso</span><span style="color: #F97E72;"> --eject --config</span></span></code></pre><h2 id="wang-luo-pei-zhi">网络配置</h2>
+<p>前面提到 <code>virbr0</code> 是 libvirt 默认创建的桥接网络接口，允许虚拟机通过宿主机的网络连接到外部网络。它通常配置为 NAT 模式，这意味着虚拟机可以访问外部网络，但外部网络无法直接访问虚拟机。</p>
+<p>我们可以通过配置桥接网络来实现虚拟机与宿主机在同一局域网内通信。</p>
+<h3 id="pei-zhi-qiao-jie-wang-luo">配置桥接网络</h3>
+<h4 id="pei-zhi-su-zhu-ji-qiao-jie-jie-kou">配置宿主机桥接接口</h4>
+<p><code>libvirt</code> 桥接网络需要宿主机上有一个桥接接口。这里以创建一个名为 <code>virbr1</code> 的桥接接口为例。</p>
+<p>编辑宿主机的网络配置文件，一般需要根据具体的网络管理工具进行配置，例如<code>Netplan</code>、<code>NetworkManager</code>或<code>systemd-networkd</code>。这里以<code>systemd-networkd</code>为例：</p>
+<p>创建一个新的网络设备<code>/etc/systemd/network/20-bridge-br1.netdev</code>：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="ini"><span class="giallo-l"><span style="color: #FF7EDB;">[NetDev]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Name</span><span style="color: #B6B1B1;">=</span><span>virbr1</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Kind</span><span style="color: #B6B1B1;">=</span><span>bridge</span></span></code></pre>
+<p>创建桥接接口配置文件<code>/etc/systemd/network/30-bridge-br1.network</code>：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="ini"><span class="giallo-l"><span style="color: #FF7EDB;">[Match]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Name</span><span style="color: #B6B1B1;">=</span><span>virbr1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">[Network]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">DHCP</span><span style="color: #B6B1B1;">=</span><span>yes</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># 或者使用静态IP</span></span></code></pre>
+<p>修改宿主机的物理网络接口配置文件，可能是<code>/etc/systemd/network/89-ethernet.network</code>，具体文件名根据实际情况而定：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="ini"><span class="giallo-l"><span style="color: #FF7EDB;">[Match]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Name</span><span style="color: #B6B1B1;">=</span><span>enp5s0  </span><span style="color: #848BBD;font-style: italic;"># 替换为实际的物理网络接口名称</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FF7EDB;">[Network]</span></span>
+<span class="giallo-l"><span style="color: #FEDE5D;">Bridge</span><span style="color: #B6B1B1;">=</span><span>virbr1</span></span></code></pre>
+<p>然后重启<code>systemd-networkd</code>服务：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> systemctl restart systemd-networkd</span></span></code></pre><h4 id="bian-ji-libvirtwang-luo-pei-zhi-wen-jian">编辑<code>libvirt</code>网络配置文件</h4>
+<p>新建一个桥接网络配置文件<code>br1.xml</code>，内容如下：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="xml"><span class="giallo-l"><span style="color: #36F9F6;">&lt;</span><span style="color: #72F1B8;">network</span><span style="color: #36F9F6;">&gt;</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">  &lt;</span><span style="color: #72F1B8;">name</span><span style="color: #36F9F6;">&gt;</span><span>br1</span><span style="color: #36F9F6;">&lt;/</span><span style="color: #72F1B8;">name</span><span style="color: #36F9F6;">&gt;</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">  &lt;</span><span style="color: #72F1B8;">uuid</span><span style="color: #36F9F6;">&gt;</span><span>f1e12345-abcd-4e67-9876-123456abcdef</span><span style="color: #36F9F6;">&lt;/</span><span style="color: #72F1B8;">uuid</span><span style="color: #36F9F6;">&gt;</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">  &lt;</span><span style="color: #72F1B8;">forward</span><span style="color: #FEDE5D;"> mode</span><span>=</span><span style="color: #FF8B39;">&#39;bridge&#39;</span><span style="color: #36F9F6;">/&gt;</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">  &lt;</span><span style="color: #72F1B8;">bridge</span><span style="color: #FEDE5D;"> name</span><span>=</span><span style="color: #FF8B39;">&#39;virbr1&#39;</span><span style="color: #36F9F6;">/&gt;</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">&lt;/</span><span style="color: #72F1B8;">network</span><span style="color: #36F9F6;">&gt;</span></span></code></pre>
+<ul>
+<li><code>name</code>：网络名称，可以自定义</li>
+<li><code>uuid</code>：网络的唯一标识符，可以使用<code>uuidgen</code>命令生成</li>
+<li><code>forward mode='bridge'</code>：设置为桥接模式</li>
+<li><code>bridge name</code>：桥接接口名称，需要与宿主机上的桥接接口名称一致</li>
+</ul>
+<h4 id="ding-yi-bing-qi-dong-xin-wang-luo">定义并启动新网络</h4>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> virsh net-define br1.xml</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> virsh net-start br1</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> virsh net-autostart br1</span></span></code></pre><h4 id="pei-zhi-xu-ni-ji-shi-yong-xin-wang-luo">配置虚拟机使用新网络</h4>
+<p>在创建虚拟机时，使用<code>--network bridge=virbr1,model=virtio</code>参数指定使用新的桥接网络。</p>
+<p>或者直接修改已有虚拟机的网络配置：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> virsh edit</span><span style="color: #FEDE5D;"> &lt;</span><span>vm-name</span><span style="color: #FEDE5D;">&gt;</span></span></code></pre>
+<p>将网络部分修改为：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="xml"><span class="giallo-l"><span style="color: #36F9F6;">&lt;</span><span style="color: #72F1B8;">interface</span><span style="color: #FEDE5D;"> type</span><span>=</span><span style="color: #FF8B39;">&#39;bridge&#39;</span><span style="color: #36F9F6;">&gt;</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">  &lt;</span><span style="color: #72F1B8;">mac</span><span style="color: #FEDE5D;"> address</span><span>=</span><span style="color: #FF8B39;">&#39;52:54:00:xx:xx:xx&#39;</span><span style="color: #36F9F6;">/&gt;</span><span style="color: #848BBD;font-style: italic;"> &lt;!-- 替换为实际的MAC地址 --&gt;</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">  &lt;</span><span style="color: #72F1B8;">source</span><span style="color: #FEDE5D;"> bridge</span><span>=</span><span style="color: #FF8B39;">&#39;virbr1&#39;</span><span style="color: #36F9F6;">/&gt;</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">  &lt;</span><span style="color: #72F1B8;">model</span><span style="color: #FEDE5D;"> type</span><span>=</span><span style="color: #FF8B39;">&#39;virtio&#39;</span><span style="color: #36F9F6;">/&gt;</span></span>
+<span class="giallo-l"><span style="color: #36F9F6;">&lt;/</span><span style="color: #72F1B8;">interface</span><span style="color: #36F9F6;">&gt;</span></span></code></pre>
+<p>保存并退出后，重启虚拟机使配置生效：</p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">sudo</span><span> virsh reboot</span><span style="color: #FEDE5D;"> &lt;</span><span>vm-name</span><span style="color: #FEDE5D;">&gt;</span></span></code></pre>
+      <nav>
+        <div>
+          <a href="https://blog.101248.xyz/blog/kvm-pass-through/">&#8249; KVM 设备直通</a>
+        </div>
+        <div>
+          <a href="https://blog.101248.xyz/dv4lua/"> Dv4lua &#8250;</a>
+        </div>
+      </nav>
+    <div id="remark42"></div>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">索引</a>
+        <div>
+          <a href="#xiang-guan">相关</a>
+        </div>
+        <div class="hpad">
+          <a href="#virbr0-qiao-jie-wang-luo-pei-zhi"><small>- virbr0 桥接网络配置</small></a>
+        </div>
+        <div>
+          <a href="#huan-jing">环境</a>
+        </div>
+        <div class="hpad">
+          <a href="#jian-cha-cpuxu-ni-hua-zhi-chi"><small>- 检查CPU虚拟化支持</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#an-zhuang-xiang-guan-ruan-jian-bao"><small>- 安装相关软件包</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#tian-jia-dang-qian-yong-hu-dao-libvirt-he-kvm-zu"><small>- 添加当前用户到 libvirt 和 kvm 组</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#jian-cha-bing-qi-dong-libvirtd-fu-wu-yu-mo-ren-wang-luo"><small>- 检查并启动 libvirtd 服务与默认网络</small></a>
+        </div>
+        <div>
+          <a href="#an-zhuang-ubuntuxu-ni-ji">安装Ubuntu虚拟机</a>
+        </div>
+        <div class="hpad">
+          <a href="#huan-jing-bian-liang"><small>- 环境变量</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#zhun-bei-ying-pan"><small>- 准备硬盘</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#pei-zhi"><small>- 配置</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#sheng-cheng-seed-wen-jian"><small>- 生成 seed 文件</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#chuang-jian-xu-ni-ji"><small>- 创建虚拟机</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#wan-zheng-jiao-ben"><small>- 完整脚本</small></a>
+        </div>
+        <div>
+          <a href="#an-zhuang-windows-10">安装 Windows 10</a>
+        </div>
+        <div class="hpad">
+          <a href="#zhun-bei-virt-install"><small>- 准备virt-install</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#xia-zai-windows-10-iso-he-virtio-qu-dong"><small>- 下载 Windows 10 ISO 和 VirtIO 驱动</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#an-zhuang"><small>- 安装</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#zhu-yi"><small>- 注意</small></a>
+        </div>
+        <div>
+          <a href="#wang-luo-pei-zhi">网络配置</a>
+        </div>
+        <div class="hpad">
+          <a href="#pei-zhi-qiao-jie-wang-luo"><small>- 配置桥接网络</small></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://blog.101248.xyz/atom.xml" target="_blank" title="笔记 Atom Feed"><i type="Button" class="svg rss" title="笔记 Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://blog.101248.xyz/about/"> About </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/contact/"> Contact </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/privacy/"> Privacy </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2026</span> 笔记</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer><span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

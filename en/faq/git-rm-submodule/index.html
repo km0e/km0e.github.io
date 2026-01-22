@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://blog.101248.xyz/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://blog.101248.xyz/abridge.css?h=e167a0ae757c8231aba7" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://blog.101248.xyz" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://blog.101248.xyz/manifest.min.json" />
+  <link rel="mask-icon" href="https://blog.101248.xyz/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://blog.101248.xyz/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.101248.xyz/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.101248.xyz/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.101248.xyz/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="F Atom Feed" href="https://blog.101248.xyz/en/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>git rm submodule | F</title>
+  <meta name="author" content="Haixin Pang" />
+  <meta name="copyright" content="F" />
+  <meta name="description" content="How to remove a submodule from a git repository" />
+  <link rel="canonical" href="https://blog.101248.xyz/en/faq/git-rm-submodule/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://blog.101248.xyz/en/faq/git-rm-submodule/" />
+  <meta name="twitter:url" content="https://blog.101248.xyz/en/faq/git-rm-submodule/" />
+  <meta property="og:description" content="How to remove a submodule from a git repository" />
+  <meta name="twitter:description" content="How to remove a submodule from a git repository" />
+  <meta property="og:title" content="git rm submodule | F" />
+  <meta name="twitter:title" content="git rm submodule | F" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="F" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2025-02-25" />
+  <script>
+	var remark_config = {
+		host: "https://remark42.101248.xyz",
+		site_id: "blog",
+	}
+  </script>
+  <script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+  <script defer src="https://blog.101248.xyz/js/abridge_nosearch.min.js?h=6dab37f7e7cd788c6976" integrity="sha384-77nO/4xlWq4jm3nrI6r48S4y4s/3D3d9FScy7N095fGTXGVuA0oCyyxgsbl8KhIm"></script>
+  <noscript><link rel="stylesheet" href="https://blog.101248.xyz/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://blog.101248.xyz/en/" title="F">F</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://blog.101248.xyz/en/archive/"> Posts </a></li><li><a class="s110" href="https://blog.101248.xyz/en/tags/"> Tags </a></li>
+            <li><div class="dropdown"><i class="svgs world" type="reset"></i>
+                <div class="dropdown-content">
+                <span>English</span><a href="https://blog.101248.xyz/faq/git-rm-submodule/">中文</a></div>
+            </div></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://blog.101248.xyz/en/faq/git-rm-submodule/">git rm submodule</a></h1>
+
+      <span class="s95"> Haixin Pang <span class="rpad"></span> February 25, 2025 <span class="rpad"></span> #<a href="https://blog.101248.xyz/en/tags/git/">Git</a>  #<a href="https://blog.101248.xyz/en/tags/faq/">FAQ</a> </span>
+
+    
+
+
+<p>Original source: <a rel="noopener external" target="_blank" href="https://stackoverflow.com/a/16162000">Stackoverflow</a></p>
+<pre class="giallo" style="color: #FFFFFF; background-color: #262335;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FE4450;">mv</span><span> a/submodule a/submodule_tmp</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE4450;">git</span><span> submodule deinit</span><span style="color: #F97E72;"> -f --</span><span> a/submodule</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">rm</span><span style="color: #F97E72;"> -rf</span><span> .git/modules/a/submodule</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">git</span><span> rm</span><span style="color: #F97E72;"> -f</span><span> a/submodule</span></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># Note: a/submodule (no trailing slash)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #848BBD;font-style: italic;"># or, if you want to leave it in your working tree and have done step 0</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">git</span><span> rm</span><span style="color: #F97E72;"> --cached</span><span> a/submodule</span></span>
+<span class="giallo-l"><span style="color: #FE4450;">mv</span><span> a/submodule_tmp a/submodule</span></span></code></pre>
+      <nav>
+        <div>
+          <a href="https://blog.101248.xyz/en/faq/cargo-dep/">&#8249; Cargo Dependency Version</a>
+        </div>
+        <div>
+        </div>
+      </nav>
+    <div id="remark42"></div>
+    </article>
+  </main>
+  <footer>
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://blog.101248.xyz/en/atom.xml" target="_blank" title="F Atom Feed"><i type="Button" class="svg rss" title="F Atom Feed"></i></a><a class="js m-protected" href="#a21kci5lcnJvckBnbWFpbC5jb20=" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://github.com/km0e/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></div></nav>
+      <nav class="vpad">
+        <a class="rpad s90" href="https://blog.101248.xyz/en/about/"> About </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/en/contact/"> Contact </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/en/privacy/"> Privacy </a>
+        <a class="rpad s90" href="https://blog.101248.xyz/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+      <p class="s80"> &copy; <span id="year">2026</span> F</p>
+      <p class="s80">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer>
+</body>
+</html>
