@@ -1,8 +1,8 @@
 +++
 date = 2025-08-21T16:42:40Z
-description = "KVM 安装 虚拟机 及相关配置"
+description = "KVM 安装`ubuntu cloud image`，`win10`虚拟机及相关配置"
 draft = false
-title = "KVM"
+title = "KVM 安装虚拟机及相关配置"
 
 [extra]
 toc = true
@@ -60,18 +60,30 @@ kvm-ok  # 仅Debian/Ubuntu
 
 ## 安装Ubuntu虚拟机
 
-### 下载Ubuntu ISO
-
-- [国内镜像](https://launchpad.net/ubuntu/+mirror/mirror.nyist.edu.cn-release)
+### 环境变量
 
 ```bash
-wget https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img
+export VM_NAME=ubuntu20
+export UBUNTU_RELEASE=focal
+export VM_IMAGE_PATH=/opt/kvm/img
+export VM_IMAGE=$VM_IMAGE_PATH/cloud-ubuntu-$UBUNTU_RELEASE.img
+
+
+### 下载Ubuntu 镜像
+
+- [国内镜像](https://mirror.nyist.edu.cn/ubuntu-cloud-images/)
+
+```bash
+wget https://mirror.nyist.edu.cn/ubuntu-cloud-images/$UBUNTU_RELEASE/current/$UBUNTU_RELEASE-server-cloudimg-amd64-disk-kvm.img
+# 或者使用 curl
+curl -LO https://mirror.nyist.edu.cn/ubuntu-cloud-images/$UBUNTU_RELEASE/current/$UBUNTU_RELEASE-server-cloudimg-amd64-disk-kvm.img
 ```
 
 ### 准备硬盘
 
+`cloud image` 通常是已经安装好的系统镜像文件，我们需要创建一个基于该镜像的虚拟硬盘。
 ```bash
-qemu-img create -F qcow2 -b ./bionic-server-cloudimg-amd64.img -f qcow2 ./np-ubuntu18.qcow2 40G
+qemu-img create -F qcow2 -b ./$UBUNTU_RELEASE-server-cloudimg-amd64-disk-kvm.img -f qcow2 ./np-ubuntu18.qcow2 40G
 ```
 
 ### 配置
